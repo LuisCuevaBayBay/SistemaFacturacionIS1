@@ -179,14 +179,30 @@ public class RegistroClientes extends javax.swing.JFrame {
                 txt_nombre_cliActionPerformed(evt);
             }
         });
+        txt_nombre_cli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nombre_cliKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("RTN");
+
+        txt_rtn_cliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_rtn_clienteKeyTyped(evt);
+            }
+        });
 
         jLabel5.setText("ID Cliente");
 
         txt_cli_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_cli_idActionPerformed(evt);
+            }
+        });
+        txt_cli_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cli_idKeyTyped(evt);
             }
         });
 
@@ -219,6 +235,12 @@ public class RegistroClientes extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablaclientes);
 
+        txt_apellido_cli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_apellido_cliKeyTyped(evt);
+            }
+        });
+
         jLabel9.setText("Apellido Cliente");
 
         btn_nuevo.setText("Nuevo");
@@ -243,6 +265,18 @@ public class RegistroClientes extends javax.swing.JFrame {
         });
 
         jLabel10.setText("Numero de Identidad");
+
+        txt_num_id_cli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_num_id_cliKeyTyped(evt);
+            }
+        });
+
+        txt_dir_cli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_dir_cliKeyTyped(evt);
+            }
+        });
 
         jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -384,14 +418,14 @@ public class RegistroClientes extends javax.swing.JFrame {
                             .addComponent(txt_apellido_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txt_num_id_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_dir_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addContainerGap())))
+                            .addComponent(jLabel10)
+                            .addComponent(txt_num_id_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txt_dir_cli, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45))))
         );
 
         pack();
@@ -408,11 +442,25 @@ public class RegistroClientes extends javax.swing.JFrame {
        ConexionSQL cc = new ConexionSQL();
        Connection cn = cc.getConnection();
        
+    if(txt_cli_id.getText().equals("") || txt_rtn_cliente.getText().equals("") || txt_nombre_cli.getText().equals("")
+            || txt_apellido_cli.getText().equals("") || txt_num_id_cli.getText().equals("")
+            || txt_dir_cli.getText().equals("")){
+        
+        JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos"); 
+    
+    }else{
+       
        try{
+           if(existeUsuario(txt_cli_id.getText())==0){
+           
+           
+           
+           
+           
            PreparedStatement pst = cn.prepareStatement("INSERT INTO cliente (Cli_id,rtn_Cliente,Nombre_Cliente,Apellido_Cliente"
                    + ",Num_Identidad_cliente,Direccion_Cliente) VALUES(?,?,?,?,?,?)");
             pst.setString(1, txt_cli_id.getText());
-                pst.setString(2, txt_rtn_cliente.getText());
+                pst.setString(2, txt_rtn_cliente.getText()); 
                     pst.setString(3, txt_nombre_cli.getText());
                        pst.setString(4, txt_apellido_cli.getText());
             pst.setString(5, txt_num_id_cli.getText());
@@ -425,10 +473,38 @@ public class RegistroClientes extends javax.swing.JFrame {
            }else{
                JOptionPane.showMessageDialog(null, "Error al agregar");
            }
+           }
        }catch (Exception e){
        }
+    }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    
+    private int existeUsuario(String usuario) {                                              
+      
+        ConexionSQL cc = new ConexionSQL();
+        
+        Connection cn = cc.getConnection();
+        
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        
+        String sql = "SELECT count(Cli_id) FROM cliente WHERE Cli_id = ?";
+    
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            return 1;
+        }
+        return 1;
+    }
+    
     private void txt_nombre_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombre_cliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombre_cliActionPerformed
@@ -517,6 +593,54 @@ this.dispose();
         menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void txt_cli_idKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cli_idKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+        
+    }//GEN-LAST:event_txt_cli_idKeyTyped
+
+    private void txt_rtn_clienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rtn_clienteKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_txt_rtn_clienteKeyTyped
+
+    private void txt_nombre_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombre_cliKeyTyped
+        // TODO add your handling code here:
+        
+        char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
+    }//GEN-LAST:event_txt_nombre_cliKeyTyped
+
+    private void txt_apellido_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellido_cliKeyTyped
+        // TODO add your handling code here:
+         char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_txt_apellido_cliKeyTyped
+
+    private void txt_num_id_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_num_id_cliKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+        
+    }//GEN-LAST:event_txt_num_id_cliKeyTyped
+
+    private void txt_dir_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dir_cliKeyTyped
+        // TODO add your handling code here:
+        
+        char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
+    }//GEN-LAST:event_txt_dir_cliKeyTyped
 
     /**
      * @param args the command line arguments
