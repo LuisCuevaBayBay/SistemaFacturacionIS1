@@ -173,6 +173,11 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jtf_IdActionPerformed(evt);
             }
         });
+        Jtf_Id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Jtf_IdKeyTyped(evt);
+            }
+        });
 
         Jbt_Guardar.setBackground(new java.awt.Color(0, 255, 153));
         Jbt_Guardar.setForeground(new java.awt.Color(0, 0, 204));
@@ -186,6 +191,23 @@ public class frm_proveedores extends javax.swing.JFrame {
         Jtf_Nombre_Empresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Jtf_Nombre_EmpresaActionPerformed(evt);
+            }
+        });
+        Jtf_Nombre_Empresa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Jtf_Nombre_EmpresaKeyTyped(evt);
+            }
+        });
+
+        Jtf_Direccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Jtf_DireccionKeyTyped(evt);
+            }
+        });
+
+        jtf_Rtn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtf_RtnKeyTyped(evt);
             }
         });
 
@@ -527,7 +549,19 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         Connection cn = cc.getConnection();
 
+    if(Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || Jtf_Direccion.getText().equals("") ||
+                Jtf_Direccion.getText().equals("")){
+           JOptionPane.showMessageDialog(null,"Hay campos que estan vacios. No pueden quedar asi ");
+        }
+        
         try{
+            
+            if(existeUsuario(Jtf_Id.getText())==0){
+                
+                
+                
+                
+            
             PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor(Empresa_id,Nombre_Empresa,Direccion_Empresa,rtn_empresa) values(?,?,?,?)");
             pst.setString(1,Jtf_Id.getText());
             pst.setString(2,Jtf_Nombre_Empresa.getText());
@@ -542,14 +576,71 @@ public class frm_proveedores extends javax.swing.JFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Error al Agregar Registro");
             }
+            }else{
+                JOptionPane.showMessageDialog(null, "El usuario ya existe");
+            }
         }catch(Exception e){
 
         }
     }//GEN-LAST:event_Jbt_GuardarActionPerformed
 
+    
+    private int existeUsuario(String usuario) {                                              
+      
+        ConexionSQL cc = new ConexionSQL();
+        
+        Connection cn = cc.getConnection();
+        
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        
+        String sql = "SELECT count(Empresa_id) FROM proveedor WHERE Empresa_id = ?";
+    
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            return 1;
+        }
+        return 1;
+    }
+    
     private void Jtf_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jtf_IdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Jtf_IdActionPerformed
+
+    private void Jtf_IdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jtf_IdKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_Jtf_IdKeyTyped
+
+    private void jtf_RtnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_RtnKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_jtf_RtnKeyTyped
+
+    private void Jtf_Nombre_EmpresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jtf_Nombre_EmpresaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_Jtf_Nombre_EmpresaKeyTyped
+
+    private void Jtf_DireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jtf_DireccionKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_Jtf_DireccionKeyTyped
     DefaultTableModel modelo = new DefaultTableModel();
    String id = "";
    
