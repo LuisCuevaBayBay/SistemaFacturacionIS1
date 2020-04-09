@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
@@ -199,10 +201,20 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 id_empleadoActionPerformed(evt);
             }
         });
+        id_empleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                id_empleadoKeyTyped(evt);
+            }
+        });
 
         nom_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nom_empleadoActionPerformed(evt);
+            }
+        });
+        nom_empleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nom_empleadoKeyTyped(evt);
             }
         });
 
@@ -211,12 +223,22 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 apelld_empleadoActionPerformed(evt);
             }
         });
+        apelld_empleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                apelld_empleadoKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Numero De Identidad Empleado");
 
         num_id_emplea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 num_id_empleaActionPerformed(evt);
+            }
+        });
+        num_id_emplea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                num_id_empleaKeyTyped(evt);
             }
         });
 
@@ -331,6 +353,12 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        dir_empleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dir_empleadoKeyTyped(evt);
             }
         });
 
@@ -571,8 +599,18 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         
         Connection cn = cc.getConnection();
         
+    if(id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("") 
+                || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
+                || txt_pass.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+        
+    }else{
         try {
            
+            if(existeUsuario(txt_usuario.getText())==0){
+              if(esUsuario(txt_usuario.getText())){
+                
+                
             PreparedStatement pst = cn.prepareStatement("INSERT INTO vendedor(Vendedor_id,nombre_empleado,apellido_empleado,num_identidad_empleado,direccion,usuario,pass) VALUES(?,?,?,?,?,?,?)");
             pst.setString(1, id_empleado.getText());
             pst.setString(2, nom_empleado.getText());
@@ -591,15 +629,52 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         }else{
            JOptionPane.showMessageDialog(null,"Error al agregar");
         }
+            }else{
+                JOptionPane.showMessageDialog(null, "el usuario ya existe");
+            }
+            }else{
+            }JOptionPane.showMessageDialog(null, "el usuario no es valido");
         } catch (Exception e) {
+        }
         }
     }//GEN-LAST:event_save_empleadoActionPerformed
 
-     
-     
-     
-     
-     
+    private int existeUsuario(String usuario) {                                              
+      
+        ConexionSQL cc = new ConexionSQL();
+        
+        Connection cn = cc.getConnection();
+        
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        
+        String sql = "SELECT count(Vendedor_id) FROM vendedor WHERE usuario = ?";
+    
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            return 1;
+        }
+        return 1;
+    }
+    
+    
+  public boolean esUsuario(String correo){
+    
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.+)"+
+        "[A-Za-z0-9-]+");
+    
+   
+        Matcher matcher = pattern.matcher(correo);
+        return matcher.find();
+    }
+    
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
         // TODO add your handling code here:
         this.id_empleado.setText("");
@@ -740,6 +815,42 @@ this.dispose();
             JOptionPane.showMessageDialog(null, "No se encontro fila");
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void id_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_empleadoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+        
+    }//GEN-LAST:event_id_empleadoKeyTyped
+
+    private void nom_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_empleadoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_nom_empleadoKeyTyped
+
+    private void apelld_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apelld_empleadoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_apelld_empleadoKeyTyped
+
+    private void num_id_empleaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_id_empleaKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if(c<'0' || c>'9') evt.consume();
+    }//GEN-LAST:event_num_id_empleaKeyTyped
+
+    private void dir_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dir_empleadoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+    }//GEN-LAST:event_dir_empleadoKeyTyped
 
     /**
      * @param args the command line arguments
