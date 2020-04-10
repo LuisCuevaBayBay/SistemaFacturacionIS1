@@ -84,6 +84,8 @@ public class RegistroClientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
@@ -116,6 +118,14 @@ public class RegistroClientes extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
+
+        jMenuItem1.setText("Editar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -642,6 +652,23 @@ this.dispose();
         
     }//GEN-LAST:event_txt_dir_cliKeyTyped
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        
+        String id = "";
+        
+        int fila = tablaclientes.getSelectedRow();
+        
+        if(fila >= 0){
+            txt_cli_id.setText(tablaclientes.getValueAt(fila, 0).toString());
+            txt_rtn_cliente.setText(tablaclientes.getValueAt(fila,1).toString());
+            txt_nombre_cli.setText(tablaclientes.getValueAt(fila, 2).toString());
+            txt_apellido_cli.setText(tablaclientes.getValueAt(fila, 3).toString());
+            txt_num_id_cli.setText(tablaclientes.getValueAt(fila, 4).toString());
+            txt_dir_cli.setText(tablaclientes.getValueAt(fila, 5).toString());
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -700,6 +727,8 @@ this.dispose();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
