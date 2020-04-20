@@ -686,6 +686,8 @@ public final class ContactoP extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         if (c < '0' || c > '9') {
             evt.consume();
+        }else if(Celular.getText().startsWith("1") || Celular.getText().startsWith("2") || Celular.getText().startsWith("4") || Celular.getText().startsWith("5") || Celular.getText().startsWith("6") || Celular.getText().startsWith("7") || Celular.getText().startsWith("0") ){
+            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 3, 8 o 9");
         }
         if( Celular.getText().length() >= 8){
             evt.consume();
@@ -696,6 +698,8 @@ public final class ContactoP extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         if (c < '0' || c > '9') {
             evt.consume();
+        }else if(Numero_Telefonico.getText().startsWith("1") || Numero_Telefonico.getText().startsWith("3") || Numero_Telefonico.getText().startsWith("4") || Numero_Telefonico.getText().startsWith("5") || Numero_Telefonico.getText().startsWith("6") || Numero_Telefonico.getText().startsWith("7") || Numero_Telefonico.getText().startsWith("8") || Numero_Telefonico.getText().startsWith("9") || Numero_Telefonico.getText().startsWith("0") ){
+            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 2");
         }
         if( Numero_Telefonico.getText().length() >= 8){
             evt.consume();

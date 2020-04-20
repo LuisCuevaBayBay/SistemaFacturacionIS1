@@ -694,7 +694,10 @@ public final class ContactoC extends javax.swing.JFrame {
 
     private void num_celularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_celularKeyTyped
         char c = evt.getKeyChar();
-        if (c<'0' || c>'9') evt.consume();
+        if (c<'0' || c>'9'){ 
+            evt.consume();}else if(num_celular.getText().startsWith("1") || num_celular.getText().startsWith("2") || num_celular.getText().startsWith("4") || num_celular.getText().startsWith("5") || num_celular.getText().startsWith("6") || num_celular.getText().startsWith("7") || num_celular.getText().startsWith("0") ){
+            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 3, 8 o 9");
+        }
         if( num_celular.getText().length() >= 8){
             evt.consume();
         
@@ -703,7 +706,11 @@ public final class ContactoC extends javax.swing.JFrame {
 
     private void num_telefonicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_telefonicoKeyTyped
         char c = evt.getKeyChar();
-        if (c<'0' || c>'9') evt.consume();
+        if (c<'0' || c>'9'){ 
+            evt.consume();
+                    }else if(num_telefonico.getText().startsWith("1") || num_telefonico.getText().startsWith("3") || num_telefonico.getText().startsWith("4") || num_telefonico.getText().startsWith("5") || num_telefonico.getText().startsWith("6") || num_telefonico.getText().startsWith("7") || num_telefonico.getText().startsWith("8") || num_telefonico.getText().startsWith("9") || num_telefonico.getText().startsWith("0") ){
+            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 2");
+        }
         if( num_telefonico.getText().length() >= 8){
             evt.consume();
         
