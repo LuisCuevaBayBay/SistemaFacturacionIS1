@@ -12,6 +12,7 @@ import Factura_Venta.Factura_Venta;
 import Proveedor.frm_proveedores;
 import contactos.Contacto.Contacto;
 import contactos.contacto_proveedor.ContactoP;
+import java.awt.Toolkit;
 
 
 /*import Factura_Venta.Factura_Venta;*/
@@ -308,7 +309,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaempleados);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 98, 616, 133));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 616, 133));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 204));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -791,6 +792,10 @@ this.dispose();*/
         
         if(c<'0' || c>'9') evt.consume();
         
+        if(id_empleado.getText().length() >= 5){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_id_empleadoKeyTyped
 
     private void nom_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_empleadoKeyTyped
@@ -798,6 +803,11 @@ this.dispose();*/
         char c = evt.getKeyChar();
         
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
+        if(nom_empleado.getText().length() >= 40){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_nom_empleadoKeyTyped
 
     private void apelld_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_apelld_empleadoKeyTyped
@@ -805,6 +815,10 @@ this.dispose();*/
         char c = evt.getKeyChar();
         
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        if(apelld_empleado.getText().length() >= 40){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_apelld_empleadoKeyTyped
 
     private void num_id_empleaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_id_empleaKeyTyped
@@ -812,6 +826,11 @@ this.dispose();*/
         char c = evt.getKeyChar();
         
         if(c<'0' || c>'9') evt.consume();
+        
+        if(num_id_emplea.getText().length() >= 13){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_num_id_empleaKeyTyped
 
     private void dir_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dir_empleadoKeyTyped
@@ -819,6 +838,11 @@ this.dispose();*/
         char c = evt.getKeyChar();
         
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
+        if(dir_empleado.getText().length() >= 60){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_dir_empleadoKeyTyped
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
