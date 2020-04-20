@@ -12,6 +12,7 @@ import Empleados.RegistrarEmpleados;
 import FacturaCompra.Factura_Compra;
 import Factura_Venta.Factura_Venta;
 import contactos.contacto_proveedor.ContactoP;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -552,6 +553,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
         if(c<'0' || c>'9') evt.consume();
+        
+         if(jtf_Rtn.getText().length() >= 14){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_jtf_RtnKeyTyped
 
     private void Jtf_DireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jtf_DireccionKeyTyped
@@ -559,6 +565,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
+         if(Jtf_Direccion.getText().length() >= 60){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_Jtf_DireccionKeyTyped
 
     private void Jtf_Nombre_EmpresaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Jtf_Nombre_EmpresaKeyTyped
@@ -566,6 +577,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
+        if(Jtf_Nombre_Empresa.getText().length() >= 40){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_Jtf_Nombre_EmpresaKeyTyped
 
     private void Jtf_Nombre_EmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jtf_Nombre_EmpresaActionPerformed
@@ -614,6 +630,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         char c = evt.getKeyChar();
 
         if(c<'0' || c>'9') evt.consume();
+        
+        if(Jtf_Id.getText().length() >= 5){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_Jtf_IdKeyTyped
 
     private void Jtf_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jtf_IdActionPerformed
