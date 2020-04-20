@@ -7,10 +7,11 @@ package menu;
 
 import Clientes.RegistroClientes;
 import Empleados.RegistrarEmpleados;
-import FacturaCompra.FacturaCompra;
-import Factura_Venta.Factura_Venta;
+/*import FacturaCompra.FacturaCompra;
+/*import Factura_Venta.Factura_Venta;*/
 import Proveedor.frm_proveedores;
 import inicio_sesion.Pantalla_Inicio_Sesion;
+import producto.Producto;
 
 /**
  *
@@ -23,6 +24,7 @@ public class menuPrincipal extends javax.swing.JFrame {
      */
     public menuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -34,12 +36,9 @@ public class menuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         registroEmpleado = new javax.swing.JButton();
         registroEmpleados = new javax.swing.JButton();
         registrarVenta = new javax.swing.JButton();
@@ -47,42 +46,26 @@ public class menuPrincipal extends javax.swing.JFrame {
         salir = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
         jLabel2.setText("Menu Principal");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 180, 78));
 
-        jToolBar1.setRollover(true);
-
-        jButton1.setText("Inicio");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
-
-        jButton3.setText("Registrar Empleados");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton3);
-
-        jButton4.setText("Registrar Venta");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
-
-        jButton5.setText("Registrar Compra");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
-
+        registroEmpleado.setBackground(new java.awt.Color(0, 0, 204));
+        registroEmpleado.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registroEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         registroEmpleado.setText("Registrar Cliente");
         registroEmpleado.setFocusable(false);
         registroEmpleado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -97,7 +80,11 @@ public class menuPrincipal extends javax.swing.JFrame {
                 registroEmpleadoActionPerformed(evt);
             }
         });
+        getContentPane().add(registroEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 190, 30));
 
+        registroEmpleados.setBackground(new java.awt.Color(0, 0, 204));
+        registroEmpleados.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registroEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         registroEmpleados.setText("Registrar Empleado");
         registroEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,7 +96,11 @@ public class menuPrincipal extends javax.swing.JFrame {
                 registroEmpleadosActionPerformed(evt);
             }
         });
+        getContentPane().add(registroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 190, 30));
 
+        registrarVenta.setBackground(new java.awt.Color(0, 0, 204));
+        registrarVenta.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registrarVenta.setForeground(new java.awt.Color(255, 255, 255));
         registrarVenta.setText("Registrar Venta");
         registrarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,7 +112,11 @@ public class menuPrincipal extends javax.swing.JFrame {
                 registrarVentaActionPerformed(evt);
             }
         });
+        getContentPane().add(registrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 190, 30));
 
+        registrarCompra.setBackground(new java.awt.Color(0, 0, 153));
+        registrarCompra.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registrarCompra.setForeground(new java.awt.Color(255, 255, 255));
         registrarCompra.setText("Registrar Compra");
         registrarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -133,87 +128,77 @@ public class menuPrincipal extends javax.swing.JFrame {
                 registrarCompraActionPerformed(evt);
             }
         });
+        getContentPane().add(registrarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 190, 30));
 
+        salir.setBackground(new java.awt.Color(0, 102, 204));
+        salir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
         salir.setText("Salir");
+        salir.setBorder(null);
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 140, 30));
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 204));
+        jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Registrar Proveedor");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 190, 30));
 
+        jButton6.setBackground(new java.awt.Color(0, 102, 204));
+        jButton6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Cerrar Sesion");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, -1, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 20, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(registroEmpleado)
-                    .addComponent(registrarVenta))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(registroEmpleados)
-                    .addComponent(registrarCompra))
-                .addGap(140, 140, 140))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(27, 27, 27)
-                .addComponent(salir)
-                .addGap(101, 101, 101))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jButton2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(registroEmpleado)
-                    .addComponent(registroEmpleados))
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registrarVenta)
-                    .addComponent(registrarCompra))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(salir)
-                    .addComponent(jButton6))
-                .addGap(24, 24, 24))
-        );
+        jButton7.setBackground(new java.awt.Color(0, 0, 204));
+        jButton7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Registrar Producto");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 190, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 120, 120));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empleado.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 120, 120));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 120, 120));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compra.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 120, 120));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/producto.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 120, 120));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, 120, 120));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 890, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void registroEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadoActionPerformed
         // TODO add your handling code here:
@@ -251,15 +236,15 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_registroEmpleadosMouseClicked
 
     private void registrarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarVentaMouseClicked
-Factura_Venta facv = new Factura_Venta();
+/*Factura_Venta facv = new Factura_Venta();
 facv.setVisible(true);
-this.dispose();
+this.dispose();*/
     }//GEN-LAST:event_registrarVentaMouseClicked
 
     private void registrarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarCompraMouseClicked
-FacturaCompra facc = new FacturaCompra();
+/*FacturaCompra facc = new FacturaCompra();
 facc.setVisible(true);
-this.dispose();
+this.dispose();*/
     }//GEN-LAST:event_registrarCompraMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -275,6 +260,13 @@ this.dispose();
         inicio.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        Producto producto = new Producto();
+        producto.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,14 +304,19 @@ this.dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JButton registrarCompra;
     private javax.swing.JButton registrarVenta;
     private javax.swing.JButton registroEmpleado;
