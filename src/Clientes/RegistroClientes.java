@@ -8,6 +8,7 @@ package Clientes;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
 import contactos.contacto_cliente.ContactoC;
+import java.awt.Toolkit;
 //import FacturaCompra.FacturaCompra;
 /*import Factura_Venta.Factura_Venta;*/
 import java.sql.Connection;
@@ -137,10 +138,10 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel2.setText("Registro Clientes");
         jLabel2.setToolTipText("");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 47, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
 
         jLabel3.setText("Nombre Cliente");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
 
         txt_nombre_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +156,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(txt_nombre_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 154, 30));
 
         jLabel4.setText("RTN");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
 
         txt_rtn_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +171,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(txt_rtn_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 117, 30));
 
         jLabel5.setText("ID Cliente");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, -1, -1));
 
         txt_cli_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +186,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(txt_cli_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 90, 30));
 
         jLabel7.setText("Direccion");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
 
         btn_guardar.setBackground(new java.awt.Color(0, 0, 204));
         btn_guardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,7 +238,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(txt_apellido_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 160, 30));
 
         jLabel9.setText("Apellido Cliente");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, -1, -1));
 
         btn_nuevo.setBackground(new java.awt.Color(0, 0, 255));
         btn_nuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,7 +271,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 470, -1, -1));
 
         jLabel10.setText("Numero de Identidad");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, -1, -1));
 
         txt_num_id_cli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -330,32 +331,37 @@ public class RegistroClientes extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Inicio");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 204));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Registrar Empleado");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 204));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Registrar Cliente");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(0, 0, 204));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Registrar Compra");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, -1));
 
         jButton8.setBackground(new java.awt.Color(0, 0, 204));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("Registrar Venta");
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 20, -1, -1));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, -1, -1));
 
         jButton10.setBackground(new java.awt.Color(0, 0, 204));
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("Registrar Proveedor");
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, -1, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
@@ -519,6 +525,10 @@ public class RegistroClientes extends javax.swing.JFrame {
         
         if(c<'0' || c>'9') evt.consume();
         
+        if(txt_cli_id.getText().length() >= 5){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txt_cli_idKeyTyped
 
     private void txt_rtn_clienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rtn_clienteKeyTyped
@@ -526,6 +536,11 @@ public class RegistroClientes extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         
         if(c<'0' || c>'9') evt.consume();
+        
+        if(txt_rtn_cliente.getText().length() >= 14){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txt_rtn_clienteKeyTyped
 
     private void txt_nombre_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombre_cliKeyTyped
@@ -535,6 +550,11 @@ public class RegistroClientes extends javax.swing.JFrame {
         
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
         
+        
+        if(txt_nombre_cli.getText().length() >= 40){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txt_nombre_cliKeyTyped
 
     private void txt_apellido_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellido_cliKeyTyped
@@ -542,6 +562,11 @@ public class RegistroClientes extends javax.swing.JFrame {
          char c = evt.getKeyChar();
         
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
+        if(txt_apellido_cli.getText().length() >= 40){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txt_apellido_cliKeyTyped
 
     private void txt_num_id_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_num_id_cliKeyTyped
@@ -550,15 +575,22 @@ public class RegistroClientes extends javax.swing.JFrame {
         
         if(c<'0' || c>'9') evt.consume();
         
+        
+        if(txt_num_id_cli.getText().length() >= 13){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txt_num_id_cliKeyTyped
 
     private void txt_dir_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dir_cliKeyTyped
         // TODO add your handling code here:
         
-        char c = evt.getKeyChar();
+     
         
-        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
-        
+        if(txt_dir_cli.getText().length() >= 70){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txt_dir_cliKeyTyped
   
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -608,6 +640,13 @@ public class RegistroClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         mostrardatos("");
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        RegistrarEmpleados re = new RegistrarEmpleados();
+        re.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
