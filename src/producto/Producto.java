@@ -11,6 +11,7 @@ import Empleados.RegistrarEmpleados;
 import FacturaCompra.Factura_Compra;
 import Factura_Venta.Factura_Venta;
 import Proveedor.frm_proveedores;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -139,7 +140,19 @@ void mostrardatos(String valor){
             }
         });
         getContentPane().add(id_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 113, 30));
+
+        nom_producto_txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nom_producto_txtKeyTyped(evt);
+            }
+        });
         getContentPane().add(nom_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 113, 32));
+
+        precio_double.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                precio_doubleKeyTyped(evt);
+            }
+        });
         getContentPane().add(precio_double, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 113, 31));
 
         guardar_btn.setBackground(new java.awt.Color(0, 0, 153));
@@ -487,6 +500,11 @@ String id = "";
         char c = evt.getKeyChar();
         
         if(c<'0' || c> '9') evt.consume();
+        
+         if(id_producto_txt.getText().length() >= 5){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_id_producto_txtKeyTyped
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -535,6 +553,19 @@ String id = "";
         mp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void nom_producto_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_producto_txtKeyTyped
+        // TODO add your handling code here:
+         if(nom_producto_txt.getText().length() >= 25){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_nom_producto_txtKeyTyped
+
+    private void precio_doubleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precio_doubleKeyTyped
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_precio_doubleKeyTyped
 
     /**
      * @param args the command line arguments
