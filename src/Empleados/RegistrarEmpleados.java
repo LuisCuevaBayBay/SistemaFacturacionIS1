@@ -7,9 +7,14 @@ package Empleados;
 
 import Clientes.RegistroClientes;
 import Conexiones.ConexionSQL;
-import Contacto.Contacto;
-import FacturaCompra.FacturaCompra;
+import FacturaCompra.Factura_Compra;
 import Factura_Venta.Factura_Venta;
+import Proveedor.frm_proveedores;
+import contactos.Contacto.Contacto;
+import contactos.contacto_proveedor.ContactoP;
+
+
+/*import Factura_Venta.Factura_Venta;*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +27,7 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
+import producto.Producto;
 
 /**
  *
@@ -40,6 +46,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         mostrardatos("");
         limpiar();
         bloquear();
+        this.setLocationRelativeTo(null);
     }
     void mostrardatos(String valor){
         ConexionSQL cc = new ConexionSQL();
@@ -58,7 +65,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             sql= "SELECT * From vendedor";
         }
         else{
-            sql="SELECT * FROM vendedor WHERE (vendedor_id='"+valor+"' OR nombre_empleado='"+valor+"' OR apellido_empleado='"+valor+"'OR num_identidad_empleado='"+valor+"'OR direccion='"+valor+"'OR usuario='"+"'OR pass='"+valor+"')";
+            sql="SELECT * FROM vendedor WHERE (vendedor_id='"+valor+"' OR nombre_empleado='"+valor+"' OR apellido_empleado='"+valor+"'OR num_identidad_empleado='"+valor+"'OR direccion='"+valor+"'OR usuario='"+"'OR pass='"+valor+"'OR confirm_pass='"+valor+"')";
             }
         String[] datos = new String[7];
         try{
@@ -76,6 +83,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 modelo.addRow(datos);
                 
             }    
+            tablaempleados.setModel(modelo);
         }catch(SQLException ex){
                
         }
@@ -167,11 +175,11 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         txt_usuario = new javax.swing.JTextField();
         txt_pass = new javax.swing.JPasswordField();
         buscar_txt = new javax.swing.JButton();
-        buscar_txt_boz = new javax.swing.JTextField();
+        buscar_txt_box = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
         jButton9 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         jTextField1.setText("Registro de Empleados");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,12 +197,17 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jPopupMenu1.add(jMenuItem1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         idEmpleado.setText("ID Empleado");
+        getContentPane().add(idEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 254, -1, -1));
 
         jLabel2.setText("Nombre Empleado");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 299, -1, -1));
 
         jLabel3.setText("Apellido Empleado");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 345, -1, -1));
 
         id_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +219,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 id_empleadoKeyTyped(evt);
             }
         });
+        getContentPane().add(id_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 249, 124, 25));
 
         nom_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +231,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 nom_empleadoKeyTyped(evt);
             }
         });
+        getContentPane().add(nom_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 292, 124, 28));
 
         apelld_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,8 +243,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 apelld_empleadoKeyTyped(evt);
             }
         });
+        getContentPane().add(apelld_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 338, 124, 29));
 
-        jLabel4.setText("Numero De Identidad Empleado");
+        jLabel4.setText("Num. Identidad Empleado");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 390, -1, 25));
 
         num_id_emplea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,25 +258,36 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 num_id_empleaKeyTyped(evt);
             }
         });
+        getContentPane().add(num_id_emplea, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 387, 106, 31));
 
         jLabel5.setText("Direccion del Empleado");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, -1, -1));
 
+        save_empleado.setBackground(new java.awt.Color(0, 0, 204));
+        save_empleado.setForeground(new java.awt.Color(255, 255, 255));
         save_empleado.setText("Guardar");
         save_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_empleadoActionPerformed(evt);
             }
         });
+        getContentPane().add(save_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(596, 249, -1, -1));
 
+        del_empleado.setBackground(new java.awt.Color(0, 0, 204));
+        del_empleado.setForeground(new java.awt.Color(255, 255, 255));
         del_empleado.setText("Eliminar");
         del_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 del_empleadoActionPerformed(evt);
             }
         });
+        getContentPane().add(del_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, -1, -1));
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel1.setText("Registro Empleados");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 130, -1));
 
+        tablaempleados.setForeground(new java.awt.Color(0, 0, 204));
         tablaempleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -280,6 +308,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaempleados);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 98, 616, 133));
+
+        jButton4.setBackground(new java.awt.Color(0, 0, 204));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Registrar Cliente");
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -294,7 +326,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
+        jButton6.setBackground(new java.awt.Color(0, 0, 204));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Registrar Venta");
         jButton6.setFocusable(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -304,7 +339,15 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 jButton6MouseClicked(evt);
             }
         });
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, -1, -1));
 
+        jButton7.setBackground(new java.awt.Color(0, 0, 204));
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Registrar Compra");
         jButton7.setFocusable(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -319,28 +362,40 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
+        btn_editar.setBackground(new java.awt.Color(0, 0, 204));
+        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
         btn_editar.setText("Editar");
         btn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, -1, -1));
 
+        salir_btn.setBackground(new java.awt.Color(0, 153, 204));
+        salir_btn.setForeground(new java.awt.Color(255, 255, 255));
         salir_btn.setText("Salir");
         salir_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salir_btnActionPerformed(evt);
             }
         });
+        getContentPane().add(salir_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, -1, -1));
 
+        nuevo.setBackground(new java.awt.Color(0, 0, 204));
+        nuevo.setForeground(new java.awt.Color(255, 255, 255));
         nuevo.setText("Nuevo");
         nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoActionPerformed(evt);
             }
         });
+        getContentPane().add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
 
+        jButton3.setBackground(new java.awt.Color(0, 0, 204));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Inicio");
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -355,15 +410,27 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         dir_empleado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 dir_empleadoKeyTyped(evt);
             }
         });
+        getContentPane().add(dir_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 429, 124, 87));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 204));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("REGISTRAR PROVEEDOR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 150, -1));
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 204));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Info. contacto");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -375,184 +442,59 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, -1, -1));
 
         jLabel6.setText("Usuario");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 540, -1, -1));
 
         jLabel7.setText("Contraseña");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 586, -1, -1));
+        getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 532, 124, 30));
+        getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 577, 124, 33));
 
+        buscar_txt.setBackground(new java.awt.Color(0, 0, 204));
+        buscar_txt.setForeground(new java.awt.Color(255, 255, 255));
         buscar_txt.setText("Buscar");
         buscar_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscar_txtActionPerformed(evt);
             }
         });
+        getContentPane().add(buscar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, 30));
+        getContentPane().add(buscar_txt_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 125, 30));
 
+        jButton5.setBackground(new java.awt.Color(0, 153, 204));
+        jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("Atras");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 450, -1, -1));
 
-        jButton8.setText("<Anterior");
+        jButton8.setBackground(new java.awt.Color(0, 0, 204));
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setText("Mostrar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, -1, 30));
 
-        jButton9.setText("Siguiente>");
+        jButton9.setBackground(new java.awt.Color(0, 0, 204));
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("REGISTRAR PRODUCTO");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(buscar_txt_boz, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(buscar_txt))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton7)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel5)
-                                                    .addComponent(jLabel6)
-                                                    .addComponent(jLabel4))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(dir_empleado, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                                                    .addComponent(num_id_emplea, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txt_usuario)))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(idEmpleado)
-                                                    .addComponent(jLabel2)
-                                                    .addComponent(jLabel3))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(apelld_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(nom_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(id_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel7)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(103, 103, 103))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(save_empleado)
-                                                    .addComponent(nuevo)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(btn_editar)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(jButton2))
-                                                    .addComponent(del_empleado)
-                                                    .addComponent(jButton5)
-                                                    .addComponent(salir_btn))
-                                                .addGap(11, 11, 11))))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(68, 68, 68)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jButton8)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton9)))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscar_txt)
-                    .addComponent(buscar_txt_boz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idEmpleado)
-                            .addComponent(id_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(nom_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(apelld_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(num_id_emplea, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(dir_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(81, 81, 81)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(txt_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(save_empleado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(nuevo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_editar)
-                            .addComponent(jButton2))
-                        .addGap(18, 18, 18)
-                        .addComponent(del_empleado)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5)
-                        .addGap(18, 18, 18)
-                        .addComponent(salir_btn)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -580,10 +522,16 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        RegistroClientes rc = new RegistroClientes();
+        rc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        Factura_Compra fc = new Factura_Compra();
+        fc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void num_id_empleaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_id_empleaActionPerformed
@@ -598,6 +546,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         
         Connection cn = cc.getConnection();
+        
+      
+       
+        
         
     if(id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("") 
                 || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
@@ -626,6 +578,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Registro Guardado con exito");
        
             mostrardatos(""); 
+            bloquear();
         }else{
            JOptionPane.showMessageDialog(null,"Error al agregar");
         }
@@ -685,6 +638,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         this.txt_usuario.setText("");
         this.txt_pass.setText("");
         
+        
+        
         this.id_empleado.grabFocus();
         
         desbloquear();
@@ -718,8 +673,15 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         String cod = "";
         cod = tablaempleados.getValueAt(fila, 0).toString();
         try{
-            PreparedStatement pst = cn.prepareStatement("DELETE * FROM vendedor where Vendedor_id='");
-            id = id_empleado.getText();
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM vendedor WHERE Vendedor_id='"+cod+"'");
+            int a = pst.executeUpdate();
+            mostrardatos("");
+            
+            if(a>0){
+                JOptionPane.showMessageDialog(null,"Eliminacion Exitosa");
+            }else{
+                JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+            }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -736,13 +698,16 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     private void tablaempleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaempleadosMouseClicked
         // TODO add your handling code here:
         int fila_seleccionada = tablaempleados.getSelectedRow();
+        if(fila_seleccionada>= 0){
         id_empleado.setText(tablaempleados.getValueAt(fila_seleccionada,0).toString());
         nom_empleado.setText(tablaempleados.getValueAt(fila_seleccionada,1).toString());
         apelld_empleado.setText(tablaempleados.getValueAt(fila_seleccionada,2).toString());
         num_id_emplea.setText(tablaempleados.getValueAt(fila_seleccionada,3).toString());
         dir_empleado.setText(tablaempleados.getValueAt(fila_seleccionada,4).toString());
-        txt_usuario.setText(tablaempleados.getValueAt(fila_seleccionada, 5).toString());
-        txt_pass.setText(tablaempleados.getValueAt(fila_seleccionada, 6).toString());
+        id = tablaempleados.getValueAt(fila_seleccionada, 0).toString();
+        }else{
+        JOptionPane.showMessageDialog(null, "No se Encontro FIla");
+        }
     }//GEN-LAST:event_tablaempleadosMouseClicked
 
     
@@ -760,34 +725,38 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-     Factura_Venta facv = new Factura_Venta();
+/*     Factura_Venta facv = new Factura_Venta();
 facv.setVisible(true);
-this.dispose();
+this.dispose();*/
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-    FacturaCompra facc = new FacturaCompra();
+    /*FacturaCompra facc = new FacturaCompra();
 facc.setVisible(true);
-this.dispose();
+this.dispose();*/
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        menuPrincipal mp = new menuPrincipal();
+        mp.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       Contacto cont = new Contacto();
-       cont.setVisible(true);
-       this.dispose();
+       
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void buscar_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_txtActionPerformed
         // TODO add your handling code here:
-        mostrardatos(buscar_txt_boz.getText());
+        mostrardatos(buscar_txt_box.getText());
     }//GEN-LAST:event_buscar_txtActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Contacto contacto = new Contacto();
+        contacto.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -800,7 +769,7 @@ this.dispose();
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:\
         
-        String id = "";
+        
         int fila = tablaempleados.getSelectedRow();
         if(fila >=0){
         
@@ -852,6 +821,32 @@ this.dispose();
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
     }//GEN-LAST:event_dir_empleadoKeyTyped
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        mostrardatos("");
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        frm_proveedores fp = new frm_proveedores();
+        fp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        Producto prod = new Producto();
+        prod.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        Factura_Venta fv = new Factura_Venta();
+        fv.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -893,7 +888,7 @@ this.dispose();
     private javax.swing.JTextField apelld_empleado;
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton buscar_txt;
-    private javax.swing.JTextField buscar_txt_boz;
+    private javax.swing.JTextField buscar_txt_box;
     private javax.swing.JButton del_empleado;
     private javax.swing.JTextField dir_empleado;
     private javax.swing.JLabel idEmpleado;
@@ -914,11 +909,11 @@ this.dispose();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField nom_empleado;
     private javax.swing.JButton nuevo;
     private javax.swing.JTextField num_id_emplea;
