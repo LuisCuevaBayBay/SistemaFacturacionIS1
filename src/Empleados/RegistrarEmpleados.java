@@ -7,8 +7,7 @@ package Empleados;
 
 import Clientes.RegistroClientes;
 import Conexiones.ConexionSQL;
-import FacturaCompra.Factura_Compra;
-import Factura_Venta.Factura_Venta;
+
 import Proveedor.frm_proveedores;
 import contactos.Contacto.Contacto;
 import contactos.contacto_proveedor.ContactoP;
@@ -530,9 +529,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        Factura_Compra fc = new Factura_Compra();
-        fc.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void num_id_empleaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_id_empleaActionPerformed
@@ -866,9 +863,7 @@ this.dispose();*/
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        Factura_Venta fv = new Factura_Venta();
-        fv.setVisible(true);
-        this.dispose();
+       
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

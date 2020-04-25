@@ -9,8 +9,7 @@ import Clientes.RegistroClientes;
 import Clientes.datos;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
-import FacturaCompra.Factura_Compra;
-import Factura_Venta.Factura_Venta;
+
 import contactos.contacto_proveedor.ContactoP;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -691,16 +690,12 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        Factura_Venta fc = new Factura_Venta();
-        fc.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        Factura_Compra fc = new Factura_Compra();
-        fc.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

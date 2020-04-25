@@ -10,6 +10,7 @@ import Empleados.RegistrarEmpleados;
 /*import FacturaCompra.FacturaCompra;
 /*import Factura_Venta.Factura_Venta;*/
 import Proveedor.frm_proveedores;
+import Venta.ModeloVenta;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 import producto.Producto;
 
@@ -42,7 +43,6 @@ public class menuPrincipal extends javax.swing.JFrame {
         registroEmpleado = new javax.swing.JButton();
         registroEmpleados = new javax.swing.JButton();
         registrarVenta = new javax.swing.JButton();
-        registrarCompra = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -50,7 +50,6 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -112,23 +111,7 @@ public class menuPrincipal extends javax.swing.JFrame {
                 registrarVentaActionPerformed(evt);
             }
         });
-        getContentPane().add(registrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 190, 30));
-
-        registrarCompra.setBackground(new java.awt.Color(0, 0, 153));
-        registrarCompra.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        registrarCompra.setForeground(new java.awt.Color(255, 255, 255));
-        registrarCompra.setText("Registrar Compra");
-        registrarCompra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrarCompraMouseClicked(evt);
-            }
-        });
-        registrarCompra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarCompraActionPerformed(evt);
-            }
-        });
-        getContentPane().add(registrarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 190, 30));
+        getContentPane().add(registrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 290, 190, 30));
 
         salir.setBackground(new java.awt.Color(0, 102, 204));
         salir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -177,16 +160,13 @@ public class menuPrincipal extends javax.swing.JFrame {
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 190, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 120, 120));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 120, 120));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empleado.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 120, 120));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 120, 120));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compra.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, 120, 120));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/producto.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 120, 120));
@@ -213,12 +193,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registroEmpleadosActionPerformed
 
-    private void registrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registrarCompraActionPerformed
-
     private void registrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVentaActionPerformed
         // TODO add your handling code here:
+        ModeloVenta mv = new ModeloVenta();
+        mv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked
@@ -240,12 +219,6 @@ public class menuPrincipal extends javax.swing.JFrame {
 facv.setVisible(true);
 this.dispose();*/
     }//GEN-LAST:event_registrarVentaMouseClicked
-
-    private void registrarCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarCompraMouseClicked
-/*FacturaCompra facc = new FacturaCompra();
-facc.setVisible(true);
-this.dispose();*/
-    }//GEN-LAST:event_registrarCompraMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -314,10 +287,8 @@ this.dispose();*/
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JButton registrarCompra;
     private javax.swing.JButton registrarVenta;
     private javax.swing.JButton registroEmpleado;
     private javax.swing.JButton registroEmpleados;

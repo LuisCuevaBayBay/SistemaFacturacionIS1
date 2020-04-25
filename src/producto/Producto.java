@@ -8,8 +8,7 @@ package producto;
 import Clientes.RegistroClientes;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
-import FacturaCompra.Factura_Compra;
-import Factura_Venta.Factura_Venta;
+
 import Proveedor.frm_proveedores;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -535,16 +534,12 @@ String id = "";
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        Factura_Compra fc = new Factura_Compra();
-        fc.setVisible(true);
-        this.dispose();
+   
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        Factura_Venta fc = new Factura_Venta();
-        fc.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
