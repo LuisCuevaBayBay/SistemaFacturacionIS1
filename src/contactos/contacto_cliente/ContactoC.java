@@ -5,8 +5,6 @@ package contactos.contacto_cliente;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import Clientes.datos;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
@@ -132,7 +130,7 @@ public final class ContactoC extends javax.swing.JFrame {
         jLabel1.setText("Contacto Cliente");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 11, -1, -1));
 
-        jLabel2.setText("Numero Telefonico");
+        jLabel2.setText("Número Telefónico");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
 
         num_telefonico.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -144,13 +142,13 @@ public final class ContactoC extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 107, -1));
 
-        jLabel3.setText("Extencion Numerica");
+        jLabel3.setText("Extención Numérica");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
 
-        jLabel4.setText("Correo Electronico");
+        jLabel4.setText("Correo Electrónico");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, -1));
 
-        jLabel5.setText("Numero Celular");
+        jLabel5.setText("Número Celúlar");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
@@ -166,7 +164,7 @@ public final class ContactoC extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 213, -1, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 153));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -281,7 +279,7 @@ public final class ContactoC extends javax.swing.JFrame {
 
         jToggleButton1.setBackground(new java.awt.Color(0, 153, 204));
         jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setText("Atras");
+        jToggleButton1.setText("Atrás");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jToggleButton1MouseClicked(evt);
@@ -332,25 +330,40 @@ public final class ContactoC extends javax.swing.JFrame {
                         if (existeTel(num_telefonico.getText()) == 0) {
 
                             if (existeNum(num_celular.getText()) == 0) {
+                                if (num_celular.getText().length() >= 8) {
+                                    if (num_telefonico.getText().length() >= 8) {
+                                        if (extension.getText().length() >= 3) {
 
-                                try {
+                                            try {
 
-                                    PreparedStatement pst = cn.prepareStatement("INSERT INTO contacto_cliente(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
-                                    pst.setString(1, contacto.getText());
-                                    pst.setString(2, extension.getText());
-                                    pst.setString(3, num_telefonico.getText());
-                                    pst.setString(5, correos.getText());
-                                    pst.setString(4, num_celular.getText());
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO contacto_cliente(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
+                                                pst.setString(1, contacto.getText());
+                                                pst.setString(2, extension.getText());
+                                                pst.setString(3, num_telefonico.getText());
+                                                pst.setString(5, correos.getText());
+                                                pst.setString(4, num_celular.getText());
 
-                                    int a = pst.executeUpdate();
-                                    if (a > 0) {
-                                        JOptionPane.showMessageDialog(null, "Registro exitoso");
-                                        mostrardatos("");
+                                                int a = pst.executeUpdate();
+                                                if (a > 0) {
+                                                    JOptionPane.showMessageDialog(null, "Registro exitoso");
+                                                    mostrardatos("");
+                                                } else {
+                                                    JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                }
+
+                                            } catch (Exception e) {
+
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                                        }
+
                                     } else {
-                                        JOptionPane.showMessageDialog(null, "Error al agregar");
+                                        JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
                                     }
 
-                                } catch (Exception e) {
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
 
                                 }
 
@@ -375,7 +388,8 @@ public final class ContactoC extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
             }
 
-        }    // TODO // TODO add your handling code here:
+        } 
+        nuevo();// TODO // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -475,12 +489,6 @@ public final class ContactoC extends javax.swing.JFrame {
         return 1;
 
     }
-    
-  
-    
-    
-    
-    
 
     public int existeNum(String num) {
 
@@ -541,32 +549,55 @@ public final class ContactoC extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        
-        
+
         if (contacto.getText().equals("") || extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
         } else {
 
             if (esEmail(correos.getText())) {
-                
-            
-        try {
-            PreparedStatement pst = cn.prepareStatement("UPDATE contacto_cliente  SET  ID_Contacto_Proveedor='" + contacto.getText() + "'  ,extension='" + extension.getText() + "', num_Telefonica='" + num_telefonico.getText() + "',Celular='" + num_celular.getText() + "',correo='" + correos.getText() + "' WHERE ID_Contacto_Proveedor='" + id + "' ");
-            id = contacto.getText();
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                if (num_celular.getText().length() >= 8) {
+                    if (num_telefonico.getText().length() >= 8) {
+                        if (extension.getText().length() >= 3) {
 
-            mostrardatos("");
-        } catch (Exception e) {
-            System.out.print(e.getMessage());
-        }
-        
-        }else{
-                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
+                            try {
+                                PreparedStatement pst = cn.prepareStatement("UPDATE contacto_cliente  SET  ID_Contacto_Proveedor='" + contacto.getText() + "'  ,extension='" + extension.getText() + "', num_Telefonica='" + num_telefonico.getText() + "',Celular='" + num_celular.getText() + "',correo='" + correos.getText() + "' WHERE ID_Contacto_Proveedor='" + id + "' ");
+                                id = contacto.getText();
+                                pst.executeUpdate();
+                                JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+
+                                mostrardatos("");
+                            } catch (Exception e) {
+                                System.out.print(e.getMessage());
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
+
                 }
-    }
-    
+
+            } else {
+                JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
+            }
+        }
+        nuevo();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    public void nuevo() {
+        extension.setText("");
+        contacto.setText("");
+        num_telefonico.setText("");
+        correos.setText("");
+        num_celular.setText("");
+
+    }
+
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         ConexionSQL cc = new ConexionSQL();
@@ -584,7 +615,7 @@ public final class ContactoC extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void contactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactoActionPerformed
-      
+
     }//GEN-LAST:event_contactoActionPerformed
 
     private void jTextField02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField02ActionPerformed
@@ -619,59 +650,63 @@ public final class ContactoC extends javax.swing.JFrame {
 
     private void contactoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contactoKeyTyped
         char c = evt.getKeyChar();
-        if (c<'0' || c>'9') evt.consume();
-        if( contacto.getText().length() >= 5){
+        if (c < '0' || c > '9') {
             evt.consume();
-        
+        }
+        if (contacto.getText().length() >= 5) {
+            evt.consume();
+
         }
     }//GEN-LAST:event_contactoKeyTyped
 
     private void extensionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_extensionKeyTyped
         char c = evt.getKeyChar();
-        if (c<'0' || c>'9') evt.consume();
-        if( extension.getText().length() >= 3){
+        if (c < '0' || c > '9') {
             evt.consume();
-        
+        }
+        if (extension.getText().length() >= 3) {
+            evt.consume();
+
         }
     }//GEN-LAST:event_extensionKeyTyped
 
     private void num_celularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_celularKeyTyped
         char c = evt.getKeyChar();
-        if (c<'0' || c>'9'){ 
-            evt.consume();}else if(num_celular.getText().startsWith("1") || num_celular.getText().startsWith("2") || num_celular.getText().startsWith("4") || num_celular.getText().startsWith("5") || num_celular.getText().startsWith("6") || num_celular.getText().startsWith("7") || num_celular.getText().startsWith("0") ){
+        if (c < '0' || c > '9') {
+            evt.consume();
+        } else if (num_celular.getText().startsWith("1") || num_celular.getText().startsWith("2") || num_celular.getText().startsWith("4") || num_celular.getText().startsWith("5") || num_celular.getText().startsWith("6") || num_celular.getText().startsWith("7") || num_celular.getText().startsWith("0")) {
             JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 3, 8 o 9");
         }
-        if( num_celular.getText().length() >= 8){
+        if (num_celular.getText().length() >= 8) {
             evt.consume();
-        
+
         }
     }//GEN-LAST:event_num_celularKeyTyped
 
     private void num_telefonicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_num_telefonicoKeyTyped
         char c = evt.getKeyChar();
-        if (c<'0' || c>'9'){ 
+        if (c < '0' || c > '9') {
             evt.consume();
-                    }else if(num_telefonico.getText().startsWith("1") || num_telefonico.getText().startsWith("3") || num_telefonico.getText().startsWith("4") || num_telefonico.getText().startsWith("5") || num_telefonico.getText().startsWith("6") || num_telefonico.getText().startsWith("7") || num_telefonico.getText().startsWith("8") || num_telefonico.getText().startsWith("9") || num_telefonico.getText().startsWith("0") ){
+        } else if (num_telefonico.getText().startsWith("1") || num_telefonico.getText().startsWith("3") || num_telefonico.getText().startsWith("4") || num_telefonico.getText().startsWith("5") || num_telefonico.getText().startsWith("6") || num_telefonico.getText().startsWith("7") || num_telefonico.getText().startsWith("8") || num_telefonico.getText().startsWith("9") || num_telefonico.getText().startsWith("0")) {
             JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 2");
         }
-        if( num_telefonico.getText().length() >= 8){
+        if (num_telefonico.getText().length() >= 8) {
             evt.consume();
-        
+
         }
     }//GEN-LAST:event_num_telefonicoKeyTyped
 
     private void correosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_correosKeyTyped
-       if( correos.getText().length() >= 40){
+        if (correos.getText().length() >= 40) {
             evt.consume();
-        }else if(correos.getText().length() == 39){
-           JOptionPane.showMessageDialog(null, "El limite de caracteres es de 40");
-       }
+        } else if (correos.getText().length() == 39) {
+            JOptionPane.showMessageDialog(null, "El limite de caracteres es de 40");
+        }
     }//GEN-LAST:event_correosKeyTyped
 
     private void jTextField02KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField02KeyTyped
-         
-        
-        
+
+
     }//GEN-LAST:event_jTextField02KeyTyped
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -680,12 +715,12 @@ public final class ContactoC extends javax.swing.JFrame {
         num_telefonico.setText("");
         correos.setText("");
         num_celular.setText("");
-        
+
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    
+
     private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
-       int fila = tabla1.getSelectedRow();
+        int fila = tabla1.getSelectedRow();
         if (fila >= 0) {
 
             contacto.setText(tabla1.getValueAt(fila, 0).toString());
@@ -714,16 +749,21 @@ public final class ContactoC extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ContactoC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactoC.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ContactoC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactoC.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ContactoC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactoC.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ContactoC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ContactoC.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

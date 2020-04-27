@@ -56,6 +56,8 @@ public class frm_proveedores extends javax.swing.JFrame {
         modelo.addColumn("Direccion");
         modelo.addColumn("RTN");
         
+       
+        
         tabla1.setModel(modelo);
         String sql = "";
         if(valor.equals("")){
@@ -158,6 +160,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         jMenuItem1.setText("Editar");
@@ -176,20 +179,19 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1000, 590));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Id_Proveedor");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
+        jLabel2.setText("Id Proveedor");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, -1));
 
-        jLabel3.setText("Nombre_Empresa");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, 19));
+        jLabel3.setText("Nombre Empresa");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, 19));
 
-        jLabel4.setText("Direccion");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, -1, -1));
+        jLabel4.setText("Dirección");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, -1, -1));
 
         jLabel5.setText("RTN");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
         Jtf_Id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +213,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jbt_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(Jbt_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 370, -1, -1));
+        getContentPane().add(Jbt_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 90, -1));
 
         Jtf_Nombre_Empresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -247,7 +249,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jbt_EliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 490, -1, -1));
+        getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
 
         tabla1.setForeground(new java.awt.Color(0, 0, 153));
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
@@ -278,7 +280,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jtf_editarActionPerformed(evt);
             }
         });
-        getContentPane().add(jtf_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, -1, -1));
+        getContentPane().add(jtf_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 90, -1));
 
         jtf_nuevo.setBackground(new java.awt.Color(0, 0, 153));
         jtf_nuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -288,7 +290,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jtf_nuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(jtf_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 400, -1, -1));
+        getContentPane().add(jtf_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 90, -1));
 
         jtf_salir.setBackground(new java.awt.Color(204, 204, 204));
         jtf_salir.setForeground(new java.awt.Color(255, 0, 0));
@@ -363,13 +365,13 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 153, 204));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("ATRAS");
+        jButton2.setText("ATRÁS");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 540, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 90, -1));
 
         contacto.setBackground(new java.awt.Color(0, 0, 153));
         contacto.setForeground(new java.awt.Color(255, 255, 255));
@@ -379,7 +381,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 contactoActionPerformed(evt);
             }
         });
-        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, -1, -1));
+        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 153));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -403,16 +405,21 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         jButton10.setBackground(new java.awt.Color(0, 153, 204));
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Salir");
+        jButton10.setText("SALIR");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 60, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, 90, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("REGISTRO DE PROVEEDORES");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 590));
+        jLabel1.setPreferredSize(new java.awt.Dimension(963, 575));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -487,15 +494,17 @@ public class frm_proveedores extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jtf_salirActionPerformed
-
-    private void jtf_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_nuevoActionPerformed
-        // TODO add your handling code here:
-        this.Jtf_Id.setText("");
+void nuevo(){
+ this.Jtf_Id.setText("");
         this.Jtf_Nombre_Empresa.setText("");
         this.jtf_Rtn.setText("");
         this.Jtf_Direccion.setText("");
 
         this.Jtf_Id.grabFocus();
+}
+    private void jtf_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_nuevoActionPerformed
+        // TODO add your handling code here:
+       nuevo();
         desbloquear();
     }//GEN-LAST:event_jtf_nuevoActionPerformed
 
@@ -510,12 +519,15 @@ public class frm_proveedores extends javax.swing.JFrame {
         }else{
          
         try{
+            if(jtf_Rtn.getText().length() >= 14){
             PreparedStatement pst = cn.prepareStatement("UPDATE proveedor SET Empresa_id='"+Jtf_Id.getText()+"',Nombre_Empresa='"+Jtf_Nombre_Empresa.getText()+"',Direccion_Empresa='"+Jtf_Direccion.getText()+"',rtn_empresa='"+jtf_Rtn.getText()+"'WHERE Empresa_id='"+id+"'");
             id = Jtf_Id.getText();
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se modifico con exito");
             mostrardatos("");
-            
+            }else{
+                JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 caracteres");
+            }
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -596,12 +608,12 @@ public class frm_proveedores extends javax.swing.JFrame {
         if(Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("") ||
             Jtf_Direccion.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Hay campos que estan vacios. No pueden quedar asi ");
-        }
+        }else{
 
         try{
 
             if(existeUsuario(Jtf_Id.getText())==0){
-
+                   if(jtf_Rtn.getText().length() >= 14){
                 PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor(Empresa_id,Nombre_Empresa,Direccion_Empresa,rtn_empresa) values(?,?,?,?)");
                 pst.setString(1,Jtf_Id.getText());
                 pst.setString(2,Jtf_Nombre_Empresa.getText());
@@ -612,15 +624,20 @@ public class frm_proveedores extends javax.swing.JFrame {
 
                 if(a>0){
                     JOptionPane.showMessageDialog(null,"Registro Guardado con Exito");
+                    nuevo();
                     mostrardatos("");
                 }else{
                     JOptionPane.showMessageDialog(null, "Error al Agregar Registro");
                 }
+                   }else{
+                       JOptionPane.showMessageDialog(null, "El RTN debe ser de 14");
+                   }
             }else{
                 JOptionPane.showMessageDialog(null, "El usuario ya existe");
             }
         }catch(Exception e){
 
+        }
         }
     }//GEN-LAST:event_Jbt_GuardarActionPerformed
 
@@ -650,8 +667,8 @@ public class frm_proveedores extends javax.swing.JFrame {
         if(fila >= 0){
         Jtf_Id.setText(tabla1.getValueAt(fila, 0).toString());
         Jtf_Nombre_Empresa.setText(tabla1.getValueAt(fila, 1).toString());
-        jtf_Rtn.setText(tabla1.getValueAt(fila, 2).toString());
-        Jtf_Direccion.setText(tabla1.getValueAt(fila,3).toString());
+        Jtf_Direccion.setText(tabla1.getValueAt(fila, 2).toString());
+        jtf_Rtn.setText(tabla1.getValueAt(fila,3).toString());
         id = tabla1.getValueAt(fila,0).toString();
         
       
@@ -701,6 +718,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         mostrardatos("");
+        buscar_txt.setText("");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -770,6 +788,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

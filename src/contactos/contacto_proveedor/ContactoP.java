@@ -8,6 +8,7 @@ package contactos.contacto_proveedor;
 import Clientes.datos;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
+import Proveedor.frm_proveedores;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -131,7 +132,7 @@ public final class ContactoP extends javax.swing.JFrame {
         jLabel1.setText("Contacto Proveedor");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 11, -1, -1));
 
-        jLabel2.setText("Numero Telefonico");
+        jLabel2.setText("Número Telefónico");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
         Numero_Telefonico.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -143,13 +144,13 @@ public final class ContactoP extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 107, -1));
 
-        jLabel3.setText("Extencion Numerica");
+        jLabel3.setText("Extención Númerica");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
 
-        jLabel4.setText("Correo Electronico");
+        jLabel4.setText("Correo Electrónico");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
 
-        jLabel5.setText("Numero Celular");
+        jLabel5.setText("Número Celúlar");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
@@ -280,7 +281,7 @@ public final class ContactoP extends javax.swing.JFrame {
 
         jToggleButton1.setBackground(new java.awt.Color(0, 153, 204));
         jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setText("Atras");
+        jToggleButton1.setText("Atrás");
         jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jToggleButton1MouseClicked(evt);
@@ -331,25 +332,39 @@ public final class ContactoP extends javax.swing.JFrame {
                         if (existeTel(Numero_Telefonico.getText()) == 0) {
 
                             if (existeNum(Celular.getText()) == 0) {
+                                if (Numero_Telefonico.getText().length() >= 8) {
+                                    if (Celular.getText().length() >= 8) {
+                                        if (extencion.getText().length() >= 3) {
 
-                                try {
+                                            try {
 
-                                    PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor_contacto(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
-                                    pst.setString(1, idcc.getText());
-                                    pst.setString(2, extencion.getText());
-                                    pst.setString(3, Numero_Telefonico.getText());
-                                    pst.setString(5, Correo.getText());
-                                    pst.setString(4, Celular.getText());
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor_contacto(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
+                                                pst.setString(1, idcc.getText());
+                                                pst.setString(2, extencion.getText());
+                                                pst.setString(3, Numero_Telefonico.getText());
+                                                pst.setString(5, Correo.getText());
+                                                pst.setString(4, Celular.getText());
 
-                                    int a = pst.executeUpdate();
-                                    if (a > 0) {
-                                        JOptionPane.showMessageDialog(null, "Registro exitoso");
-                                        mostrardatos("");
+                                                int a = pst.executeUpdate();
+                                                if (a > 0) {
+                                                    JOptionPane.showMessageDialog(null, "Registro exitoso");
+                                                    mostrardatos("");
+                                                } else {
+                                                    JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                }
+
+                                            } catch (Exception e) {
+
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, 'd');
+
+                                        }
                                     } else {
-                                        JOptionPane.showMessageDialog(null, "Error al agregar");
+                                        JOptionPane.showMessageDialog(null, 'd');
                                     }
-
-                                } catch (Exception e) {
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "La casilla numero telefonico es de 8 caracteres");
 
                                 }
 
@@ -374,8 +389,21 @@ public final class ContactoP extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
             }
 
-        }    // TODO // TODO add your handling code here:
+        }
+        nuevo();
+
+// TODO // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void nuevo() {
+        extencion.setText("");
+        idcc.setText("");
+        Numero_Telefonico.setText("");
+        Correo.setText("");
+        Celular.setText("");
+
+    }
+
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         mostrardatos("");
@@ -540,20 +568,37 @@ public final class ContactoP extends javax.swing.JFrame {
         } else {
 
             if (esEmail(Correo.getText())) {
-                try {
-                    PreparedStatement pst = cn.prepareStatement("UPDATE proveedor_contacto SET  ID_Contacto_Proveedor='" + idcc.getText() + "'  ,extension='" + extencion.getText() + "', num_Telefonica='" + Numero_Telefonico.getText() + "',Celular='" + Celular.getText() + "',correo='" + Correo.getText() + "' WHERE ID_Contacto_Proveedor='" + id + "' ");
-                    id = idcc.getText();
-                    pst.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                if (Numero_Telefonico.getText().length() >= 8) {
+                    if (Celular.getText().length() >= 8) {
+                        if (extencion.getText().length() >= 3) {
+                            try {
+                                PreparedStatement pst = cn.prepareStatement("UPDATE proveedor_contacto SET  ID_Contacto_Proveedor='" + idcc.getText() + "'  ,extension='" + extencion.getText() + "', num_Telefonica='" + Numero_Telefonico.getText() + "',Celular='" + Celular.getText() + "',correo='" + Correo.getText() + "' WHERE ID_Contacto_Proveedor='" + id + "' ");
+                                id = idcc.getText();
+                                pst.executeUpdate();
+                                JOptionPane.showMessageDialog(null, "Se a modificado con exito");
 
-                    mostrardatos("");
-                } catch (Exception e) {
-                    System.out.print(e.getMessage());
+                                mostrardatos("");
+                            } catch (Exception e) {
+                                System.out.print(e.getMessage());
+                            }
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La casilla de extencion numerica es de 3 caracteres");
+
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La casilla de Numero Celular es de 8 caracteres");
+
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "La casilla de Numero Tlefonico es de 8 caracteres");
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
             }
         }
+        nuevo();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -597,8 +642,8 @@ public final class ContactoP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
-        RegistrarEmpleados rg = new RegistrarEmpleados();
-        rg.setVisible(true);
+        frm_proveedores p = new frm_proveedores();
+        p.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
@@ -611,7 +656,7 @@ public final class ContactoP extends javax.swing.JFrame {
         if (c < '0' || c > '9') {
             evt.consume();
         }
-        if( idcc.getText().length() >= 5){
+        if (idcc.getText().length() >= 5) {
             evt.consume();
         }
     }//GEN-LAST:event_idccKeyTyped
@@ -621,7 +666,7 @@ public final class ContactoP extends javax.swing.JFrame {
         if (c < '0' || c > '9') {
             evt.consume();
         }
-        if( extencion.getText().length() >= 3){
+        if (extencion.getText().length() >= 3) {
             evt.consume();
         }
     }//GEN-LAST:event_extencionKeyTyped
@@ -630,10 +675,10 @@ public final class ContactoP extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         if (c < '0' || c > '9') {
             evt.consume();
-        }else if(Celular.getText().startsWith("1") || Celular.getText().startsWith("2") || Celular.getText().startsWith("4") || Celular.getText().startsWith("5") || Celular.getText().startsWith("6") || Celular.getText().startsWith("7") || Celular.getText().startsWith("0") ){
-            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 3, 8 o 9");
+        } else if (Celular.getText().startsWith("1") || Celular.getText().startsWith("2") || Celular.getText().startsWith("4") || Celular.getText().startsWith("5") || Celular.getText().startsWith("6") || Celular.getText().startsWith("0")) {
+            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 3, 7, 8 o 9");
         }
-        if( Celular.getText().length() >= 8){
+        if (Celular.getText().length() >= 8) {
             evt.consume();
         }
     }//GEN-LAST:event_CelularKeyTyped
@@ -642,20 +687,20 @@ public final class ContactoP extends javax.swing.JFrame {
         char c = evt.getKeyChar();
         if (c < '0' || c > '9') {
             evt.consume();
-        }else if(Numero_Telefonico.getText().startsWith("1") || Numero_Telefonico.getText().startsWith("3") || Numero_Telefonico.getText().startsWith("4") || Numero_Telefonico.getText().startsWith("5") || Numero_Telefonico.getText().startsWith("6") || Numero_Telefonico.getText().startsWith("7") || Numero_Telefonico.getText().startsWith("8") || Numero_Telefonico.getText().startsWith("9") || Numero_Telefonico.getText().startsWith("0") ){
+        } else if (Numero_Telefonico.getText().startsWith("1") || Numero_Telefonico.getText().startsWith("3") || Numero_Telefonico.getText().startsWith("4") || Numero_Telefonico.getText().startsWith("5") || Numero_Telefonico.getText().startsWith("6") || Numero_Telefonico.getText().startsWith("7") || Numero_Telefonico.getText().startsWith("8") || Numero_Telefonico.getText().startsWith("9") || Numero_Telefonico.getText().startsWith("0")) {
             JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 2");
         }
-        if( Numero_Telefonico.getText().length() >= 8){
+        if (Numero_Telefonico.getText().length() >= 8) {
             evt.consume();
         }
     }//GEN-LAST:event_Numero_TelefonicoKeyTyped
 
     private void CorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CorreoKeyTyped
-        if( Correo.getText().length() >= 40){
+        if (Correo.getText().length() >= 40) {
             evt.consume();
-        }else if( Correo.getText().length() == 39){
+        } else if (Correo.getText().length() == 39) {
             JOptionPane.showMessageDialog(null, "El limite de caracteres de es 40");
-     
+
         }
     }//GEN-LAST:event_CorreoKeyTyped
 
@@ -673,9 +718,9 @@ public final class ContactoP extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    
+
     private void tabla3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla3MouseClicked
-       int fila = tabla3.getSelectedRow();
+        int fila = tabla3.getSelectedRow();
         if (fila >= 0) {
 
             idcc.setText(tabla3.getValueAt(fila, 0).toString());

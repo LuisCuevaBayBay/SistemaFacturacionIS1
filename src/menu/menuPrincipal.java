@@ -59,8 +59,8 @@ public class menuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel2.setText("Menu Principal");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 0, 180, 78));
+        jLabel2.setText("Menú Principal");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 180, 78));
 
         registroEmpleado.setBackground(new java.awt.Color(0, 0, 204));
         registroEmpleado.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -140,13 +140,13 @@ public class menuPrincipal extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(0, 102, 204));
         jButton6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Cerrar Sesion");
+        jButton6.setText("Cerrar Sesión");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, -1, 30));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, 30));
 
         jButton7.setBackground(new java.awt.Color(0, 0, 204));
         jButton7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -166,13 +166,13 @@ public class menuPrincipal extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 120, 120));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 120, 120));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 120, 120));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/producto.png"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 120, 120));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 120, 120));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 120, 120));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 890, 580));

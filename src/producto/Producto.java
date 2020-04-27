@@ -172,7 +172,7 @@ void mostrardatos(String valor){
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 70, -1));
 
         edit_btn.setBackground(new java.awt.Color(0, 0, 153));
         edit_btn.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,17 +182,17 @@ void mostrardatos(String valor){
                 edit_btnActionPerformed(evt);
             }
         });
-        getContentPane().add(edit_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, -1, -1));
+        getContentPane().add(edit_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 70, -1));
 
         jButton6.setBackground(new java.awt.Color(0, 153, 204));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Atras");
+        jButton6.setText("Atrás");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, -1, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 70, -1));
 
         jButton7.setBackground(new java.awt.Color(0, 0, 204));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,7 +202,7 @@ void mostrardatos(String valor){
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, -1, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 70, -1));
 
         jButton4.setBackground(new java.awt.Color(0, 153, 153));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -212,7 +212,7 @@ void mostrardatos(String valor){
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 420, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 70, -1));
 
         tablaproducto.setForeground(new java.awt.Color(0, 0, 204));
         tablaproducto.setModel(new javax.swing.table.DefaultTableModel(
@@ -367,10 +367,6 @@ void mostrardatos(String valor){
         if(id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
-        
-        
-        
-        
         }else{     
             try{
                 PreparedStatement pst = cn.prepareStatement("INSERT INTO productos(IdProducto, Nombre, Precio) VALUES(?,?,?)");
@@ -383,6 +379,7 @@ void mostrardatos(String valor){
             
                      if(a>0){
                         JOptionPane.showMessageDialog(null, "Registro Exitoso");
+                        limpiar();
                         mostrardatos("");
                 
                     }else{
@@ -398,19 +395,22 @@ String id = "";
         // TODO add your handling code here:
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        if(id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals("")){
+        if(id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+        }else{     
+            
         try{
             PreparedStatement pst = cn.prepareStatement("UPDATE productos SET IdProducto='"+id_producto_txt.getText()+"',Nombre='"+nom_producto_txt.getText()+"',Precio='"+precio_double.getText()+ "'WHERE IdProducto='"+id+"'");
             id = id_producto_txt.getText();
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+            limpiar();
             mostrardatos("");
         
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
-     }else{
-        JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
         }
     }//GEN-LAST:event_edit_btnActionPerformed
 
@@ -491,7 +491,9 @@ String id = "";
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void id_producto_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_producto_txtActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:char c = evt.getKeyChar();
+        
+        
     }//GEN-LAST:event_id_producto_txtActionPerformed
 
     private void id_producto_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_producto_txtKeyTyped
@@ -551,6 +553,10 @@ String id = "";
 
     private void nom_producto_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_producto_txtKeyTyped
         // TODO add your handling code here:
+         char c = evt.getKeyChar();
+        
+        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
+        
          if(nom_producto_txt.getText().length() >= 25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -559,7 +565,8 @@ String id = "";
 
     private void precio_doubleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precio_doubleKeyTyped
         // TODO add your handling code here:
-        
+        int c = evt.getKeyChar();
+         if(c<'0' || c>'9') evt.consume();
     }//GEN-LAST:event_precio_doubleKeyTyped
 
     /**

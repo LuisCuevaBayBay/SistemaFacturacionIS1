@@ -139,7 +139,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="600" y="290" width="-1" height="-1"/>
+          <AbsoluteConstraints x="600" y="290" width="70" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -158,7 +158,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="600" y="320" width="-1" height="-1"/>
+          <AbsoluteConstraints x="600" y="320" width="70" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -170,14 +170,14 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Atras"/>
+        <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="570" y="420" width="-1" height="-1"/>
+          <AbsoluteConstraints x="600" y="410" width="70" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -196,7 +196,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="600" y="350" width="-1" height="-1"/>
+          <AbsoluteConstraints x="600" y="350" width="70" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -215,7 +215,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="640" y="420" width="-1" height="-1"/>
+          <AbsoluteConstraints x="600" y="440" width="70" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

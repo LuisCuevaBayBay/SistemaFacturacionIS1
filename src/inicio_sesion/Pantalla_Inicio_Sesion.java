@@ -68,7 +68,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         btn_inicio_sesion.setBackground(new java.awt.Color(0, 0, 153));
         btn_inicio_sesion.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btn_inicio_sesion.setForeground(new java.awt.Color(255, 255, 255));
-        btn_inicio_sesion.setText("Iniciar Sesion");
+        btn_inicio_sesion.setText("Iniciar Sesión");
         btn_inicio_sesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_inicio_sesionMouseClicked(evt);
