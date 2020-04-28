@@ -665,15 +665,15 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        ConexionSQL cc = new ConexionSQL();
+       ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = jTable1.getSelectedRow();
         String cod = "";
-        cod = jTable1.getValueAt(fila, 0).toString();
+        cod = jTable1.getValueAt(fila, 1).toString();
         try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra  WHERE producto_id= '" + cod + "'");
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
             pst.executeUpdate();
-            
+            JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }

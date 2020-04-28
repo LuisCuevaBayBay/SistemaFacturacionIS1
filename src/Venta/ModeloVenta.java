@@ -51,7 +51,7 @@ public class ModeloVenta extends javax.swing.JFrame {
         modelo.addColumn("Precio");
         modelo.addColumn("Monto");
 
-        jTable1.setModel(modelo);
+        jTable2.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
             sql = "SELECT * FROM detalleventa";
@@ -59,7 +59,7 @@ public class ModeloVenta extends javax.swing.JFrame {
             sql = "SELECT * FROM detalleventa WHERE (IdDetalleVenta='" + valor + "'OR producto_id ='"+ valor + "'OR cantidad ='" + valor + "'OR precio='" + valor + "')";
         }
 
-        String[] datos = new String[5];
+        String[] datos = new String[4];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -72,7 +72,7 @@ public class ModeloVenta extends javax.swing.JFrame {
 
                 modelo.addRow(datos);
             }
-            jTable1.setModel(modelo);
+            jTable2.setModel(modelo);
         } catch (SQLException ex) {
             Logger.getLogger(datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,7 +124,7 @@ public class ModeloVenta extends javax.swing.JFrame {
         txt_vendedor1 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
@@ -356,7 +356,7 @@ public class ModeloVenta extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -364,7 +364,7 @@ public class ModeloVenta extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTable2);
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel20.setText("Facturas Detalle");
@@ -619,7 +619,7 @@ if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCo
 }else{
         DefaultTableModel model = new DefaultTableModel();
 
-        model = (DefaultTableModel) jTable1.getModel();
+        model = (DefaultTableModel) jTable2.getModel();
 
         model.addRow(new Object[]{
             txtserie.getText(),
@@ -684,11 +684,11 @@ txtserie.setText("");
         double sum = 0;
         
 
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
+        for (int i = 0; i < jTable2.getRowCount(); i++) {
             
          
 
-            sum = sum + Integer.parseInt(jTable1.getValueAt(i, 5).toString()) ;
+            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 5).toString()) ;
 
         }
         Math.round(sum);
@@ -767,16 +767,19 @@ txtserie.setText("");
         // TODO add your handling code here:
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        int fila = jTable1.getSelectedRow();
+        int fila = jTable2.getSelectedRow();
         String cod = "";
-        cod = jTable1.getValueAt(fila, 0).toString();
+        cod = jTable2.getValueAt(fila, 1).toString();
         try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE producto_id= '" + cod + "'");
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
             pst.executeUpdate();
-            limpiar();
+            
             mostrardatos("");// TODO add your handling code here:
+            JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
+            
         } catch (Exception e) {
         }
+        limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtCodProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProductoActionPerformed
@@ -812,9 +815,9 @@ char c = evt.getKeyChar();
         // TODO add your handling code here:
            double sum = 0;
 
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
+        for (int i = 0; i < jTable2.getRowCount(); i++) {
 
-            sum = sum + Integer.parseInt(jTable1.getValueAt(i, 4).toString());
+            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 4).toString());
 
         }
         Math.round(sum);
@@ -892,7 +895,7 @@ char c = evt.getKeyChar();
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JSpinner spinCant;
     private javax.swing.JTextField subt;
