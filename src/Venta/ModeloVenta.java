@@ -49,6 +49,7 @@ public class ModeloVenta extends javax.swing.JFrame {
         modelo.addColumn("Producto ");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
+        modelo.addColumn("Monto");
 
         jTable1.setModel(modelo);
         String sql = "";
@@ -58,7 +59,7 @@ public class ModeloVenta extends javax.swing.JFrame {
             sql = "SELECT * FROM detalleventa WHERE (IdDetalleVenta='" + valor + "'OR producto_id ='"+ valor + "'OR cantidad ='" + valor + "'OR precio='" + valor + "')";
         }
 
-        String[] datos = new String[4];
+        String[] datos = new String[5];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -67,7 +68,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
+               
 
                 modelo.addRow(datos);
             }
@@ -132,8 +133,10 @@ public class ModeloVenta extends javax.swing.JFrame {
         subt = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         txtotalapagar = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -392,7 +395,7 @@ public class ModeloVenta extends javax.swing.JFrame {
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Monto x Producto");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
+        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
 
         btnventa.setText("Generar Venta");
         btnventa.addActionListener(new java.awt.event.ActionListener() {
@@ -400,7 +403,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 btnventaActionPerformed(evt);
             }
         });
-        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
+        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -408,10 +411,10 @@ public class ModeloVenta extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 70, -1));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 70, -1));
 
         subt.setEditable(false);
-        jPanel4.add(subt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 120, 40));
+        jPanel4.add(subt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 120, 40));
 
         jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -419,7 +422,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         jButton4.setText("Ver Facturas");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -429,23 +432,35 @@ public class ModeloVenta extends javax.swing.JFrame {
         });
         jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jButton5.setText("Cancelar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
-
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
-
         txtotalapagar.setEditable(false);
         txtotalapagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtotalapagarActionPerformed(evt);
             }
         });
-        getContentPane().add(txtotalapagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 120, 35));
+        jPanel4.add(txtotalapagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 120, 35));
+
+        jButton5.setText("Cancelar Factura");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("Total ");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+
+        jButton6.setText("Calcular Factura");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 720));
@@ -609,7 +624,6 @@ if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCo
         model.addRow(new Object[]{
             txtserie.getText(),
             txtCodProducto.getText(),
-            txtCodProducto.getText(),
             spinCant.getValue().toString(),
             txtprecio.getText(),
             subt.getText()
@@ -651,7 +665,7 @@ txtserie.setText("");
             pst.setString(3, txtvendedor.getText());
             pst.setString(4, txtisv.getText());
             pst.setString(5, txtcai.getText());
-            pst.setString(6, subt.getText());
+            pst.setString(6, txtotalapagar.getText());
 
             int a = pst.executeUpdate();
             if (a > 0) {
@@ -757,8 +771,9 @@ txtserie.setText("");
         String cod = "";
         cod = jTable1.getValueAt(fila, 0).toString();
         try {
-            PreparedStatement pst = cn.prepareStatement("DELETE IdDetalleVenta FROM detalleventa  WHERE producto_id= '" + cod + "'");
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE producto_id= '" + cod + "'");
             pst.executeUpdate();
+            limpiar();
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
@@ -792,6 +807,20 @@ char c = evt.getKeyChar();
             evt.consume();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtcaiKeyTyped
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+           double sum = 0;
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+
+            sum = sum + Integer.parseInt(jTable1.getValueAt(i, 4).toString());
+
+        }
+        Math.round(sum);
+        
+        txtotalapagar.setText(String.valueOf(sum));
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -837,6 +866,7 @@ char c = evt.getKeyChar();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -849,6 +879,7 @@ char c = evt.getKeyChar();
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
