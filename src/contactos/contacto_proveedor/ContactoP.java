@@ -335,7 +335,8 @@ public final class ContactoP extends javax.swing.JFrame {
                                 if (Numero_Telefonico.getText().length() >= 8) {
                                     if (Celular.getText().length() >= 8) {
                                         if (extencion.getText().length() >= 3) {
-
+                                              if (Numero_Telefonico.getText().startsWith("2")) {
+                                                    if(Celular.getText().startsWith("3") || Celular.getText().startsWith("8") ||Celular.getText().startsWith("9")){
                                             try {
 
                                                 PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor_contacto(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
@@ -357,11 +358,15 @@ public final class ContactoP extends javax.swing.JFrame {
 
                                             }
                                         } else {
-                                            JOptionPane.showMessageDialog(null, 'd');
+                                            JOptionPane.showMessageDialog(null, "Numero celular debe empezar 3, 8 o 9");
 
                                         }
+                                              }else{
+                                                  JOptionPane.showMessageDialog(null, "Numero telefonico debe empezar con 2");
+                                                  
+                                              }
                                     } else {
-                                        JOptionPane.showMessageDialog(null, 'd');
+                                        JOptionPane.showMessageDialog(null, "La extension debe ser de 3");
                                     }
                                 } else {
                                     JOptionPane.showMessageDialog(null, "La casilla numero telefonico es de 8 caracteres");
@@ -388,7 +393,7 @@ public final class ContactoP extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
             }
-
+            }
         }
         nuevo();
 

@@ -6,9 +6,11 @@
 package Empleados;
 
 import Clientes.RegistroClientes;
+import Compra.ModeloCompra1;
 import Conexiones.ConexionSQL;
 
 import Proveedor.frm_proveedores;
+import Venta.ModeloVenta;
 import contactos.Contacto.Contacto;
 import contactos.contacto_proveedor.ContactoP;
 import java.awt.Toolkit;
@@ -57,6 +59,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         modelo.addColumn("Apellido Empleado");
         modelo.addColumn("Numero de Identidad Empleado");
         modelo.addColumn("Direccion Empleado");
+        modelo.addColumn("Usuario");
+        modelo.addColumn("Contraseña");
 
         tablaempleados.setModel(modelo);
         String sql = "";
@@ -65,7 +69,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         } else {
             sql = "SELECT * FROM vendedor WHERE (Vendedor_id='" + valor + "' OR nombre_empleado='" + valor + "' OR apellido_empleado='" + valor + "'OR num_identidad_empleado='" + valor + "'OR direccion='" + valor + "')";
         }
-        String[] datos = new String[5];
+        String[] datos = new String[7];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -75,6 +79,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
+                datos[6] = rs.getString(7);
 
                 modelo.addRow(datos);
 
@@ -506,11 +512,6 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void id_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_empleadoActionPerformed
-        // TODO add your handling code here:
-        id_empleado.transferFocus();
-    }//GEN-LAST:event_id_empleadoActionPerformed
-
     private void apelld_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apelld_empleadoActionPerformed
         // TODO add your handling code here:
         apelld_empleado.transferFocus();
@@ -530,7 +531,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-
+        ModeloCompra1 mc = new ModeloCompra1();
+        mc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void num_id_empleaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_id_empleaActionPerformed
@@ -538,6 +541,12 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         num_id_emplea.transferFocus();
 
     }//GEN-LAST:event_num_id_empleaActionPerformed
+
+    public void id_incrementable() {
+        int id = 1;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+    }
 
     private void save_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_empleadoActionPerformed
 
@@ -555,42 +564,63 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
                 if (existeUsuario(txt_usuario.getText()) == 0) {
                     if (esUsuario(txt_usuario.getText())) {
-                if(num_id_emplea.getText().length() >= 13){
-                            
-                        PreparedStatement pst = cn.prepareStatement("INSERT INTO vendedor(Vendedor_id,nombre_empleado,apellido_empleado,num_identidad_empleado,direccion,usuario,pass) VALUES(?,?,?,?,?,?,?)");
-                        pst.setString(1, id_empleado.getText());
-                        pst.setString(2, nom_empleado.getText());
-                        pst.setString(3, apelld_empleado.getText());
-                        pst.setString(4, num_id_emplea.getText());
-                        pst.setString(5, dir_empleado.getText());
-                        pst.setString(6, txt_usuario.getText());
-                        pst.setString(7, txt_pass.getText());
+                        if (num_id_emplea.getText().length() >= 13) {
+                            if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
+                                if (nom_empleado.getText().length() >= 3) {
+                                    if (apelld_empleado.getText().length() >= 3) {
+                                        if (existeId(id_empleado.getText()) == 0) {
+                                            if (existeidentidad(num_id_emplea.getText()) == 0) {
 
-                        int a = pst.executeUpdate();
-                        if (a > 0) {
-                            JOptionPane.showMessageDialog(null, "Registro Guardado con exito");
-                            
-                            mostrardatos("");
-                            nuevo();
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO vendedor(Vendedor_id,nombre_empleado,apellido_empleado,num_identidad_empleado,direccion,usuario,pass) VALUES(?,?,?,?,?,?,?)");
+                                                pst.setString(1, id_empleado.getText());
+                                                pst.setString(2, nom_empleado.getText());
+                                                pst.setString(3, apelld_empleado.getText());
+                                                pst.setString(4, num_id_emplea.getText());
+                                                pst.setString(5, dir_empleado.getText());
+                                                pst.setString(6, txt_usuario.getText());
+                                                pst.setString(7, txt_pass.getText());
+
+                                                int a = pst.executeUpdate();
+                                                if (a > 0) {
+                                                    JOptionPane.showMessageDialog(null, "Registro Guardado con exito");
+
+                                                    mostrardatos("");
+                                                    nuevo();
+                                                } else {
+                                                    JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                }
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "Error al agregar, este numero de identidad ya existe, inserte otro");
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "Error al agregar, este ID ya existe, inserte otro");
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Error al agregar, el apellido debe tener al menos 3 caracteres");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Error al agregar, el Nombre debe tener al menos 3 caracteres");
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o 1");
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Error al agregar");
+                            JOptionPane.showMessageDialog(null, "Error al agregar, el num Identidad debe ser de 13 caracteres");
                         }
-                          }else{
-                              JOptionPane.showMessageDialog(null, "Error al agregar, el num Identidad debe ser de 13 caracteres");
-                          }
                     } else {
-                        JOptionPane.showMessageDialog(null, "el usuario ya existe");
+                        JOptionPane.showMessageDialog(null, "El usuario es incorrecto");
                     }
+
                 } else {
                     JOptionPane.showMessageDialog(null, "el usuario no es valido");
                 }
-                }catch (Exception e) {
-                
-                
-            } 
+
+            } catch (Exception e) {
+                    
             }
-    
-        
+        }
+
+
     }//GEN-LAST:event_save_empleadoActionPerformed
 
     private int existeUsuario(String usuario) {
@@ -619,6 +649,66 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     }
 
+    public int existeId(String id) {
+
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection con = cc.getConnection();
+
+        String sql = "SELECT count(Vendedor_id) FROM vendedor WHERE Vendedor_id = ?";
+
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, id);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+
+            return 1;
+
+        }
+        return 1;
+
+    }
+
+    public int existeidentidad(String usuario) {
+
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection con = cc.getConnection();
+
+        String sql = "SELECT count(Vendedor_id) FROM vendedor WHERE num_identidad_empleado = ?";
+
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+
+            return 1;
+
+        }
+        return 1;
+
+    }
+
     public boolean esUsuario(String correo) {
 
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.+)"
@@ -627,8 +717,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         Matcher matcher = pattern.matcher(correo);
         return matcher.find();
     }
-void nuevo(){
-    this.id_empleado.setText("");
+
+    void nuevo() {
+        this.id_empleado.setText("");
         this.nom_empleado.setText("");
         this.apelld_empleado.setText("");
         this.num_id_emplea.setText("");
@@ -637,7 +728,7 @@ void nuevo(){
         this.txt_pass.setText("");
 
         this.id_empleado.grabFocus();
-}
+    }
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
         // TODO add your handling code here:
         nuevo();
@@ -651,49 +742,53 @@ void nuevo(){
 
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-if (id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
-                || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("")){
+        if (id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
+                || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
 
         } else {
-        try {
-             
-                if(num_id_emplea.getText().length() >= 13){
-            PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET Vendedor_id='" + id_empleado.getText() + "',nombre_empleado='" + nom_empleado.getText() + "',apellido_empleado='" + apelld_empleado.getText() + "',num_identidad_empleado='" + num_id_emplea.getText() + "',direccion='" + dir_empleado.getText() + "'WHERE Vendedor_id='" + id + "'");
-            id = id_empleado.getText();
-            pst.executeUpdate();
-            mostrardatos("");
-            JOptionPane.showMessageDialog(null, "Se a modificado con exito");
-        }else{
-            JOptionPane.showMessageDialog(null, "el num identidad debe ser de 13 numeros");
-             }
-               
-             }catch (Exception e) {
-            System.out.println(e.getMessage());
+            try {
+
+                if (num_id_emplea.getText().length() >= 13) {
+                    PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET Vendedor_id='" + id_empleado.getText() + "',nombre_empleado='" + nom_empleado.getText() + "',apellido_empleado='" + apelld_empleado.getText() + "',num_identidad_empleado='" + num_id_emplea.getText() + "',direccion='" + dir_empleado.getText() + "'WHERE Vendedor_id='" + id + "'");
+                    id = id_empleado.getText();
+                    pst.executeUpdate();
+                    mostrardatos("");
+                    JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                } else {
+                    JOptionPane.showMessageDialog(null, "el num identidad debe ser de 13 numeros");
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
-             }
-limpiar();
+        limpiar();
     }//GEN-LAST:event_btn_editarActionPerformed
 
     private void del_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_empleadoActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tablaempleados.getSelectedRow();
         String cod = "";
         cod = tablaempleados.getValueAt(fila, 0).toString();
-        try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM vendedor WHERE Vendedor_id='" + cod + "'");
-            int a = pst.executeUpdate();
-            mostrardatos("");
+        if (i == 0) {
+            try {
+                PreparedStatement pst = cn.prepareStatement("DELETE FROM vendedor WHERE Vendedor_id='" + cod + "'");
+                int a = pst.executeUpdate();
+                mostrardatos("");
 
-            if (a > 0) {
-                JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                if (a > 0) {
+                    JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
         bloquear();
         limpiar();
@@ -714,13 +809,15 @@ limpiar();
             apelld_empleado.setText(tablaempleados.getValueAt(fila_seleccionada, 2).toString());
             num_id_emplea.setText(tablaempleados.getValueAt(fila_seleccionada, 3).toString());
             dir_empleado.setText(tablaempleados.getValueAt(fila_seleccionada, 4).toString());
+            txt_usuario.setText(tablaempleados.getValueAt(fila_seleccionada, 5).toString());
+            txt_pass.setText(tablaempleados.getValueAt(fila_seleccionada, 6).toString());
             id = tablaempleados.getValueAt(fila_seleccionada, 0).toString();
         } else {
             JOptionPane.showMessageDialog(null, "No se Encontro FIla");
         }
-        
-        txt_usuario.setEnabled(false);
-        txt_pass.setEnabled(false);
+
+        txt_usuario.setEnabled(true);
+        txt_pass.setEnabled(true);
     }//GEN-LAST:event_tablaempleadosMouseClicked
 
 
@@ -796,20 +893,6 @@ limpiar();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void id_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_empleadoKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (c < '0' || c > '9') {
-            evt.consume();
-        }
-
-        if (id_empleado.getText().length() >= 5) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-        }
-    }//GEN-LAST:event_id_empleadoKeyTyped
-
     private void nom_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_empleadoKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -818,7 +901,7 @@ limpiar();
             evt.consume();
         }
 
-        if (nom_empleado.getText().length() >= 40) {
+        if (nom_empleado.getText().length() >= 20) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -831,7 +914,7 @@ limpiar();
         if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
             evt.consume();
         }
-        if (apelld_empleado.getText().length() >= 40) {
+        if (apelld_empleado.getText().length() >= 20) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -855,7 +938,7 @@ limpiar();
 
     private void dir_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dir_empleadoKeyTyped
         // TODO add your handling code here:
-       
+
         if (dir_empleado.getText().length() >= 60) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -884,12 +967,34 @@ limpiar();
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-
+        ModeloVenta mv = new ModeloVenta();
+        mv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void dir_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dir_empleadoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_dir_empleadoActionPerformed
+
+    private void id_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_empleadoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+
+        if (id_empleado.getText().length() >= 5) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }//GEN-LAST:event_id_empleadoKeyTyped
+
+    private void id_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_empleadoActionPerformed
+        // TODO add your handling code here:
+        id_empleado.transferFocus();
+    }//GEN-LAST:event_id_empleadoActionPerformed
 
     /**
      * @param args the command line arguments

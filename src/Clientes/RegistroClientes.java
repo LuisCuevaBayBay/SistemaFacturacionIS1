@@ -529,6 +529,7 @@ txt_dir_cli.setText("");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
         }
        nuevo();
     }//GEN-LAST:event_btn_eliminarActionPerformed
@@ -583,7 +584,7 @@ txt_dir_cli.setText("");
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
         
         
-        if(txt_nombre_cli.getText().length() >= 40){
+        if(txt_nombre_cli.getText().length() >= 20){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -595,7 +596,7 @@ txt_dir_cli.setText("");
         
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
         
-        if(txt_apellido_cli.getText().length() >= 40){
+        if(txt_apellido_cli.getText().length() >= 20){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }

@@ -178,7 +178,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(980, 573));
+        setMinimumSize(new java.awt.Dimension(980, 573));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(980, 573));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Id Proveedor");
@@ -310,7 +314,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(0, 0, 153));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -418,8 +422,10 @@ public class frm_proveedores extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(963, 575));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, -1));
+        jLabel1.setMaximumSize(new java.awt.Dimension(980, 573));
+        jLabel1.setMinimumSize(new java.awt.Dimension(980, 573));
+        jLabel1.setPreferredSize(new java.awt.Dimension(980, 573));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -554,6 +560,7 @@ void nuevo(){
                 JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
             }
         }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
         }
         bloquear();
         limpiar();
@@ -589,7 +596,7 @@ void nuevo(){
 
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
         
-        if(Jtf_Nombre_Empresa.getText().length() >= 40){
+        if(Jtf_Nombre_Empresa.getText().length() >= 25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }

@@ -333,6 +333,8 @@ public final class ContactoC extends javax.swing.JFrame {
                                 if (num_celular.getText().length() >= 8) {
                                     if (num_telefonico.getText().length() >= 8) {
                                         if (extension.getText().length() >= 3) {
+                                            if (num_telefonico.getText().startsWith("2")) {
+                                                    if(num_celular.getText().startsWith("3") || num_celular.getText().startsWith("8") ||num_celular.getText().startsWith("9")){
 
                                             try {
 
@@ -354,10 +356,19 @@ public final class ContactoC extends javax.swing.JFrame {
                                             } catch (Exception e) {
 
                                             }
+                                                    }else{
+                                                        JOptionPane.showMessageDialog(null, "Numero celular debe empezar 3, 8 o 9");
+                                                    }
                                         } else {
-                                            JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                                            JOptionPane.showMessageDialog(null, "Numero telefonico debe empezar con 2");
                                         }
-
+                                                    
+                                            }else{
+                                                
+                                                JOptionPane.showMessageDialog(null,"La casilla de extencion es de 3 caracteres");
+                                            }
+                                        
+                                                        
                                     } else {
                                         JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
                                     }

@@ -205,6 +205,11 @@ public final class Contacto extends javax.swing.JFrame {
         });
         getContentPane().add(correos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 341, 151, -1));
 
+        num_celular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                num_celularActionPerformed(evt);
+            }
+        });
         num_celular.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 num_celularKeyTyped(evt);
@@ -334,15 +339,15 @@ public final class Contacto extends javax.swing.JFrame {
 
                                     if (num_telefonico.getText().length() >= 8) {
                                         if (extension.getText().length() >= 3) {
-
+                                                if (num_telefonico.getText().startsWith("2")) {
+                                                    if(num_celular.getText().startsWith("3") || num_celular.getText().startsWith("8") ||num_celular.getText().startsWith("9")){
                                             try {
-
                                                 PreparedStatement pst = cn.prepareStatement("INSERT INTO vendedor_contacto(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
                                                 pst.setString(1, contacto.getText());
                                                 pst.setString(2, extension.getText());
                                                 pst.setString(3, num_telefonico.getText());
-                                                pst.setString(4, correos.getText());
-                                                pst.setString(5, num_celular.getText());
+                                                pst.setString(5, correos.getText());
+                                                pst.setString(4, num_celular.getText());
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
@@ -355,8 +360,16 @@ public final class Contacto extends javax.swing.JFrame {
                                             } catch (Exception e) {
 
                                             }
+                                                    }else{
+                                                        JOptionPane.showMessageDialog(null, "Numero celular debe empezar 3, 8 o 9");
+                                                    }
+                                                    
+                                                }else{
+                                                    JOptionPane.showMessageDialog(null,"Numero telefonico debe empezar con 2");
+                                                }
                                         } else {
                                             JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                                            
 
                                         }
                                     } else {
@@ -724,6 +737,10 @@ public final class Contacto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se encontro fila");
         }
     }//GEN-LAST:event_tabla1MouseClicked
+
+    private void num_celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_celularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_num_celularActionPerformed
 
     /**
      * @param args the command line arguments
