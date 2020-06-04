@@ -34,40 +34,40 @@ public class Producto extends javax.swing.JFrame {
         mostrardatos("");
         this.setLocationRelativeTo(null);
     }
-void mostrardatos(String valor){
-    
+
+    void mostrardatos(String valor) {
+
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID Producto");
         modelo.addColumn("Nombre Producto");
         modelo.addColumn("Precio");
-        
-        
+
         tablaproducto.setModel(modelo);
         String sql = "";
-        
-        if(valor.equals("")){
+
+        if (valor.equals("")) {
             sql = "SELECT * FROM productos";
-        }else{
-        
-            sql = "SELECT * FROM productos Where(IdProducto='"+valor+"'OR Nombre='"+valor+"'OR Precio='"+valor+"')";
+        } else {
+
+            sql = "SELECT * FROM productos Where(IdProducto='" + valor + "'OR Nombre='" + valor + "'OR Precio='" + valor + "')";
         }
-        
-        String [] datos = new String[3];
-        try{
-        Statement st = cn.createStatement();
-        ResultSet rs = st.executeQuery(sql);
-        
-        while(rs.next()){
-            datos[0] = rs.getString(1);
-            datos[1] = rs.getString(2);
-            datos[2] = rs.getString(3);
-            
-            modelo.addRow(datos);
-        }
-        tablaproducto.setModel(modelo);
-        }catch(SQLException e){
+
+        String[] datos = new String[3];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+
+                modelo.addRow(datos);
+            }
+            tablaproducto.setModel(modelo);
+        } catch (SQLException e) {
         }
     }
 
@@ -329,25 +329,24 @@ void mostrardatos(String valor){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    void limpiar(){
+    void limpiar() {
         id_producto_txt.setText("");
         nom_producto_txt.setText("");
         precio_double.setText("");
     }
-    
-    void desbloquear(){
+
+    void desbloquear() {
         id_producto_txt.setEnabled(true);
         nom_producto_txt.setEnabled(true);
         precio_double.setEnabled(true);
         guardar_btn.setEnabled(true);
         jButton2.setEnabled(true);
         jButton7.setEnabled(true);
-        
+
     }
-    
-    void bloquear(){
-    id_producto_txt.setEnabled(false);
+
+    void bloquear() {
+        id_producto_txt.setEnabled(false);
         nom_producto_txt.setEnabled(false);
         precio_double.setEnabled(false);
         guardar_btn.setEnabled(false);
@@ -356,86 +355,100 @@ void mostrardatos(String valor){
         jButton6.setEnabled(true);
         jButton4.setEnabled(true);
     }
-    
-    
+
+
     private void guardar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_btnActionPerformed
         // TODO add your handling code here:
-        
+
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        
-        if(id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals(""))
-        {
+
+        if (id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
-        }else{     
-            try{
-                PreparedStatement pst = cn.prepareStatement("INSERT INTO productos(IdProducto, Nombre, Precio) VALUES(?,?,?)");
-                pst.setString(1,id_producto_txt.getText());
-                pst.setString(2, nom_producto_txt.getText());
-                pst.setString(3, precio_double.getText());
-            
-            
-                int a = pst.executeUpdate();
-            
-                     if(a>0){
+        } else {
+            if (precio_double.getText().startsWith("1") || precio_double.getText().startsWith("2") || precio_double.getText().startsWith("3") || precio_double.getText().startsWith("4")
+                    || precio_double.getText().startsWith("5") || precio_double.getText().startsWith("6") || precio_double.getText().startsWith("7") || precio_double.getText().startsWith("8")
+                    || precio_double.getText().startsWith("9")) {
+                
+                if (id_producto_txt.getText().startsWith("1") || id_producto_txt.getText().startsWith("2") || id_producto_txt.getText().startsWith("3") || id_producto_txt.getText().startsWith("4")
+                    || id_producto_txt.getText().startsWith("5") || id_producto_txt.getText().startsWith("6") || id_producto_txt.getText().startsWith("7") || id_producto_txt.getText().startsWith("8")
+                    || id_producto_txt.getText().startsWith("9")) {
+
+                try {
+                    PreparedStatement pst = cn.prepareStatement("INSERT INTO productos(IdProducto, Nombre, Precio) VALUES(?,?,?)");
+                    pst.setString(1, id_producto_txt.getText());
+                    pst.setString(2, nom_producto_txt.getText());
+                    pst.setString(3, precio_double.getText());
+
+                    int a = pst.executeUpdate();
+
+                    if (a > 0) {
                         JOptionPane.showMessageDialog(null, "Registro Exitoso");
                         limpiar();
                         mostrardatos("");
-                
-                    }else{
+
+                    } else {
                         JOptionPane.showMessageDialog(null, "Error al Agregar");
                     }
-                        }catch(Exception e){
-                     }
-                     }
-                    
+                } catch (Exception e) {
+                }
+                }else{
+                    JOptionPane.showMessageDialog(null, "El ID no debe de ser 0");
+                }
+        }else{
+                JOptionPane.showMessageDialog(null, "El precio no debe de ser 0");
+            }
+                }
+
     }//GEN-LAST:event_guardar_btnActionPerformed
-String id = "";
+    String id = "";
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
         // TODO add your handling code here:
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        if(id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals(""))
-        {
+        if (id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
-        }else{     
-            
-        try{
-            PreparedStatement pst = cn.prepareStatement("UPDATE productos SET IdProducto='"+id_producto_txt.getText()+"',Nombre='"+nom_producto_txt.getText()+"',Precio='"+precio_double.getText()+ "'WHERE IdProducto='"+id+"'");
-            id = id_producto_txt.getText();
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se a modificado con exito");
-            limpiar();
-            mostrardatos("");
-        
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
+        } else {
+
+            try {
+                PreparedStatement pst = cn.prepareStatement("UPDATE productos SET IdProducto='" + id_producto_txt.getText() + "',Nombre='" + nom_producto_txt.getText() + "',Precio='" + precio_double.getText() + "'WHERE IdProducto='" + id + "'");
+                id = id_producto_txt.getText();
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                limpiar();
+                mostrardatos("");
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }//GEN-LAST:event_edit_btnActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        
+
         int fila = tablaproducto.getSelectedRow();
         String cod = "";
-        cod = tablaproducto.getValueAt(fila,0).toString();
-        
-        try{
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM productos WHERE IdProducto='"+cod+"'");
-            pst.executeUpdate();
-            mostrardatos("");
-            int a = pst.executeUpdate();
-            if(a>0){
-                JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
-            }else{
-                JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+        cod = tablaproducto.getValueAt(fila, 0).toString();
+        if (i == 0) {
+            try {
+                PreparedStatement pst = cn.prepareStatement("DELETE FROM productos WHERE IdProducto='" + cod + "'");
+                pst.executeUpdate();
+                mostrardatos("");
+                int a = pst.executeUpdate();
+                if (a > 0) {
+                    JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                }
+            } catch (Exception e) {
+
             }
-        }catch(Exception e){
         }
-        
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -449,16 +462,16 @@ String id = "";
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
-    
-    
+
+
     private void tablaproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproductoMouseClicked
-     int fila = tablaproducto.getSelectedRow();
-        if(fila>=0){
-            id_producto_txt.setText(tablaproducto.getValueAt(fila,0).toString());
-            nom_producto_txt.setText(tablaproducto.getValueAt(fila,1).toString());
-            precio_double.setText(tablaproducto.getValueAt(fila,2).toString());
-            id = tablaproducto.getValueAt(fila,0).toString();
-        }else{
+        int fila = tablaproducto.getSelectedRow();
+        if (fila >= 0) {
+            id_producto_txt.setText(tablaproducto.getValueAt(fila, 0).toString());
+            nom_producto_txt.setText(tablaproducto.getValueAt(fila, 1).toString());
+            precio_double.setText(tablaproducto.getValueAt(fila, 2).toString());
+            id = tablaproducto.getValueAt(fila, 0).toString();
+        } else {
             JOptionPane.showMessageDialog(null, "No se Encontro Fila");
         }
     }//GEN-LAST:event_tablaproductoMouseClicked
@@ -468,7 +481,7 @@ String id = "";
     }//GEN-LAST:event_buscar_txtActionPerformed
 
     private void buscar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_btnActionPerformed
- // TODO add your handling code here:
+        // TODO add your handling code here:
         mostrardatos(buscar_txt.getText());
     }//GEN-LAST:event_buscar_btnActionPerformed
 
@@ -480,29 +493,31 @@ String id = "";
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         int fila = tablaproducto.getSelectedRow();
-        if(fila>=0){
-            id_producto_txt.setText(tablaproducto.getValueAt(fila,0).toString());
-            nom_producto_txt.setText(tablaproducto.getValueAt(fila,1).toString());
-            precio_double.setText(tablaproducto.getValueAt(fila,2).toString());
-            id = tablaproducto.getValueAt(fila,0).toString();
-        }else{
+        if (fila >= 0) {
+            id_producto_txt.setText(tablaproducto.getValueAt(fila, 0).toString());
+            nom_producto_txt.setText(tablaproducto.getValueAt(fila, 1).toString());
+            precio_double.setText(tablaproducto.getValueAt(fila, 2).toString());
+            id = tablaproducto.getValueAt(fila, 0).toString();
+        } else {
             JOptionPane.showMessageDialog(null, "No se Encontro Fila");
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void id_producto_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_producto_txtActionPerformed
         // TODO add your handling code here:char c = evt.getKeyChar();
-        
-        
+
+
     }//GEN-LAST:event_id_producto_txtActionPerformed
 
     private void id_producto_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_producto_txtKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        
-        if(c<'0' || c> '9') evt.consume();
-        
-         if(id_producto_txt.getText().length() >= 5){
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+
+        if (id_producto_txt.getText().length() >= 5) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -536,12 +551,12 @@ String id = "";
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-   
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -553,11 +568,13 @@ String id = "";
 
     private void nom_producto_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_producto_txtKeyTyped
         // TODO add your handling code here:
-         char c = evt.getKeyChar();
-        
-        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
-        
-         if(nom_producto_txt.getText().length() >= 25){
+        char c = evt.getKeyChar();
+
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+
+        if (nom_producto_txt.getText().length() >= 25) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -566,7 +583,16 @@ String id = "";
     private void precio_doubleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precio_doubleKeyTyped
         // TODO add your handling code here:
         int c = evt.getKeyChar();
-         if(c<'0' || c>'9') evt.consume();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+        
+         if (nom_producto_txt.getText().length() >= 8) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+        
+        
     }//GEN-LAST:event_precio_doubleKeyTyped
 
     /**

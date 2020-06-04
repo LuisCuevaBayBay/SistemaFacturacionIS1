@@ -631,16 +631,20 @@ public final class Contacto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tabla1.getSelectedRow();
         String cod = "";
         cod = tabla1.getValueAt(fila, 0).toString();
+        if (i == 0) { 
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM vendedor_contacto  WHERE ID_Contacto_Proveedor='" + cod + "'");
             pst.executeUpdate();
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar");
+        }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

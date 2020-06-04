@@ -13,6 +13,7 @@ import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
 import inicio_sesion.Pantalla_Inicio_Sesion;
+import javax.swing.JOptionPane;
 import producto.Producto;
 
 /**
@@ -203,7 +204,10 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
+         int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea salirr?");
+        if (i == 0) { 
         System.exit(0);
+        }
     }//GEN-LAST:event_salirActionPerformed
 
     private void registroEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadosActionPerformed
@@ -246,9 +250,12 @@ this.dispose();*/
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea cerrar su sesion?");
+        if (i == 0) { 
         Pantalla_Inicio_Sesion inicio = new Pantalla_Inicio_Sesion();
         inicio.setVisible(true);
         this.dispose();
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed

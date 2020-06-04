@@ -635,17 +635,20 @@ public final class ContactoC extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tabla1.getSelectedRow();
         String cod = "";
         cod = tabla1.getValueAt(fila, 0).toString();
+        if (i == 0) { 
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM contacto_cliente  WHERE ID_Contacto_Proveedor='" + cod + "'");
             pst.executeUpdate();
             mostrardatos("");
             JOptionPane.showMessageDialog(null, "Se a eliminado con exito");// TODO add your handling code here:
         } catch (Exception e) {
+        }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

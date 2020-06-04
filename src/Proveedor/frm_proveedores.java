@@ -33,20 +33,18 @@ public class frm_proveedores extends javax.swing.JFrame {
     /*
      * Creates new form frm_proveedores
      */
-    
     Connection conectar = null;
-    
+
     public frm_proveedores() {
         initComponents();
-        
+
         mostrardatos("");
         bloquear();
         limpiar();
         this.setLocationRelativeTo(null);
     }
-    
-    
-    void mostrardatos(String valor){
+
+    void mostrardatos(String valor) {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         DefaultTableModel modelo = new DefaultTableModel();
@@ -55,62 +53,60 @@ public class frm_proveedores extends javax.swing.JFrame {
         modelo.addColumn("Nombre Empresa");
         modelo.addColumn("Direccion");
         modelo.addColumn("RTN");
-        
-       
-        
+
         tabla1.setModel(modelo);
         String sql = "";
-        if(valor.equals("")){
+        if (valor.equals("")) {
             sql = "SELECT * FROM proveedor";
-        }else{
-            sql = "SELECT * FROM proveedor WHERE (Empresa_id='"+valor+"'OR Nombre_Empresa='"+valor+"'OR Direccion_Empresa='"+valor+"'OR rtn_empresa='"+valor+"')";
+        } else {
+            sql = "SELECT * FROM proveedor WHERE (Empresa_id='" + valor + "'OR Nombre_Empresa='" + valor + "'OR Direccion_Empresa='" + valor + "'OR rtn_empresa='" + valor + "')";
         }
-        String [] datos = new String[4];
-        try{
+        String[] datos = new String[4];
+        try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                
-               modelo.addRow(datos);
-               
+
+                modelo.addRow(datos);
+
             }
             tabla1.setModel(modelo);
-        }catch(SQLException ex){
-            Logger.getLogger(datos.class.getName()).log(Level.SEVERE,null,ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(datos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-            
+
     }
-    
-    void limpiar(){
+
+    void limpiar() {
         Jtf_Id.setText("");
         Jtf_Nombre_Empresa.setText("");
         jtf_Rtn.setText("");
         Jtf_Direccion.setText("");
     }
-    void desbloquear(){
+
+    void desbloquear() {
         Jtf_Id.setEnabled(true);
         Jtf_Nombre_Empresa.setEnabled(true);
         jtf_Rtn.setEnabled(true);
         Jtf_Direccion.setEnabled(true);
-        
+
         Jbt_Guardar.setEnabled(true);
         jtf_nuevo.setEnabled(true);
         jtf_editar.setEnabled(true);
         Jbt_Eliminar.setEnabled(true);
         jtf_salir.setEnabled(true);
     }
-    
-    void bloquear(){
+
+    void bloquear() {
         Jtf_Id.setEnabled(false);
         Jtf_Nombre_Empresa.setEnabled(false);
         jtf_Rtn.setEnabled(false);
         Jtf_Direccion.setEnabled(false);
-        
+
         Jbt_Guardar.setEnabled(false);
         jtf_nuevo.setEnabled(true);
         jtf_editar.setEnabled(false);
@@ -430,24 +426,23 @@ public class frm_proveedores extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private int existeUsuario(String usuario) {                                              
-      
+    private int existeUsuario(String usuario) {
+
         ConexionSQL cc = new ConexionSQL();
-        
+
         Connection cn = cc.getConnection();
-        
+
         ResultSet rs = null;
         PreparedStatement ps = null;
-        
+
         String sql = "SELECT count(Empresa_id) FROM proveedor WHERE Empresa_id = ?";
-    
+
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
@@ -458,20 +453,17 @@ public class frm_proveedores extends javax.swing.JFrame {
     String id = "";
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:4
-        
-        
-        
+
         int fila = tabla1.getSelectedRow();
-        
-        if(fila >= 0){
-        Jtf_Id.setText(tabla1.getValueAt(fila, 0).toString());
-        Jtf_Nombre_Empresa.setText(tabla1.getValueAt(fila, 1).toString());
-        jtf_Rtn.setText(tabla1.getValueAt(fila, 2).toString());
-        Jtf_Direccion.setText(tabla1.getValueAt(fila,3).toString());
-        id = tabla1.getValueAt(fila,0).toString();
-        
-      
-        }else{
+
+        if (fila >= 0) {
+            Jtf_Id.setText(tabla1.getValueAt(fila, 0).toString());
+            Jtf_Nombre_Empresa.setText(tabla1.getValueAt(fila, 1).toString());
+            jtf_Rtn.setText(tabla1.getValueAt(fila, 2).toString());
+            Jtf_Direccion.setText(tabla1.getValueAt(fila, 3).toString());
+            id = tabla1.getValueAt(fila, 0).toString();
+
+        } else {
             JOptionPane.showMessageDialog(null, "No se encontro fila");
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -500,17 +492,17 @@ public class frm_proveedores extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jtf_salirActionPerformed
-void nuevo(){
- this.Jtf_Id.setText("");
+    void nuevo() {
+        this.Jtf_Id.setText("");
         this.Jtf_Nombre_Empresa.setText("");
         this.jtf_Rtn.setText("");
         this.Jtf_Direccion.setText("");
 
         this.Jtf_Id.grabFocus();
-}
+    }
     private void jtf_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_nuevoActionPerformed
         // TODO add your handling code here:
-       nuevo();
+        nuevo();
         desbloquear();
     }//GEN-LAST:event_jtf_nuevoActionPerformed
 
@@ -519,60 +511,64 @@ void nuevo(){
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-       if(Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("") ||
-            Jtf_Direccion.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Hay campos que estan vacios. No pueden quedar asi ");
-        }else{
-         
-        try{
-            if(jtf_Rtn.getText().length() >= 14){
-            PreparedStatement pst = cn.prepareStatement("UPDATE proveedor SET Empresa_id='"+Jtf_Id.getText()+"',Nombre_Empresa='"+Jtf_Nombre_Empresa.getText()+"',Direccion_Empresa='"+Jtf_Direccion.getText()+"',rtn_empresa='"+jtf_Rtn.getText()+"'WHERE Empresa_id='"+id+"'");
-            id = Jtf_Id.getText();
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se modifico con exito");
-            mostrardatos("");
-            }else{
-                JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 caracteres");
+        if (Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
+                || Jtf_Direccion.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Hay campos que estan vacios. No pueden quedar asi ");
+        } else {
+
+            try {
+                if (jtf_Rtn.getText().length() >= 14) {
+                    PreparedStatement pst = cn.prepareStatement("UPDATE proveedor SET Empresa_id='" + Jtf_Id.getText() + "',Nombre_Empresa='" + Jtf_Nombre_Empresa.getText() + "',Direccion_Empresa='" + Jtf_Direccion.getText() + "',rtn_empresa='" + jtf_Rtn.getText() + "'WHERE Empresa_id='" + id + "'");
+                    id = Jtf_Id.getText();
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Se modifico con exito");
+                    mostrardatos("");
+                } else {
+                    JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 caracteres");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
         }
-       }
     }//GEN-LAST:event_jtf_editarActionPerformed
 
     private void Jbt_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jbt_EliminarActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        
+
         int fila = tabla1.getSelectedRow();
         String cod = "";
         cod = tabla1.getValueAt(fila, 0).toString();
-
-        try{
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM proveedor WHERE Empresa_id='"+cod+"'");
-            pst.executeUpdate();
-            mostrardatos("");
-            int a = pst.executeUpdate();
-            if(a>0){
-                JOptionPane.showMessageDialog(null,"No se pudo eliminar");
-            }else{
-                JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
+        if (i == 0) {
+            try {
+                PreparedStatement pst = cn.prepareStatement("DELETE FROM proveedor WHERE Empresa_id='" + cod + "'");
+                pst.executeUpdate();
+                mostrardatos("");
+                int a = pst.executeUpdate();
+                if (a > 0) {
+                    JOptionPane.showMessageDialog(null, "No se pudo eliminar");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "No se pudo eliminar, el proveedor tiene facturas registradas");
             }
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
+            bloquear();
+            limpiar();
         }
-        bloquear();
-        limpiar();
     }//GEN-LAST:event_Jbt_EliminarActionPerformed
 
     private void jtf_RtnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_RtnKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if(c<'0' || c>'9') evt.consume();
-        
-         if(jtf_Rtn.getText().length() >= 14){
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+
+        if (jtf_Rtn.getText().length() >= 14) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -582,9 +578,11 @@ void nuevo(){
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
-        
-         if(Jtf_Direccion.getText().length() >= 60){
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+
+        if (Jtf_Direccion.getText().length() >= 60) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -594,9 +592,12 @@ void nuevo(){
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
-        
-        if(Jtf_Nombre_Empresa.getText().length() >= 25){
+        if (Character.isDigit(c)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
+
+        if (Jtf_Nombre_Empresa.getText().length() >= 25) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -612,39 +613,48 @@ void nuevo(){
 
         Connection cn = cc.getConnection();
 
-        if(Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("") ||
-            Jtf_Direccion.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Hay campos que estan vacios. No pueden quedar asi ");
-        }else{
+        if (Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
+                || Jtf_Direccion.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Hay campos que estan vacios. No pueden quedar asi ");
+        } else {
 
-        try{
+            try {
 
-            if(existeUsuario(Jtf_Id.getText())==0){
-                   if(jtf_Rtn.getText().length() >= 14){
-                PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor(Empresa_id,Nombre_Empresa,Direccion_Empresa,rtn_empresa) values(?,?,?,?)");
-                pst.setString(1,Jtf_Id.getText());
-                pst.setString(2,Jtf_Nombre_Empresa.getText());
-                pst.setString(3,Jtf_Direccion.getText());
-                pst.setString(4,jtf_Rtn.getText());
+                if (existeUsuario(Jtf_Id.getText()) == 0) {
+                    if (jtf_Rtn.getText().length() >= 14) {
+                        if (Jtf_Nombre_Empresa.getText().length() >= 3) {
+                            if (jtf_Rtn.getText().startsWith("0") || jtf_Rtn.getText().startsWith("1")) {
 
-                int a = pst.executeUpdate();
+                                PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor(Empresa_id,Nombre_Empresa,Direccion_Empresa,rtn_empresa) values(?,?,?,?)");
+                                pst.setString(1, Jtf_Id.getText());
+                                pst.setString(2, Jtf_Nombre_Empresa.getText());
+                                pst.setString(3, Jtf_Direccion.getText());
+                                pst.setString(4, jtf_Rtn.getText());
 
-                if(a>0){
-                    JOptionPane.showMessageDialog(null,"Registro Guardado con Exito");
-                    nuevo();
-                    mostrardatos("");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Error al Agregar Registro");
+                                int a = pst.executeUpdate();
+
+                                if (a > 0) {
+                                    JOptionPane.showMessageDialog(null, "Registro Guardado con Exito");
+                                    nuevo();
+                                    mostrardatos("");
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Error al Agregar Registro");
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "El RTN debe empezar con 0 o 1");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El Nombre debe tener al menos 3 caracteres");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El RTN debe ser de 14");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 }
-                   }else{
-                       JOptionPane.showMessageDialog(null, "El RTN debe ser de 14");
-                   }
-            }else{
-                JOptionPane.showMessageDialog(null, "El usuario ya existe");
-            }
-        }catch(Exception e){
+            } catch (Exception e) {
 
-        }
+            }
         }
     }//GEN-LAST:event_Jbt_GuardarActionPerformed
 
@@ -652,9 +662,11 @@ void nuevo(){
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if(c<'0' || c>'9') evt.consume();
-        
-        if(Jtf_Id.getText().length() >= 5){
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+
+        if (Jtf_Id.getText().length() >= 5) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -666,20 +678,17 @@ void nuevo(){
 
     private void tabla1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseClicked
         // TODO add your handling code here:
-           
-        
-        
+
         int fila = tabla1.getSelectedRow();
-        
-        if(fila >= 0){
-        Jtf_Id.setText(tabla1.getValueAt(fila, 0).toString());
-        Jtf_Nombre_Empresa.setText(tabla1.getValueAt(fila, 1).toString());
-        Jtf_Direccion.setText(tabla1.getValueAt(fila, 2).toString());
-        jtf_Rtn.setText(tabla1.getValueAt(fila,3).toString());
-        id = tabla1.getValueAt(fila,0).toString();
-        
-      
-        }else{
+
+        if (fila >= 0) {
+            Jtf_Id.setText(tabla1.getValueAt(fila, 0).toString());
+            Jtf_Nombre_Empresa.setText(tabla1.getValueAt(fila, 1).toString());
+            Jtf_Direccion.setText(tabla1.getValueAt(fila, 2).toString());
+            jtf_Rtn.setText(tabla1.getValueAt(fila, 3).toString());
+            id = tabla1.getValueAt(fila, 0).toString();
+
+        } else {
             JOptionPane.showMessageDialog(null, "No se encontro fila");
         }
     }//GEN-LAST:event_tabla1MouseClicked
@@ -714,12 +723,12 @@ void nuevo(){
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -732,10 +741,7 @@ void nuevo(){
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton10ActionPerformed
-    
-   
-   
-    
+
     /**
      * @param args the command line arguments
      */

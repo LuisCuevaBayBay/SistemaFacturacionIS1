@@ -512,11 +512,13 @@ txt_dir_cli.setText("");
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
        ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tablaclientes.getSelectedRow();
         String cod = "";
         cod = tablaclientes.getValueAt(fila, 0).toString();
+        if (i == 0) { 
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM cliente WHERE Cli_id='" + cod + "'");
             int a = pst.executeUpdate();
@@ -532,6 +534,7 @@ txt_dir_cli.setText("");
             JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
         }
        nuevo();
+        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed

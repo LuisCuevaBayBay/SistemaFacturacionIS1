@@ -631,18 +631,21 @@ public final class ContactoP extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:\
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tabla3.getSelectedRow();
         String cod = "";
         cod = tabla3.getValueAt(fila, 0).toString();
+        if (i == 0) { 
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM proveedor_contacto WHERE ID_Contacto_Proveedor='" + cod + "'");
             pst.executeUpdate();
             mostrardatos("");
             JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
         } catch (Exception e) {
+        }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

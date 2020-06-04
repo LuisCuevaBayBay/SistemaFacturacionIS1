@@ -132,7 +132,11 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea salirr?");
+        if (i == 0) { 
         System.exit(0);
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
     
     public void validar(){
