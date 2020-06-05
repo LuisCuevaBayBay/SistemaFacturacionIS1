@@ -172,7 +172,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtserieKeyTyped(evt);
             }
         });
-        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 104, 34));
+        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 250, 34));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("CAI");
@@ -183,7 +183,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtcaiKeyTyped(evt);
             }
         });
-        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 100, 30));
+        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 250, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 740, 180));
 
@@ -232,6 +232,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
         txtprecio.setEditable(false);
+        txtprecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprecioActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 119, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -293,6 +298,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
 
         txtprod.setEditable(false);
+        txtprod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtprodActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 180, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -306,6 +316,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         txtisv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtisvActionPerformed(evt);
+            }
+        });
+        txtisv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtisvKeyTyped(evt);
             }
         });
         jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 180, -1));
@@ -528,7 +543,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
         if (txtserie.getText().equals("") || txtCodProducto.getText().equals("") ||  txtprecio.getText().equals("") || subt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
+            
+            
         } else {
+        if(txtserie.getText().length() >= 10){
+            if(txtcai.getText().length() >= 15){
             DefaultTableModel model = new DefaultTableModel();
 
             model = (DefaultTableModel) jTable1.getModel();
@@ -542,21 +561,49 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
             });
 
+            txtserie.setEnabled(false);
+            txtcai.setEnabled(false);
             txtCodProducto.setText("");
 
             txtprod.setText("");
+            }else{
+                JOptionPane.showMessageDialog(null, "El numero del Cai debe ser de 15");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "El Numero de Factura debe ser de 10");
         }
+        }
+            
+                
 
        
-        
+       
 
     }//GEN-LAST:event_btnAddprecioActionPerformed
+    void limpiarTabla(){
+       
+            DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
+            int filas = jTable1.getRowCount()-1;
+            for(int i = 0;i<jTable1.getRowCount();i++){
+                modelo.removeRow(i);
+                i-=1;
+            }
+        
+            jTable1.setModel(new DefaultTableModel());
+    }
     void limpiar() {
         txtserie.setText("");
         txtCodCliente.setText("");
-
-        txtisv.setText("");
+        txtprecio.setText("");
         txtcai.setText("");
+        txtcli.setText("");
+        txtisv.setText(null);
+        txtprod.setText(null);
+        
+        spinCant.setValue(0);
+        txtCodProducto.setText(null);
+
+       
         subt.setText("");
         spinCant.setValue("");
         txtprecio.setText(null);
@@ -597,6 +644,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
                 sumar();
                 limpiar();
+                limpiarTabla();
                 mostrardatos("");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al agregar");
@@ -665,19 +713,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-       ConexionSQL cc = new ConexionSQL();
-        Connection cn = cc.getConnection();
-        int fila = jTable1.getSelectedRow();
-        String cod = "";
-        cod = jTable1.getValueAt(fila, 1).toString();
-        try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
-            mostrardatos("");// TODO add your handling code here:
-        } catch (Exception e) {
-        }
-        limpiar();
+       limpiar();
+       limpiarTabla();
+       
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtCodProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProductoActionPerformed
@@ -695,6 +733,12 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         if (c < '0' || c > '9') {
             evt.consume();
         }
+        
+        if (txtserie.getText().length() >= 10) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "El numero de factura debe contener 10 digitos");
+        }
     }//GEN-LAST:event_txtserieKeyTyped
 
     private void txtcaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcaiKeyTyped
@@ -702,7 +746,12 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         if (c < '0' || c > '9') {
             evt.consume();
-        }        // TODO add your handling code here:
+        }    
+        if (txtcai.getText().length() >= 15) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "El numero de cai debe contener 15 digitos");
+        }// TODO add your handling code here:
     }//GEN-LAST:event_txtcaiKeyTyped
 
     private void txtcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcliActionPerformed
@@ -721,6 +770,32 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         
         txtotalapagar.setText(String.valueOf(sum));
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtprecioActionPerformed
+
+    private void txtprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtprodActionPerformed
+
+    private void txtisvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtisvKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+            JOptionPane.showMessageDialog(null,"En el campo ISV solo puede poner numeros");
+            
+            
+        }
+        
+        if (txtisv.getText().length() >= 2) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "El campo ISV solo puede poner 2 digitos");
+        }
+    }//GEN-LAST:event_txtisvKeyTyped
 
     /**
      * @param args the command line arguments

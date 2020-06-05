@@ -177,7 +177,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 txtserieKeyTyped(evt);
             }
         });
-        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 104, 34));
+        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 210, 34));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("CAI");
@@ -188,7 +188,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 txtcaiKeyTyped(evt);
             }
         });
-        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 100, 30));
+        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 210, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 740, 180));
 
@@ -275,7 +275,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 btnAddprecioActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 80, -1));
+        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 80, 20));
 
         spinCant.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
         spinCant.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -286,6 +286,11 @@ public class ModeloVenta extends javax.swing.JFrame {
         jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 119, 30));
 
         txtcli.setEditable(false);
+        txtcli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcliActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 12, 178, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -306,6 +311,11 @@ public class ModeloVenta extends javax.swing.JFrame {
         txtisv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtisvActionPerformed(evt);
+            }
+        });
+        txtisv.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtisvKeyTyped(evt);
             }
         });
         jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 180, -1));
@@ -617,6 +627,8 @@ if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCo
         txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")){
       JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
 }else{
+    if(txtserie.getText().length() >= 10){
+            if(txtcai.getText().length() >= 15){
         DefaultTableModel model = new DefaultTableModel();
 
         model = (DefaultTableModel) jTable2.getModel();
@@ -629,12 +641,20 @@ if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCo
             subt.getText()
 
         });
+        
+        txtserie.setEnabled(false);
+        txtcai.setEnabled(false);
 
         txtCodProducto.setText("");
 
         txtprod.setText("");
+}else{
+           JOptionPane.showMessageDialog(null, "El numero del Cai debe ser de 15"); 
+            }
+    }else{
+        JOptionPane.showMessageDialog(null, "El numero de factura debe ser de 10 digitos");
+    }
 }
-
     }//GEN-LAST:event_btnAddprecioActionPerformed
 void limpiar(){
 txtserie.setText("");
@@ -801,6 +821,11 @@ txtserie.setText("");
         if (c < '0' || c > '9') {
             evt.consume();
         }
+        if (txtserie.getText().length() >= 10) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "El numero de factura debe contener 10 digitos");
+        }
     }//GEN-LAST:event_txtserieKeyTyped
 
     private void txtcaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcaiKeyTyped
@@ -808,7 +833,12 @@ char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
             evt.consume();
-        }        // TODO add your handling code here:
+        } 
+         if (txtcai.getText().length() >= 15) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "El numero de cai debe contener 15 digitos");
+        }// TODO add your handling code here:
     }//GEN-LAST:event_txtcaiKeyTyped
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -824,6 +854,28 @@ char c = evt.getKeyChar();
         
         txtotalapagar.setText(String.valueOf(sum));
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void txtcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcliActionPerformed
+
+    private void txtisvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtisvKeyTyped
+        // TODO add your handling code here:
+         char c = evt.getKeyChar();
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+            JOptionPane.showMessageDialog(null,"En el campo ISV solo puede poner numeros");
+            
+            
+        }
+        
+        if (txtisv.getText().length() >= 2) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "El campo ISV solo puede poner 2 digitos");
+        }
+    }//GEN-LAST:event_txtisvKeyTyped
 
     /**
      * @param args the command line arguments
