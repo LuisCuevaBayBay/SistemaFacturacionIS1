@@ -122,6 +122,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jPopupMenu1 = new javax.swing.JPopupMenu();
@@ -174,10 +175,9 @@ public class frm_proveedores extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(980, 573));
+        setMaximumSize(new java.awt.Dimension(1000, 844));
         setMinimumSize(new java.awt.Dimension(980, 573));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(980, 573));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -192,6 +192,9 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         jLabel5.setText("RTN");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
+
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Jtf_Nombre_Empresa, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Id, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
 
         Jtf_Id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +218,9 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(Jbt_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 90, -1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtf_Rtn, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Nombre_Empresa, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         Jtf_Nombre_Empresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Jtf_Nombre_EmpresaActionPerformed(evt);
@@ -227,12 +233,18 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(Jtf_Nombre_Empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 152, 30));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Jbt_Guardar, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Direccion, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         Jtf_Direccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Jtf_DireccionKeyTyped(evt);
             }
         });
         getContentPane().add(Jtf_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 156, 70));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Jtf_Direccion, org.jdesktop.beansbinding.ObjectProperty.create(), jtf_Rtn, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
 
         jtf_Rtn.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -422,6 +434,8 @@ public class frm_proveedores extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(980, 573));
         jLabel1.setPreferredSize(new java.awt.Dimension(980, 573));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -813,5 +827,6 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JButton jtf_nuevo;
     private javax.swing.JButton jtf_salir;
     private javax.swing.JTable tabla1;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

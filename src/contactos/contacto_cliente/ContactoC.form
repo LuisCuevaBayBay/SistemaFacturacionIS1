@@ -71,25 +71,6 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="290" y="300" width="107" height="-1"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextPane" name="num_telefonico">
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="num_telefonicoKeyTyped"/>
-          </Events>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Extenci&#xf3;n Num&#xe9;rica"/>
@@ -190,6 +171,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="correos">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="num_celular" target="correos" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="correosKeyTyped"/>
       </Events>
@@ -200,6 +184,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="num_celular">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="jButton1" target="num_celular" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="num_celularKeyTyped"/>
       </Events>
@@ -278,6 +265,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="contacto">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="extension" target="contacto" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contactoActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="contactoKeyTyped"/>
@@ -289,6 +279,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="extension">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="num_telefonico" target="extension" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="extensionKeyTyped"/>
       </Events>
@@ -353,6 +346,19 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="600" y="310" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JTextField" name="num_telefonico">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="correos" target="num_telefonico" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="num_telefonicoKeyTyped"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="290" y="300" width="100" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

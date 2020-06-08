@@ -81,14 +81,13 @@ public final class ContactoP extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Numero_Telefonico = new javax.swing.JTextPane();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -107,6 +106,7 @@ public final class ContactoP extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
+        Numero_Telefonico = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
@@ -134,15 +134,6 @@ public final class ContactoP extends javax.swing.JFrame {
 
         jLabel2.setText("Número Telefónico");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
-
-        Numero_Telefonico.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                Numero_TelefonicoKeyTyped(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Numero_Telefonico);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 107, -1));
 
         jLabel3.setText("Extención Númerica");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
@@ -200,12 +191,18 @@ public final class ContactoP extends javax.swing.JFrame {
         });
         getContentPane().add(buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 36, 97, -1));
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Celular, org.jdesktop.beansbinding.ObjectProperty.create(), Correo, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         Correo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 CorreoKeyTyped(evt);
             }
         });
         getContentPane().add(Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 151, -1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jButton1, org.jdesktop.beansbinding.ObjectProperty.create(), Celular, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
 
         Celular.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -250,6 +247,9 @@ public final class ContactoP extends javax.swing.JFrame {
         jLabel6.setText("ID Contacto");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, extencion, org.jdesktop.beansbinding.ObjectProperty.create(), idcc, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         idcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idccActionPerformed(evt);
@@ -261,6 +261,9 @@ public final class ContactoP extends javax.swing.JFrame {
             }
         });
         getContentPane().add(idcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 105, -1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Numero_Telefonico, org.jdesktop.beansbinding.ObjectProperty.create(), extencion, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
 
         extencion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -304,8 +307,20 @@ public final class ContactoP extends javax.swing.JFrame {
         });
         getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Correo, org.jdesktop.beansbinding.ObjectProperty.create(), Numero_Telefonico, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
+        Numero_Telefonico.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                Numero_TelefonicoKeyTyped(evt);
+            }
+        });
+        getContentPane().add(Numero_Telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 100, -1));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -691,18 +706,6 @@ public final class ContactoP extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CelularKeyTyped
 
-    private void Numero_TelefonicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Numero_TelefonicoKeyTyped
-        char c = evt.getKeyChar();
-        if (c < '0' || c > '9') {
-            evt.consume();
-        } else if (Numero_Telefonico.getText().startsWith("1") || Numero_Telefonico.getText().startsWith("3") || Numero_Telefonico.getText().startsWith("4") || Numero_Telefonico.getText().startsWith("5") || Numero_Telefonico.getText().startsWith("6") || Numero_Telefonico.getText().startsWith("7") || Numero_Telefonico.getText().startsWith("8") || Numero_Telefonico.getText().startsWith("9") || Numero_Telefonico.getText().startsWith("0")) {
-            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 2");
-        }
-        if (Numero_Telefonico.getText().length() >= 8) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_Numero_TelefonicoKeyTyped
-
     private void CorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CorreoKeyTyped
         if (Correo.getText().length() >= 40) {
             evt.consume();
@@ -743,6 +746,23 @@ public final class ContactoP extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabla3MouseClicked
 
+    private void Numero_TelefonicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Numero_TelefonicoKeyTyped
+        // TODO add your handling code here:
+        
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        } else if (Numero_Telefonico.getText().startsWith("1") || Numero_Telefonico.getText().startsWith("3") || Numero_Telefonico.getText().startsWith("4") || Numero_Telefonico.getText().startsWith("5") || Numero_Telefonico.getText().startsWith("6") || Numero_Telefonico.getText().startsWith("7") || Numero_Telefonico.getText().startsWith("8") || Numero_Telefonico.getText().startsWith("9") || Numero_Telefonico.getText().startsWith("0")) {
+            JOptionPane.showMessageDialog(null, "El numero de celular tiene que comenzar con 2");
+        }
+        if (Numero_Telefonico.getText().length() >= 8) {
+            evt.consume();
+
+        }
+
+
+    }//GEN-LAST:event_Numero_TelefonicoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -781,7 +801,7 @@ public final class ContactoP extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Celular;
     private javax.swing.JTextField Correo;
-    private javax.swing.JTextPane Numero_Telefonico;
+    private javax.swing.JTextField Numero_Telefonico;
     private javax.swing.JTextField buscar;
     private javax.swing.JTextField extencion;
     private javax.swing.JTextField idcc;
@@ -800,11 +820,11 @@ public final class ContactoP extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTable tabla3;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
 }

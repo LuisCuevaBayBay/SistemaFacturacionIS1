@@ -145,6 +145,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jTextField1 = new javax.swing.JTextField();
         jPopupMenu1 = new javax.swing.JPopupMenu();
@@ -155,8 +156,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         id_empleado = new javax.swing.JTextField();
         nom_empleado = new javax.swing.JTextField();
         apelld_empleado = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         num_id_emplea = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         save_empleado = new javax.swing.JButton();
         del_empleado = new javax.swing.JButton();
@@ -168,15 +169,15 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         btn_editar = new javax.swing.JButton();
         salir_btn = new javax.swing.JButton();
+        dir_empleado = new javax.swing.JTextField();
         nuevo = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        dir_empleado = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txt_usuario = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         txt_pass = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
         buscar_txt = new javax.swing.JButton();
         buscar_txt_box = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
@@ -212,6 +213,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel3.setText("Apellido Empleado");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, nom_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), id_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         id_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_empleadoActionPerformed(evt);
@@ -223,6 +227,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             }
         });
         getContentPane().add(id_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 249, 124, 25));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, apelld_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), nom_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
 
         nom_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,6 +243,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(nom_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 292, 124, 28));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, num_id_emplea, org.jdesktop.beansbinding.ObjectProperty.create(), apelld_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         apelld_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 apelld_empleadoActionPerformed(evt);
@@ -248,8 +258,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(apelld_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 338, 124, 29));
 
-        jLabel4.setText("Núm. Identidad Empleado");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, 25));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, dir_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), num_id_emplea, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
 
         num_id_emplea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,6 +272,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             }
         });
         getContentPane().add(num_id_emplea, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 387, 130, 31));
+
+        jLabel4.setText("Núm. Identidad Empleado");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, 25));
 
         jLabel5.setText("Dirección del Empleado");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
@@ -387,6 +400,21 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(salir_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 570, 100, -1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_usuario, org.jdesktop.beansbinding.ObjectProperty.create(), dir_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
+        dir_empleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dir_empleadoActionPerformed(evt);
+            }
+        });
+        dir_empleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dir_empleadoKeyTyped(evt);
+            }
+        });
+        getContentPane().add(dir_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 429, 130, 87));
+
         nuevo.setBackground(new java.awt.Color(0, 0, 204));
         nuevo.setForeground(new java.awt.Color(255, 255, 255));
         nuevo.setText("Nuevo");
@@ -415,18 +443,6 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
-        dir_empleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dir_empleadoActionPerformed(evt);
-            }
-        });
-        dir_empleado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                dir_empleadoKeyTyped(evt);
-            }
-        });
-        getContentPane().add(dir_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 429, 130, 87));
-
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("REGISTRAR PROVEEDOR");
@@ -452,13 +468,21 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 90, -1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_pass, org.jdesktop.beansbinding.ObjectProperty.create(), txt_usuario, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
+        getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 532, 124, 30));
+
         jLabel6.setText("Usuario");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, -1, -1));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, save_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), txt_pass, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
+        getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 577, 124, 33));
+
         jLabel7.setText("Contraseña");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, -1, -1));
-        getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 532, 124, 30));
-        getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 577, 124, 33));
 
         buscar_txt.setBackground(new java.awt.Color(0, 0, 204));
         buscar_txt.setForeground(new java.awt.Color(255, 255, 255));
@@ -503,6 +527,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 630));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1071,6 +1097,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     private javax.swing.JTable tablaempleados;
     private javax.swing.JPasswordField txt_pass;
     private javax.swing.JTextField txt_usuario;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
 }

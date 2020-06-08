@@ -79,6 +79,7 @@ public class Producto extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -87,7 +88,6 @@ public class Producto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         id_producto_txt = new javax.swing.JTextField();
         nom_producto_txt = new javax.swing.JTextField();
-        precio_double = new javax.swing.JTextField();
         guardar_btn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         edit_btn = new javax.swing.JButton();
@@ -105,6 +105,7 @@ public class Producto extends javax.swing.JFrame {
         buscar_txt = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        precio_double = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
@@ -128,6 +129,9 @@ public class Producto extends javax.swing.JFrame {
         jLabel3.setText("Precio");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, nom_producto_txt, org.jdesktop.beansbinding.ObjectProperty.create(), id_producto_txt, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         id_producto_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_producto_txtActionPerformed(evt);
@@ -140,19 +144,15 @@ public class Producto extends javax.swing.JFrame {
         });
         getContentPane().add(id_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 113, 30));
 
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new javax.swing.JTextField(), org.jdesktop.beansbinding.ObjectProperty.create(), nom_producto_txt, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         nom_producto_txt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 nom_producto_txtKeyTyped(evt);
             }
         });
         getContentPane().add(nom_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 113, 32));
-
-        precio_double.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                precio_doubleKeyTyped(evt);
-            }
-        });
-        getContentPane().add(precio_double, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 113, 31));
 
         guardar_btn.setBackground(new java.awt.Color(0, 0, 153));
         guardar_btn.setForeground(new java.awt.Color(255, 255, 255));
@@ -323,8 +323,18 @@ public class Producto extends javax.swing.JFrame {
         });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
+        precio_double.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        precio_double.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precio_doubleActionPerformed(evt);
+            }
+        });
+        getContentPane().add(precio_double, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 140, 30));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 470));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -580,20 +590,9 @@ public class Producto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nom_producto_txtKeyTyped
 
-    private void precio_doubleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_precio_doubleKeyTyped
+    private void precio_doubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precio_doubleActionPerformed
         // TODO add your handling code here:
-        int c = evt.getKeyChar();
-        if (c < '0' || c > '9') {
-            evt.consume();
-        }
-        
-         if (nom_producto_txt.getText().length() >= 8) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-        }
-        
-        
-    }//GEN-LAST:event_precio_doubleKeyTyped
+    }//GEN-LAST:event_precio_doubleActionPerformed
 
     /**
      * @param args the command line arguments
@@ -655,7 +654,8 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nom_producto_txt;
-    private javax.swing.JTextField precio_double;
+    private javax.swing.JFormattedTextField precio_double;
     private javax.swing.JTable tablaproducto;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

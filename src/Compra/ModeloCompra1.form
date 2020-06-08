@@ -116,6 +116,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="txtserie">
+          <BindingProperties>
+            <BindingProperty name="nextFocusableComponent" source="txtcai" target="txtserie" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtserieActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtserieKeyTyped"/>
@@ -140,6 +143,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="txtcai">
+          <BindingProperties>
+            <BindingProperty name="nextFocusableComponent" source="txtCodCliente" target="txtcai" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <Events>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtcaiKeyTyped"/>
           </Events>
@@ -255,6 +261,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="nextFocusableComponent" source="txtCodProducto" target="btnBuscarCli" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBuscarCliMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarCliActionPerformed"/>
@@ -269,6 +278,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="nextFocusableComponent" source="txtisv" target="btnBuscarProd" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBuscarProdMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarProdActionPerformed"/>
@@ -379,7 +391,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="90" width="180" height="-1"/>
+              <AbsoluteConstraints x="470" y="90" width="180" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>

@@ -41,6 +41,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1000, 844]"/>
+    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[980, 573]"/>
     </Property>
@@ -109,6 +112,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="Jtf_Id">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="Jtf_Nombre_Empresa" target="Jtf_Id" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Jtf_IdActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Jtf_IdKeyTyped"/>
@@ -139,6 +145,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="Jtf_Nombre_Empresa">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="jtf_Rtn" target="Jtf_Nombre_Empresa" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Jtf_Nombre_EmpresaActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Jtf_Nombre_EmpresaKeyTyped"/>
@@ -150,6 +159,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="Jtf_Direccion">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="Jbt_Guardar" target="Jtf_Direccion" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Jtf_DireccionKeyTyped"/>
       </Events>
@@ -160,6 +172,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="jtf_Rtn">
+      <BindingProperties>
+        <BindingProperty name="nextFocusableComponent" source="Jtf_Direccion" target="jtf_Rtn" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
+      </BindingProperties>
       <Events>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtf_RtnKeyTyped"/>
       </Events>

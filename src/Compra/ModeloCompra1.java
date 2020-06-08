@@ -86,6 +86,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         txtIdcliente1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -162,6 +163,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel8.setText("Nº Factura");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, -1, -1));
 
+        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtcai, org.jdesktop.beansbinding.ObjectProperty.create(), txtserie, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         txtserie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtserieActionPerformed(evt);
@@ -177,6 +181,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("CAI");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtCodCliente, org.jdesktop.beansbinding.ObjectProperty.create(), txtcai, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
 
         txtcai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -244,6 +251,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
         btnBuscarCli.setText("Buscar");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtCodProducto, org.jdesktop.beansbinding.ObjectProperty.create(), btnBuscarCli, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         btnBuscarCli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarCliMouseClicked(evt);
@@ -257,6 +268,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 11, 80, -1));
 
         btnBuscarProd.setText("Buscar");
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtisv, org.jdesktop.beansbinding.ObjectProperty.create(), btnBuscarProd, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        bindingGroup.addBinding(binding);
+
         btnBuscarProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarProdMouseClicked(evt);
@@ -323,7 +338,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtisvKeyTyped(evt);
             }
         });
-        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 180, -1));
+        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
@@ -435,6 +450,8 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 720));
+
+        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -878,6 +895,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprod;
     private javax.swing.JTextField txtserie;
+    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
 }
