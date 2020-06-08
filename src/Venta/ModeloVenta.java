@@ -116,12 +116,12 @@ public class ModeloVenta extends javax.swing.JFrame {
         txtprod = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtisv = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtvendedor = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         txt_vendedor1 = new javax.swing.JTextField();
+        txtisv = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -136,7 +136,6 @@ public class ModeloVenta extends javax.swing.JFrame {
         txtotalapagar = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -177,7 +176,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 txtserieKeyTyped(evt);
             }
         });
-        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 210, 34));
+        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 290, 34));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("CAI");
@@ -188,7 +187,7 @@ public class ModeloVenta extends javax.swing.JFrame {
                 txtcaiKeyTyped(evt);
             }
         });
-        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 210, 30));
+        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 290, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 740, 180));
 
@@ -275,9 +274,9 @@ public class ModeloVenta extends javax.swing.JFrame {
                 btnAddprecioActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 80, 20));
+        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 80, -1));
 
-        spinCant.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
+        spinCant.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
         spinCant.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spinCantStateChanged(evt);
@@ -286,11 +285,6 @@ public class ModeloVenta extends javax.swing.JFrame {
         jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 119, 30));
 
         txtcli.setEditable(false);
-        txtcli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcliActionPerformed(evt);
-            }
-        });
         jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 12, 178, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -307,18 +301,6 @@ public class ModeloVenta extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("CLIENTE:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
-
-        txtisv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtisvActionPerformed(evt);
-            }
-        });
-        txtisv.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtisvKeyTyped(evt);
-            }
-        });
-        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 180, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("COD:VENDE:");
@@ -363,6 +345,9 @@ public class ModeloVenta extends javax.swing.JFrame {
 
         txt_vendedor1.setEditable(false);
         jPanel2.add(txt_vendedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 180, -1));
+
+        txtisv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "15", "18" }));
+        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
@@ -461,14 +446,6 @@ public class ModeloVenta extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Total ");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
-
-        jButton6.setText("Calcular Factura");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
 
@@ -597,6 +574,7 @@ public class ModeloVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void spinCantStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinCantStateChanged
+        
         double role = Integer.parseInt(spinCant.getValue().toString());
         double prec = Integer.parseInt(txtprecio.getText());
         
@@ -604,7 +582,7 @@ public class ModeloVenta extends javax.swing.JFrame {
         
         
         double pre = Integer.parseInt(txtprecio.getText().toString());
-        double princi = Integer.parseInt(txtisv.getText().toString());
+        double princi = Integer.parseInt(txtisv.getSelectedItem().toString());
         
         
         double secon = princi *0.01;
@@ -619,16 +597,21 @@ public class ModeloVenta extends javax.swing.JFrame {
         double tot = role * to;
 
         subt.setText(String.valueOf(Math.round(tot)));
+        
+        
     }//GEN-LAST:event_spinCantStateChanged
 
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
         // TODO add your handling code here:
+        
+        
 if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
         txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")){
       JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
 }else{
-    if(txtserie.getText().length() >= 10){
-            if(txtcai.getText().length() >= 15){
+    if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
+                    || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
+                    || spinCant.getValue().toString().startsWith("9")){
         DefaultTableModel model = new DefaultTableModel();
 
         model = (DefaultTableModel) jTable2.getModel();
@@ -641,26 +624,32 @@ if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCo
             subt.getText()
 
         });
-        
-        txtserie.setEnabled(false);
-        txtcai.setEnabled(false);
 
         txtCodProducto.setText("");
 
         txtprod.setText("");
-}else{
-           JOptionPane.showMessageDialog(null, "El numero del Cai debe ser de 15"); 
+        }else{
+            JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
             }
-    }else{
-        JOptionPane.showMessageDialog(null, "El numero de factura debe ser de 10 digitos");
-    }
 }
+ double sum = 0;
+
+        for (int i = 0; i < jTable2.getRowCount(); i++) {
+
+            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 4).toString());
+
+        }
+        Math.round(sum);
+        
+        txtotalapagar.setText(String.valueOf(sum));
+        
+        spinCant.setValue(0);
     }//GEN-LAST:event_btnAddprecioActionPerformed
 void limpiar(){
 txtserie.setText("");
         txtCodCliente.setText("");
         txtvendedor.setText("");
-        txtisv.setText("");
+        txtisv.setSelectedItem("0");
         txtcai.setText("");
         subt.setText("");
         spinCant.setValue("");
@@ -668,7 +657,7 @@ txtserie.setText("");
         txtcli.setText("");
         txtprod.setText("");
         txt_vendedor1.setText("");
-        txtisv.setText("");
+        txtisv.setSelectedItem("0");
         txtcli.setText("");
         txtprecio.setText("");
 }
@@ -683,7 +672,7 @@ txtserie.setText("");
             pst.setString(1, txtserie.getText());
             pst.setString(2, txtCodCliente.getText());
             pst.setString(3, txtvendedor.getText());
-            pst.setString(4, txtisv.getText());
+            pst.setString(4, txtisv.getSelectedItem().toString());
             pst.setString(5, txtcai.getText());
             pst.setString(6, txtotalapagar.getText());
 
@@ -714,10 +703,6 @@ txtserie.setText("");
         Math.round(sum);
         txtotalapagar.setText(Integer.toString((int) sum));
     }//GEN-LAST:event_btnventaActionPerformed
-
-    private void txtisvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtisvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtisvActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -821,11 +806,6 @@ txtserie.setText("");
         if (c < '0' || c > '9') {
             evt.consume();
         }
-        if (txtserie.getText().length() >= 10) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "El numero de factura debe contener 10 digitos");
-        }
     }//GEN-LAST:event_txtserieKeyTyped
 
     private void txtcaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcaiKeyTyped
@@ -833,49 +813,8 @@ char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
             evt.consume();
-        } 
-         if (txtcai.getText().length() >= 15) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "El numero de cai debe contener 15 digitos");
-        }// TODO add your handling code here:
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_txtcaiKeyTyped
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-           double sum = 0;
-
-        for (int i = 0; i < jTable2.getRowCount(); i++) {
-
-            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 4).toString());
-
-        }
-        Math.round(sum);
-        
-        txtotalapagar.setText(String.valueOf(sum));
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void txtcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtcliActionPerformed
-
-    private void txtisvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtisvKeyTyped
-        // TODO add your handling code here:
-         char c = evt.getKeyChar();
-
-        if (c < '0' || c > '9') {
-            evt.consume();
-            JOptionPane.showMessageDialog(null,"En el campo ISV solo puede poner numeros");
-            
-            
-        }
-        
-        if (txtisv.getText().length() >= 2) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "El campo ISV solo puede poner 2 digitos");
-        }
-    }//GEN-LAST:event_txtisvKeyTyped
 
     /**
      * @param args the command line arguments
@@ -921,7 +860,6 @@ char c = evt.getKeyChar();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -957,7 +895,7 @@ char c = evt.getKeyChar();
     private javax.swing.JTextField txt_vendedor1;
     private javax.swing.JTextField txtcai;
     private javax.swing.JTextField txtcli;
-    private javax.swing.JTextField txtisv;
+    private javax.swing.JComboBox txtisv;
     private javax.swing.JTextField txtotalapagar;
     private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprod;

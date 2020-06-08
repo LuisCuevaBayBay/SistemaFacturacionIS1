@@ -86,7 +86,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         txtIdcliente1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
@@ -117,7 +116,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         txtprod = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtisv = new javax.swing.JTextField();
+        txtisv = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -132,7 +131,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         txtotalapagar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -163,9 +161,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel8.setText("Nº Factura");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, -1, -1));
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtcai, org.jdesktop.beansbinding.ObjectProperty.create(), txtserie, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         txtserie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtserieActionPerformed(evt);
@@ -176,21 +171,18 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtserieKeyTyped(evt);
             }
         });
-        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 250, 34));
+        jPanel1.add(txtserie, new org.netbeans.lib.awtextra.AbsoluteConstraints(427, 90, 300, 34));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("CAI");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtCodCliente, org.jdesktop.beansbinding.ObjectProperty.create(), txtcai, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
 
         txtcai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcaiKeyTyped(evt);
             }
         });
-        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 250, 30));
+        jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 300, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 740, 180));
 
@@ -239,11 +231,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
         txtprecio.setEditable(false);
-        txtprecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtprecioActionPerformed(evt);
-            }
-        });
         jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 119, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -251,10 +238,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
         btnBuscarCli.setText("Buscar");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtCodProducto, org.jdesktop.beansbinding.ObjectProperty.create(), btnBuscarCli, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         btnBuscarCli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarCliMouseClicked(evt);
@@ -268,10 +251,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 11, 80, -1));
 
         btnBuscarProd.setText("Buscar");
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txtisv, org.jdesktop.beansbinding.ObjectProperty.create(), btnBuscarProd, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         btnBuscarProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnBuscarProdMouseClicked(evt);
@@ -292,10 +271,15 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         });
         jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 80, -1));
 
-        spinCant.setModel(new javax.swing.SpinnerNumberModel(1, 1, 9, 1));
+        spinCant.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
         spinCant.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spinCantStateChanged(evt);
+            }
+        });
+        spinCant.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                spinCantPropertyChange(evt);
             }
         });
         jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 119, 30));
@@ -313,11 +297,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
 
         txtprod.setEditable(false);
-        txtprod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtprodActionPerformed(evt);
-            }
-        });
         jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 180, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -328,17 +307,8 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel11.setText("PROVEEDOR:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
 
-        txtisv.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtisvActionPerformed(evt);
-            }
-        });
-        txtisv.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtisvKeyTyped(evt);
-            }
-        });
-        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 180, -1));
+        txtisv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "15", "18" }));
+        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
@@ -438,20 +408,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel3.setText("Total a Pagar");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
-        jButton2.setText("Calcular Factura");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
-
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 720));
-
-        bindingGroup.bind();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -544,7 +504,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         double prec = Integer.parseInt(txtprecio.getText());
 
         double pre = Integer.parseInt(txtprecio.getText().toString());
-        double princi = Integer.parseInt(txtisv.getText().toString());
+        double princi = Integer.parseInt(txtisv.getSelectedItem().toString());
 
         double secon = princi * 0.01;
         double terc = secon * pre;
@@ -553,18 +513,17 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         double tot = role * to;
 
         subt.setText(String.valueOf(Math.round(tot)));
-        
-        
+
+
     }//GEN-LAST:event_spinCantStateChanged
 
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
-        if (txtserie.getText().equals("") || txtCodProducto.getText().equals("") ||  txtprecio.getText().equals("") || subt.getText().equals("")) {
+        if (txtserie.getText().equals("") || txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
-            
-            
         } else {
-        if(txtserie.getText().length() >= 10){
-            if(txtcai.getText().length() >= 15){
+            if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
+                    || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
+                    || spinCant.getValue().toString().startsWith("9")){
             DefaultTableModel model = new DefaultTableModel();
 
             model = (DefaultTableModel) jTable1.getModel();
@@ -578,58 +537,44 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
             });
 
-            txtserie.setEnabled(false);
-            txtcai.setEnabled(false);
             txtCodProducto.setText("");
 
             txtprod.setText("");
-            }else{
-                JOptionPane.showMessageDialog(null, "El numero del Cai debe ser de 15");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "El Numero de Factura debe ser de 10");
-        }
-        }
             
-                
+            }else{
+            JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+            }
+        }
 
-       
-       
+        double sum = 0;
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+
+            sum = sum + Integer.parseInt(jTable1.getValueAt(i, 4).toString());
+
+        }
+        Math.round(sum);
+
+        txtotalapagar.setText(String.valueOf(sum));
+        
+        spinCant.setValue(0);
+
 
     }//GEN-LAST:event_btnAddprecioActionPerformed
-    void limpiarTabla(){
-       
-            DefaultTableModel modelo = (DefaultTableModel)jTable1.getModel();
-            int filas = jTable1.getRowCount()-1;
-            for(int i = 0;i<jTable1.getRowCount();i++){
-                modelo.removeRow(i);
-                i-=1;
-            }
-        
-            jTable1.setModel(new DefaultTableModel());
-    }
     void limpiar() {
         txtserie.setText("");
         txtCodCliente.setText("");
-        txtprecio.setText("");
-        txtcai.setText("");
-        txtcli.setText("");
-        txtisv.setText(null);
-        txtprod.setText(null);
-        
-        spinCant.setValue(0);
-        txtCodProducto.setText(null);
 
-       
+        txtisv.setSelectedItem("0");
+        txtcai.setText("");
         subt.setText("");
         spinCant.setValue("");
         txtprecio.setText(null);
         txtcli.setText("");
         txtprod.setText("");
 
-        txtisv.setText("");
         txtcli.setText("");
-        
+
     }
 
     void sumar() {
@@ -652,7 +597,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             PreparedStatement pst = cn.prepareStatement("INSERT INTO compra(Idcompra,Proveedor_IdProveedor,isv,cai,monto) VALUES(?,?,?,?,?)");
             pst.setString(1, txtserie.getText());
             pst.setString(2, txtCodCliente.getText());
-            pst.setString(3, txtisv.getText());
+            pst.setString(3, txtisv.getSelectedItem().toString());
             pst.setString(4, txtcai.getText());
             pst.setString(5, txtotalapagar.getText());
 
@@ -661,7 +606,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
                 sumar();
                 limpiar();
-                limpiarTabla();
                 mostrardatos("");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al agregar");
@@ -673,10 +617,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnventaActionPerformed
-
-    private void txtisvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtisvActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtisvActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -730,9 +670,19 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-       limpiar();
-       limpiarTabla();
-       
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        int fila = jTable1.getSelectedRow();
+        String cod = "";
+        cod = jTable1.getValueAt(fila, 1).toString();
+        try {
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
+            mostrardatos("");// TODO add your handling code here:
+        } catch (Exception e) {
+        }
+        limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtCodProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProductoActionPerformed
@@ -750,12 +700,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         if (c < '0' || c > '9') {
             evt.consume();
         }
-        
-        if (txtserie.getText().length() >= 10) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "El numero de factura debe contener 10 digitos");
-        }
     }//GEN-LAST:event_txtserieKeyTyped
 
     private void txtcaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcaiKeyTyped
@@ -763,56 +707,16 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         if (c < '0' || c > '9') {
             evt.consume();
-        }    
-        if (txtcai.getText().length() >= 15) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "El numero de cai debe contener 15 digitos");
-        }// TODO add your handling code here:
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_txtcaiKeyTyped
 
     private void txtcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcliActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         double sum = 0;
-
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
-
-            sum = sum + Integer.parseInt(jTable1.getValueAt(i, 4).toString());
-
-        }
-        Math.round(sum);
-        
-        txtotalapagar.setText(String.valueOf(sum));
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txtprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecioActionPerformed
+    private void spinCantPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spinCantPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtprecioActionPerformed
-
-    private void txtprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprodActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtprodActionPerformed
-
-    private void txtisvKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtisvKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (c < '0' || c > '9') {
-            evt.consume();
-            JOptionPane.showMessageDialog(null,"En el campo ISV solo puede poner numeros");
-            
-            
-        }
-        
-        if (txtisv.getText().length() >= 2) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "El campo ISV solo puede poner 2 digitos");
-        }
-    }//GEN-LAST:event_txtisvKeyTyped
+    }//GEN-LAST:event_spinCantPropertyChange
 
     /**
      * @param args the command line arguments
@@ -854,7 +758,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarProd;
     private javax.swing.JButton btnventa;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -890,12 +793,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JTextField txtIdcliente1;
     private javax.swing.JTextField txtcai;
     private javax.swing.JTextField txtcli;
-    private javax.swing.JTextField txtisv;
+    private javax.swing.JComboBox txtisv;
     private javax.swing.JTextField txtotalapagar;
     private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprod;
     private javax.swing.JTextField txtserie;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 
 }

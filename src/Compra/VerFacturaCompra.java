@@ -38,9 +38,9 @@ void mostrardatos(String valor) {
 
         modelo.addColumn("No. Factura");
         modelo.addColumn("Proveedor ID");
+        modelo.addColumn("Cai");
+        modelo.addColumn("monto");        
         modelo.addColumn("ISV");
-        modelo.addColumn("CAI");        
-        modelo.addColumn("Monto");
 
         
         
@@ -115,7 +115,7 @@ void mostrardatos(String valor) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 317, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, -1, -1));
 
         jButton3.setText("Atras");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -123,7 +123,7 @@ void mostrardatos(String valor) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 351, 69, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 69, -1));
 
         jButton4.setText("Salir");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +131,7 @@ void mostrardatos(String valor) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 392, 69, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 400, 69, -1));
 
         jLabel1.setText("Factura Encabezado");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(311, 11, -1, -1));

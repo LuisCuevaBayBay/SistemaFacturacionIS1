@@ -39,9 +39,9 @@ void mostrardatos(String valor) {
         modelo.addColumn("No. Factura");
         modelo.addColumn("Cliente_ID");
         modelo.addColumn("Vendedor_ID");
+        modelo.addColumn("CAI");
+        modelo.addColumn("Monto");        
         modelo.addColumn("ISV");
-        modelo.addColumn("CAI");        
-        modelo.addColumn("Monto");
 
         
         
