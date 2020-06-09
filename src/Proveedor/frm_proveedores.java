@@ -592,9 +592,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
-            evt.consume();
-        }
+       
 
         if (Jtf_Direccion.getText().length() >= 60) {
             evt.consume();
