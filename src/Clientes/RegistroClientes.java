@@ -87,7 +87,6 @@ public class RegistroClientes extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         jPopupMenu2 = new javax.swing.JPopupMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -147,9 +146,6 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel3.setText("Nombre Cliente");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
 
-        org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_apellido_cli, org.jdesktop.beansbinding.ObjectProperty.create(), txt_nombre_cli, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         txt_nombre_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_nombre_cliActionPerformed(evt);
@@ -165,9 +161,6 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel4.setText("RTN");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_num_id_cli, org.jdesktop.beansbinding.ObjectProperty.create(), txt_rtn_cliente, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         txt_rtn_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_rtn_clienteActionPerformed(evt);
@@ -182,9 +175,6 @@ public class RegistroClientes extends javax.swing.JFrame {
 
         jLabel5.setText("ID Cliente");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_nombre_cli, org.jdesktop.beansbinding.ObjectProperty.create(), txt_cli_id, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
 
         txt_cli_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,9 +233,6 @@ public class RegistroClientes extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 622, 117));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_rtn_cliente, org.jdesktop.beansbinding.ObjectProperty.create(), txt_apellido_cli, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         txt_apellido_cli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_apellido_cliKeyTyped(evt);
@@ -289,9 +276,6 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel10.setText("Numero de Identidad");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_dir_cli, org.jdesktop.beansbinding.ObjectProperty.create(), txt_num_id_cli, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
-
         txt_num_id_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_num_id_cliActionPerformed(evt);
@@ -303,9 +287,6 @@ public class RegistroClientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_num_id_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 160, 30));
-
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, btn_guardar, org.jdesktop.beansbinding.ObjectProperty.create(), txt_dir_cli, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
-        bindingGroup.addBinding(binding);
 
         txt_dir_cli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -399,8 +380,6 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
 
-        bindingGroup.bind();
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -421,8 +400,6 @@ public class RegistroClientes extends javax.swing.JFrame {
        
        try{
            if(existeUsuario(txt_cli_id.getText())==0){
-           
-           
             if(txt_num_id_cli.getText().length() >= 13){
                     if(txt_rtn_cliente.getText().length() >=14){
            
@@ -533,13 +510,11 @@ txt_dir_cli.setText("");
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
        ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tablaclientes.getSelectedRow();
         String cod = "";
         cod = tablaclientes.getValueAt(fila, 0).toString();
-        if (i == 0) { 
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM cliente WHERE Cli_id='" + cod + "'");
             int a = pst.executeUpdate();
@@ -552,10 +527,8 @@ txt_dir_cli.setText("");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
         }
        nuevo();
-        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -608,7 +581,7 @@ txt_dir_cli.setText("");
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
         
         
-        if(txt_nombre_cli.getText().length() >= 20){
+        if(txt_nombre_cli.getText().length() >= 40){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -620,7 +593,7 @@ txt_dir_cli.setText("");
         
         if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
         
-        if(txt_apellido_cli.getText().length() >= 20){
+        if(txt_apellido_cli.getText().length() >= 40){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -785,6 +758,5 @@ txt_dir_cli.setText("");
     private javax.swing.JTextField txt_nombre_cli;
     private javax.swing.JTextField txt_num_id_cli;
     private javax.swing.JTextField txt_rtn_cliente;
-    private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

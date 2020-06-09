@@ -633,7 +633,8 @@ public class frm_proveedores extends javax.swing.JFrame {
         } else {
 
             try {
-
+                
+                if(Jtf_Id.getText().length() >= 5){    
                 if (existeUsuario(Jtf_Id.getText()) == 0) {
                     if (jtf_Rtn.getText().length() >= 14) {
                         if (Jtf_Nombre_Empresa.getText().length() >= 3) {
@@ -666,8 +667,11 @@ public class frm_proveedores extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 }
+                }else{
+                    JOptionPane.showMessageDialog(null,"El Id no debe ser menor de 5 espacios");
+                }
             } catch (Exception e) {
-
+                    
             }
         }
     }//GEN-LAST:event_Jbt_GuardarActionPerformed
