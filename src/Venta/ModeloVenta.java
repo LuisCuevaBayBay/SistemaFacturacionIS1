@@ -56,7 +56,7 @@ public class ModeloVenta extends javax.swing.JFrame {
         if (valor.equals("")) {
             sql = "SELECT * FROM detalleventa";
         } else {
-            sql = "SELECT * FROM detalleventa WHERE (IdDetalleVenta='" + valor + "'OR producto_id ='"+ valor + "'OR cantidad ='" + valor + "'OR precio='" + valor + "')";
+            sql = "SELECT * FROM detalleventa WHERE (IdDetalleVenta='" + valor + "'OR producto_id ='" + valor + "'OR cantidad ='" + valor + "'OR precio='" + valor + "')";
         }
 
         String[] datos = new String[4];
@@ -68,7 +68,6 @@ public class ModeloVenta extends javax.swing.JFrame {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-               
 
                 modelo.addRow(datos);
             }
@@ -466,7 +465,10 @@ public class ModeloVenta extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea salirr?");
+        if (i == 0) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBuscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdActionPerformed
@@ -574,65 +576,71 @@ public class ModeloVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void spinCantStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinCantStateChanged
-        
+
         double role = Integer.parseInt(spinCant.getValue().toString());
         double prec = Integer.parseInt(txtprecio.getText());
-        
-        
-        
-        
+
         double pre = Integer.parseInt(txtprecio.getText().toString());
         double princi = Integer.parseInt(txtisv.getSelectedItem().toString());
-        
-        
-        double secon = princi *0.01;
-            double terc = secon * pre;
-            double to = terc  + pre;
-           
 
-      
-
-        
+        double secon = princi * 0.01;
+        double terc = secon * pre;
+        double to = terc + pre;
 
         double tot = role * to;
 
         subt.setText(String.valueOf(Math.round(tot)));
-        
-        
+
+
     }//GEN-LAST:event_spinCantStateChanged
 
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
         // TODO add your handling code here:
-        
-        
-if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
-        txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")){
-      JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
-}else{
-    if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
-                    || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
-                    || spinCant.getValue().toString().startsWith("9")){
-        DefaultTableModel model = new DefaultTableModel();
 
-        model = (DefaultTableModel) jTable2.getModel();
+        if (txtserie.getText().equals("") || txtCodProducto.getText().equals("") || txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")
+                || txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
+        } else {
+            if (txtcai.getText().length() >= 20) {
+                if (txtserie.getText().length() >= 10) {
+                    if(existeFactura(txtserie.getText())== 0){
+                        if(existeCai(txtcai.getText())== 0){
+                    if (spinCant.getValue().toString().startsWith("1") || spinCant.getValue().toString().startsWith("2") || spinCant.getValue().toString().startsWith("3") || spinCant.getValue().toString().startsWith("4")
+                            || spinCant.getValue().toString().startsWith("5") || spinCant.getValue().toString().startsWith("6") || spinCant.getValue().toString().startsWith("7") || spinCant.getValue().toString().startsWith("8")
+                            || spinCant.getValue().toString().startsWith("9")) {
+                        DefaultTableModel model = new DefaultTableModel();
 
-        model.addRow(new Object[]{
-            txtserie.getText(),
-            txtCodProducto.getText(),
-            spinCant.getValue().toString(),
-            txtprecio.getText(),
-            subt.getText()
+                        model = (DefaultTableModel) jTable2.getModel();
 
-        });
+                        model.addRow(new Object[]{
+                            txtserie.getText(),
+                            txtCodProducto.getText(),
+                            spinCant.getValue().toString(),
+                            txtprecio.getText(),
+                            subt.getText()
 
-        txtCodProducto.setText("");
+                        });
 
-        txtprod.setText("");
-        }else{
-            JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+                        txtCodProducto.setText("");
+
+                        txtprod.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+                    }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "El numero de CAI esta repetido ingrese otro");
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"El numero de factura ya existe, ingrese otro");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El numero de factura debe ser de 10");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El numero del cai debe ser mayor que 32");
             }
-}
- double sum = 0;
+        }
+        double sum = 0;
 
         for (int i = 0; i < jTable2.getRowCount(); i++) {
 
@@ -640,13 +648,73 @@ if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCo
 
         }
         Math.round(sum);
-        
+
         txtotalapagar.setText(String.valueOf(sum));
-        
+
         spinCant.setValue(0);
     }//GEN-LAST:event_btnAddprecioActionPerformed
-void limpiar(){
-txtserie.setText("");
+    public int existeFactura(String usuario) {
+
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection con = cc.getConnection();
+
+        String sql = "SELECT count(Idventas) FROM ventas WHERE Idventas = ?";
+
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+
+            return 1;
+
+        }
+        return 1;
+
+    }
+
+    public int existeCai(String usuario) {
+
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection con = cc.getConnection();
+
+        String sql = "SELECT count(cai) FROM ventas WHERE cai = ?";
+
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+
+            return 1;
+
+        }
+        return 1;
+
+    }
+
+    void limpiar() {
+        txtserie.setText("");
         txtCodCliente.setText("");
         txtvendedor.setText("");
         txtisv.setSelectedItem("0");
@@ -660,7 +728,7 @@ txtserie.setText("");
         txtisv.setSelectedItem("0");
         txtcli.setText("");
         txtprecio.setText("");
-}
+    }
     private void btnventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnventaActionPerformed
 
         ConexionSQL cc = new ConexionSQL();
@@ -688,16 +756,12 @@ txtserie.setText("");
         } catch (Exception e) {
 
         }
-       
 
         double sum = 0;
-        
 
         for (int i = 0; i < jTable2.getRowCount(); i++) {
-            
-         
 
-            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 5).toString()) ;
+            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 5).toString());
 
         }
         Math.round(sum);
@@ -778,10 +842,10 @@ txtserie.setText("");
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
             pst.executeUpdate();
-            
+
             mostrardatos("");// TODO add your handling code here:
             JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
-            
+
         } catch (Exception e) {
         }
         limpiar();
@@ -806,14 +870,26 @@ txtserie.setText("");
         if (c < '0' || c > '9') {
             evt.consume();
         }
+
+        if (txtserie.getText().length() >= 10) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "El numero de factura no debe ser mayor de 10");
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txtserieKeyTyped
 
     private void txtcaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcaiKeyTyped
-char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
             evt.consume();
         }        // TODO add your handling code here:
+
+        if (txtcai.getText().length() >= 20) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "El numero del cai no debe ser mayor de 32");
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txtcaiKeyTyped
 
     /**

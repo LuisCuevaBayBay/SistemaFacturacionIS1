@@ -427,7 +427,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+       int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea salirr?");
+        if (i == 0) { 
         System.exit(0);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBuscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdActionPerformed
@@ -521,28 +525,44 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         if (txtserie.getText().equals("") || txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
         } else {
-            if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
-                    || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
-                    || spinCant.getValue().toString().startsWith("9")){
-            DefaultTableModel model = new DefaultTableModel();
+            if (txtcai.getText().length() >= 32) {
+                if (txtserie.getText().length() >= 10) {
+                    if (existeFactura(txtserie.getText()) == 0) {
+                        if (existeCai(txtcai.getText()) == 0) {
+                            if (spinCant.getValue().toString().startsWith("1") || spinCant.getValue().toString().startsWith("2") || spinCant.getValue().toString().startsWith("3") || spinCant.getValue().toString().startsWith("4")
+                                    || spinCant.getValue().toString().startsWith("5") || spinCant.getValue().toString().startsWith("6") || spinCant.getValue().toString().startsWith("7") || spinCant.getValue().toString().startsWith("8")
+                                    || spinCant.getValue().toString().startsWith("9")) {
+                                DefaultTableModel model = new DefaultTableModel();
 
-            model = (DefaultTableModel) jTable1.getModel();
+                                model = (DefaultTableModel) jTable1.getModel();
 
-            model.addRow(new Object[]{
-                txtserie.getText(),
-                txtCodProducto.getText(),
-                spinCant.getValue().toString(),
-                txtprecio.getText(),
-                subt.getText()
+                                model.addRow(new Object[]{
+                                    txtserie.getText(),
+                                    txtCodProducto.getText(),
+                                    spinCant.getValue().toString(),
+                                    txtprecio.getText(),
+                                    subt.getText()
 
-            });
+                                });
 
-            txtCodProducto.setText("");
+                                txtCodProducto.setText("");
 
-            txtprod.setText("");
-            
-            }else{
-            JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+                                txtprod.setText("");
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El numero de Cai ya existe, ingresa otro");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El numero de Factura ya existe, ingresa otro");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "El numero de factura no puede ser de menos de 10 digitos");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El Cai no puede ser menor de 32 digitos");
             }
         }
 
@@ -556,11 +576,72 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         Math.round(sum);
 
         txtotalapagar.setText(String.valueOf(sum));
-        
+
         spinCant.setValue(0);
 
 
     }//GEN-LAST:event_btnAddprecioActionPerformed
+
+    public int existeFactura(String usuario) {
+
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection con = cc.getConnection();
+
+        String sql = "SELECT count(Idcompra) FROM compra WHERE Idcompra = ?";
+
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+
+            return 1;
+
+        }
+        return 1;
+
+    }
+
+    public int existeCai(String usuario) {
+
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection con = cc.getConnection();
+
+        String sql = "SELECT count(cai) FROM compra WHERE cai = ?";
+
+        try {
+
+            ps = con.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+
+            return 1;
+
+        }
+        return 1;
+
+    }
+
     void limpiar() {
         txtserie.setText("");
         txtCodCliente.setText("");
@@ -700,6 +781,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         if (c < '0' || c > '9') {
             evt.consume();
         }
+        if (txtserie.getText().length() >= 10) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "El numero de factura no debe ser mayor de 10");
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txtserieKeyTyped
 
     private void txtcaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcaiKeyTyped
@@ -708,6 +794,12 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         if (c < '0' || c > '9') {
             evt.consume();
         }        // TODO add your handling code here:
+
+        if (txtcai.getText().length() >= 32) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "El numero del cai no debe ser mayor de 32");
+            Toolkit.getDefaultToolkit().beep();
+        }
     }//GEN-LAST:event_txtcaiKeyTyped
 
     private void txtcliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcliActionPerformed

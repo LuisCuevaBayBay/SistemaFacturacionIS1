@@ -822,7 +822,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void salir_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir_btnActionPerformed
         // TODO add your handling code here:
+       int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea salirr?");
+        if (i == 0) { 
         System.exit(0);
+        }
 
     }//GEN-LAST:event_salir_btnActionPerformed
 
