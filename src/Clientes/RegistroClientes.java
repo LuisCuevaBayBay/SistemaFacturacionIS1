@@ -749,7 +749,7 @@ txt_dir_cli.setText("");
 
     private void txt_cli_idMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_cli_idMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "PRESIONA AHI DE NUEVO Y TE MATO A PIJA PERRO JUCO >:v");
+        JOptionPane.showMessageDialog(null, "Felicidades por descubrir un easter egg del sistema de facturacion!");
     }//GEN-LAST:event_txt_cli_idMouseClicked
 
     /**

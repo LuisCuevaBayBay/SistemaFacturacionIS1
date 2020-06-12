@@ -559,8 +559,23 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         
         spinCant.setValue(0);
 
-
+        
     }//GEN-LAST:event_btnAddprecioActionPerformed
+    void detallefactura(){
+        for(int j = 0;j<jTable1.getRowCount();j++){
+            ConexionSQL cc = new ConexionSQL();
+            Connection cn = cc.getConnection();
+            
+            try{
+            PreparedStatement pst = cn.prepareStatement("INSERT INTO detallecompra(Idcompra,compra_idc,producto_id,cantidadcompra,preciocompra) VALUES(NULL,?,?,?,?)");
+            pst.setString(1, jTable1.getValueAt(j, 0).toString());
+            pst.setString(2, jTable1.getValueAt(j, 1).toString());
+            }catch(Exception e){
+            }
+        }
+    }
+    
+    
     void limpiar() {
         txtserie.setText("");
         txtCodCliente.setText("");

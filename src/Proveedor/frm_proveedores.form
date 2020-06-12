@@ -109,6 +109,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="Jtf_Id">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <BindingProperties>
         <BindingProperty name="nextFocusableComponent" source="Jtf_Nombre_Empresa" target="Jtf_Id" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
       </BindingProperties>

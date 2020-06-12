@@ -194,6 +194,8 @@ public class frm_proveedores extends javax.swing.JFrame {
         jLabel5.setText("RTN");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
+        Jtf_Id.setEditable(false);
+
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Jtf_Nombre_Empresa, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Id, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
@@ -626,24 +628,24 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         Connection cn = cc.getConnection();
 
-        if (Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
+        if (Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
                 || Jtf_Direccion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos que estan vacios. No pueden quedar asi ");
         } else {
 
             try {
                 
-                if(Jtf_Id.getText().length() >= 5){    
+                  
                 if (existeUsuario(Jtf_Id.getText()) == 0) {
                     if (jtf_Rtn.getText().length() >= 14) {
                         if (Jtf_Nombre_Empresa.getText().length() >= 3) {
                             if (jtf_Rtn.getText().startsWith("0") || jtf_Rtn.getText().startsWith("1")) {
 
-                                PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor(Empresa_id,Nombre_Empresa,Direccion_Empresa,rtn_empresa) values(?,?,?,?)");
-                                pst.setString(1, Jtf_Id.getText());
-                                pst.setString(2, Jtf_Nombre_Empresa.getText());
-                                pst.setString(3, Jtf_Direccion.getText());
-                                pst.setString(4, jtf_Rtn.getText());
+                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `proveedor` (`Empresa_id`, `Nombre_Empresa`, `Direccion_Empresa`, `rtn_empresa`, `contacto`) VALUES (NULL, ?, ?, ?, NULL)");
+                                
+                                pst.setString(1, Jtf_Nombre_Empresa.getText());
+                                pst.setString(2, Jtf_Direccion.getText());
+                                pst.setString(3, jtf_Rtn.getText());
 
                                 int a = pst.executeUpdate();
 
@@ -666,9 +668,8 @@ public class frm_proveedores extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
                 }
-                }else{
-                    JOptionPane.showMessageDialog(null,"El Id no debe ser menor de 5 espacios");
-                }
+               
+                
             } catch (Exception e) {
                     
             }
