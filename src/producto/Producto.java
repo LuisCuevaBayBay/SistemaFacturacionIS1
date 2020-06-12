@@ -6,10 +6,12 @@
 package producto;
 
 import Clientes.RegistroClientes;
+import Compra.ModeloCompra1;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
 
 import Proveedor.frm_proveedores;
+import Venta.ModeloVenta;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -561,12 +563,16 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-
+        ModeloCompra1 mc = new ModeloCompra1();
+        mc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-
+        ModeloVenta mv = new ModeloVenta();
+        mv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed

@@ -148,7 +148,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         
         String usuario = txt_usuario.getText();
         String pass = txt_pass.getText();
-        String SQL = "SELECT * from vendedor where usuario ='"+usuario+"' and pass='"+pass+"'";
+        String SQL = "SELECT * from vendedor where usuario ='"+usuario+"' and pass=md5('"+pass+"')";
         
         try{
         Statement st = cn.createStatement();

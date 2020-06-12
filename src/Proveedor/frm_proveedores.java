@@ -7,8 +7,10 @@ package Proveedor;
 
 import Clientes.RegistroClientes;
 import Clientes.datos;
+import Compra.ModeloCompra1;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
+import Venta.ModeloVenta;
 
 import contactos.contacto_proveedor.ContactoP;
 import java.awt.Toolkit;
@@ -175,7 +177,6 @@ public class frm_proveedores extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 844));
         setMinimumSize(new java.awt.Dimension(980, 573));
         setUndecorated(true);
         setResizable(false);
@@ -739,12 +740,16 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-
+        ModeloCompra1 mc = new ModeloCompra1();
+        mc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-
+        ModeloVenta mv = new ModeloVenta();
+        mv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed

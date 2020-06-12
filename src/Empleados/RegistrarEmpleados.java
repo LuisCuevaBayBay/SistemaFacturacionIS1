@@ -41,7 +41,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
      * Creates new form RegistrarEmpleados
      */
     Connection conectar = null;
-
+    String SQL="select max(Vendedor_id) from vendedor";
+    
+    
+    
     public RegistrarEmpleados() {
         initComponents();
         mostrardatos("");
@@ -61,6 +64,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         modelo.addColumn("Direccion Empleado");
         modelo.addColumn("Usuario");
         modelo.addColumn("Contraseña");
+        
 
         tablaempleados.setModel(modelo);
         String sql = "";
@@ -213,6 +217,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel3.setText("Apellido Empleado");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
+        id_empleado.setEditable(false);
+
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, nom_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), id_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
@@ -297,7 +303,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 del_empleadoActionPerformed(evt);
             }
         });
-        getContentPane().add(del_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 340, 90, -1));
+        getContentPane().add(del_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 90, -1));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel1.setText("Registro Empleados");
@@ -388,7 +394,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 btn_editarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 90, -1));
+        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 90, -1));
 
         salir_btn.setBackground(new java.awt.Color(0, 153, 204));
         salir_btn.setForeground(new java.awt.Color(255, 255, 255));
@@ -423,7 +429,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 nuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 90, -1));
+        getContentPane().add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 90, 30));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 204));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -466,7 +472,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, 90, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 90, -1));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_pass, org.jdesktop.beansbinding.ObjectProperty.create(), txt_usuario, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -568,19 +574,64 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     }//GEN-LAST:event_num_id_empleaActionPerformed
 
-    public void id_incrementable() {
-        int id = 1;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-    }
+    
+    
+    
+     void numeros()
+     {
+      
+         ConexionSQL cc = new ConexionSQL();
 
+        Connection cn = cc.getConnection();
+         int j;
+        int cont=1;
+        String num="";
+        String c="";
+        
+       // String SQL="select count(*) from factura";
+        //String SQL="SELECT MAX(cod_emp) AS cod_emp FROM empleado";
+        //String SQL="SELECT @@identity AS ID";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs=st.executeQuery(SQL);
+            if(rs.next())
+            {              
+                 c=rs.getString(1);
+            }
+            
+           
+            if(c==null){
+                id_empleado.setText(SQL +1);
+            }
+            else{
+                 j=Integer.parseInt(c);
+                 GenerarNumero gen= new GenerarNumero();
+                 gen.generar(j);
+                 id_empleado.setText(gen.serie());
+                
+            
+            }
+       
+          
+                  
+           
+           
+         
+        } catch (SQLException ex) {
+           
+        }
+     }
+
+    
+    
+    
     private void save_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_empleadoActionPerformed
 
         ConexionSQL cc = new ConexionSQL();
 
         Connection cn = cc.getConnection();
 
-        if (id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
+        if (nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
                 || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
                 || txt_pass.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
@@ -596,15 +647,19 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                     if (apelld_empleado.getText().length() >= 3) {
                                         if (existeId(id_empleado.getText()) == 0) {
                                             if (existeidentidad(num_id_emplea.getText()) == 0) {
-
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO vendedor(Vendedor_id,nombre_empleado,apellido_empleado,num_identidad_empleado,direccion,usuario,pass) VALUES(?,?,?,?,?,?,?)");
-                                                pst.setString(1, id_empleado.getText());
-                                                pst.setString(2, nom_empleado.getText());
-                                                pst.setString(3, apelld_empleado.getText());
-                                                pst.setString(4, num_id_emplea.getText());
-                                                pst.setString(5, dir_empleado.getText());
-                                                pst.setString(6, txt_usuario.getText());
-                                                pst.setString(7, txt_pass.getText());
+                                                 
+                                                
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?))");
+                                                
+                                                
+                                                
+         
+                                                pst.setString(1, nom_empleado.getText());
+                                                pst.setString(2, apelld_empleado.getText());
+                                                pst.setString(3, num_id_emplea.getText());
+                                                pst.setString(4, dir_empleado.getText());
+                                                pst.setString(5, txt_usuario.getText());
+                                                pst.setString(6, txt_pass.getText());
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
@@ -758,8 +813,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
         // TODO add your handling code here:
         nuevo();
-
+        
         desbloquear();
+        
+       
     }//GEN-LAST:event_nuevoActionPerformed
 
     String id = "";
@@ -1019,6 +1076,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void id_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_empleadoActionPerformed
         // TODO add your handling code here:
+        id_empleado.setText(SQL);
         id_empleado.transferFocus();
     }//GEN-LAST:event_id_empleadoActionPerformed
 
