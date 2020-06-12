@@ -249,6 +249,9 @@ public final class Contacto extends javax.swing.JFrame {
         jLabel6.setText("ID Contacto");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 234, -1, -1));
 
+        contacto.setEditable(false);
+        contacto.setBackground(new java.awt.Color(204, 204, 204));
+
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, extension, org.jdesktop.beansbinding.ObjectProperty.create(), contacto, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
@@ -264,7 +267,7 @@ public final class Contacto extends javax.swing.JFrame {
         });
         getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 231, 150, -1));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new javax.swing.JTextPane(), org.jdesktop.beansbinding.ObjectProperty.create(), extension, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, num_telefonico, org.jdesktop.beansbinding.ObjectProperty.create(), extension, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
         extension.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -338,7 +341,7 @@ public final class Contacto extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-        if (contacto.getText().equals("") || extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
+        if ( extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
         } else {
 
@@ -359,12 +362,13 @@ public final class Contacto extends javax.swing.JFrame {
                                                 if (num_telefonico.getText().startsWith("2")) {
                                                     if(num_celular.getText().startsWith("3") || num_celular.getText().startsWith("8") ||num_celular.getText().startsWith("9")){
                                             try {
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO vendedor_contacto(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
-                                                pst.setString(1, contacto.getText());
-                                                pst.setString(2, extension.getText());
-                                                pst.setString(3, num_telefonico.getText());
-                                                pst.setString(5, correos.getText());
-                                                pst.setString(4, num_celular.getText());
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor_contacto` (`ID_Contacto_Proveedor`, `extension`, `num_Telefonica`, `Celular`, `correo`) VALUES(NULL,?,?,?,?)");
+                                                
+                                                pst.setString(1, extension.getText());
+                                                pst.setString(2, num_telefonico.getText());
+                                                pst.setString(3, num_celular.getText());
+                                                pst.setString(4, correos.getText());
+                                                
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {

@@ -195,6 +195,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
 
         Jtf_Id.setEditable(false);
+        Jtf_Id.setBackground(new java.awt.Color(204, 204, 204));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Jtf_Nombre_Empresa, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Id, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);

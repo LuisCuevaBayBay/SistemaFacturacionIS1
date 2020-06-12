@@ -38,6 +38,7 @@ public class ModeloVenta extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mostrardatos("");
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
     }
 
     void mostrardatos(String valor) {
@@ -166,6 +167,8 @@ public class ModeloVenta extends javax.swing.JFrame {
         jLabel8.setText("Nº Factura");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, -1, -1));
 
+        txtserie.setEditable(false);
+        txtserie.setBackground(new java.awt.Color(204, 204, 204));
         txtserie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtserieActionPerformed(evt);
@@ -182,6 +185,8 @@ public class ModeloVenta extends javax.swing.JFrame {
         jLabel15.setText("CAI");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
 
+        txtcai.setEditable(false);
+        txtcai.setBackground(new java.awt.Color(204, 204, 204));
         txtcai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcaiKeyTyped(evt);
@@ -605,7 +610,7 @@ public class ModeloVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-if (txtserie.getText().equals("") || txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
+if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
         txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")){
       JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
 }else{
@@ -668,13 +673,14 @@ txtserie.setText("");
 
         try {
 
-            PreparedStatement pst = cn.prepareStatement("INSERT INTO ventas(IdVentas,Cliente_IdCliente,Vendedor_IdVendedor,isv,cai,monto) VALUES(?,?,?,?,?,?)");
-            pst.setString(1, txtserie.getText());
-            pst.setString(2, txtCodCliente.getText());
-            pst.setString(3, txtvendedor.getText());
-            pst.setString(4, txtisv.getSelectedItem().toString());
-            pst.setString(5, txtcai.getText());
-            pst.setString(6, txtotalapagar.getText());
+            PreparedStatement pst = cn.prepareStatement("INSERT INTO `ventas` (`IdVentas`, `Cliente_IdCliente`, `Vendedor_IdVendedor`, `cai`, `monto`, `isv`) VALUES (NULL, ?, ?, ?, ?, ?)");
+            
+            pst.setString(1, txtCodCliente.getText());
+            pst.setString(2, txtvendedor.getText());
+            pst.setString(3, txtcai.getText());
+            pst.setString(4, txtotalapagar.getText());
+            pst.setString(5, txtisv.getSelectedItem().toString());           
+            
 
             int a = pst.executeUpdate();
             if (a > 0) {
@@ -689,7 +695,7 @@ txtserie.setText("");
 
         }
        
-
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
         double sum = 0;
         
 

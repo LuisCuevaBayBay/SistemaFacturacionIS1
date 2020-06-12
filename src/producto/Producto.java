@@ -131,6 +131,9 @@ public class Producto extends javax.swing.JFrame {
         jLabel3.setText("Precio");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
 
+        id_producto_txt.setEditable(false);
+        id_producto_txt.setBackground(new java.awt.Color(204, 204, 204));
+
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, nom_producto_txt, org.jdesktop.beansbinding.ObjectProperty.create(), id_producto_txt, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
@@ -146,7 +149,7 @@ public class Producto extends javax.swing.JFrame {
         });
         getContentPane().add(id_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 113, 30));
 
-        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, new javax.swing.JTextField(), org.jdesktop.beansbinding.ObjectProperty.create(), nom_producto_txt, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, precio_double, org.jdesktop.beansbinding.ObjectProperty.create(), nom_producto_txt, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
         nom_producto_txt.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -375,22 +378,19 @@ public class Producto extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-        if (id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
+        if (nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
         } else {
             if (precio_double.getText().startsWith("1") || precio_double.getText().startsWith("2") || precio_double.getText().startsWith("3") || precio_double.getText().startsWith("4")
                     || precio_double.getText().startsWith("5") || precio_double.getText().startsWith("6") || precio_double.getText().startsWith("7") || precio_double.getText().startsWith("8")
                     || precio_double.getText().startsWith("9")) {
                 
-                if (id_producto_txt.getText().startsWith("1") || id_producto_txt.getText().startsWith("2") || id_producto_txt.getText().startsWith("3") || id_producto_txt.getText().startsWith("4")
-                    || id_producto_txt.getText().startsWith("5") || id_producto_txt.getText().startsWith("6") || id_producto_txt.getText().startsWith("7") || id_producto_txt.getText().startsWith("8")
-                    || id_producto_txt.getText().startsWith("9")) {
-
+                
                 try {
-                    PreparedStatement pst = cn.prepareStatement("INSERT INTO productos(IdProducto, Nombre, Precio) VALUES(?,?,?)");
-                    pst.setString(1, id_producto_txt.getText());
-                    pst.setString(2, nom_producto_txt.getText());
-                    pst.setString(3, precio_double.getText());
+                    PreparedStatement pst = cn.prepareStatement("INSERT INTO `productos` (`IdProducto`, `Nombre`, `Precio`) VALUES (NULL, ?, ?)");
+                    
+                    pst.setString(1, nom_producto_txt.getText());
+                    pst.setString(2, precio_double.getText());
 
                     int a = pst.executeUpdate();
 
@@ -404,9 +404,7 @@ public class Producto extends javax.swing.JFrame {
                     }
                 } catch (Exception e) {
                 }
-                }else{
-                    JOptionPane.showMessageDialog(null, "El ID no debe de ser 0");
-                }
+                
         }else{
                 JOptionPane.showMessageDialog(null, "El precio no debe de ser 0");
             }

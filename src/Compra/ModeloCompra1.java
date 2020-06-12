@@ -38,6 +38,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         mostrardatos("");
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
     }
 
     void mostrardatos(String valor) {
@@ -161,6 +162,8 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel8.setText("Nº Factura");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, -1, -1));
 
+        txtserie.setEditable(false);
+        txtserie.setBackground(new java.awt.Color(204, 204, 204));
         txtserie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtserieActionPerformed(evt);
@@ -177,6 +180,8 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel15.setText("CAI");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, -1, -1));
 
+        txtcai.setEditable(false);
+        txtcai.setBackground(new java.awt.Color(204, 204, 204));
         txtcai.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtcaiKeyTyped(evt);
@@ -518,7 +523,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     }//GEN-LAST:event_spinCantStateChanged
 
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
-        if (txtserie.getText().equals("") || txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")) {
+        if (txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
         } else {
             if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
@@ -561,7 +566,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btnAddprecioActionPerformed
-    void detallefactura(){
+   /* void detallefactura(){
         for(int j = 0;j<jTable1.getRowCount();j++){
             ConexionSQL cc = new ConexionSQL();
             Connection cn = cc.getConnection();
@@ -573,7 +578,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             }catch(Exception e){
             }
         }
-    }
+    }*/
     
     
     void limpiar() {
@@ -606,15 +611,17 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-
+        
         try {
 
-            PreparedStatement pst = cn.prepareStatement("INSERT INTO compra(Idcompra,Proveedor_IdProveedor,isv,cai,monto) VALUES(?,?,?,?,?)");
-            pst.setString(1, txtserie.getText());
-            pst.setString(2, txtCodCliente.getText());
-            pst.setString(3, txtisv.getSelectedItem().toString());
-            pst.setString(4, txtcai.getText());
-            pst.setString(5, txtotalapagar.getText());
+            PreparedStatement pst = cn.prepareStatement("INSERT INTO `compra` (`Idcompra`, `Proveedor_IdProveedor`, `cai`, `monto`, `isv`) VALUES (NULL, ?, ?, ?, ?)");
+            
+            pst.setString(1, txtCodCliente.getText());
+            pst.setString(2, txtcai.getText());
+            pst.setString(3, txtotalapagar.getText());
+            pst.setString(4, txtisv.getSelectedItem().toString());
+            
+            
 
             int a = pst.executeUpdate();
             if (a > 0) {
@@ -627,9 +634,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-
+            //JOptionPane.showMessageDialog(null, e);
         }
-
+    txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
 
     }//GEN-LAST:event_btnventaActionPerformed
 

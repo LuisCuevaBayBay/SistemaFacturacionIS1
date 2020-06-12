@@ -75,6 +75,12 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="id_producto_txt">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
+      </Properties>
       <BindingProperties>
         <BindingProperty name="nextFocusableComponent" source="nom_producto_txt" target="id_producto_txt" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>
       </BindingProperties>

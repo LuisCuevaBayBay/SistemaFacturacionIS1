@@ -131,16 +131,16 @@ public final class ContactoC extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 11, -1, -1));
 
         jLabel2.setText("Número Telefónico");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, -1, -1));
 
         jLabel3.setText("Extención Numérica");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
 
         jLabel4.setText("Correo Electrónico");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, -1));
 
         jLabel5.setText("Número Celúlar");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -197,7 +197,7 @@ public final class ContactoC extends javax.swing.JFrame {
                 correosKeyTyped(evt);
             }
         });
-        getContentPane().add(correos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 151, -1));
+        getContentPane().add(correos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 151, 30));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jButton1, org.jdesktop.beansbinding.ObjectProperty.create(), num_celular, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -207,7 +207,7 @@ public final class ContactoC extends javax.swing.JFrame {
                 num_celularKeyTyped(evt);
             }
         });
-        getContentPane().add(num_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 370, 108, -1));
+        getContentPane().add(num_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 108, 30));
 
         tabla1.setBackground(new java.awt.Color(0, 0, 153));
         tabla1.setForeground(new java.awt.Color(255, 255, 255));
@@ -243,7 +243,10 @@ public final class ContactoC extends javax.swing.JFrame {
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 69, -1));
 
         jLabel6.setText("ID Contacto");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
+
+        contacto.setEditable(false);
+        contacto.setBackground(new java.awt.Color(204, 204, 204));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, extension, org.jdesktop.beansbinding.ObjectProperty.create(), contacto, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -258,7 +261,7 @@ public final class ContactoC extends javax.swing.JFrame {
                 contactoKeyTyped(evt);
             }
         });
-        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 105, -1));
+        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 105, 30));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, num_telefonico, org.jdesktop.beansbinding.ObjectProperty.create(), extension, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -268,7 +271,7 @@ public final class ContactoC extends javax.swing.JFrame {
                 extensionKeyTyped(evt);
             }
         });
-        getContentPane().add(extension, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 260, 105, -1));
+        getContentPane().add(extension, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 105, 30));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 153));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -313,7 +316,7 @@ public final class ContactoC extends javax.swing.JFrame {
                 num_telefonicoKeyTyped(evt);
             }
         });
-        getContentPane().add(num_telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 100, -1));
+        getContentPane().add(num_telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 100, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
@@ -332,7 +335,7 @@ public final class ContactoC extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-        if (contacto.getText().equals("") || extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
+        if (extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
         } else {
 
@@ -353,12 +356,13 @@ public final class ContactoC extends javax.swing.JFrame {
 
                                             try {
 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO contacto_cliente(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
-                                                pst.setString(1, contacto.getText());
-                                                pst.setString(2, extension.getText());
-                                                pst.setString(3, num_telefonico.getText());
-                                                pst.setString(5, correos.getText());
-                                                pst.setString(4, num_celular.getText());
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `contacto_cliente` (`ID_Contacto_Proveedor`, `extension`, `num_Telefonica`, `Celular`, `correo`) VALUES (NULL, ?, ?, ?, ?)");
+                                                
+                                                pst.setString(1, extension.getText());
+                                                pst.setString(2, num_telefonico.getText());
+                                                pst.setString(3, num_celular.getText());
+                                                pst.setString(4, correos.getText());
+                                                
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {

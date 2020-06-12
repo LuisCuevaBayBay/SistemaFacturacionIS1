@@ -190,6 +190,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
 
         txt_cli_id.setEditable(false);
+        txt_cli_id.setBackground(new java.awt.Color(204, 204, 204));
         txt_cli_id.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_cli_idMouseClicked(evt);

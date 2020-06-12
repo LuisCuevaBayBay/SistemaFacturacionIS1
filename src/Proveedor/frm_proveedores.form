@@ -111,6 +111,9 @@
     <Component class="javax.swing.JTextField" name="Jtf_Id">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="cc" type="rgb"/>
+        </Property>
       </Properties>
       <BindingProperties>
         <BindingProperty name="nextFocusableComponent" source="Jtf_Nombre_Empresa" target="Jtf_Id" targetPath="nextFocusableComponent" updateStrategy="0" immediately="false"/>

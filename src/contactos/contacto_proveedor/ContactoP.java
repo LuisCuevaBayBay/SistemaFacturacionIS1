@@ -33,6 +33,7 @@ public final class ContactoP extends javax.swing.JFrame {
     public ContactoP() {
         initComponents();
         mostrardatos("");
+        this.setLocationRelativeTo(null);
     }
 
     void mostrardatos(String valor) {
@@ -126,6 +127,7 @@ public final class ContactoP extends javax.swing.JFrame {
         jPopupMenu1.add(jMenuItem2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -133,16 +135,16 @@ public final class ContactoP extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 11, -1, -1));
 
         jLabel2.setText("Número Telefónico");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
         jLabel3.setText("Extención Númerica");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, -1, -1));
 
         jLabel4.setText("Correo Electrónico");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
 
         jLabel5.setText("Número Celúlar");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -199,7 +201,7 @@ public final class ContactoP extends javax.swing.JFrame {
                 CorreoKeyTyped(evt);
             }
         });
-        getContentPane().add(Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 151, -1));
+        getContentPane().add(Correo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 151, 30));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jButton1, org.jdesktop.beansbinding.ObjectProperty.create(), Celular, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -209,7 +211,7 @@ public final class ContactoP extends javax.swing.JFrame {
                 CelularKeyTyped(evt);
             }
         });
-        getContentPane().add(Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, 108, -1));
+        getContentPane().add(Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 108, 30));
 
         tabla3.setBackground(new java.awt.Color(0, 0, 204));
         tabla3.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,7 +247,10 @@ public final class ContactoP extends javax.swing.JFrame {
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 69, -1));
 
         jLabel6.setText("ID Contacto");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+
+        idcc.setEditable(false);
+        idcc.setBackground(new java.awt.Color(204, 204, 204));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, extencion, org.jdesktop.beansbinding.ObjectProperty.create(), idcc, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -260,7 +265,7 @@ public final class ContactoP extends javax.swing.JFrame {
                 idccKeyTyped(evt);
             }
         });
-        getContentPane().add(idcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 105, -1));
+        getContentPane().add(idcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 105, 30));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Numero_Telefonico, org.jdesktop.beansbinding.ObjectProperty.create(), extencion, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -270,7 +275,7 @@ public final class ContactoP extends javax.swing.JFrame {
                 extencionKeyTyped(evt);
             }
         });
-        getContentPane().add(extencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 105, -1));
+        getContentPane().add(extencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 105, 30));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 204));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,12 +315,17 @@ public final class ContactoP extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Correo, org.jdesktop.beansbinding.ObjectProperty.create(), Numero_Telefonico, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
+        Numero_Telefonico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Numero_TelefonicoActionPerformed(evt);
+            }
+        });
         Numero_Telefonico.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 Numero_TelefonicoKeyTyped(evt);
             }
         });
-        getContentPane().add(Numero_Telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 100, -1));
+        getContentPane().add(Numero_Telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 100, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
@@ -334,7 +344,7 @@ public final class ContactoP extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-        if (idcc.getText().equals("") || extencion.getText().equals("") || Numero_Telefonico.getText().equals("") || Correo.getText().equals("") || Celular.getText().equals("")) {
+        if (extencion.getText().equals("") || Numero_Telefonico.getText().equals("") || Correo.getText().equals("") || Celular.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
         } else {
 
@@ -354,12 +364,13 @@ public final class ContactoP extends javax.swing.JFrame {
                                                     if(Celular.getText().startsWith("3") || Celular.getText().startsWith("8") ||Celular.getText().startsWith("9")){
                                             try {
 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO proveedor_contacto(ID_Contacto_Proveedor,extension,num_Telefonica,Celular,correo) VALUES(?,?,?,?,?)");
-                                                pst.setString(1, idcc.getText());
-                                                pst.setString(2, extencion.getText());
-                                                pst.setString(3, Numero_Telefonico.getText());
-                                                pst.setString(5, Correo.getText());
-                                                pst.setString(4, Celular.getText());
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `proveedor_contacto` (`ID_Contacto_Proveedor`, `extension`, `num_Telefonica`, `Celular`, `correo`) VALUES (NULL, ?, ?, ?, ?)");
+                                                
+                                                pst.setString(1, extencion.getText());
+                                                pst.setString(2, Numero_Telefonico.getText());
+                                                pst.setString(3, Celular.getText());
+                                                pst.setString(4, Correo.getText());
+                                                
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
@@ -762,6 +773,10 @@ public final class ContactoP extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_Numero_TelefonicoKeyTyped
+
+    private void Numero_TelefonicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Numero_TelefonicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Numero_TelefonicoActionPerformed
 
     /**
      * @param args the command line arguments

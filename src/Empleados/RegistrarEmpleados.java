@@ -218,6 +218,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
 
         id_empleado.setEditable(false);
+        id_empleado.setBackground(new java.awt.Color(204, 204, 204));
 
         org.jdesktop.beansbinding.Binding binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, nom_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), id_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
