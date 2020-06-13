@@ -26,6 +26,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
@@ -52,7 +54,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         bloquear();
         this.setLocationRelativeTo(null);
     }
-
+    
+    
     void mostrardatos(String valor) {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
@@ -93,6 +96,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         } catch (SQLException ex) {
 
         }
+        
     }
 
     void limpiar() {
@@ -310,6 +314,11 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel1.setText("Registro Empleados");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 130, -1));
 
+        tablaempleados = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tablaempleados.setForeground(new java.awt.Color(0, 0, 204));
         tablaempleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -324,6 +333,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         ));
         tablaempleados.setComponentPopupMenu(jPopupMenu1);
         tablaempleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tablaempleados.getTableHeader().setReorderingAllowed(false);
         tablaempleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaempleadosMouseClicked(evt);
@@ -623,23 +633,48 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         }
      }
 
+   /* public boolean esDireccion(String direccion){
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-#-\\+]+(\\[_A-Za-z0-9-#]+)"
+                + "[A-Za-z0-9-#]+(\\[A-Za-z0-9-#]+)*(\\[A-Za-z-#]{2,})$");
+
+        Matcher matcher = pattern.matcher(direccion);
+        return matcher.find();
+    }
+    */
     
-    
-    
+     
+     void empleadodir(){
+     
+                    
+                    
+            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            
+         
+     }
+     
     private void save_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_empleadoActionPerformed
 
         ConexionSQL cc = new ConexionSQL();
 
         Connection cn = cc.getConnection();
 
+        if(dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~")|| dir_empleado.getText().equals("`")||
+                   dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")||
+                    dir_empleado.getText().equals("^")||dir_empleado.getText().equals("&")||dir_empleado.getText().equals("*")||
+                    dir_empleado.getText().equals("(")||dir_empleado.getText().equals(")")||dir_empleado.getText().equals("-")||
+                    dir_empleado.getText().equals("_")||dir_empleado.getText().equals("+")||dir_empleado.getText().equals("=")){
+              JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+        }else{
         if (nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
                 || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
                 || txt_pass.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
 
-        } else {
+        } else{ 
+            
+            
             try {
-
+                
                 if (existeUsuario(txt_usuario.getText()) == 0) {
                     if (esUsuario(txt_usuario.getText())) {
                         if (num_id_emplea.getText().length() >= 13) {
@@ -648,6 +683,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                     if (apelld_empleado.getText().length() >= 3) {
                                         if (existeId(id_empleado.getText()) == 0) {
                                             if (existeidentidad(num_id_emplea.getText()) == 0) {
+                                                
                                                  
                                                 
                                                 PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?))");
@@ -694,12 +730,14 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "el usuario no es valido");
+                    JOptionPane.showMessageDialog(null, "el usuario ya esta ingresado, intente con otro");
                 }
-
+                
             } catch (Exception e) {
                     
             }
+                
+        }
         }
 
 
@@ -849,11 +887,17 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         }
         limpiar();
     }//GEN-LAST:event_btn_editarActionPerformed
-
+public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
     private void del_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_empleadoActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
+        Object[] options = {"SI", "NO"};
+         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
+       
         Connection cn = cc.getConnection();
         int fila = tablaempleados.getSelectedRow();
         String cod = "";
@@ -1022,7 +1066,15 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void dir_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dir_empleadoKeyTyped
         // TODO add your handling code here:
-
+        if(dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~")|| dir_empleado.getText().equals("`")||
+                   dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")||
+                    dir_empleado.getText().equals("^")||dir_empleado.getText().equals("&")||dir_empleado.getText().equals("*")||
+                    dir_empleado.getText().equals("(")||dir_empleado.getText().equals(")")||dir_empleado.getText().equals("-")||
+                    dir_empleado.getText().equals("_")||dir_empleado.getText().equals("+")||dir_empleado.getText().equals("=")){
+                    evt.consume();
+                    Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            }
         if (dir_empleado.getText().length() >= 60) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();

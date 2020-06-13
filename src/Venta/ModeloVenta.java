@@ -356,6 +356,11 @@ public class ModeloVenta extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
+        jTable2 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -364,6 +369,7 @@ public class ModeloVenta extends javax.swing.JFrame {
 
             }
         ));
+        jTable2.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable2);
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

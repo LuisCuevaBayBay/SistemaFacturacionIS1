@@ -317,6 +317,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
+        jTable1 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -325,6 +330,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
             }
         ));
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

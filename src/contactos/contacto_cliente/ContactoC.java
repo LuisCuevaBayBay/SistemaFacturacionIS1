@@ -209,6 +209,11 @@ public final class ContactoC extends javax.swing.JFrame {
         });
         getContentPane().add(num_celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 108, 30));
 
+        tabla1 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tabla1.setBackground(new java.awt.Color(0, 0, 153));
         tabla1.setForeground(new java.awt.Color(255, 255, 255));
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
@@ -223,6 +228,7 @@ public final class ContactoC extends javax.swing.JFrame {
             }
         ));
         tabla1.setComponentPopupMenu(jPopupMenu1);
+        tabla1.getTableHeader().setReorderingAllowed(false);
         tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabla1MouseClicked(evt);
@@ -654,7 +660,8 @@ public final class ContactoC extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tabla1.getSelectedRow();

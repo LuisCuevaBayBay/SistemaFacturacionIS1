@@ -152,6 +152,11 @@ public class Producto extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, precio_double, org.jdesktop.beansbinding.ObjectProperty.create(), nom_producto_txt, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
+        nom_producto_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nom_producto_txtActionPerformed(evt);
+            }
+        });
         nom_producto_txt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 nom_producto_txtKeyTyped(evt);
@@ -219,6 +224,11 @@ public class Producto extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 70, -1));
 
+        tablaproducto = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tablaproducto.setForeground(new java.awt.Color(0, 0, 204));
         tablaproducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -232,6 +242,7 @@ public class Producto extends javax.swing.JFrame {
             }
         ));
         tablaproducto.setComponentPopupMenu(jPopupMenu2);
+        tablaproducto.getTableHeader().setReorderingAllowed(false);
         tablaproducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaproductoMouseClicked(evt);
@@ -436,7 +447,8 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
@@ -582,11 +594,9 @@ public class Producto extends javax.swing.JFrame {
 
     private void nom_producto_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_producto_txtKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar();
+       
 
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
-            evt.consume();
-        }
+        
 
         if (nom_producto_txt.getText().length() >= 25) {
             evt.consume();
@@ -597,6 +607,10 @@ public class Producto extends javax.swing.JFrame {
     private void precio_doubleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precio_doubleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_precio_doubleActionPerformed
+
+    private void nom_producto_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_producto_txtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nom_producto_txtActionPerformed
 
     /**
      * @param args the command line arguments

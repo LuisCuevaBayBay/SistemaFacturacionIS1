@@ -21,6 +21,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
@@ -267,6 +269,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
 
+        tabla1 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tabla1.setForeground(new java.awt.Color(0, 0, 153));
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -279,6 +286,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         tabla1.setColumnSelectionAllowed(true);
         tabla1.setComponentPopupMenu(jPopupMenu1);
         tabla1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tabla1.getTableHeader().setReorderingAllowed(false);
         tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabla1MouseClicked(evt);
@@ -550,9 +558,15 @@ public class frm_proveedores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jtf_editarActionPerformed
 
+    public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
     private void Jbt_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jbt_EliminarActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea borrar?");
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
@@ -596,7 +610,15 @@ public class frm_proveedores extends javax.swing.JFrame {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-       
+       if(Jtf_Direccion.getText().equals("!") || Jtf_Direccion.getText().equals("~")|| Jtf_Direccion.getText().equals("`")||
+                   Jtf_Direccion.getText().equals("@") || Jtf_Direccion.getText().equals("$") || Jtf_Direccion.getText().equals("%")||
+                    Jtf_Direccion.getText().equals("^")|| Jtf_Direccion.getText().equals("&")||Jtf_Direccion.getText().equals("*")||
+                    Jtf_Direccion.getText().equals("(")||Jtf_Direccion.getText().equals(")")||Jtf_Direccion.getText().equals("-")||
+                    Jtf_Direccion.getText().equals("_")||Jtf_Direccion.getText().equals("+")||Jtf_Direccion.getText().equals("=")){
+                    evt.consume();
+                    Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            }
 
         if (Jtf_Direccion.getText().length() >= 60) {
             evt.consume();
@@ -628,6 +650,14 @@ public class frm_proveedores extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
 
         Connection cn = cc.getConnection();
+        if(Jtf_Direccion.getText().equals("!") || Jtf_Direccion.getText().equals("~")|| Jtf_Direccion.getText().equals("`")||
+                   Jtf_Direccion.getText().equals("@") || Jtf_Direccion.getText().equals("$") || Jtf_Direccion.getText().equals("%")||
+                    Jtf_Direccion.getText().equals("^")|| Jtf_Direccion.getText().equals("&")||Jtf_Direccion.getText().equals("*")||
+                    Jtf_Direccion.getText().equals("(")||Jtf_Direccion.getText().equals(")")||Jtf_Direccion.getText().equals("-")||
+                    Jtf_Direccion.getText().equals("_")||Jtf_Direccion.getText().equals("+")||Jtf_Direccion.getText().equals("=")){
+                   
+            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            }else{
 
         if (Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
                 || Jtf_Direccion.getText().equals("")) {
@@ -674,6 +704,7 @@ public class frm_proveedores extends javax.swing.JFrame {
             } catch (Exception e) {
                     
             }
+        }
         }
     }//GEN-LAST:event_Jbt_GuardarActionPerformed
 

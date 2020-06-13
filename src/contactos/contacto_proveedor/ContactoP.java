@@ -213,6 +213,11 @@ public final class ContactoP extends javax.swing.JFrame {
         });
         getContentPane().add(Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 108, 30));
 
+        tabla3 = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tabla3.setBackground(new java.awt.Color(0, 0, 204));
         tabla3.setForeground(new java.awt.Color(255, 255, 255));
         tabla3.setModel(new javax.swing.table.DefaultTableModel(
@@ -227,6 +232,7 @@ public final class ContactoP extends javax.swing.JFrame {
             }
         ));
         tabla3.setComponentPopupMenu(jPopupMenu1);
+        tabla3.getTableHeader().setReorderingAllowed(false);
         tabla3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tabla3MouseClicked(evt);

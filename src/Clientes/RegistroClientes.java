@@ -231,6 +231,11 @@ public class RegistroClientes extends javax.swing.JFrame {
         });
         getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 80, -1));
 
+        tablaclientes = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tablaclientes.setForeground(new java.awt.Color(0, 0, 204));
         tablaclientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -244,6 +249,7 @@ public class RegistroClientes extends javax.swing.JFrame {
             }
         ));
         tablaclientes.setComponentPopupMenu(jPopupMenu2);
+        tablaclientes.getTableHeader().setReorderingAllowed(false);
         tablaclientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablaclientesMouseClicked(evt);
@@ -293,7 +299,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         });
         getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 80, -1));
 
-        jLabel10.setText("Numero de Identidad");
+        jLabel10.setText("Número de Identidad");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
 
         txt_num_id_cli.addActionListener(new java.awt.event.ActionListener() {
@@ -424,6 +430,15 @@ public class RegistroClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
        ConexionSQL cc = new ConexionSQL();
        Connection cn = cc.getConnection();
+        if(txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~")|| txt_dir_cli.getText().equals("`")||
+                   txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")||
+                    txt_dir_cli.getText().equals("^")||txt_dir_cli.getText().equals("&")||txt_dir_cli.getText().equals("*")||
+                    txt_dir_cli.getText().equals("(")||txt_dir_cli.getText().equals(")")||txt_dir_cli.getText().equals("-")||
+                    txt_dir_cli.getText().equals("_")||txt_dir_cli.getText().equals("+")||txt_dir_cli.getText().equals("=")){
+                    
+                    
+            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            }else{
         if(txt_rtn_cliente.getText().equals("") || txt_nombre_cli.getText().equals("")
             || txt_apellido_cli.getText().equals("") || txt_num_id_cli.getText().equals("")
             || txt_dir_cli.getText().equals("")){
@@ -436,6 +451,8 @@ public class RegistroClientes extends javax.swing.JFrame {
            if(existeUsuario(txt_cli_id.getText())==0){
             if(txt_num_id_cli.getText().length() >= 13){
                     if(txt_rtn_cliente.getText().length() >=14){
+                        if(existeId(txt_num_id_cli.getText())==0){
+                            if(existeRTN(txt_rtn_cliente.getText())==0){
            
            PreparedStatement pst = cn.prepareStatement("INSERT INTO `cliente` (`Cli_id`, `Nombre_Cliente`, `Apellido_Cliente`, `Direccion_Cliente`, `Num_Identidad_cliente`, `rtn_Cliente`, `contactoid`) VALUES (NULL, ?, ?, ?, ?, ?, NULL);");
                 
@@ -453,6 +470,12 @@ public class RegistroClientes extends javax.swing.JFrame {
            }else{
                JOptionPane.showMessageDialog(null, "Error al agregar");
            }
+                            }else{
+                                JOptionPane.showMessageDialog(null, "El RTN ya existe ingrese otro");
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(null, "El numero de Identidad ya existe, ingrese otro");
+                        }
                     }else{
                         JOptionPane.showMessageDialog(null, "Error al agregar, el RTN debe ser de 14");
                     }
@@ -464,6 +487,7 @@ public class RegistroClientes extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null, "Error al Agregar"+e);
        }
     }
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     
@@ -492,6 +516,56 @@ public class RegistroClientes extends javax.swing.JFrame {
         return 1;
     }
     
+     private int existeId(String usuario) {                                              
+      
+        ConexionSQL cc = new ConexionSQL();
+        
+        Connection cn = cc.getConnection();
+        
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        
+        String sql = "SELECT count(Cli_id) FROM cliente WHERE Num_Identidad_cliente = ?";
+    
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            return 1;
+        }
+        return 1;
+    }
+     
+      private int existeRTN(String usuario) {                                              
+      
+        ConexionSQL cc = new ConexionSQL();
+        
+        Connection cn = cc.getConnection();
+        
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        
+        String sql = "SELECT count(Cli_id) FROM cliente WHERE rtn_cliente = ?";
+    
+        try {
+            ps = cn.prepareStatement(sql);
+            ps.setString(1, usuario);
+            rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            return 1;
+        }
+        return 1;
+    }
+    
     private void txt_nombre_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombre_cliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombre_cliActionPerformed
@@ -505,7 +579,7 @@ txt_dir_cli.setText("");
 }
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
-        
+        nuevo();
         
     }//GEN-LAST:event_btn_nuevoActionPerformed
     String id ="";
@@ -539,6 +613,8 @@ txt_dir_cli.setText("");
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,  options, options[0]);
        ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tablaclientes.getSelectedRow();
@@ -631,8 +707,16 @@ txt_dir_cli.setText("");
 
     private void txt_dir_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dir_cliKeyTyped
         // TODO add your handling code here:
-        
-     
+        if(txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~")|| txt_dir_cli.getText().equals("`")||
+                   txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")||
+                    txt_dir_cli.getText().equals("^")||txt_dir_cli.getText().equals("&")||txt_dir_cli.getText().equals("*")||
+                    txt_dir_cli.getText().equals("(")||txt_dir_cli.getText().equals(")")||txt_dir_cli.getText().equals("-")||
+                    txt_dir_cli.getText().equals("_")||txt_dir_cli.getText().equals("+")||txt_dir_cli.getText().equals("=")){
+                    
+                     evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+        }
         
         if(txt_dir_cli.getText().length() >= 70){
             evt.consume();
