@@ -23,6 +23,8 @@ import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
@@ -128,16 +130,17 @@ public class ModeloVenta extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
         btnventa = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        subt = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         txtotalapagar = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        subt = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -399,10 +402,6 @@ public class ModeloVenta extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel16.setText("Monto x Producto");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
-
         btnventa.setText("Generar Venta");
         btnventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -418,9 +417,6 @@ public class ModeloVenta extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 70, -1));
-
-        subt.setEditable(false);
-        jPanel4.add(subt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 120, 40));
 
         jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -458,10 +454,25 @@ public class ModeloVenta extends javax.swing.JFrame {
         jLabel3.setText("Total ");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
+        jButton6.setText("Nuevo");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 720));
+
+        subt.setEditable(false);
+        getContentPane().add(subt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 20, 120, 40));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel16.setText("Monto x Producto");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -505,14 +516,20 @@ public class ModeloVenta extends javax.swing.JFrame {
 
     private void btnBuscarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCliMouseClicked
         // TODO add your handling code here:
+         if(txtCodCliente.getText().length() == 1 || txtCodCliente.getText().length() == 2 || txtCodCliente.getText().length() == 3){
+        
         try {
             String num_id_cliente = txtCodCliente.getText();
 
             ConexionSQL cc = new ConexionSQL();
             Connection nn = cc.getConnection();
+           
+                    
 
-            PreparedStatement pst = nn.prepareStatement("Select * from cliente where Cli_id =?");
-
+            PreparedStatement pst = nn.prepareStatement("SELECT * FROM cliente where (Cli_id =?)");
+            
+            
+            
             pst.setString(1, num_id_cliente);
             ResultSet rs = pst.executeQuery();
 
@@ -523,6 +540,32 @@ public class ModeloVenta extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
+         
+         }else if(txtCodCliente.getText().length() == 13){
+              try {
+            String num_id_cliente = txtCodCliente.getText();
+
+            ConexionSQL cc = new ConexionSQL();
+            Connection nn = cc.getConnection();
+           
+                    
+
+            PreparedStatement pst = nn.prepareStatement("SELECT * FROM cliente where (Num_Identidad_cliente =?)");
+            
+            
+            
+            pst.setString(1, num_id_cliente);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                txtcli.setText(rs.getString("Nombre_Cliente"));
+            } else {
+                JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
+            }
+        } catch (Exception e) {
+        }
+         
+         }
     }//GEN-LAST:event_btnBuscarCliMouseClicked
 
     private void btnBuscarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdMouseClicked
@@ -661,7 +704,7 @@ txtserie.setText("");
         txtCodCliente.setText("");
         txtvendedor.setText("");
         txtisv.setSelectedItem("0");
-        txtcai.setText("");
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
         subt.setText("");
         spinCant.setValue("");
         txtprecio.setText("");
@@ -671,6 +714,7 @@ txtserie.setText("");
         txtisv.setSelectedItem("0");
         txtcli.setText("");
         txtprecio.setText("");
+        txtotalapagar.setText("");
 }
     private void btnventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnventaActionPerformed
 
@@ -700,6 +744,8 @@ txtserie.setText("");
         } catch (Exception e) {
 
         }
+        
+        
        
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
         double sum = 0;
@@ -714,6 +760,9 @@ txtserie.setText("");
         }
         Math.round(sum);
         txtotalapagar.setText(Integer.toString((int) sum));
+        
+        
+         
     }//GEN-LAST:event_btnventaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -740,7 +789,7 @@ txtserie.setText("");
             evt.consume();
         }
 
-        if (txtCodCliente.getText().length() >= 5) {
+        if (txtCodCliente.getText().length() >= 13) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -779,14 +828,27 @@ txtserie.setText("");
         VerFacturaVenta ver = new VerFacturaVenta();
         ver.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
-
+  public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = jTable2.getSelectedRow();
         String cod = "";
         cod = jTable2.getValueAt(fila, 1).toString();
+         
+        txtotalapagar.setText("");
+        txtprecio.setText("");
+        
+        txtcli.setText("");
+        txt_vendedor1.setText("");
+        if(i==0){
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
             pst.executeUpdate();
@@ -796,7 +858,11 @@ txtserie.setText("");
             
         } catch (Exception e) {
         }
-        limpiar();
+        
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+        
+        }
+       limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtCodProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProductoActionPerformed
@@ -827,6 +893,36 @@ char c = evt.getKeyChar();
             evt.consume();
         }        // TODO add your handling code here:
     }//GEN-LAST:event_txtcaiKeyTyped
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+          ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        int fila = jTable2.getSelectedRow();
+        String cod = "";
+        cod = jTable2.getValueAt(fila, 1).toString();
+         
+        txtotalapagar.setText("");
+        txtprecio.setText("");
+        
+        txtcli.setText("");
+        txt_vendedor1.setText("");
+        
+        try {
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
+            pst.executeUpdate();
+            
+            mostrardatos("");// TODO add your handling code here:
+          
+            
+        } catch (Exception e) {
+        }
+        
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+        
+        
+       limpiar();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -872,6 +968,7 @@ char c = evt.getKeyChar();
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

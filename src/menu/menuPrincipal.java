@@ -13,6 +13,8 @@ import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
 import inicio_sesion.Pantalla_Inicio_Sesion;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import producto.Producto;
 
@@ -202,9 +204,17 @@ public class menuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registroEmpleadoActionPerformed
 
+    
+    public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
-         int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea salirr?");
+        Object[] options = {"SI", "NO"};
+         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        
         if (i == 0) { 
         System.exit(0);
         }
@@ -250,7 +260,9 @@ this.dispose();*/
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea cerrar su sesion?");
+        Object[] options = {"SI", "NO"};
+         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea cerrar sesión?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        
         if (i == 0) { 
         Pantalla_Inicio_Sesion inicio = new Pantalla_Inicio_Sesion();
         inicio.setVisible(true);

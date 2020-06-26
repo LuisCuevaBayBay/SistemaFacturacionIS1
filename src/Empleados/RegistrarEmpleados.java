@@ -730,7 +730,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "el usuario ya esta ingresado, intente con otro");
+                    JOptionPane.showMessageDialog(null, "El usuario ya esta ingresado, intente con otro");
                 }
                 
             } catch (Exception e) {
@@ -872,13 +872,17 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             try {
 
                 if (num_id_emplea.getText().length() >= 13) {
+                    if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
                     PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET Vendedor_id='" + id_empleado.getText() + "',nombre_empleado='" + nom_empleado.getText() + "',apellido_empleado='" + apelld_empleado.getText() + "',num_identidad_empleado='" + num_id_emplea.getText() + "',direccion='" + dir_empleado.getText() + "'WHERE Vendedor_id='" + id + "'");
                     id = id_empleado.getText();
                     pst.executeUpdate();
                     mostrardatos("");
                     JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser con 0 o con 1");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "el num identidad debe ser de 13 numeros");
+                    JOptionPane.showMessageDialog(null, "El num identidad debe ser de 13 numeros");
                 }
 
             } catch (Exception e) {
@@ -895,7 +899,7 @@ public Icon icono(String path, int width, int height){
     private void del_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_empleadoActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
        
         Connection cn = cc.getConnection();

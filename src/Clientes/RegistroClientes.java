@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -450,6 +451,8 @@ public class RegistroClientes extends javax.swing.JFrame {
        try{
            if(existeUsuario(txt_cli_id.getText())==0){
             if(txt_num_id_cli.getText().length() >= 13){
+                if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
+                    if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
                     if(txt_rtn_cliente.getText().length() >=14){
                         if(existeId(txt_num_id_cli.getText())==0){
                             if(existeRTN(txt_rtn_cliente.getText())==0){
@@ -479,6 +482,12 @@ public class RegistroClientes extends javax.swing.JFrame {
                     }else{
                         JOptionPane.showMessageDialog(null, "Error al agregar, el RTN debe ser de 14");
                     }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"El numero de RTN solo puede empezar con 0 o con 1");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "El numero de identidad solo puede empezar con 0 o con 1");
+                }
            }else{
                JOptionPane.showMessageDialog(null, "Error al agregar, el Num Identidad debe ser de 13");
            }
@@ -595,13 +604,22 @@ txt_dir_cli.setText("");
             try{
                 if(txt_rtn_cliente.getText().length()>=14){
                 if(txt_num_id_cli.getText().length()>= 13){
+                    if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
+                    if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
                 PreparedStatement pst = cn.prepareStatement("UPDATE cliente SET Cli_id='"+txt_cli_id.getText()+"',Nombre_Cliente='"+txt_nombre_cli.getText()+"',Apellido_Cliente='"+txt_apellido_cli.getText()+"',Direccion_Cliente='"+txt_dir_cli.getText()+"',Num_Identidad_Cliente='"+txt_num_id_cli.getText()+"',rtn_Cliente='"+txt_rtn_cliente.getText()+"'WHERE Cli_id='"+id+"'");
                      pst.executeUpdate();
                         JOptionPane.showMessageDialog(null,"Se a modificado con exito");
                         mostrardatos("");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El numero de RTN debe empezar con 0 o con 1");
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 numeros");
                 }
+                    }else{
+                        
+                        JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o con 1");
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser de 13 numeros");
                 }
@@ -611,15 +629,23 @@ txt_dir_cli.setText("");
        }
     }//GEN-LAST:event_btn_editarActionPerformed
 
+    
+    public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
+    
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,  options, options[0]);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
        ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tablaclientes.getSelectedRow();
         String cod = "";
         cod = tablaclientes.getValueAt(fila, 0).toString();
+        if (i == 0){
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM cliente WHERE Cli_id='" + cod + "'");
             int a = pst.executeUpdate();
@@ -632,6 +658,7 @@ txt_dir_cli.setText("");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
         }
        nuevo();
     }//GEN-LAST:event_btn_eliminarActionPerformed

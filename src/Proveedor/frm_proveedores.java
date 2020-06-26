@@ -544,11 +544,15 @@ public class frm_proveedores extends javax.swing.JFrame {
 
             try {
                 if (jtf_Rtn.getText().length() >= 14) {
+                    if (jtf_Rtn.getText().startsWith("0") || jtf_Rtn.getText().startsWith("1")) {
                     PreparedStatement pst = cn.prepareStatement("UPDATE proveedor SET Empresa_id='" + Jtf_Id.getText() + "',Nombre_Empresa='" + Jtf_Nombre_Empresa.getText() + "',Direccion_Empresa='" + Jtf_Direccion.getText() + "',rtn_empresa='" + jtf_Rtn.getText() + "'WHERE Empresa_id='" + id + "'");
                     id = Jtf_Id.getText();
                     pst.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Se modifico con exito");
                     mostrardatos("");
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El RTN debe empezar con 0 o con 1");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 caracteres");
                 }
@@ -563,10 +567,11 @@ public class frm_proveedores extends javax.swing.JFrame {
                 getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
         return img;
     }
+    
     private void Jbt_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jbt_EliminarActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,  options, options[0]);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 

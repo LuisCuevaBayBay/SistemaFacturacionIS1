@@ -23,6 +23,8 @@ import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
@@ -123,16 +125,17 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel20 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
         btnventa = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        subt = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         txtotalapagar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        subt = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -360,10 +363,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel16.setText("Monto x Producto");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, 20));
-
         btnventa.setText("Registrar Compra");
         btnventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,9 +378,6 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             }
         });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 70, -1));
-
-        subt.setEditable(false);
-        jPanel4.add(subt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, 40));
 
         jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -419,10 +415,30 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel3.setText("Total a Pagar");
         jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
+        jButton2.setText("Nuevo");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 720));
+
+        subt.setEditable(false);
+        subt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(subt, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 120, 40));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel16.setText("Monto x Producto");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -466,24 +482,56 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void btnBuscarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCliMouseClicked
         // TODO add your handling code here:
+        if(txtCodCliente.getText().length() == 1 || txtCodCliente.getText().length() == 2 || txtCodCliente.getText().length() == 3){
+        
         try {
             String num_id_cliente = txtCodCliente.getText();
 
             ConexionSQL cc = new ConexionSQL();
             Connection nn = cc.getConnection();
+           
+                    
 
-            PreparedStatement pst = nn.prepareStatement("Select * from proveedor where Empresa_id =?");
-
+            PreparedStatement pst = nn.prepareStatement("SELECT * FROM proveedor where (Empresa_id=?)");
+            
+            
+            
             pst.setString(1, num_id_cliente);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Empresa"));
             } else {
-                JOptionPane.showMessageDialog(null, "ElProveedor no se encuentra registrado");
+                JOptionPane.showMessageDialog(null, "La empresa no esta registrada no se encuentra registrada");
             }
         } catch (Exception e) {
         }
+         
+         }else if(txtCodCliente.getText().length() == 14){
+              try {
+            String num_id_cliente = txtCodCliente.getText();
+
+            ConexionSQL cc = new ConexionSQL();
+            Connection nn = cc.getConnection();
+           
+                    
+
+            PreparedStatement pst = nn.prepareStatement("SELECT * FROM proveedor where (rtn_empresa =?)");
+            
+            
+            
+            pst.setString(1, num_id_cliente);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                txtcli.setText(rs.getString("Nombre_Empresa"));
+            } else {
+                JOptionPane.showMessageDialog(null, "La Empresa no se encuentra registrada");
+            }
+        } catch (Exception e) {
+        }
+         
+         }
     }//GEN-LAST:event_btnBuscarCliMouseClicked
 
     private void btnBuscarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdMouseClicked
@@ -592,7 +640,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         txtCodCliente.setText("");
 
         txtisv.setSelectedItem("0");
-        txtcai.setText("");
+       
         subt.setText("");
         spinCant.setValue("");
         txtprecio.setText(null);
@@ -670,7 +718,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             evt.consume();
         }
 
-        if (txtCodCliente.getText().length() >= 5) {
+        if (txtCodCliente.getText().length() >= 14) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -696,12 +744,30 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         ver.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+    }
+    
+    
+    //bro me fui a dejar unas mascarillas xdd pero ya lo termine 
+    
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = jTable1.getSelectedRow();
+        
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+        txtprecio.setText("");
+        txtcli.setText("");
+        txtotalapagar.setText("");
+                
         String cod = "";
+        if(i==0){
         cod = jTable1.getValueAt(fila, 1).toString();
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
@@ -710,7 +776,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
+         
         limpiar();
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtCodProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProductoActionPerformed
@@ -745,6 +813,37 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private void spinCantPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spinCantPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_spinCantPropertyChange
+
+    private void subtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subtActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+       
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        int fila = jTable1.getSelectedRow();
+        
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+        txtprecio.setText("");
+        txtcli.setText("");
+        txtotalapagar.setText("");
+                
+        String cod = "";
+        
+        cod = jTable1.getValueAt(fila, 1).toString();
+        try {
+            PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
+            pst.executeUpdate();
+            
+            mostrardatos("");// TODO add your handling code here:
+        } catch (Exception e) {
+        }
+         
+        limpiar();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -786,6 +885,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarProd;
     private javax.swing.JButton btnventa;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
