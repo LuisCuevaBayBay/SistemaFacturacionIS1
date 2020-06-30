@@ -8,10 +8,14 @@ package inicio_sesion;
 
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
+import MenuEmpleado.MenuE;
+import Venta.ModeloVenta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import menu.menuPrincipal;
 
@@ -29,6 +33,11 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     }
     
     RegistrarEmpleados metodo = new RegistrarEmpleados();
+    SQLMetodos metodos = new SQLMetodos();
+    menuPrincipal ventana = new menuPrincipal();
+     MenuE vent = new MenuE();
+     ModeloVenta venta = new ModeloVenta();
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -125,10 +134,64 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton3MouseClicked
     
+    
+    
+    
+    public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+}
+    
+    
+    
+    public void nombreUsuario(){
+        
+         String busqueda_usuario = metodos.buscarUsuario(txt_usuario.getText(), txt_pass.getText());
+        
+        if(busqueda_usuario.equals("Usuario encontrado")){
+            String busqueda_nombre = metodos.BuscarNombre(txt_usuario.getText());
+           
+            
+            this.dispose();
+            
+        
+        }else{
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+        
+        }
+    
+    }
+    
+    
     private void btn_inicio_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicio_sesionActionPerformed
         // TODO add your handling code here:
-        SQLMetodos metodos = new SQLMetodos();
-        metodos.buscarUsuario(txt_usuario.getText(), txt_pass.getText());
+        
+        
+        
+        
+        
+        String busqueda_usuario = metodos.buscarUsuario(txt_usuario.getText(), txt_pass.getText());
+        
+        
+        //String busqueda_usuario = metodos.buscarUsuarioR(txt_usuario.getText(), txt_pass.getText());
+        
+        
+        if(busqueda_usuario.equals("Usuario encontrado")){
+            String busqueda_nombre = metodos.BuscarNombre(txt_usuario.getText());
+            Object[] options = {"HOLA"};
+         int i = JOptionPane.showOptionDialog(null, "Bienvenido (a) \n "+ busqueda_nombre,"DAENERYS",JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+           
+            
+            this.dispose();
+            
+        
+        }else{
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+        
+        }
+        
+        
         //validar();
     }//GEN-LAST:event_btn_inicio_sesionActionPerformed
 
@@ -220,8 +283,8 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField txt_pass;
-    private javax.swing.JTextField txt_usuario;
+    public javax.swing.JPasswordField txt_pass;
+    public javax.swing.JTextField txt_usuario;
     private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

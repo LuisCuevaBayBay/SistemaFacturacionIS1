@@ -488,7 +488,12 @@ public class ModeloVenta extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       Object[] options = {"SI", "NO"};
+         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        
+        if (i == 0) { 
         System.exit(0);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBuscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProdActionPerformed
@@ -767,9 +772,15 @@ txtserie.setText("");
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        menuPrincipal mp = new menuPrincipal();
+        Object[] options = {"SI", "NO"};
+         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        
+        if (i == 0) { 
+            menuPrincipal mp = new menuPrincipal();
         mp.setVisible(true);
         this.dispose();
+       
+        };
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtCodClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodClienteActionPerformed
