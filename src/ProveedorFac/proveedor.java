@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proveedor;
+package ProveedorFac;
 
+import Proveedor.*;
 import Clientes.RegistroClientes;
 import Clientes.datos;
 import Compra.ModeloCompra1;
@@ -32,14 +33,14 @@ import producto.Producto;
  *
  * @author Hector
  */
-public class frm_proveedores extends javax.swing.JFrame {
+public class proveedor extends javax.swing.JFrame {
 
     /*
      * Creates new form frm_proveedores
      */
     Connection conectar = null;
 
-    public frm_proveedores() {
+    public proveedor() {
         initComponents();
 
         mostrardatos("");
@@ -100,8 +101,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         Jbt_Guardar.setEnabled(true);
         jtf_nuevo.setEnabled(true);
-        jtf_editar.setEnabled(true);
-        Jbt_Eliminar.setEnabled(true);
+        
         jtf_salir.setEnabled(true);
     }
 
@@ -113,8 +113,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         Jbt_Guardar.setEnabled(false);
         jtf_nuevo.setEnabled(true);
-        jtf_editar.setEnabled(false);
-        Jbt_Eliminar.setEnabled(false);
+       
         jtf_salir.setEnabled(false);
     }
 
@@ -143,24 +142,14 @@ public class frm_proveedores extends javax.swing.JFrame {
         Jtf_Nombre_Empresa = new javax.swing.JTextField();
         Jtf_Direccion = new javax.swing.JTextField();
         jtf_Rtn = new javax.swing.JTextField();
-        Jbt_Eliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla1 = new javax.swing.JTable();
-        jtf_editar = new javax.swing.JButton();
         jtf_nuevo = new javax.swing.JButton();
         jtf_salir = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         buscar_txt = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        contacto = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -259,16 +248,6 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(jtf_Rtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 156, 31));
 
-        Jbt_Eliminar.setBackground(new java.awt.Color(0, 0, 153));
-        Jbt_Eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        Jbt_Eliminar.setText("ELIMINAR");
-        Jbt_Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Jbt_EliminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
-
         tabla1 = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
@@ -296,16 +275,6 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 565, 186));
 
-        jtf_editar.setBackground(new java.awt.Color(0, 0, 153));
-        jtf_editar.setForeground(new java.awt.Color(255, 255, 255));
-        jtf_editar.setText("EDITAR");
-        jtf_editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtf_editarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jtf_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 90, -1));
-
         jtf_nuevo.setBackground(new java.awt.Color(0, 0, 153));
         jtf_nuevo.setForeground(new java.awt.Color(255, 255, 255));
         jtf_nuevo.setText("NUEVO");
@@ -325,56 +294,6 @@ public class frm_proveedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jtf_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 821, -1, -1));
-
-        jButton4.setBackground(new java.awt.Color(0, 0, 153));
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("INICIO");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
-
-        jButton5.setBackground(new java.awt.Color(0, 0, 153));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("REGISTRAR EMPLEADOS");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
-
-        jButton6.setBackground(new java.awt.Color(0, 0, 153));
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("REGISTRAR CLIENTES");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
-
-        jButton7.setBackground(new java.awt.Color(0, 0, 153));
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("REGISTRAR FACTURA VENTA");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
-
-        jButton8.setBackground(new java.awt.Color(0, 0, 153));
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("REGISTRAR FACTURA COMPRA");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 40, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 153));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -397,26 +316,6 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 90, -1));
 
-        contacto.setBackground(new java.awt.Color(0, 0, 153));
-        contacto.setForeground(new java.awt.Color(255, 255, 255));
-        contacto.setText("CONTACTO");
-        contacto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, -1));
-
-        jButton3.setBackground(new java.awt.Color(0, 0, 153));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Registrar Productos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
-
         jButton9.setBackground(new java.awt.Color(0, 0, 153));
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
         jButton9.setText("Mostrar");
@@ -426,16 +325,6 @@ public class frm_proveedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, -1, -1));
-
-        jButton10.setBackground(new java.awt.Color(0, 153, 204));
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("SALIR");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("REGISTRO DE PROVEEDORES");
@@ -494,18 +383,9 @@ public class frm_proveedores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void contactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactoActionPerformed
-        // TODO add your handling code here:
-
-        ContactoP contacto = new ContactoP();
-        contacto.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_contactoActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        menuPrincipal menu = new menuPrincipal();
-        menu.setVisible(true);
+       
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -532,71 +412,12 @@ public class frm_proveedores extends javax.swing.JFrame {
         desbloquear();
     }//GEN-LAST:event_jtf_nuevoActionPerformed
 
-    private void jtf_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_editarActionPerformed
-        // TODO add your handling code here:
-        ConexionSQL cc = new ConexionSQL();
-        Connection cn = cc.getConnection();
-
-        if (Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
-                || Jtf_Direccion.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Hay campos que estan vacios. No pueden quedar asi ");
-        } else {
-
-            try {
-                if (jtf_Rtn.getText().length() >= 14) {
-                    if (jtf_Rtn.getText().startsWith("0") || jtf_Rtn.getText().startsWith("1")) {
-                    PreparedStatement pst = cn.prepareStatement("UPDATE proveedor SET Empresa_id='" + Jtf_Id.getText() + "',Nombre_Empresa='" + Jtf_Nombre_Empresa.getText() + "',Direccion_Empresa='" + Jtf_Direccion.getText() + "',rtn_empresa='" + jtf_Rtn.getText() + "'WHERE Empresa_id='" + id + "'");
-                    id = Jtf_Id.getText();
-                    pst.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Se modifico con exito");
-                    mostrardatos("");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "El RTN debe empezar con 0 o con 1");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 caracteres");
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }//GEN-LAST:event_jtf_editarActionPerformed
-
     public Icon icono(String path, int width, int height){
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
                 getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
         return img;
     }
     
-    private void Jbt_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Jbt_EliminarActionPerformed
-        // TODO add your handling code here:
-        Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opccion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-        ConexionSQL cc = new ConexionSQL();
-        Connection cn = cc.getConnection();
-
-        int fila = tabla1.getSelectedRow();
-        String cod = "";
-        cod = tabla1.getValueAt(fila, 0).toString();
-        if (i == 0) {
-            try {
-                PreparedStatement pst = cn.prepareStatement("DELETE FROM proveedor WHERE Empresa_id='" + cod + "'");
-                pst.executeUpdate();
-                mostrardatos("");
-                int a = pst.executeUpdate();
-                if (a > 0) {
-                    JOptionPane.showMessageDialog(null, "No se pudo eliminar");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "No se pudo eliminar, el proveedor tiene facturas registradas");
-            }
-            bloquear();
-            limpiar();
-        }
-    }//GEN-LAST:event_Jbt_EliminarActionPerformed
-
     private void jtf_RtnKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_RtnKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
@@ -758,58 +579,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tabla1MouseClicked
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        menuPrincipal menu = new menuPrincipal();
-        menu.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        RegistrarEmpleados re = new RegistrarEmpleados();
-        re.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        RegistroClientes rc = new RegistroClientes();
-        rc.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        Producto producto = new Producto();
-        producto.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        ModeloCompra1 mc = new ModeloCompra1();
-        mc.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        ModeloVenta mv = new ModeloVenta();
-        mv.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         mostrardatos("");
         buscar_txt.setText("");
     }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -828,41 +602,33 @@ public class frm_proveedores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frm_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frm_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frm_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frm_proveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(proveedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frm_proveedores().setVisible(true);
+                new proveedor().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Jbt_Eliminar;
     private javax.swing.JButton Jbt_Guardar;
     private javax.swing.JTextField Jtf_Direccion;
     private javax.swing.JTextField Jtf_Id;
     private javax.swing.JTextField Jtf_Nombre_Empresa;
     private javax.swing.JTextField buscar_txt;
-    private javax.swing.JButton contacto;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
@@ -878,7 +644,6 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jtf_Rtn;
-    private javax.swing.JButton jtf_editar;
     private javax.swing.JButton jtf_nuevo;
     private javax.swing.JButton jtf_salir;
     private javax.swing.JTable tabla1;

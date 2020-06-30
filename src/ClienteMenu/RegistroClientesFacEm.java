@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Clientes;
+package ClienteMenu;
 
+import Clientes.*;
 import Compra.ModeloCompra1;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
+import VentasEmpleado.VentaEm;
 import contactos.contacto_cliente.ContactoC;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -32,12 +34,12 @@ import menu.menuPrincipal;
  *
  * @author luisc
  */
-public class RegistroClientes extends javax.swing.JFrame {
+public class RegistroClientesFacEm extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroClientes
      */
-    public RegistroClientes() {
+    public RegistroClientesFacEm() {
         initComponents();
         mostrardatos("");
         
@@ -115,27 +117,18 @@ public class RegistroClientes extends javax.swing.JFrame {
         txt_cli_id = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         btn_guardar = new javax.swing.JButton();
-        btn_eliminar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaclientes = new javax.swing.JTable();
         txt_apellido_cli = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btn_nuevo = new javax.swing.JButton();
-        btn_editar = new javax.swing.JButton();
-        btn_salir = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txt_num_id_cli = new javax.swing.JTextField();
         txt_dir_cli = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         buscar_txt = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         jMenuItem2.setText("Modificar");
@@ -155,7 +148,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel2.setText("Registro Clientes");
         jLabel2.setToolTipText("");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         jLabel3.setText("Nombre Cliente");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
@@ -222,16 +215,6 @@ public class RegistroClientes extends javax.swing.JFrame {
         });
         getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 80, -1));
 
-        btn_eliminar.setBackground(new java.awt.Color(0, 0, 204));
-        btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_eliminar.setText("Eliminar");
-        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 80, -1));
-
         tablaclientes = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
@@ -279,26 +262,6 @@ public class RegistroClientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 80, -1));
-
-        btn_editar.setBackground(new java.awt.Color(0, 0, 255));
-        btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("Editar");
-        btn_editar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_editarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 80, -1));
-
-        btn_salir.setBackground(new java.awt.Color(0, 153, 204));
-        btn_salir.setForeground(new java.awt.Color(255, 255, 255));
-        btn_salir.setText("Salir");
-        btn_salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_salirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 80, -1));
 
         jLabel10.setText("Número de Identidad");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
@@ -349,16 +312,6 @@ public class RegistroClientes extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 80, -1));
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 204));
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Contacto");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 80, -1));
-
         jButton7.setBackground(new java.awt.Color(0, 0, 204));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("Mostrar");
@@ -368,56 +321,6 @@ public class RegistroClientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 70, -1));
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 204));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Inicio");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-
-        jButton3.setBackground(new java.awt.Color(0, 0, 204));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Registrar Empleado");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
-
-        jButton5.setBackground(new java.awt.Color(0, 0, 204));
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Registrar Compra");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
-
-        jButton8.setBackground(new java.awt.Color(0, 0, 204));
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("Registrar Venta");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, -1));
-
-        jButton10.setBackground(new java.awt.Color(0, 0, 204));
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("Registrar Proveedor");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
@@ -602,43 +505,6 @@ txt_dir_cli.setText("");
         
     }//GEN-LAST:event_btn_nuevoActionPerformed
     String id ="";
-    private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
-        // TODO add your handling code here:
-       ConexionSQL cc = new ConexionSQL();
-       Connection cn = cc.getConnection();
-       
-       if(txt_cli_id.getText().equals("") || txt_nombre_cli.getText().equals("") || txt_apellido_cli.getText().equals("") || txt_dir_cli.getText().equals("") || 
-               txt_num_id_cli.getText().equals("") || txt_rtn_cliente.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios, debe llenarlos");
-       }else{
-            try{
-                if(txt_rtn_cliente.getText().length()>=14){
-                if(txt_num_id_cli.getText().length()>= 13){
-                    if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
-                    if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
-                PreparedStatement pst = cn.prepareStatement("UPDATE cliente SET Cli_id='"+txt_cli_id.getText()+"',Nombre_Cliente='"+txt_nombre_cli.getText()+"',Apellido_Cliente='"+txt_apellido_cli.getText()+"',Direccion_Cliente='"+txt_dir_cli.getText()+"',Num_Identidad_Cliente='"+txt_num_id_cli.getText()+"',rtn_Cliente='"+txt_rtn_cliente.getText()+"'WHERE Cli_id='"+id+"'");
-                     pst.executeUpdate();
-                        JOptionPane.showMessageDialog(null,"Se a modificado con exito");
-                        mostrardatos("");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "El numero de RTN debe empezar con 0 o con 1");
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 numeros");
-                }
-                    }else{
-                        
-                        JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o con 1");
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser de 13 numeros");
-                }
-                }catch(Exception e){
-                    System.out.println(e.getMessage());
-            } 
-       }
-    }//GEN-LAST:event_btn_editarActionPerformed
-
     
     public Icon icono(String path, int width, int height){
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
@@ -646,39 +512,6 @@ txt_dir_cli.setText("");
         return img;
     }
     
-    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO add your handling code here:
-        Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-       ConexionSQL cc = new ConexionSQL();
-        Connection cn = cc.getConnection();
-        int fila = tablaclientes.getSelectedRow();
-        String cod = "";
-        cod = tablaclientes.getValueAt(fila, 0).toString();
-        if (i == 0){
-        try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM cliente WHERE Cli_id='" + cod + "'");
-            int a = pst.executeUpdate();
-            mostrardatos("");
-
-            if (a > 0) {
-                JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        }
-       nuevo();
-    }//GEN-LAST:event_btn_eliminarActionPerformed
-
-    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
-        // TODO add your handling code here:
-        
-        System.exit(0);
-    }//GEN-LAST:event_btn_salirActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         mostrardatos(buscar_txt.getText());
@@ -686,8 +519,6 @@ txt_dir_cli.setText("");
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        menuPrincipal menu = new menuPrincipal();
-        menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -761,13 +592,6 @@ txt_dir_cli.setText("");
         }
     }//GEN-LAST:event_txt_dir_cliKeyTyped
   
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-        ContactoC contacto = new ContactoC();
-        contacto.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
          int fila = tablaclientes.getSelectedRow();
@@ -810,13 +634,6 @@ txt_dir_cli.setText("");
         buscar_txt.setText("");
     }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        RegistrarEmpleados re = new RegistrarEmpleados();
-        re.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void txt_num_id_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_num_id_cliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_num_id_cliActionPerformed
@@ -824,34 +641,6 @@ txt_dir_cli.setText("");
     private void buscar_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_txtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buscar_txtActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-        frm_proveedores prov = new frm_proveedores();
-        prov.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        menuPrincipal mp = new menuPrincipal();
-        mp.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        ModeloCompra1 mc = new ModeloCompra1();
-        mc.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        ModeloVenta mv = new ModeloVenta();
-        mv.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void txt_cli_idKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cli_idKeyTyped
         // TODO add your handling code here:
@@ -891,40 +680,38 @@ txt_dir_cli.setText("");
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesFacEm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesFacEm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesFacEm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroClientesFacEm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroClientes().setVisible(true);
+                new RegistroClientesFacEm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_editar;
-    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_nuevo;
-    private javax.swing.JButton btn_salir;
     private javax.swing.JTextField buscar_txt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

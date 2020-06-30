@@ -25,6 +25,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     public Pantalla_Inicio_Sesion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
     
     RegistrarEmpleados metodo = new RegistrarEmpleados();
@@ -123,11 +124,12 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton3MouseClicked
-
+    
     private void btn_inicio_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicio_sesionActionPerformed
         // TODO add your handling code here:
-        
-        validar();
+        SQLMetodos metodos = new SQLMetodos();
+        metodos.buscarUsuario(txt_usuario.getText(), txt_pass.getText());
+        //validar();
     }//GEN-LAST:event_btn_inicio_sesionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -139,7 +141,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
     
-    public void validar(){
+    /*public void validar(){
        RegistrarEmpleados registro = new RegistrarEmpleados();
         
         ConexionSQL cc = new ConexionSQL();
@@ -149,13 +151,18 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         String usuario = txt_usuario.getText();
         String pass = txt_pass.getText();
         String SQL = "SELECT * from vendedor where usuario ='"+usuario+"' and pass=md5('"+pass+"')";
+        String SQL2 = "SELECT tipo_usuario from vendedor ";
+        
         
         try{
         Statement st = cn.createStatement();
         ResultSet rs = st.executeQuery(SQL);
+        ResultSet rst = st.executeQuery(SQL2);
+
         
         if(rs.next()){
-        resultado = 1;
+            resultado = 1;
+        
         if(resultado == 1){
             menuPrincipal menu = new menuPrincipal();
             menu.setVisible(true);
@@ -163,13 +170,13 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
             this.dispose();
         }
         }else{
-            JOptionPane.showMessageDialog(null,"Error de Acceso, Usuario no registrado");
+            JOptionPane.showMessageDialog(null,"Error de Acceso, revise el usuario y contraseña");
         }
         }catch(Exception e){
         
         }
          
-    }
+    }*/
     /**
      * @param args the command line arguments
      */

@@ -65,8 +65,8 @@ public class menuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel2.setText("Menú Principal");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 180, 78));
+        jLabel2.setText("Menú Administrador");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 240, 78));
 
         registroEmpleado.setBackground(new java.awt.Color(0, 0, 204));
         registroEmpleado.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N

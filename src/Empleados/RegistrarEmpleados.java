@@ -67,6 +67,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         modelo.addColumn("Direccion Empleado");
         modelo.addColumn("Usuario");
         modelo.addColumn("Contraseña");
+        modelo.addColumn("Tipo Usuario");
         
 
         tablaempleados.setModel(modelo);
@@ -74,9 +75,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if (valor.equals("")) {
             sql = "SELECT * From vendedor";
         } else {
-            sql = "SELECT * FROM vendedor WHERE (Vendedor_id='" + valor + "' OR nombre_empleado='" + valor + "' OR apellido_empleado='" + valor + "'OR num_identidad_empleado='" + valor + "'OR direccion='" + valor + "')";
+            sql = "SELECT * FROM vendedor WHERE (Vendedor_id='" + valor + "' OR nombre_empleado='" + valor + "' OR apellido_empleado='" + valor + "'OR num_identidad_empleado='" + valor + "'OR direccion='" + valor + "'OR tipo_usuario='"+valor+"')";
         }
-        String[] datos = new String[7];
+        String[] datos = new String[8];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -88,6 +89,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
                 datos[6] = rs.getString(7);
+                datos[7] = rs.getString(8);
 
                 modelo.addRow(datos);
 
@@ -191,6 +193,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        c_tipo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
 
         jTextField1.setText("Registro de Empleados");
@@ -213,13 +217,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         idEmpleado.setText("ID Empleado");
-        getContentPane().add(idEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, -1, -1));
+        getContentPane().add(idEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
 
         jLabel2.setText("Nombre Empleado");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
 
         jLabel3.setText("Apellido Empleado");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         id_empleado.setEditable(false);
         id_empleado.setBackground(new java.awt.Color(204, 204, 204));
@@ -237,7 +241,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 id_empleadoKeyTyped(evt);
             }
         });
-        getContentPane().add(id_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 249, 124, 25));
+        getContentPane().add(id_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 124, 25));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, apelld_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), nom_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -252,7 +256,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 nom_empleadoKeyTyped(evt);
             }
         });
-        getContentPane().add(nom_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 292, 124, 28));
+        getContentPane().add(nom_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 124, 28));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, num_id_emplea, org.jdesktop.beansbinding.ObjectProperty.create(), apelld_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -267,7 +271,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 apelld_empleadoKeyTyped(evt);
             }
         });
-        getContentPane().add(apelld_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 338, 124, 29));
+        getContentPane().add(apelld_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 124, 29));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, dir_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), num_id_emplea, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -282,13 +286,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 num_id_empleaKeyTyped(evt);
             }
         });
-        getContentPane().add(num_id_emplea, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 387, 130, 31));
+        getContentPane().add(num_id_emplea, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 390, 130, 31));
 
         jLabel4.setText("Núm. Identidad Empleado");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, 25));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, 25));
 
         jLabel5.setText("Dirección del Empleado");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         save_empleado.setBackground(new java.awt.Color(0, 0, 204));
         save_empleado.setForeground(new java.awt.Color(255, 255, 255));
@@ -341,7 +345,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tablaempleados);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 616, 133));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, 760, 133));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 204));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -430,7 +434,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 dir_empleadoKeyTyped(evt);
             }
         });
-        getContentPane().add(dir_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 429, 130, 87));
+        getContentPane().add(dir_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 130, 87));
 
         nuevo.setBackground(new java.awt.Color(0, 0, 204));
         nuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -488,18 +492,18 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_pass, org.jdesktop.beansbinding.ObjectProperty.create(), txt_usuario, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
-        getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 532, 124, 30));
+        getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, 124, 30));
 
         jLabel6.setText("Usuario");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 540, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 540, -1, -1));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, save_empleado, org.jdesktop.beansbinding.ObjectProperty.create(), txt_pass, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
 
-        getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 577, 124, 33));
+        getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 580, 124, 33));
 
         jLabel7.setText("Contraseña");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 590, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 590, -1, -1));
 
         buscar_txt.setBackground(new java.awt.Color(0, 0, 204));
         buscar_txt.setForeground(new java.awt.Color(255, 255, 255));
@@ -541,6 +545,12 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 150, -1));
+
+        jLabel9.setText("Tipo Usuario");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+
+        c_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Administrador", " " }));
+        getContentPane().add(c_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 630));
@@ -657,7 +667,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
 
         Connection cn = cc.getConnection();
-
+        if(dir_empleado.getText().contains("!") || dir_empleado.getText().contains("~")|| dir_empleado.getText().contains("`")||
+                   dir_empleado.getText().contains("@") || dir_empleado.getText().contains("$") || dir_empleado.getText().contains("%")||
+                    dir_empleado.getText().contains("^")||dir_empleado.getText().contains("&")||dir_empleado.getText().contains("*")||
+                    dir_empleado.getText().contains("(")||dir_empleado.getText().contains(")")||dir_empleado.getText().contains("-")||
+                    dir_empleado.getText().contains("_")||dir_empleado.getText().contains("+")||dir_empleado.getText().contains("=")){
+              JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+        }else{
         if(dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~")|| dir_empleado.getText().equals("`")||
                    dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")||
                     dir_empleado.getText().equals("^")||dir_empleado.getText().equals("&")||dir_empleado.getText().equals("*")||
@@ -686,7 +702,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 
                                                  
                                                 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?))");
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`tipo_usuario`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?)");
                                                 
                                                 
                                                 
@@ -697,6 +713,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 pst.setString(4, dir_empleado.getText());
                                                 pst.setString(5, txt_usuario.getText());
                                                 pst.setString(6, txt_pass.getText());
+                                                pst.setString(7, c_tipo.getSelectedItem().toString());
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
@@ -740,7 +757,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         }
         }
 
-
+        }
     }//GEN-LAST:event_save_empleadoActionPerformed
 
     private int existeUsuario(String usuario) {
@@ -925,7 +942,7 @@ public Icon icono(String path, int width, int height){
         bloquear();
         limpiar();
     }//GEN-LAST:event_del_empleadoActionPerformed
-
+    
     private void salir_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir_btnActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -1179,6 +1196,7 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton buscar_txt;
     private javax.swing.JTextField buscar_txt_box;
+    private javax.swing.JComboBox<String> c_tipo;
     private javax.swing.JButton del_empleado;
     private javax.swing.JTextField dir_empleado;
     private javax.swing.JLabel idEmpleado;
@@ -1200,6 +1218,7 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
