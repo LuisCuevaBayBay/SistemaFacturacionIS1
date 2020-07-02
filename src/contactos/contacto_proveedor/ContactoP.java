@@ -702,6 +702,7 @@ public final class ContactoP extends javax.swing.JFrame {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM proveedor_contacto WHERE ID_Contacto_Proveedor='" + cod + "'");
             pst.executeUpdate();
             mostrardatos("");
+            logger.debug("Elimina un registro");
             JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
         } catch (Exception e) {
         }
@@ -715,6 +716,7 @@ public final class ContactoP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        logger.debug("vuelve a la ventana de proveedores");
         frm_proveedores p = new frm_proveedores();
         p.setVisible(true);
         this.dispose();
