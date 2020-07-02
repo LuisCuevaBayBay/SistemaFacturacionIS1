@@ -10,6 +10,9 @@ import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
 import MenuEmpleado.MenuE;
 import Venta.ModeloVenta;
+import inicio_sesion.modelo.Hash;
+import inicio_sesion.modelo.SqlUsuarios;
+import inicio_sesion.modelo.usuarios;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,18 +21,23 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import menu.menuPrincipal;
+
 import org.apache.log4j.*;
+
 /**
  *
  * @author luisc
  */
 public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
   
-   final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Pantalla_Inicio_Sesion.class);
+    usuarios mod;
+    
+   final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistrarEmpleados.class);
     public Pantalla_Inicio_Sesion() {
         initComponents();
-        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
+        PropertyConfigurator.configure("log4j.properties");
+        logger.debug("Inicio el sistema");
         
     }
     
@@ -69,12 +77,6 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         usuario.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         usuario.setText("Nombre de Usuario");
         getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 150, 40));
-
-        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usuarioActionPerformed(evt);
-            }
-        });
         getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 174, 30));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -138,7 +140,6 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
-        logger.debug("salio del sistema");
         System.exit(0);
     }//GEN-LAST:event_jButton3MouseClicked
     
@@ -176,6 +177,50 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
+        SqlUsuarios modSql = new SqlUsuarios();
+        usuarios mod = new usuarios();
+        
+        
+        
+        String pass = new String(txt_pass.getPassword());
+        
+        if(!txt_usuario.getText().equals("") && !pass.equals("")){
+            
+            String nuevoPass = Hash.md5(pass);
+            
+            mod.setUsuario(txt_usuario.getText());
+            mod.setPassword(nuevoPass);
+            
+            if(modSql.login(mod)){
+                logger.debug("Se logueo exitosamente: "+mod.getNombre_empleado()+" "+mod.getApellido_empleado());
+                this.dispose();
+                menuPrincipal frmHome = new menuPrincipal(mod);
+                
+                Object[] options = {"HOLA"};
+                int i = JOptionPane.showOptionDialog(null, "Bienvenido (a) \n "+mod.getNombre_empleado()+" "+mod.getApellido_empleado(),"DAENERYS",JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+                frmHome.setVisible(true);
+                
+                
+            
+            }else{
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+                logger.debug("Salio del sistema");
+            }
+            
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Debe ingrear sus datos");
+            logger.debug("Ingreso campos vacios");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
         
         
         
@@ -189,33 +234,34 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
             String busqueda_nombre = metodos.BuscarNombre(txt_usuario.getText());
             Object[] options = {"HOLA"};
          int i = JOptionPane.showOptionDialog(null, "Bienvenido (a) \n "+ busqueda_nombre,"DAENERYS",JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-           logger.debug("Ingreso exitoso al sistema");
+           
             
             this.dispose();
             
         
         }else{
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
-            logger.debug("el usuario no ingreso la contraseña o el usuario correctamente");
         
         }
         
         
-        //validar();
+        //validar();*/
+        
+        
+        
+        
     }//GEN-LAST:event_btn_inicio_sesionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta segura que desea salirr?");
+        int i = JOptionPane.showConfirmDialog(null, "Esta seguro que desea salir?");
+        
         if (i == 0) { 
+            logger.debug("salio del sistema");
         System.exit(0);
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usuarioActionPerformed
     
     /*public void validar(){
        RegistrarEmpleados registro = new RegistrarEmpleados();

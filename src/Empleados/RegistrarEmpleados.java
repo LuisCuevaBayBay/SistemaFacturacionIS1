@@ -33,6 +33,8 @@ import menu.menuPrincipal;
 import producto.Producto;
 import org.apache.log4j.*;
 import inicio_sesion.Pantalla_Inicio_Sesion;
+import inicio_sesion.modelo.SqlUsuarios;
+import inicio_sesion.modelo.usuarios;
 /**
  *
  * @author luisc
@@ -44,6 +46,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
      */
     Connection conectar = null;
     String SQL="select max(Vendedor_id) from vendedor";
+     usuarios mod;
     
      
     
@@ -58,6 +61,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
     }
+    
+   
    
     
     
@@ -199,8 +204,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        c_tipo = new javax.swing.JComboBox<>();
+        tipo = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        pom = new javax.swing.JTextField();
 
         jTextField1.setText("Registro de Empleados");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -554,11 +560,24 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel9.setText("Tipo Usuario");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
 
-        c_tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Administrador", " " }));
-        getContentPane().add(c_tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empleado", "Administrador" }));
+        tipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 630));
+
+        pom.setText("jTextField2");
+        pom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pomActionPerformed(evt);
+            }
+        });
+        getContentPane().add(pom, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
 
         bindingGroup.bind();
 
@@ -726,7 +745,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 
                                                  
                                                 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`tipo_usuario`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?)");
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?)");
                                                 
                                                 
                                                 
@@ -737,7 +756,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 pst.setString(4, dir_empleado.getText());
                                                 pst.setString(5, txt_usuario.getText());
                                                 pst.setString(6, txt_pass.getText());
-                                                pst.setString(7, c_tipo.getSelectedItem().toString());
+                                                pst.setString(7, pom.getText());
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
@@ -1065,10 +1084,17 @@ public Icon icono(String path, int width, int height){
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        menuPrincipal menu = new menuPrincipal();
-        menu.setVisible(true);
-        this.dispose();
+          
+        SqlUsuarios modSql = new SqlUsuarios();
+        usuarios mod = new usuarios();
+         
+        
+       
+        
         logger.debug("Volvio al menu principal");
+        
+        this.dispose();
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -1205,6 +1231,23 @@ public Icon icono(String path, int width, int height){
         id_empleado.transferFocus();
     }//GEN-LAST:event_id_empleadoActionPerformed
 
+    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
+        // TODO add your handling code here:
+        if (tipo.getSelectedItem().toString().equals("Administrador")) {
+            pom.setText("1");
+
+        } else if (tipo.getSelectedItem().toString().equals("Empleado")) {
+            pom.setText("2");
+
+        }else{
+            JOptionPane.showMessageDialog(null, "No es admin ni empleado");
+        }
+    }//GEN-LAST:event_tipoActionPerformed
+
+    private void pomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pomActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1255,7 +1298,6 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton buscar_txt;
     private javax.swing.JTextField buscar_txt_box;
-    private javax.swing.JComboBox<String> c_tipo;
     private javax.swing.JButton del_empleado;
     private javax.swing.JTextField dir_empleado;
     private javax.swing.JLabel idEmpleado;
@@ -1285,9 +1327,11 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JTextField nom_empleado;
     private javax.swing.JButton nuevo;
     private javax.swing.JTextField num_id_emplea;
+    private javax.swing.JTextField pom;
     private javax.swing.JButton salir_btn;
     private javax.swing.JButton save_empleado;
     private javax.swing.JTable tablaempleados;
+    private javax.swing.JComboBox<String> tipo;
     private javax.swing.JPasswordField txt_pass;
     private javax.swing.JTextField txt_usuario;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;

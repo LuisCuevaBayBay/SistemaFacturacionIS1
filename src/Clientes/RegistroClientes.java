@@ -713,8 +713,7 @@ txt_dir_cli.setText("");
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        menuPrincipal menu = new menuPrincipal();
-        menu.setVisible(true);
+        
         logger.debug("volvio al menu principal");
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed

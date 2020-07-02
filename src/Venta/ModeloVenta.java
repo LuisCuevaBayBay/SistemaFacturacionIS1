@@ -11,6 +11,8 @@ import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import java.awt.Toolkit;
 import Clientes.datos;
+import inicio_sesion.modelo.SqlUsuarios;
+import inicio_sesion.modelo.usuarios;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -787,13 +789,15 @@ txtserie.setText("");
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        SqlUsuarios modSql = new SqlUsuarios();
+        usuarios mod = new usuarios();
+         
         Object[] options = {"SI", "NO"};
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
             logger.debug("vuelve al menu principal");
-            menuPrincipal mp = new menuPrincipal();
-        mp.setVisible(true);
+            
         this.dispose();
        
         };

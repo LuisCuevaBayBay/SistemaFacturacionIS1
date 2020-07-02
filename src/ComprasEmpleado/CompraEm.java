@@ -733,10 +733,10 @@ public class CompraEm extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
-        MenuE menu = new MenuE();
+        
         logger.debug("vuelve al menu principal");
 
-        menu.setVisible(true);
+        
         this.dispose();
         }
         

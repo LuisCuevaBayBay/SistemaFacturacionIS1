@@ -718,9 +718,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
-            menuPrincipal mp = new menuPrincipal();
+            
             logger.info("Vuelve al menu principal");
-        mp.setVisible(true);
+        
         this.dispose();
        
         }

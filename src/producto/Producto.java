@@ -12,6 +12,7 @@ import Empleados.RegistrarEmpleados;
 
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
+import inicio_sesion.modelo.usuarios;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,7 +41,8 @@ public class Producto extends javax.swing.JFrame {
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
     }
-
+    
+   
     void mostrardatos(String valor) {
 
         ConexionSQL cc = new ConexionSQL();
@@ -492,11 +494,14 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        logger.debug("Vuelve al menu principal");
-        menuPrincipal menu = new menuPrincipal();
-        menu.setVisible(true);
+        // TODO add your handling code here
+         usuarios mod = new usuarios();
+          menuPrincipal menul = new menuPrincipal();
+         
+        
+       
         this.dispose();
+        logger.debug("Vuelve al menu principal");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

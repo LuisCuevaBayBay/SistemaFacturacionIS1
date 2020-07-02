@@ -13,6 +13,7 @@ import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
 import inicio_sesion.Pantalla_Inicio_Sesion;
+import inicio_sesion.modelo.usuarios;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -23,15 +24,43 @@ import org.apache.log4j.*;
  * @author luisc
  */
 public class menuPrincipal extends javax.swing.JFrame {
+    
+    usuarios mod;
 
     /**
      * Creates new form menuPrincipal
      */
-    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(menuPrincipal.class);
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistrarEmpleados.class);
     public menuPrincipal() {
         initComponents();
-        this.setLocationRelativeTo(null);
         PropertyConfigurator.configure("log4j.properties");
+        this.setLocationRelativeTo(null);
+    }
+    
+    public menuPrincipal(usuarios mod){
+        
+     initComponents();
+     this.setLocationRelativeTo(null);
+     this.mod = mod;
+     
+     rol.setText(mod.getNombre_tipo());
+     nombre.setText(mod.getNombre_empleado()+" "+mod.getApellido_empleado() );
+     
+     
+     if(mod.getId_tipo() == 1){
+     
+     }else if(mod.getId_tipo() == 2){
+         jLabel5.setVisible(false);
+         jLabel8.setVisible(false);
+         jLabel4.setVisible(false);
+         jLabel7.setVisible(false);
+         registroEmpleados.setVisible(false);
+         jButton7.setVisible(false);
+         registroEmpleado.setVisible(false);
+         jButton2.setVisible(false);
+         
+     
+     }
     }
 
     /**
@@ -60,6 +89,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+        rol = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,8 +101,8 @@ public class menuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel2.setText("Menú Administrador");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 0, 240, 78));
+        jLabel2.setText("Menú Daenery");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 240, 78));
 
         registroEmpleado.setBackground(new java.awt.Color(0, 0, 204));
         registroEmpleado.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -87,7 +121,7 @@ public class menuPrincipal extends javax.swing.JFrame {
                 registroEmpleadoActionPerformed(evt);
             }
         });
-        getContentPane().add(registroEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 190, 30));
+        getContentPane().add(registroEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 190, 30));
 
         registroEmpleados.setBackground(new java.awt.Color(0, 0, 204));
         registroEmpleados.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -119,7 +153,7 @@ public class menuPrincipal extends javax.swing.JFrame {
                 registrarVentaActionPerformed(evt);
             }
         });
-        getContentPane().add(registrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 190, 30));
+        getContentPane().add(registrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 190, 30));
 
         salir.setBackground(new java.awt.Color(0, 102, 204));
         salir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -143,7 +177,7 @@ public class menuPrincipal extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 190, 30));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 190, 30));
 
         jButton6.setBackground(new java.awt.Color(0, 102, 204));
         jButton6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -165,22 +199,22 @@ public class menuPrincipal extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 190, 30));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 190, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 80, 120, 120));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 120, 120));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empleado.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 120, 120));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 120, 120));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 120, 120));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/producto.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 120, 120));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 120, 120));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 120, 120));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 120, 120));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -191,13 +225,28 @@ public class menuPrincipal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 370, 190, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 190, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compra.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 250, 130, 120));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, 120));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, -1, -1));
+
+        nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 130, 20));
+
+        rol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 130, 20));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Rol:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 30, 20));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Inicio de sesion como:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 890, 580));
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 890, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,7 +267,7 @@ public class menuPrincipal extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
-            logger.debug("Sale del sistema");
+            logger.debug(mod.getNombre_empleado()+" "+mod.getApellido_empleado()+" Salio del sistema");
         System.exit(0);
         }
     }//GEN-LAST:event_salirActionPerformed
@@ -229,25 +278,24 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     private void registrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVentaActionPerformed
         // TODO add your handling code here:
-        logger.debug("Ingresa a la ventana de ingresar venta");
+        logger.debug("Ingreso a la pantalla de ventas");
         ModeloVenta mv = new ModeloVenta();
         mv.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked
-  logger.debug("ingresa a la ventana de clientes");
+  logger.debug("Ingreso a la pantalla de registro de empleados");
         RegistroClientes registrar2 = new RegistroClientes();
  registrar2.setVisible (true);
- this.dispose();
+
  
     }//GEN-LAST:event_registroEmpleadoMouseClicked
 
     private void registroEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadosMouseClicked
- logger.debug("Ingresa a la venta de registro de empleados");
-        RegistrarEmpleados registrar = new RegistrarEmpleados();
+ RegistrarEmpleados registrar = new RegistrarEmpleados();
  registrar.setVisible (true);
- this.dispose();
+
  
     }//GEN-LAST:event_registroEmpleadosMouseClicked
 
@@ -259,10 +307,9 @@ this.dispose();*/
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        logger.debug("Entra a la ventana de Proveedores");
         frm_proveedores proveedor = new frm_proveedores();
         proveedor.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -271,7 +318,7 @@ this.dispose();*/
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea cerrar sesión?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
-            logger.debug("Cierra Sesion");
+            logger.debug(mod.getNombre_empleado()+" "+mod.getApellido_empleado()+" Cerro Sesion" );
         Pantalla_Inicio_Sesion inicio = new Pantalla_Inicio_Sesion();
         inicio.setVisible(true);
         this.dispose();
@@ -280,18 +327,16 @@ this.dispose();*/
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        logger.debug("ingresa la ventana de producto");
         Producto producto = new Producto();
         producto.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        logger.debug("Entra a la ventana de compra");
         ModeloCompra1 c = new ModeloCompra1();
         c.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -338,15 +383,20 @@ this.dispose();*/
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    public javax.swing.JLabel nombre;
     private javax.swing.JButton registrarVenta;
     private javax.swing.JButton registroEmpleado;
     private javax.swing.JButton registroEmpleados;
+    private javax.swing.JLabel rol;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
