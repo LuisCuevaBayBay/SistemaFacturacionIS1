@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
-
+import org.apache.log4j.*;
 /**
  *
  * @author Hector
@@ -39,11 +39,12 @@ public class proveedor extends javax.swing.JFrame {
      * Creates new form frm_proveedores
      */
     Connection conectar = null;
-
+final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(proveedor.class);
     public proveedor() {
         initComponents();
 
         mostrardatos("");
+         PropertyConfigurator.configure("log4j.properties");
         bloquear();
         limpiar();
         this.setLocationRelativeTo(null);
@@ -483,6 +484,7 @@ public class proveedor extends javax.swing.JFrame {
                     Jtf_Direccion.getText().equals("_")||Jtf_Direccion.getText().equals("+")||Jtf_Direccion.getText().equals("=")){
                    
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.debug("Error, inserto caracteres especiales");
             }else{
 
         if(Jtf_Direccion.getText().contains("!") || Jtf_Direccion.getText().contains("~")|| Jtf_Direccion.getText().contains("`")||
@@ -492,11 +494,13 @@ public class proveedor extends javax.swing.JFrame {
                     Jtf_Direccion.getText().contains("_")||Jtf_Direccion.getText().contains("+")||Jtf_Direccion.getText().contains("=")){
                    
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.debug("Error, inserto caracteres especiales");
             }else{
 
         if (Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
                 || Jtf_Direccion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos que estan vacios. No pueden quedar asi ");
+            logger.debug("Error, dejo campos vacios");
         } else {
 
             try {
@@ -517,22 +521,29 @@ public class proveedor extends javax.swing.JFrame {
 
                                 if (a > 0) {
                                     JOptionPane.showMessageDialog(null, "Registro Guardado con Exito");
+                                    logger.debug("Registro guardado exitosamente");
                                     nuevo();
                                     mostrardatos("");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Error al Agregar Registro");
+                                    logger.debug("Error, al agregar el registro");
                                 }
                             } else {
                                 JOptionPane.showMessageDialog(null, "El RTN debe empezar con 0 o 1");
+                                
+                                logger.debug("Error, inserto un RTN que no empezaba con 0 o 1");
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "El Nombre debe tener al menos 3 caracteres");
+                            logger.debug("Error, inserto un nombre con menos de 3 caracteres");
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "El RTN debe ser de 14");
+                        logger.debug("Error, inserto un RTN con menos de 14 caracteres ");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                    logger.debug("Error, el id ya existia");
                 }
                
                 

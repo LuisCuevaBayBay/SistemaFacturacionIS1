@@ -16,14 +16,13 @@ import contactos.contacto_proveedor.ContactoP;
 import java.awt.Toolkit;
 
 
+
 /*import Factura_Venta.Factura_Venta;*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.Icon;
@@ -32,7 +31,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
-
+import org.apache.log4j.*;
+import inicio_sesion.Pantalla_Inicio_Sesion;
 /**
  *
  * @author luisc
@@ -45,15 +45,20 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     Connection conectar = null;
     String SQL="select max(Vendedor_id) from vendedor";
     
+     
     
     
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistrarEmpleados.class);
     public RegistrarEmpleados() {
         initComponents();
+        PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
         limpiar();
         bloquear();
         this.setLocationRelativeTo(null);
+        
     }
+   
     
     
     void mostrardatos(String valor) {
@@ -577,6 +582,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registro de cliente");
         RegistroClientes rc = new RegistroClientes();
         rc.setVisible(true);
         this.dispose();
@@ -584,6 +590,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registrar Compra");
         ModeloCompra1 mc = new ModeloCompra1();
         mc.setVisible(true);
         this.dispose();
@@ -651,6 +658,8 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         return matcher.find();
     }
     */
+     
+     
     
      
      void empleadodir(){
@@ -665,14 +674,19 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     private void save_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_empleadoActionPerformed
 
         ConexionSQL cc = new ConexionSQL();
-
+        
         Connection cn = cc.getConnection();
+        Pantalla_Inicio_Sesion ses = new Pantalla_Inicio_Sesion();
+        
+        
+        
         if(dir_empleado.getText().contains("!") || dir_empleado.getText().contains("~")|| dir_empleado.getText().contains("`")||
                    dir_empleado.getText().contains("@") || dir_empleado.getText().contains("$") || dir_empleado.getText().contains("%")||
                     dir_empleado.getText().contains("^")||dir_empleado.getText().contains("&")||dir_empleado.getText().contains("*")||
                     dir_empleado.getText().contains("(")||dir_empleado.getText().contains(")")||dir_empleado.getText().contains("-")||
                     dir_empleado.getText().contains("_")||dir_empleado.getText().contains("+")||dir_empleado.getText().contains("=")){
               JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+              logger.debug("Error, inserto caracteres especiales");
         }else{
         if(dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~")|| dir_empleado.getText().equals("`")||
                    dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")||
@@ -680,11 +694,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     dir_empleado.getText().equals("(")||dir_empleado.getText().equals(")")||dir_empleado.getText().equals("-")||
                     dir_empleado.getText().equals("_")||dir_empleado.getText().equals("+")||dir_empleado.getText().equals("=")){
               JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+              logger.debug("Error trato de guardar con un caracter especial");
         }else{
         if (nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
                 || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
                 || txt_pass.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+            logger.debug("Error, trato de guardar con campos vacios");
 
         } else{ 
             
@@ -692,13 +708,21 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             try {
                 
                 if (existeUsuario(txt_usuario.getText()) == 0) {
+                   
                     if (esUsuario(txt_usuario.getText())) {
+                        
                         if (num_id_emplea.getText().length() >= 13) {
+                            
                             if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
+                                
                                 if (nom_empleado.getText().length() >= 3) {
+                                    
                                     if (apelld_empleado.getText().length() >= 3) {
+                                        
                                         if (existeId(id_empleado.getText()) == 0) {
+                                            
                                             if (existeidentidad(num_id_emplea.getText()) == 0) {
+                                                
                                                 
                                                  
                                                 
@@ -718,40 +742,50 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
                                                     JOptionPane.showMessageDialog(null, "Registro Guardado con exito");
-
+                                                        logger.info("Registro Exitoso: "+ses.txt_usuario.getText());
                                                     mostrardatos("");
                                                     nuevo();
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                    logger.debug("Error al almacenar");
                                                 }
                                             } else {
                                                 JOptionPane.showMessageDialog(null, "Error al agregar, este numero de identidad ya existe, inserte otro");
+                                                logger.debug("Error, guardo un numero de identidad que ya existia");
                                             }
                                         } else {
                                             JOptionPane.showMessageDialog(null, "Error al agregar, este ID ya existe, inserte otro");
+                                            logger.debug("Error, guardo un ID repetido");
                                         }
                                     } else {
                                         JOptionPane.showMessageDialog(null, "Error al agregar, el apellido debe tener al menos 3 caracteres");
+                                        logger.debug("Error, guardo un apellido con menos de 3 caracteres");
                                     }
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Error al agregar, el Nombre debe tener al menos 3 caracteres");
+                                    logger.debug("Error, guardo un nombre con menos de 3 caracteres");
                                 }
                             } else {
                                 JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o 1");
+                                logger.debug("Error, ingreso un numero de identidad que no empezaba con 0 o con 1");
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "Error al agregar, el num Identidad debe ser de 13 caracteres");
+                            logger.debug("Error, ingreso un numero de identidad de menos de 13 caracteres");
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "El usuario es incorrecto");
+                        logger.debug("Error, guardo un usuario de forma invalida");
                     }
 
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario ya esta ingresado, intente con otro");
+                     logger.debug("Error, guardo un usuario que ya existe");
                 }
                 
             } catch (Exception e) {
-                    
+               logger.debug("Error: ",e);
+               
             }
                 
         }
@@ -871,7 +905,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         nuevo();
         
         desbloquear();
-        
+        logger.debug("Limpio los campos");
        
     }//GEN-LAST:event_nuevoActionPerformed
 
@@ -884,6 +918,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if (id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
                 || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+            logger.debug("Error, guardo con campos vacios");
 
         } else {
             try {
@@ -895,15 +930,19 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                     pst.executeUpdate();
                     mostrardatos("");
                     JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                    logger.debug("Edicion exitosa");
                     }else{
                         JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser con 0 o con 1");
+                        logger.debug("Error, guardo un numero de identidad que no empezaba con 0 o con 1");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "El num identidad debe ser de 13 numeros");
+                    logger.debug("Error, guardo un numero de identidad con menos de 13 caracteres");
                 }
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+                logger.debug("Error: ",e);
             }
         }
         limpiar();
@@ -931,12 +970,15 @@ public Icon icono(String path, int width, int height){
 
                 if (a > 0) {
                     JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                    logger.debug("Eliminacion exitosa");
                 } else {
                     JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                    logger.debug("Error, no se elimino con exito");
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
+                logger.debug("Error al eliminar");
             }
         }
         bloquear();
@@ -945,8 +987,9 @@ public Icon icono(String path, int width, int height){
     
     private void salir_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir_btnActionPerformed
         // TODO add your handling code here:
+        logger.debug("Salio del sistema");
         System.exit(0);
-
+        
     }//GEN-LAST:event_salir_btnActionPerformed
 
     private void tablaempleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaempleadosMouseClicked
@@ -996,6 +1039,7 @@ public Icon icono(String path, int width, int height){
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        logger.debug("vuelve al menu principal");
         menuPrincipal mp = new menuPrincipal();
         mp.setVisible(true);
         this.dispose();
@@ -1007,11 +1051,13 @@ public Icon icono(String path, int width, int height){
 
     private void buscar_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_txtActionPerformed
         // TODO add your handling code here:
+        logger.debug("Busca un empleado");
         mostrardatos(buscar_txt_box.getText());
     }//GEN-LAST:event_buscar_txtActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Ingreso a la pantalla de contacto");
         Contacto contacto = new Contacto();
         contacto.setVisible(true);
         this.dispose();
@@ -1022,6 +1068,7 @@ public Icon icono(String path, int width, int height){
         menuPrincipal menu = new menuPrincipal();
         menu.setVisible(true);
         this.dispose();
+        logger.debug("Volvio al menu principal");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -1104,12 +1151,14 @@ public Icon icono(String path, int width, int height){
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Muestra los datos de la tabla");
         mostrardatos("");
         buscar_txt_box.setText("");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registro de proveedores");
         frm_proveedores fp = new frm_proveedores();
         fp.setVisible(true);
         this.dispose();
@@ -1117,6 +1166,7 @@ public Icon icono(String path, int width, int height){
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registro de producto");
         Producto prod = new Producto();
         prod.setVisible(true);
         this.dispose();
@@ -1124,6 +1174,7 @@ public Icon icono(String path, int width, int height){
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de Venta");
         ModeloVenta mv = new ModeloVenta();
         mv.setVisible(true);
         this.dispose();
@@ -1163,6 +1214,14 @@ public Icon icono(String path, int width, int height){
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+       
+        
+        
+      
+        
+     
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1180,7 +1239,7 @@ public Icon icono(String path, int width, int height){
             java.util.logging.Logger.getLogger(RegistrarEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

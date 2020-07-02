@@ -13,7 +13,7 @@ import Proveedor.frm_proveedores;
 import java.awt.Toolkit;
 import Clientes.datos;
 import MenuEmpleado.MenuE;
-import ProductoVentaEm.ProductoFac;
+
 import ProveedorFac.proveedor;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 
@@ -33,16 +33,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
-import producto.Producto;
 
+
+
+import org.apache.log4j.*;
 /**
  *
  * @author Hector
  */
 public class CompraEm extends javax.swing.JFrame {
-
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(CompraEm.class);
     public CompraEm() {
         initComponents();
+        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
@@ -125,7 +128,6 @@ public class CompraEm extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtisv = new javax.swing.JComboBox();
-        jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -135,7 +137,6 @@ public class CompraEm extends javax.swing.JFrame {
         btnventa = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         txtotalapagar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -325,14 +326,6 @@ public class CompraEm extends javax.swing.JFrame {
         txtisv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "15", "18" }));
         jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
 
-        jButton6.setText("Registrar Producto");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 130, -1));
-
         jButton7.setText("Registrar Proveedor");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,7 +385,7 @@ public class CompraEm extends javax.swing.JFrame {
                 btnventaActionPerformed(evt);
             }
         });
-        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
+        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
 
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -400,7 +393,7 @@ public class CompraEm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 70, -1));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 70, -1));
 
         jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -410,21 +403,13 @@ public class CompraEm extends javax.swing.JFrame {
         });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jButton4.setText("Ver Facturas");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         jButton5.setText("Cancelar Factura");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
 
         txtotalapagar.setEditable(false);
         txtotalapagar.addActionListener(new java.awt.event.ActionListener() {
@@ -444,7 +429,7 @@ public class CompraEm extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
 
@@ -481,6 +466,8 @@ public class CompraEm extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+       logger.debug("Sale del sistema");
+
         System.exit(0);
         }
          
@@ -530,8 +517,10 @@ public class CompraEm extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Empresa"));
+                logger.debug("se escogio exitosamente al proveedor");
             } else {
                 JOptionPane.showMessageDialog(null, "La empresa no esta registrada no se encuentra registrada");
+                logger.debug("no se encontro al proveedor deseado");
             }
         } catch (Exception e) {
         }
@@ -554,8 +543,10 @@ public class CompraEm extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Empresa"));
+                logger.debug("Se escogio a la empresa deseada");
             } else {
                 JOptionPane.showMessageDialog(null, "La Empresa no se encuentra registrada");
+                logger.debug("No se pudo escoger a la empresa deseada");
             }
         } catch (Exception e) {
         }
@@ -580,8 +571,10 @@ public class CompraEm extends javax.swing.JFrame {
 
                 txtprod.setText(rs.getString("Nombre"));
                 txtprecio.setText(rs.getString("Precio"));
+                logger.debug("Se encontro el producto deseado");
             } else {
                 JOptionPane.showMessageDialog(null, "El Producto no se encuentra registrado");
+                logger.debug("No se encontro el producto deseado");
             }
         } catch (Exception e) {
         }
@@ -628,9 +621,10 @@ public class CompraEm extends javax.swing.JFrame {
             txtCodProducto.setText("");
 
             txtprod.setText("");
-            
+            logger.debug("se agrego el producto a la factura");
             }else{
             JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+            logger.debug("error, puso en 0 la cantidad a llevar");
             }
         }
 
@@ -709,11 +703,13 @@ public class CompraEm extends javax.swing.JFrame {
             int a = pst.executeUpdate();
             if (a > 0) {
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
+                logger.debug("Se registra exitosamente la factura");
                 sumar();
                 limpiar();
                 mostrardatos("");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al agregar");
+                logger.debug("Error al agregar");
             }
 
         } catch (Exception e) {
@@ -738,6 +734,8 @@ public class CompraEm extends javax.swing.JFrame {
         
         if (i == 0) { 
         MenuE menu = new MenuE();
+        logger.debug("vuelve al menu principal");
+
         menu.setVisible(true);
         this.dispose();
         }
@@ -781,12 +779,6 @@ public class CompraEm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCodProductoKeyTyped
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        VerFacturaCompra ver = new VerFacturaCompra();
-        ver.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
    
     
     //bro me fui a dejar unas mascarillas xdd pero ya lo termine 
@@ -811,10 +803,12 @@ public class CompraEm extends javax.swing.JFrame {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
+           
+
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
-         
+         logger.debug("Se cancela la factura");
         limpiar();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -878,19 +872,14 @@ public class CompraEm extends javax.swing.JFrame {
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
-         
+         logger.debug("se limpian los campos");
         limpiar();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        ProductoFac p = new ProductoFac();
-        p.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        logger.debug("El empleado procede a registrar al proveedor");
         proveedor pv = new proveedor();
         pv.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -939,9 +928,7 @@ public class CompraEm extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

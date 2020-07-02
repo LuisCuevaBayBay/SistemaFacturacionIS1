@@ -22,7 +22,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import org.apache.log4j.*;
 /**
  *
  * @author LENOVO
@@ -32,9 +32,11 @@ public final class ContactoP extends javax.swing.JFrame {
     /**
      *
      */
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContactoP.class);
     public ContactoP() {
         initComponents();
         mostrardatos("");
+        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
     }
 
@@ -354,6 +356,7 @@ public final class ContactoP extends javax.swing.JFrame {
 
         if (extencion.getText().equals("") || Numero_Telefonico.getText().equals("") || Correo.getText().equals("") || Celular.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
+            logger.debug("Dejo los campos vacios");
         } else {
 
             if (esEmail(Correo.getText())) {
@@ -383,9 +386,11 @@ public final class ContactoP extends javax.swing.JFrame {
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
                                                     JOptionPane.showMessageDialog(null, "Registro exitoso");
+                                                    logger.debug("Registro Exitoso");
                                                     mostrardatos("");
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                    logger.debug("Error al agregar");
                                                 }
 
                                             } catch (Exception e) {
@@ -393,41 +398,51 @@ public final class ContactoP extends javax.swing.JFrame {
                                             }
                                         } else {
                                             JOptionPane.showMessageDialog(null, "Numero celular debe empezar 3, 8 o 9");
+                                            logger.debug("Error, el numero de celular debe empezar con 3,8 o 9");
 
                                         }
                                               }else{
                                                   JOptionPane.showMessageDialog(null, "Numero telefonico debe empezar con 2");
+                                                  logger.debug("Error, el numero de telefono no empieza con 2");
                                                   
                                               }
                                     } else {
-                                        JOptionPane.showMessageDialog(null, "La extension debe ser de 3");
+                                        JOptionPane.showMessageDialog(null, "La extension debe ser de 3 digitos");
+                                        logger.debug("Error, se ingreso una extension de menos de 3 numeros");
                                     }
                                 } else {
                                     JOptionPane.showMessageDialog(null, "La casilla numero telefonico es de 8 caracteres");
+                                    logger.debug("Error, el numero de telefono contiene menos de 8 caracteres");
 
                                 }
 
                             } else {
                                 JOptionPane.showMessageDialog(null, "El Numero de Celular ya existe");
+                                logger.debug("Error, el numero de celular ya existe");
                             }
 
                         } else {
                             JOptionPane.showMessageDialog(null, "El Numero de Telefono ya existe");
+                            logger.debug("Error, el numero de telefono ya esta registrado");
                         }
 
                     } else {
                         JOptionPane.showMessageDialog(null, "El correo ya existe");
+                        logger.debug("error, el correo ya existe");
 
                     }
 
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                    logger.debug("Error, el id ya existe");
 
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
+                logger.debug("Mal ingreso del correo");
             }
             }
+           
         }
         nuevo();
 
@@ -445,10 +460,12 @@ public final class ContactoP extends javax.swing.JFrame {
 
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        logger.debug("Muestra los datos de la tabla");
         mostrardatos("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        logger.debug("Busca un contacto");
         mostrardatos(buscar.getText());
     }//GEN-LAST:event_jButton4ActionPerformed
 

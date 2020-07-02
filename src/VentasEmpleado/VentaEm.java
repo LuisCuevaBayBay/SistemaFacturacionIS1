@@ -14,8 +14,8 @@ import Proveedor.frm_proveedores;
 import java.awt.Toolkit;
 import Clientes.datos;
 import MenuEmpleado.MenuE;
-import ProductoVentaEm.ProductoFac;
 
+import org.apache.log4j.*;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -39,9 +39,10 @@ import producto.Producto;
  * @author Hector
  */
 public class VentaEm extends javax.swing.JFrame {
-
+final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(VentaEm.class);
     public VentaEm() {
         initComponents();
+        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
@@ -130,7 +131,6 @@ public class VentaEm extends javax.swing.JFrame {
         txt_vendedor1 = new javax.swing.JTextField();
         txtisv = new javax.swing.JComboBox();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -139,7 +139,6 @@ public class VentaEm extends javax.swing.JFrame {
         btnventa = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         txtotalapagar = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -371,14 +370,6 @@ public class VentaEm extends javax.swing.JFrame {
         });
         jPanel2.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 130, -1));
 
-        jButton8.setText("Registrar Producto");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 130, -1));
-
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
         jTable2 = new javax.swing.JTable(){
@@ -448,14 +439,6 @@ public class VentaEm extends javax.swing.JFrame {
         });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jButton4.setText("Ver Facturas");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
         txtotalapagar.setEditable(false);
         txtotalapagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,6 +497,7 @@ public class VentaEm extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("Sale del sistema");
         System.exit(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -562,8 +546,10 @@ public class VentaEm extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Cliente"));
+                logger.debug("Busca al cliente");
             } else {
                 JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
+                logger.debug("No se encuentra al cliente");
             }
         } catch (Exception e) {
         }
@@ -586,8 +572,10 @@ public class VentaEm extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Cliente"));
+                logger.debug("Busca al cliente mediante su numero de identidad");
             } else {
                 JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
+                logger.debug("Error, el cliente no esta registrado");
             }
         } catch (Exception e) {
         }
@@ -612,8 +600,10 @@ public class VentaEm extends javax.swing.JFrame {
 
                 txtprod.setText(rs.getString("Nombre"));
                 txtprecio.setText(rs.getString("Precio"));
+                logger.debug("Se busca el producto");
             } else {
                 JOptionPane.showMessageDialog(null, "El Producto no se encuentra registrado");
+                logger.debug("Error, no se encuentra el producto");
             }
         } catch (Exception e) {
         }
@@ -689,6 +679,7 @@ public class VentaEm extends javax.swing.JFrame {
 if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
         txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")){
       JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
+      logger.debug("Los campos tienen que ir llenos");
 }else{
     if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
                     || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
@@ -709,8 +700,10 @@ if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") ||
         txtCodProducto.setText("");
 
         txtprod.setText("");
+        logger.debug("Registra el producto en la factura");
         }else{
             JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+            logger.debug("Error, no puso valores en la cantidad");
             }
 }
  double sum = 0;
@@ -762,10 +755,12 @@ txtserie.setText("");
             int a = pst.executeUpdate();
             if (a > 0) {
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
+                logger.debug("Se realiza exitosamente el registro");
                 limpiar();
                 mostrardatos("");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al agregar");
+                logger.debug("Error, la factura no se guardo exitosamente");
             }
 
         } catch (Exception e) {
@@ -798,6 +793,7 @@ txtserie.setText("");
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("vuelve al menu principal");
         MenuE menu = new MenuE();
         menu.setVisible(true);
         this.dispose();
@@ -854,12 +850,6 @@ txtserie.setText("");
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_txtvendedorKeyTyped
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        VerFacturaVenta ver = new VerFacturaVenta();
-        ver.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
   public Icon icono(String path, int width, int height){
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
                 getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
@@ -884,7 +874,7 @@ txtserie.setText("");
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
             pst.executeUpdate();
-            
+            logger.debug("se cancelo exitosamente");
             mostrardatos("");// TODO add your handling code here:
             JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
             
@@ -943,7 +933,7 @@ char c = evt.getKeyChar();
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
             pst.executeUpdate();
-            
+            logger.debug("Se limpian los campos");
             mostrardatos("");// TODO add your handling code here:
           
             
@@ -958,15 +948,10 @@ char c = evt.getKeyChar();
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Procede a registrar al cliente");
         RegistroClientesFacEm r = new RegistroClientesFacEm();
         r.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        ProductoFac p = new ProductoFac();
-        p.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1012,11 +997,9 @@ char c = evt.getKeyChar();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

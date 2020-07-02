@@ -10,6 +10,8 @@ import MenuEmpleado.MenuE;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import menu.menuPrincipal;
 
@@ -69,6 +71,7 @@ public class SQLMetodos {
          
      }catch(Exception e){
          System.out.println("Error"+e);
+         
      }
      
      return busqueda_usuario;

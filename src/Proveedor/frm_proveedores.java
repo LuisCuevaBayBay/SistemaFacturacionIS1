@@ -27,10 +27,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
-
+import inicio_sesion.Pantalla_Inicio_Sesion;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.*;
 /**
  *
- * @author Hector
+ * @author Luis
  */
 public class frm_proveedores extends javax.swing.JFrame {
 
@@ -38,10 +40,12 @@ public class frm_proveedores extends javax.swing.JFrame {
      * Creates new form frm_proveedores
      */
     Connection conectar = null;
+    
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(frm_proveedores.class);
 
     public frm_proveedores() {
         initComponents();
-
+        PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
         bloquear();
         limpiar();
@@ -496,7 +500,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void contactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactoActionPerformed
         // TODO add your handling code here:
-
+        logger.debug("Ingreso a la pantalla de contacto");
         ContactoP contacto = new ContactoP();
         contacto.setVisible(true);
         this.dispose();
@@ -504,6 +508,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Volvio al menu Principal");
         menuPrincipal menu = new menuPrincipal();
         menu.setVisible(true);
         this.dispose();
@@ -511,6 +516,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        logger.debug("busca los datos de un proveedor en la tabla ");
         mostrardatos(buscar_txt.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -528,6 +534,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     }
     private void jtf_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_nuevoActionPerformed
         // TODO add your handling code here:
+        logger.debug("Limpio los campos");
         nuevo();
         desbloquear();
     }//GEN-LAST:event_jtf_nuevoActionPerformed
@@ -540,6 +547,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         if (Jtf_Id.getText().equals("") || Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
                 || Jtf_Direccion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos que estan vacios. No pueden quedar asi ");
+            logger.debug("Error, hay campos vacios");
         } else {
 
             try {
@@ -549,12 +557,15 @@ public class frm_proveedores extends javax.swing.JFrame {
                     id = Jtf_Id.getText();
                     pst.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Se modifico con exito");
+                    logger.debug("El registro se guardo con exito");
                     mostrardatos("");
                     }else{
                         JOptionPane.showMessageDialog(null, "El RTN debe empezar con 0 o con 1");
+                        logger.debug("Error, inserto un RTN que no empieza con 1 o con 0");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 caracteres");
+                    logger.debug("Error, inserto un RTN de menos de 14 caracteres");
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -586,8 +597,10 @@ public class frm_proveedores extends javax.swing.JFrame {
                 int a = pst.executeUpdate();
                 if (a > 0) {
                     JOptionPane.showMessageDialog(null, "No se pudo eliminar");
+                    logger.debug("Error, no se elimino el registro exitosamente");
                 } else {
                     JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
+                    logger.debug("Eliminacion Exitosa");
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "No se pudo eliminar, el proveedor tiene facturas registradas");
@@ -662,6 +675,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                     Jtf_Direccion.getText().equals("_")||Jtf_Direccion.getText().equals("+")||Jtf_Direccion.getText().equals("=")){
                    
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.debug("Error, inserto caracteres especiales");
             }else{
 
         if(Jtf_Direccion.getText().contains("!") || Jtf_Direccion.getText().contains("~")|| Jtf_Direccion.getText().contains("`")||
@@ -671,11 +685,13 @@ public class frm_proveedores extends javax.swing.JFrame {
                     Jtf_Direccion.getText().contains("_")||Jtf_Direccion.getText().contains("+")||Jtf_Direccion.getText().contains("=")){
                    
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.debug("Error, inserto caracteres especiales");
             }else{
 
         if (Jtf_Nombre_Empresa.getText().equals("") || jtf_Rtn.getText().equals("")
                 || Jtf_Direccion.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos que estan vacios. No pueden quedar asi ");
+            logger.debug("Error, al momento de registrar dejo campos vacios");
         } else {
 
             try {
@@ -696,22 +712,28 @@ public class frm_proveedores extends javax.swing.JFrame {
 
                                 if (a > 0) {
                                     JOptionPane.showMessageDialog(null, "Registro Guardado con Exito");
+                                    logger.debug("Registro Guardado Exitosamente");
                                     nuevo();
                                     mostrardatos("");
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Error al Agregar Registro");
+                                    logger.debug("Error, el registro no se agrego correctamente");
                                 }
                             } else {
                                 JOptionPane.showMessageDialog(null, "El RTN debe empezar con 0 o 1");
+                                logger.debug("Error, inserto un RTN que no empezaba con 0 o con 1");
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "El Nombre debe tener al menos 3 caracteres");
+                            logger.debug("Error, inserto un nombre con menos de 3 caracteres");
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "El RTN debe ser de 14");
+                        logger.debug("Error, el rtn no debe ser menor a 14");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                    logger.debug("Error, el id ingresado ya existe");
                 }
                
                 
@@ -760,6 +782,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Vuelve al menu principal");
         menuPrincipal menu = new menuPrincipal();
         menu.setVisible(true);
         this.dispose();
@@ -767,6 +790,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registro de empleados");
         RegistrarEmpleados re = new RegistrarEmpleados();
         re.setVisible(true);
         this.dispose();
@@ -774,6 +798,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registro de clientes");
         RegistroClientes rc = new RegistroClientes();
         rc.setVisible(true);
         this.dispose();
@@ -781,6 +806,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registro de Producto");
         Producto producto = new Producto();
         producto.setVisible(true);
         this.dispose();
@@ -788,6 +814,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de Compra");
         ModeloCompra1 mc = new ModeloCompra1();
         mc.setVisible(true);
         this.dispose();
@@ -795,6 +822,7 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de venta");
         ModeloVenta mv = new ModeloVenta();
         mv.setVisible(true);
         this.dispose();
@@ -802,12 +830,14 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Muestra los datos de la tabla");
         mostrardatos("");
         buscar_txt.setText("");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Sale del Sistema");
         System.exit(0);
     }//GEN-LAST:event_jButton10ActionPerformed
 

@@ -29,16 +29,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
-
+import org.apache.log4j.*;
 /**
  *
  * @author Hector
  */
 public class ModeloVenta extends javax.swing.JFrame {
-
+final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ModeloVenta.class);
     public ModeloVenta() {
         initComponents();
         this.setLocationRelativeTo(null);
+        PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
     }
@@ -492,6 +493,7 @@ public class ModeloVenta extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("Salio del sistema");
         System.exit(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -540,8 +542,10 @@ public class ModeloVenta extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Cliente"));
+                logger.debug("Se busca al cliente");
             } else {
                 JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
+                logger.debug("No se encontro al cliente");
             }
         } catch (Exception e) {
         }
@@ -564,8 +568,10 @@ public class ModeloVenta extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Cliente"));
+                logger.debug("Se busca al cliente");
             } else {
                 JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
+                logger.debug("No se encontro al cliente");
             }
         } catch (Exception e) {
         }
@@ -590,8 +596,10 @@ public class ModeloVenta extends javax.swing.JFrame {
 
                 txtprod.setText(rs.getString("Nombre"));
                 txtprecio.setText(rs.getString("Precio"));
+                logger.debug("Se encuentra el producto");
             } else {
                 JOptionPane.showMessageDialog(null, "El Producto no se encuentra registrado");
+                logger.debug("No se encontro el producto");
             }
         } catch (Exception e) {
         }
@@ -625,8 +633,10 @@ public class ModeloVenta extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txt_vendedor1.setText(rs.getString("nombre_empleado"));
+                logger.debug("Se busca el vendedor");
             } else {
                 JOptionPane.showMessageDialog(null, "El Empleado no se encuentra registrado");
+                logger.debug("No se encontro el vendedor");
             }
         } catch (Exception e) {
         }
@@ -667,6 +677,7 @@ public class ModeloVenta extends javax.swing.JFrame {
 if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
         txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")){
       JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
+      logger.debug("Los campos no deben ir vacios");
 }else{
     if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
                     || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
@@ -687,8 +698,10 @@ if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") ||
         txtCodProducto.setText("");
 
         txtprod.setText("");
+        logger.debug("agrega el producto a la factura");
         }else{
             JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+            logger.debug("la cantidad a llevar no puede ser 0");
             }
 }
  double sum = 0;
@@ -740,10 +753,12 @@ txtserie.setText("");
             int a = pst.executeUpdate();
             if (a > 0) {
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
+                logger.debug("Realizo una venta exitosa");
                 limpiar();
                 mostrardatos("");
             } else {
                 JOptionPane.showMessageDialog(null, "Error al agregar");
+                logger.debug("Error al momento de registrar la venta");
             }
 
         } catch (Exception e) {
@@ -776,6 +791,7 @@ txtserie.setText("");
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("vuelve al menu principal");
             menuPrincipal mp = new menuPrincipal();
         mp.setVisible(true);
         this.dispose();
@@ -836,6 +852,7 @@ txtserie.setText("");
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a ver las facturas guardadas");
         VerFacturaVenta ver = new VerFacturaVenta();
         ver.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -863,7 +880,7 @@ txtserie.setText("");
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
             pst.executeUpdate();
-            
+            logger.debug("Factura cancelada con exito");
             mostrardatos("");// TODO add your handling code here:
             JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
             
@@ -921,6 +938,7 @@ char c = evt.getKeyChar();
         
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
+            logger.debug("Limpia los campos");
             pst.executeUpdate();
             
             mostrardatos("");// TODO add your handling code here:

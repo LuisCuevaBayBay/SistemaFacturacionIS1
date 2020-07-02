@@ -30,15 +30,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
-
+import org.apache.log4j.*;
 /**
  *
  * @author Hector
  */
 public class ModeloCompra1 extends javax.swing.JFrame {
-
+ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ModeloCompra1.class);
     public ModeloCompra1() {
         initComponents();
+        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
@@ -386,7 +387,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
 
         jButton4.setText("Ver Facturas");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -450,7 +451,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void btnBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCliActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_btnBuscarCliActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -459,6 +460,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.info("salio del sistema");
         System.exit(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -507,8 +509,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
             if (rs.next()) {
                 txtcli.setText(rs.getString("Nombre_Empresa"));
+                 logger.info("busca uno de los proveedores");
             } else {
                 JOptionPane.showMessageDialog(null, "La empresa no esta registrada no se encuentra registrada");
+                 logger.debug("no se encontro al proveedor deseado");
             }
         } catch (Exception e) {
         }
@@ -557,8 +561,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
                 txtprod.setText(rs.getString("Nombre"));
                 txtprecio.setText(rs.getString("Precio"));
+                 logger.info("busca un producto");
             } else {
                 JOptionPane.showMessageDialog(null, "El Producto no se encuentra registrado");
+                 logger.info("no se encontro el producto deseado");
             }
         } catch (Exception e) {
         }
@@ -585,10 +591,12 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
         if (txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
+             logger.info("Error, los campos van vacios");
         } else {
             if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
                     || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
                     || spinCant.getValue().toString().startsWith("9")){
+                 
             DefaultTableModel model = new DefaultTableModel();
 
             model = (DefaultTableModel) jTable1.getModel();
@@ -608,6 +616,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             
             }else{
             JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+            logger.info("el campo de cantidad no puede ir en 0");
             }
         }
 
@@ -686,11 +695,14 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             int a = pst.executeUpdate();
             if (a > 0) {
                 JOptionPane.showMessageDialog(null, "Registro exitoso");
+                logger.info("se registra exitosamente la factura");
                 sumar();
                 limpiar();
                 mostrardatos("");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Error al agregar");
+                logger.info("hubo error al agregar la factura");
             }
 
         } catch (Exception e) {
@@ -707,6 +719,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         
         if (i == 0) { 
             menuPrincipal mp = new menuPrincipal();
+            logger.info("Vuelve al menu principal");
         mp.setVisible(true);
         this.dispose();
        
@@ -753,6 +766,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        logger.info("Entra a la pantalla para observar las facturas");
         VerFacturaCompra ver = new VerFacturaCompra();
         ver.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -785,7 +799,8 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
+            JOptionPane.showMessageDialog(null, "Se cancela la factura con exito");
+            logger.info("Se cancelo la factura con exito");
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
@@ -853,7 +868,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
-         
+         logger.info("limpio todo el espacio de la factura ");
         limpiar();
         
     }//GEN-LAST:event_jButton2ActionPerformed

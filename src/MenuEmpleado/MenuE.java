@@ -11,7 +11,7 @@ import inicio_sesion.Pantalla_Inicio_Sesion;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
+import org.apache.log4j.*;
 /**
  *
  * @author Luis Cueva
@@ -21,6 +21,8 @@ public class MenuE extends javax.swing.JFrame {
     /**
      * Creates new form MenuE
      */
+    
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(MenuE.class);
     public MenuE() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -118,6 +120,7 @@ public Icon icono(String path, int width, int height){
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea cerrar sesion","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("El usuario cerro sesion");
         Pantalla_Inicio_Sesion login = new Pantalla_Inicio_Sesion();
         login.setVisible(true);
         this.dispose();
@@ -130,6 +133,7 @@ public Icon icono(String path, int width, int height){
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("Salio del sistema");
         System.exit(0);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -137,6 +141,7 @@ public Icon icono(String path, int width, int height){
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         CompraEm compra = new CompraEm();
+        logger.debug("Ingreso a la pantalla de Registrar Compra");
         compra.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -144,6 +149,7 @@ public Icon icono(String path, int width, int height){
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         VentaEm venta = new VentaEm();
+        logger.debug("Ingreso a la pantalla de Registrar Venta");
         venta.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import org.apache.log4j.*;
 /**
  *
  * @author luisc
@@ -26,8 +26,10 @@ public class VerFacturaVenta extends javax.swing.JFrame {
     /**
      * Creates new form VerFacturaVenta
      */
+        final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(VerFacturaVenta.class);
     public VerFacturaVenta() {
         initComponents();
+        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
     }
@@ -153,6 +155,7 @@ void mostrardatos(String valor) {
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM ventas  WHERE IdVentas='" + cod + "'");
             pst.executeUpdate();
+            logger.debug("Se elimina la factura exitosamente");
             mostrardatos("");
             JOptionPane.showMessageDialog(null, "Se a eliminado correctamente"); // TODO add your handling code here:
         } catch (Exception e) {
@@ -161,11 +164,13 @@ void mostrardatos(String valor) {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Vuelve a la pantalla de Venta");
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Salio del sistema");
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 

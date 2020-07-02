@@ -18,16 +18,17 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import menu.menuPrincipal;
-
+import org.apache.log4j.*;
 /**
  *
  * @author luisc
  */
 public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
   
-   
+   final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Pantalla_Inicio_Sesion.class);
     public Pantalla_Inicio_Sesion() {
         initComponents();
+        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         
     }
@@ -68,6 +69,12 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         usuario.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         usuario.setText("Nombre de Usuario");
         getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 150, 40));
+
+        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 174, 30));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -131,6 +138,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
+        logger.debug("salio del sistema");
         System.exit(0);
     }//GEN-LAST:event_jButton3MouseClicked
     
@@ -181,13 +189,14 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
             String busqueda_nombre = metodos.BuscarNombre(txt_usuario.getText());
             Object[] options = {"HOLA"};
          int i = JOptionPane.showOptionDialog(null, "Bienvenido (a) \n "+ busqueda_nombre,"DAENERYS",JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-           
+           logger.debug("Ingreso exitoso al sistema");
             
             this.dispose();
             
         
         }else{
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecta");
+            logger.debug("el usuario no ingreso la contraseña o el usuario correctamente");
         
         }
         
@@ -203,6 +212,10 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usuarioActionPerformed
     
     /*public void validar(){
        RegistrarEmpleados registro = new RegistrarEmpleados();

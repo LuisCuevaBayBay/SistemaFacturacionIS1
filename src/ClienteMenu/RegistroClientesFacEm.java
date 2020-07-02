@@ -30,6 +30,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.*;
+
 /**
  *
  * @author luisc
@@ -39,10 +42,11 @@ public class RegistroClientesFacEm extends javax.swing.JFrame {
     /**
      * Creates new form RegistroClientes
      */
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistroClientesFacEm.class);
     public RegistroClientesFacEm() {
         initComponents();
         mostrardatos("");
-        
+        PropertyConfigurator.configure("log4j.properties");
         
      this.setLocationRelativeTo(null);
     }
@@ -342,6 +346,7 @@ public class RegistroClientesFacEm extends javax.swing.JFrame {
                     
                     
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.debug("Error, inserto caracteres especiales");
             }else{
         if(txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~")|| txt_dir_cli.getText().equals("`")||
                    txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")||
@@ -351,17 +356,22 @@ public class RegistroClientesFacEm extends javax.swing.JFrame {
                     
                     
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.info("Error, inserto caracteres especiales");
             }else{
         if(txt_rtn_cliente.getText().equals("") || txt_nombre_cli.getText().equals("")
             || txt_apellido_cli.getText().equals("") || txt_num_id_cli.getText().equals("")
             || txt_dir_cli.getText().equals("")){
         
         JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos"); 
+                    logger.debug("Error, trato de guardar con caracteres vacios");
+
     
     }else{
        
        try{
            if(existeUsuario(txt_cli_id.getText())==0){
+                           logger.debug("Error, trato de registrar un id que ya existia");
+
             if(txt_num_id_cli.getText().length() >= 13){
                 if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
                     if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
@@ -380,28 +390,36 @@ public class RegistroClientesFacEm extends javax.swing.JFrame {
            int a = pst.executeUpdate();
            if(a>0){
                JOptionPane.showMessageDialog(null, "Registro Exitoso");
+               logger.info("Se ingreso exitosamente al cliente: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
                nuevo();
                mostrardatos("");
            }else{
                JOptionPane.showMessageDialog(null, "Error al agregar");
+               logger.debug("Error, fallo al guardar");
            }
                             }else{
                                 JOptionPane.showMessageDialog(null, "El RTN ya existe ingrese otro");
+                                logger.debug("Error, Inserto un RTN que ya existia");
                             }
                         }else{
                             JOptionPane.showMessageDialog(null, "El numero de Identidad ya existe, ingrese otro");
+                            logger.debug("Error, trato de ingresar un Numero de Identidad que ya existia");
                         }
                     }else{
                         JOptionPane.showMessageDialog(null, "Error al agregar, el RTN debe ser de 14");
+                        logger.debug("Error, trato de ingresar un RTN con menos de 14 caracteres");
                     }
                     }else{
                         JOptionPane.showMessageDialog(null,"El numero de RTN solo puede empezar con 0 o con 1");
+                        logger.debug("Error, trato de ingresar un rtn que no empezaba con 0 o 1");
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "El numero de identidad solo puede empezar con 0 o con 1");
+                    logger.debug("Error, trato de ingresar un numero de identidad que no empezaba con 0 o 1");
                 }
            }else{
                JOptionPane.showMessageDialog(null, "Error al agregar, el Num Identidad debe ser de 13");
+               logger.debug("Error, agrego un numero de identidad con menos de 13 catacteres");
            }
            }
        }catch (Exception e){
@@ -502,7 +520,7 @@ txt_dir_cli.setText("");
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
         nuevo();
-        
+         logger.info("Limpio los campos");
     }//GEN-LAST:event_btn_nuevoActionPerformed
     String id ="";
     
@@ -519,7 +537,9 @@ txt_dir_cli.setText("");
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Volvio a la ventana de Factura Venta");
         this.dispose();
+         
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void txt_rtn_clienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rtn_clienteKeyTyped

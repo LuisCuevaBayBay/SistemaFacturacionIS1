@@ -23,7 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
-
+import org.apache.log4j.*;
 /**
  *
  * @author luisc
@@ -33,9 +33,11 @@ public class Producto extends javax.swing.JFrame {
     /**
      * Creates new form Producto
      */
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Producto.class);
     public Producto() {
         initComponents();
         mostrardatos("");
+        PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
     }
 
@@ -393,6 +395,7 @@ public class Producto extends javax.swing.JFrame {
 
         if (nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+            logger.debug("los campos no pueden ir vacios");
         } else {
             if (precio_double.getText().startsWith("1") || precio_double.getText().startsWith("2") || precio_double.getText().startsWith("3") || precio_double.getText().startsWith("4")
                     || precio_double.getText().startsWith("5") || precio_double.getText().startsWith("6") || precio_double.getText().startsWith("7") || precio_double.getText().startsWith("8")
@@ -409,17 +412,20 @@ public class Producto extends javax.swing.JFrame {
 
                     if (a > 0) {
                         JOptionPane.showMessageDialog(null, "Registro Exitoso");
+                        logger.debug("El registro se guardo exitosamente");
                         limpiar();
                         mostrardatos("");
 
                     } else {
                         JOptionPane.showMessageDialog(null, "Error al Agregar");
+                        logger.debug("Error al agregar");
                     }
                 } catch (Exception e) {
                 }
                 
         }else{
                 JOptionPane.showMessageDialog(null, "El precio no debe de ser 0");
+                logger.debug("El precio no puede ser 0");
             }
                 }
         limpiar();
@@ -432,6 +438,7 @@ public class Producto extends javax.swing.JFrame {
         Connection cn = cc.getConnection();
         if (id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+            logger.debug("los campos no pueden ir vacios");
         } else {
 
             try {
@@ -439,6 +446,7 @@ public class Producto extends javax.swing.JFrame {
                 id = id_producto_txt.getText();
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                logger.debug("Se edito el campo con exito");
                 limpiar();
                 mostrardatos("");
 
@@ -471,8 +479,10 @@ public class Producto extends javax.swing.JFrame {
                 int a = pst.executeUpdate();
                 if (a > 0) {
                     JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                    logger.debug("Error al eliminar el campo");
                 } else {
                     JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                    logger.debug("Eliminacion Exitosa");
                 }
             } catch (Exception e) {
 
@@ -483,6 +493,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Vuelve al menu principal");
         menuPrincipal menu = new menuPrincipal();
         menu.setVisible(true);
         this.dispose();
@@ -490,6 +501,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Sale del sistema");
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -512,11 +524,13 @@ public class Producto extends javax.swing.JFrame {
 
     private void buscar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_btnActionPerformed
         // TODO add your handling code here:
+        logger.debug("busca los datos");
         mostrardatos(buscar_txt.getText());
     }//GEN-LAST:event_buscar_btnActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
+        logger.debug("vuelve a mostrar los valores de la tabla");
         mostrardatos("");
     }//GEN-LAST:event_jButton10ActionPerformed
 
@@ -555,11 +569,13 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        logger.debug("se limpian los campos");
         limpiar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registro de Cliente");
         RegistroClientes rc = new RegistroClientes();
         rc.setVisible(true);
         this.dispose();
@@ -567,6 +583,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la pantalla de registrar Empleados");
         RegistrarEmpleados re = new RegistrarEmpleados();
         re.setVisible(true);
         this.dispose();
@@ -574,6 +591,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la ventana de proveedores");
         frm_proveedores fp = new frm_proveedores();
         fp.setVisible(true);
         this.dispose();
@@ -581,6 +599,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la ventana de compras");
         ModeloCompra1 mc = new ModeloCompra1();
         mc.setVisible(true);
         this.dispose();
@@ -588,6 +607,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la ventana de Ventas");
         ModeloVenta mv = new ModeloVenta();
         mv.setVisible(true);
         this.dispose();
@@ -595,6 +615,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Vuelve al menu principal");
         menuPrincipal mp = new menuPrincipal();
         mp.setVisible(true);
         this.dispose();

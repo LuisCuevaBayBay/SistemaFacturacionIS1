@@ -27,7 +27,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
-
+import org.apache.log4j.*;
 /**
  *
  * @author luisc
@@ -37,10 +37,12 @@ public class RegistroClientes extends javax.swing.JFrame {
     /**
      * Creates new form RegistroClientes
      */
+    
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistroClientes.class);
     public RegistroClientes() {
         initComponents();
         mostrardatos("");
-        
+        PropertyConfigurator.configure("log4j.properties");
         
      this.setLocationRelativeTo(null);
     }
@@ -439,6 +441,8 @@ public class RegistroClientes extends javax.swing.JFrame {
                     
                     
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.debug("Error, inserto caracteres especiales");
+            
             }else{
         if(txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~")|| txt_dir_cli.getText().equals("`")||
                    txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")||
@@ -448,12 +452,14 @@ public class RegistroClientes extends javax.swing.JFrame {
                     
                     
             JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            logger.debug("Error, inserto caracteres especiales");
             }else{
         if(txt_rtn_cliente.getText().equals("") || txt_nombre_cli.getText().equals("")
             || txt_apellido_cli.getText().equals("") || txt_num_id_cli.getText().equals("")
             || txt_dir_cli.getText().equals("")){
         
         JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos"); 
+        logger.debug("Error, trato de insertar con campos vacios");
     
     }else{
        
@@ -477,29 +483,40 @@ public class RegistroClientes extends javax.swing.JFrame {
            int a = pst.executeUpdate();
            if(a>0){
                JOptionPane.showMessageDialog(null, "Registro Exitoso");
+               logger.info("Se registro exitosamente al cliente: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
                nuevo();
                mostrardatos("");
            }else{
                JOptionPane.showMessageDialog(null, "Error al agregar");
+                logger.info("Error no se agrego al cliente");
            }
                             }else{
                                 JOptionPane.showMessageDialog(null, "El RTN ya existe ingrese otro");
+                                logger.debug("Error, inserto un RTN que ya existia");
                             }
                         }else{
                             JOptionPane.showMessageDialog(null, "El numero de Identidad ya existe, ingrese otro");
+                            logger.debug("Error, inserto un Numero de Identidad ya Existente");
                         }
                     }else{
                         JOptionPane.showMessageDialog(null, "Error al agregar, el RTN debe ser de 14");
+                        logger.debug("Error, inserto un RTN con menos de 13 caracteres");
                     }
                     }else{
                         JOptionPane.showMessageDialog(null,"El numero de RTN solo puede empezar con 0 o con 1");
+                        logger.debug("Error, inserto un RTN que no empezaba con 0 o 1");
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "El numero de identidad solo puede empezar con 0 o con 1");
+                    logger.debug("Error, inserto un numero de identidad que no empezaba con 0 o 1");
                 }
            }else{
                JOptionPane.showMessageDialog(null, "Error al agregar, el Num Identidad debe ser de 13");
+               logger.debug("Error, inserto un num de identidad menor a 13 caracteres");
            }
+           }else{
+               JOptionPane.showMessageDialog(null, "Ingreso un Id que ya existia");
+               logger.debug("Error, ingreso un id que ya existia");
            }
        }catch (Exception e){
            JOptionPane.showMessageDialog(null, "Error al Agregar"+e);
@@ -599,7 +616,7 @@ txt_dir_cli.setText("");
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
         nuevo();
-        
+         logger.info("Limpio los campos");
     }//GEN-LAST:event_btn_nuevoActionPerformed
     String id ="";
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
@@ -610,6 +627,7 @@ txt_dir_cli.setText("");
        if(txt_cli_id.getText().equals("") || txt_nombre_cli.getText().equals("") || txt_apellido_cli.getText().equals("") || txt_dir_cli.getText().equals("") || 
                txt_num_id_cli.getText().equals("") || txt_rtn_cliente.getText().equals("")){
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios, debe llenarlos");
+             logger.debug("Error, trato de editar con campos vacios");
        }else{
             try{
                 if(txt_rtn_cliente.getText().length()>=14){
@@ -620,21 +638,27 @@ txt_dir_cli.setText("");
                      pst.executeUpdate();
                         JOptionPane.showMessageDialog(null,"Se a modificado con exito");
                         mostrardatos("");
+                         logger.info("Se modifico exitosamente al usuario: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
                     }else{
                         JOptionPane.showMessageDialog(null, "El numero de RTN debe empezar con 0 o con 1");
+                         logger.debug("Error, inserto un RTN que no empezaba con 0 o con 1");
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 numeros");
+                     logger.debug("Error, inserto un RTN con menos de 14 caracteres");
                 }
                     }else{
                         
                         JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o con 1");
+                         logger.debug("Error, inserto un numero de identidad que no empezaba con 0 o con 1");
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser de 13 numeros");
+                     logger.debug("Error, trato de guardar un numero de identidad con menos de 13 caracteres");
                 }
                 }catch(Exception e){
                     System.out.println(e.getMessage());
+                    logger.debug("Error, al momento de editar el cliente: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
             } 
        }
     }//GEN-LAST:event_btn_editarActionPerformed
@@ -659,12 +683,15 @@ txt_dir_cli.setText("");
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM cliente WHERE Cli_id='" + cod + "'");
             int a = pst.executeUpdate();
+            
             mostrardatos("");
 
             if (a > 0) {
                 JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                logger.debug("se elimino exitosamente al cliente: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                logger.debug("no se elimino exitosamente al cliente");
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -675,7 +702,7 @@ txt_dir_cli.setText("");
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
         // TODO add your handling code here:
-        
+        logger.debug("Salio del sistema");
         System.exit(0);
     }//GEN-LAST:event_btn_salirActionPerformed
 
@@ -688,6 +715,7 @@ txt_dir_cli.setText("");
         // TODO add your handling code here:
         menuPrincipal menu = new menuPrincipal();
         menu.setVisible(true);
+        logger.debug("volvio al menu principal");
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 

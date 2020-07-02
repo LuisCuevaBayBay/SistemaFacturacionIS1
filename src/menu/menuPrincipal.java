@@ -17,7 +17,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import producto.Producto;
-
+import org.apache.log4j.*;
 /**
  *
  * @author luisc
@@ -27,9 +27,11 @@ public class menuPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form menuPrincipal
      */
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(menuPrincipal.class);
     public menuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        PropertyConfigurator.configure("log4j.properties");
     }
 
     /**
@@ -216,6 +218,7 @@ public class menuPrincipal extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("Sale del sistema");
         System.exit(0);
         }
     }//GEN-LAST:event_salirActionPerformed
@@ -226,20 +229,23 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     private void registrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVentaActionPerformed
         // TODO add your handling code here:
+        logger.debug("Ingresa a la ventana de ingresar venta");
         ModeloVenta mv = new ModeloVenta();
         mv.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked
-  RegistroClientes registrar2 = new RegistroClientes();
+  logger.debug("ingresa a la ventana de clientes");
+        RegistroClientes registrar2 = new RegistroClientes();
  registrar2.setVisible (true);
  this.dispose();
  
     }//GEN-LAST:event_registroEmpleadoMouseClicked
 
     private void registroEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadosMouseClicked
- RegistrarEmpleados registrar = new RegistrarEmpleados();
+ logger.debug("Ingresa a la venta de registro de empleados");
+        RegistrarEmpleados registrar = new RegistrarEmpleados();
  registrar.setVisible (true);
  this.dispose();
  
@@ -253,6 +259,7 @@ this.dispose();*/
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la ventana de Proveedores");
         frm_proveedores proveedor = new frm_proveedores();
         proveedor.setVisible(true);
         this.dispose();
@@ -264,6 +271,7 @@ this.dispose();*/
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea cerrar sesión?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
+            logger.debug("Cierra Sesion");
         Pantalla_Inicio_Sesion inicio = new Pantalla_Inicio_Sesion();
         inicio.setVisible(true);
         this.dispose();
@@ -272,6 +280,7 @@ this.dispose();*/
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        logger.debug("ingresa la ventana de producto");
         Producto producto = new Producto();
         producto.setVisible(true);
         this.dispose();
@@ -279,6 +288,7 @@ this.dispose();*/
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        logger.debug("Entra a la ventana de compra");
         ModeloCompra1 c = new ModeloCompra1();
         c.setVisible(true);
         this.dispose();

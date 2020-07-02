@@ -21,7 +21,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import org.apache.log4j.*;
 /**
  *
  * @author LENOVO
@@ -31,8 +31,10 @@ public final class Contacto extends javax.swing.JFrame {
     /**
      *
      */
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Contacto.class);
     public Contacto() {
         initComponents();
+         PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
     }
 
@@ -318,7 +320,7 @@ public final class Contacto extends javax.swing.JFrame {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 309, -1, -1));
+        getContentPane().add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(468, 309, 70, -1));
 
         num_telefonico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,6 +353,7 @@ public final class Contacto extends javax.swing.JFrame {
 
         if ( extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
+            logger.debug("Error, trato de guardar con los campos vacios");
         } else {
 
             if (esEmail(correos.getText())) {
@@ -381,9 +384,11 @@ public final class Contacto extends javax.swing.JFrame {
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
                                                     JOptionPane.showMessageDialog(null, "Registro exitoso");
+                                                    logger.debug("Se guardo el registro exitosamente");
                                                     mostrardatos("");
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                    logger.debug("Error, no se guardo correctamente");
                                                 }
 
                                             } catch (Exception e) {
@@ -391,42 +396,51 @@ public final class Contacto extends javax.swing.JFrame {
                                             }
                                                     }else{
                                                         JOptionPane.showMessageDialog(null, "Numero celular debe empezar 3, 8 o 9");
+                                                        logger.debug("Error, inserto un numero telefonico que no empieza con 3,8 o 9");
                                                     }
                                                     
                                                 }else{
                                                     JOptionPane.showMessageDialog(null,"Numero telefonico debe empezar con 2");
+                                                    logger.debug("Error, inserto un numero telefonico que no empieza con 2");
                                                 }
                                         } else {
                                             JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
-                                            
+                                            logger.debug("Error, inserto una extension de menos de 3 caracteres");
 
                                         }
                                     } else {
                                         JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
+                                        logger.debug("Error, inserto un numero telefonico con menos de 8 caracteres");
                                     }
                                 } else {
                                     JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
+                                    logger.debug("Error, inserto un numero de celular con menos de 8 caracteres");
                                 }
 
                             } else {
                                 JOptionPane.showMessageDialog(null, "El Numero de Celular ya existe");
+                                logger.debug("Error, inserto un numero de celular que ya existe");
                             }
 
                         } else {
                             JOptionPane.showMessageDialog(null, "El Numero de Telefono ya existe");
+                            logger.debug("Error, inserto un numero de telefono que ya existia");
                         }
 
                     } else {
                         JOptionPane.showMessageDialog(null, "El correo ya existe");
+                        logger.debug("Error, inserto un correo ya existente");
 
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                    JOptionPane.showMessageDialog(null, "El id ya existe");
+                    logger.debug("Error, ingreso un id ya existente");
 
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
+                logger.debug("Error, ingreso un correo de forma incorrecta");
             }
 
         }
@@ -435,6 +449,7 @@ public final class Contacto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        logger.debug("Muestra los valores de la tabla");
         mostrardatos("");
         jTextField02.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -447,6 +462,7 @@ public final class Contacto extends javax.swing.JFrame {
 
     }
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        logger.debug("Utiliza un buscador para encontrar un contacto");
         mostrardatos(jTextField02.getText());
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -601,6 +617,7 @@ public final class Contacto extends javax.swing.JFrame {
         Connection cn = cc.getConnection();
         if (contacto.getText().equals("") || extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
+            logger.debug("Los campos estan vacios");
         } else {
 
             if (esEmail(correos.getText())) {
@@ -613,6 +630,7 @@ public final class Contacto extends javax.swing.JFrame {
                                 id = contacto.getText();
                                 pst.executeUpdate();
                                 JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                                logger.debug("Modificacion exitosa");
 
                                 mostrardatos("");
                             } catch (Exception e) {
@@ -620,16 +638,20 @@ public final class Contacto extends javax.swing.JFrame {
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                            logger.debug("Error, inserto una extension de menos de 3 caracteres");
 
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
+                        logger.debug("Error, inserto un numero telefonico de menos de 8 caracteres");
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
+                    logger.debug("Error, inserto un numero celular de menos de 8 caracteres");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
+                logger.debug("Error, ingreso un correo de forma incorrecta");
 
             }
         }
@@ -678,15 +700,18 @@ public final class Contacto extends javax.swing.JFrame {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM vendedor_contacto  WHERE ID_Contacto_Proveedor='" + cod + "'");
             pst.executeUpdate();
             mostrardatos("");
-            JOptionPane.showMessageDialog(null, "Eliminacion exitosa"); // TODO add your handling code here:
+            JOptionPane.showMessageDialog(null, "Eliminacion exitosa");
+            logger.debug("Se realizo la eliminacion exitosamente");// TODO add your handling code here:
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudo eliminar");
+            logger.debug("Error, no se elimino");
         }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         RegistrarEmpleados rg = new RegistrarEmpleados();
+        logger.debug("Vuelve a la pantalla del Registro de Empleados");
         rg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
@@ -742,6 +767,8 @@ public final class Contacto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField02KeyTyped
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        
+        logger.debug("Limpio los campos");
         contacto.setText("");
         extension.setText("");
         num_telefonico.setText("");
