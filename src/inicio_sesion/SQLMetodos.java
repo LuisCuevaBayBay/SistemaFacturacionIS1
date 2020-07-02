@@ -6,7 +6,7 @@
 package inicio_sesion;
 
 import Conexiones.ConexionSQL;
-import MenuEmpleado.MenuE;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,10 +24,10 @@ public class SQLMetodos {
     ResultSet rs;
     String sql;
     menuPrincipal mp = new menuPrincipal();
-    MenuE me = new MenuE();
     
     
-    public String buscarUsuario(String usuario, String contraseña){
+    
+    /*public String buscarUsuario(String usuario, String contraseña){
         String tipo_usuario;
         String busqueda_usuario = null;
     
@@ -105,7 +105,7 @@ public class SQLMetodos {
       
      
         
-    }
+    }*/
     
         
     

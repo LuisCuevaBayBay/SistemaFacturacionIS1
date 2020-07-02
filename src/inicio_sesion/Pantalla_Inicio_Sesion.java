@@ -8,7 +8,7 @@ package inicio_sesion;
 
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
-import MenuEmpleado.MenuE;
+
 import Venta.ModeloVenta;
 import inicio_sesion.modelo.Hash;
 import inicio_sesion.modelo.SqlUsuarios;
@@ -44,7 +44,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     RegistrarEmpleados metodo = new RegistrarEmpleados();
     SQLMetodos metodos = new SQLMetodos();
     menuPrincipal ventana = new menuPrincipal();
-     MenuE vent = new MenuE();
+     
      ModeloVenta venta = new ModeloVenta();
        
     /**
@@ -154,12 +154,12 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     
     
     
-    public void nombreUsuario(){
+    /*public void nombreUsuario(){
         
-         String busqueda_usuario = metodos.buscarUsuario(txt_usuario.getText(), txt_pass.getText());
+         //String busqueda_usuario = metodos.buscarUsuario(txt_usuario.getText(), txt_pass.getText());
         
-        if(busqueda_usuario.equals("Usuario encontrado")){
-            String busqueda_nombre = metodos.BuscarNombre(txt_usuario.getText());
+        //if(busqueda_usuario.equals("Usuario encontrado")){
+            //String busqueda_nombre = metodos.BuscarNombre(txt_usuario.getText());
            
             
             this.dispose();
@@ -170,7 +170,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         
         }
     
-    }
+    }*/
     
     
     private void btn_inicio_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicio_sesionActionPerformed
