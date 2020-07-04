@@ -5,6 +5,7 @@ package contactos.contacto_cliente;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Clientes.RegistroClientes;
 import Clientes.datos;
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
@@ -35,6 +36,7 @@ public final class ContactoC extends javax.swing.JFrame {
     public ContactoC() {
         initComponents();
         PropertyConfigurator.configure("log4j.properties");
+        this.setLocationRelativeTo(null);
         mostrardatos("");
     }
 
@@ -110,7 +112,10 @@ public final class ContactoC extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         num_telefonico = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        rol = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -328,8 +333,13 @@ public final class ContactoC extends javax.swing.JFrame {
         });
         getContentPane().add(num_telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 100, 30));
 
+        jLabel8.setText("Usuario: ");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 70, 20));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 40, 30));
 
         bindingGroup.bind();
 
@@ -708,7 +718,9 @@ public final class ContactoC extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
-        RegistrarEmpleados rg = new RegistrarEmpleados();
+        RegistroClientes rg = new RegistroClientes();
+        RegistroClientes.usuario.setText(usuario.getText());
+        RegistroClientes.rolC.setText(rol.getText());
         rg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
@@ -862,6 +874,7 @@ public final class ContactoC extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -871,7 +884,9 @@ public final class ContactoC extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextField num_celular;
     private javax.swing.JTextField num_telefonico;
+    public static javax.swing.JLabel rol;
     private javax.swing.JTable tabla1;
+    public static javax.swing.JLabel usuario;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 

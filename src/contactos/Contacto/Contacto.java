@@ -110,7 +110,10 @@ public final class Contacto extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         num_telefonico = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        usuarios = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        rol = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -334,8 +337,15 @@ public final class Contacto extends javax.swing.JFrame {
         });
         getContentPane().add(num_telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 150, -1));
 
+        jLabel8.setText("Usuarios: ");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        getContentPane().add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 80, 20));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 430));
+
+        rol.setText("jLabel10");
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         bindingGroup.bind();
 
@@ -711,7 +721,9 @@ public final class Contacto extends javax.swing.JFrame {
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         RegistrarEmpleados rg = new RegistrarEmpleados();
-        logger.debug("Vuelve a la pantalla del Registro de Empleados");
+        RegistrarEmpleados.user.setText(usuarios.getText());
+        RegistrarEmpleados.rol.setText(rol.getText());
+        logger.debug("Vuelve a la pantalla del Registro de Empleados: "+usuarios.getText());
         rg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
@@ -866,6 +878,7 @@ public final class Contacto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
@@ -875,7 +888,9 @@ public final class Contacto extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextField num_celular;
     private javax.swing.JTextField num_telefonico;
+    public static javax.swing.JLabel rol;
     private javax.swing.JTable tabla1;
+    public static javax.swing.JLabel usuarios;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 

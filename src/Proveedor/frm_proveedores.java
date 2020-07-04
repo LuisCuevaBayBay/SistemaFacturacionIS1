@@ -165,7 +165,10 @@ public class frm_proveedores extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        usuarios = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        rol = new javax.swing.JLabel();
 
         jMenuItem1.setText("Editar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -444,11 +447,16 @@ public class frm_proveedores extends javax.swing.JFrame {
         jLabel6.setText("REGISTRO DE PROVEEDORES");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
+        jLabel7.setText("Usuario: ");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+        getContentPane().add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 70, 20));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(980, 573));
         jLabel1.setMinimumSize(new java.awt.Dimension(980, 573));
         jLabel1.setPreferredSize(new java.awt.Dimension(980, 573));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 40, 20));
 
         bindingGroup.bind();
 
@@ -499,16 +507,24 @@ public class frm_proveedores extends javax.swing.JFrame {
 
     private void contactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactoActionPerformed
         // TODO add your handling code here:
-        logger.debug("Ingreso a la pantalla de contacto");
+       
+        
         ContactoP contacto = new ContactoP();
         contacto.setVisible(true);
+         ContactoP.usuarios.setText(usuarios.getText());
+        ContactoP.rol.setText(rol.getText());
+        logger.debug("Ingreso a la pantalla de contacto: "+usuarios.getText());
         this.dispose();
     }//GEN-LAST:event_contactoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         logger.debug("Volvio al menu Principal");
-        
+        menuPrincipal mp = new menuPrincipal();
+        menuPrincipal.nombre.setText(usuarios.getText());
+        menuPrincipal.rol.setText(rol.getText());
+        mp.setVisible(true);
+        logger.debug("volvio al menu principal "+usuarios.getText());
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -898,6 +914,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -908,7 +925,9 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JButton jtf_editar;
     private javax.swing.JButton jtf_nuevo;
     private javax.swing.JButton jtf_salir;
+    public static javax.swing.JLabel rol;
     private javax.swing.JTable tabla1;
+    public static javax.swing.JLabel usuarios;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

@@ -112,7 +112,10 @@ public final class ContactoP extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         Numero_Telefonico = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        usuarios = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        rol = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -337,8 +340,13 @@ public final class ContactoP extends javax.swing.JFrame {
         });
         getContentPane().add(Numero_Telefonico, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 100, 30));
 
+        jLabel8.setText("Usuarios: ");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        getContentPane().add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 20));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         bindingGroup.bind();
 
@@ -716,9 +724,13 @@ public final class ContactoP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
-        logger.debug("vuelve a la ventana de proveedores");
+       
+        
         frm_proveedores p = new frm_proveedores();
         p.setVisible(true);
+        frm_proveedores.usuarios.setText(usuarios.getText());
+        frm_proveedores.rol.setText(rol.getText());
+         logger.debug("vuelve a la ventana de proveedores: "+usuarios.getText());
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
@@ -873,13 +885,16 @@ public final class ContactoP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
+    public static javax.swing.JLabel rol;
     private javax.swing.JTable tabla3;
+    public static javax.swing.JLabel usuarios;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 

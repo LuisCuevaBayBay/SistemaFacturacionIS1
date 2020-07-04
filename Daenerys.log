@@ -1,2 +1,144 @@
 02 jul 2020 17:37:30,732 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
 02 jul 2020 17:37:36,662 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+03 jul 2020 07:18:06,337 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+03 jul 2020 07:18:29,698 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+03 jul 2020 07:18:35,974 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:927) - Limpio los campos
+03 jul 2020 07:19:12,258 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+03 jul 2020 07:19:13,601  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:764) - Registro Exitoso: 
+03 jul 2020 07:19:17,194 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1094) - Volvio al menu principal
+03 jul 2020 07:19:27,841 DEBUG [AWT-EventQueue-0] (Producto.java:417) - El registro se guardo exitosamente
+03 jul 2020 07:19:28,771 DEBUG [AWT-EventQueue-0] (Producto.java:504) - Vuelve al menu principal
+03 jul 2020 07:19:30,128 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:288) - Ingreso a la pantalla de registro de empleados
+03 jul 2020 07:20:22,287  INFO [AWT-EventQueue-0] (RegistroClientes.java:486) - Se registro exitosamente al cliente: Carlos Martinez
+03 jul 2020 07:20:23,175 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:717) - volvio al menu principal
+03 jul 2020 07:20:25,463 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:535) - Limpio los campos
+03 jul 2020 07:20:57,626 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:726) - Error, inserto un nombre con menos de 3 caracteres
+03 jul 2020 07:21:02,234 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:713) - Registro Guardado Exitosamente
+03 jul 2020 07:21:02,971 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:510) - Volvio al menu Principal
+03 jul 2020 07:21:04,570 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:281) - Ingreso a la pantalla de ventas
+03 jul 2020 07:21:06,544 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:547) - Se busca al cliente
+03 jul 2020 07:21:08,626 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:601) - Se encuentra el producto
+03 jul 2020 07:21:09,859 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:638) - Se busca el vendedor
+03 jul 2020 07:21:12,979 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:703) - agrega el producto a la factura
+03 jul 2020 07:21:17,694 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:758) - Realizo una venta exitosa
+03 jul 2020 07:21:20,376 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:945) - Limpia los campos
+03 jul 2020 07:21:22,245 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:859) - Entra a ver las facturas guardadas
+03 jul 2020 07:21:33,041 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:799) - vuelve al menu principal
+03 jul 2020 07:21:34,278 DEBUG [AWT-EventQueue-0] (VerFacturaVenta.java:167) - Vuelve a la pantalla de Venta
+03 jul 2020 07:21:37,851  INFO [AWT-EventQueue-0] (ModeloCompra1.java:512) - busca uno de los proveedores
+03 jul 2020 07:21:40,300  INFO [AWT-EventQueue-0] (ModeloCompra1.java:564) - busca un producto
+03 jul 2020 07:21:41,757  INFO [AWT-EventQueue-0] (ModeloCompra1.java:564) - busca un producto
+03 jul 2020 07:21:51,221  INFO [AWT-EventQueue-0] (ModeloCompra1.java:564) - busca un producto
+03 jul 2020 07:21:58,763  INFO [AWT-EventQueue-0] (ModeloCompra1.java:698) - se registra exitosamente la factura
+03 jul 2020 07:21:59,809  INFO [AWT-EventQueue-0] (ModeloCompra1.java:769) - Entra a la pantalla para observar las facturas
+03 jul 2020 07:22:02,153 DEBUG [AWT-EventQueue-0] (VerFacturaCompra.java:167) - Vuelve a la pantalla principal
+03 jul 2020 07:22:04,079  INFO [AWT-EventQueue-0] (ModeloCompra1.java:871) - limpio todo el espacio de la factura 
+03 jul 2020 07:22:06,715  INFO [AWT-EventQueue-0] (ModeloCompra1.java:722) - Vuelve al menu principal
+03 jul 2020 07:22:08,698 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:321) - Luis Cueva Cerro Sesion
+03 jul 2020 07:22:09,161 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+03 jul 2020 07:22:11,244 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:260) - salio del sistema
+03 jul 2020 10:25:15,707 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+03 jul 2020 10:25:37,869 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Julio Cesar
+03 jul 2020 10:25:42,465 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:281) - Ingreso a la pantalla de ventas
+03 jul 2020 10:25:45,659 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:799) - vuelve al menu principal
+03 jul 2020 10:25:50,057  INFO [AWT-EventQueue-0] (ModeloCompra1.java:722) - Vuelve al menu principal
+03 jul 2020 10:25:52,756 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:321) - Julio Cesar Cerro Sesion
+03 jul 2020 10:25:53,307 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+03 jul 2020 10:25:56,156 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:260) - salio del sistema
+04 jul 2020 11:25:52,675 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:25:55,122 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:260) - salio del sistema
+04 jul 2020 11:34:45,627 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:34:51,582 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:34:58,908 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1100) - Volvio al menu principal
+04 jul 2020 11:35:09,051 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1100) - Volvio al menu principal
+04 jul 2020 11:35:11,728 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Luis Cueva Salio del sistema
+04 jul 2020 11:35:46,761 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:35:52,688 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:36:01,708 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1100) - Volvio al menu principal
+04 jul 2020 11:36:55,535 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:37:00,828 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:37:05,991 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1102) - Volvio al menu principal
+04 jul 2020 11:37:59,159 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:38:04,466 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:38:09,389 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1102) - Volvio al menu principal
+04 jul 2020 11:38:58,691 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:39:04,301 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:39:08,986 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1102) - Volvio al menu principal
+04 jul 2020 11:39:12,071 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Luis Cueva
+04 jul 2020 11:42:04,183 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:42:09,998 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:42:16,555 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1107) - Volvio al menu principal
+04 jul 2020 11:42:31,671 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Luis Cueva
+04 jul 2020 11:53:02,561 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:53:10,787 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:53:13,324 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:288) - Ingreso a la pantalla de registro de empleados
+04 jul 2020 11:53:16,045 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:728) - volvio al menu principal
+04 jul 2020 11:53:53,690 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:54:00,277 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:54:02,749 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:288) - Ingreso a la pantalla de registro de empleados
+04 jul 2020 11:54:04,813 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:728) - volvio al menu principal
+04 jul 2020 11:54:12,116 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:288) - Ingreso a la pantalla de registro de empleados
+04 jul 2020 11:54:14,540 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:728) - volvio al menu principal
+04 jul 2020 11:54:18,854 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: 
+04 jul 2020 11:56:50,927 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:56:59,329 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:57:02,198 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:290) - Ingreso a la pantalla de registro de empleados
+04 jul 2020 11:57:06,664 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:736) - volvio al menu principal
+04 jul 2020 11:57:12,264 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Luis Cueva
+04 jul 2020 11:58:54,736 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 11:59:01,702 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 11:59:07,828 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1107) - Volvio al menu principal: Luis Cueva
+04 jul 2020 11:59:12,310 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:290) - Ingreso a la pantalla de registro de empleados
+04 jul 2020 11:59:14,557 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:736) - volvio al menu principal: Luis Cueva
+04 jul 2020 11:59:25,396 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Luis Cueva
+04 jul 2020 12:04:54,700 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:05:02,017 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Melvin Alvarez
+04 jul 2020 12:05:11,446 DEBUG [AWT-EventQueue-0] (Producto.java:515) - Vuelve al menu principal: Melvin Alvarez
+04 jul 2020 12:05:18,899 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Melvin Alvarez
+04 jul 2020 12:11:36,192 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:11:43,400 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 12:11:46,191 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:350) - Ingreso a la pantalla de productos: Luis Cueva
+04 jul 2020 12:11:50,515 DEBUG [AWT-EventQueue-0] (Producto.java:588) - se limpian los campos
+04 jul 2020 12:11:55,195 DEBUG [AWT-EventQueue-0] (Producto.java:515) - Vuelve al menu principal: Luis Cueva
+04 jul 2020 12:11:57,643 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Luis Cueva
+04 jul 2020 12:12:54,818 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:13:02,063 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 12:13:05,428 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Ingreso a la pantalla de proveedores Luis Cueva
+04 jul 2020 12:13:08,579 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:518) - Volvio al menu Principal
+04 jul 2020 12:13:08,614 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:523) - volvio al menu principal Luis Cueva
+04 jul 2020 12:13:11,780 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Luis Cueva
+04 jul 2020 12:24:40,896 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:24:47,684 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 12:24:52,597 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1089) - Ingreso a la pantalla de contacto: Luis Cueva
+04 jul 2020 12:24:55,915 DEBUG [AWT-EventQueue-0] (Contacto.java:726) - Vuelve a la pantalla del Registro de Empleados: Luis Cueva
+04 jul 2020 12:24:58,148 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1109) - Volvio al menu principal: Luis Cueva
+04 jul 2020 12:24:59,062 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:290) - Ingreso a la pantalla de registro de empleados
+04 jul 2020 12:25:01,616 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:816) - Ingreso a la pantalla de contacto Luis Cueva
+04 jul 2020 12:27:01,857 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:27:07,480 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 12:27:10,006 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:290) - Ingreso a la pantalla de registro de empleados
+04 jul 2020 12:27:12,340 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:816) - Ingreso a la pantalla de contacto Luis Cueva
+04 jul 2020 12:27:20,168 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:736) - volvio al menu principal: Luis Cueva
+04 jul 2020 12:27:22,190 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Ingreso a la pantalla de proveedores Luis Cueva
+04 jul 2020 12:27:26,735 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:549) - Limpio los campos
+04 jul 2020 12:27:30,278 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:852) - Sale del Sistema
+04 jul 2020 12:28:39,785 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:28:46,106 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 12:28:48,140 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Ingreso a la pantalla de proveedores Luis Cueva
+04 jul 2020 12:28:49,239 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:550) - Limpio los campos
+04 jul 2020 12:29:06,470 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:853) - Sale del Sistema
+04 jul 2020 12:29:15,447 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:29:20,179 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 12:29:22,549 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Ingreso a la pantalla de proveedores Luis Cueva
+04 jul 2020 12:29:23,943 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:551) - Limpio los campos
+04 jul 2020 12:29:25,578 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:516) - Ingreso a la pantalla de contacto: Luis Cueva
+04 jul 2020 12:29:29,807 DEBUG [AWT-EventQueue-0] (ContactoP.java:727) - vuelve a la ventana de proveedores: Luis Cueva
+04 jul 2020 12:29:49,582 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:854) - Sale del Sistema
+04 jul 2020 12:30:09,518 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:40) - Inicio el sistema
+04 jul 2020 12:30:15,108 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:195) - Se logueo exitosamente: Luis Cueva
+04 jul 2020 12:30:17,568 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Ingreso a la pantalla de proveedores Luis Cueva
+04 jul 2020 12:30:19,611 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:516) - Ingreso a la pantalla de contacto: Luis Cueva
+04 jul 2020 12:30:22,104 DEBUG [AWT-EventQueue-0] (ContactoP.java:733) - vuelve a la ventana de proveedores: Luis Cueva
+04 jul 2020 12:30:23,935 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:522) - Volvio al menu Principal
+04 jul 2020 12:30:23,961 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:527) - volvio al menu principal Luis Cueva
+04 jul 2020 12:30:27,353 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:270) - Salio del sistema: Luis Cueva

@@ -267,7 +267,7 @@ public class menuPrincipal extends javax.swing.JFrame {
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
-            logger.debug(mod.getNombre_empleado()+" "+mod.getApellido_empleado()+" Salio del sistema");
+            logger.debug("Salio del sistema: "+nombre.getText());
         System.exit(0);
         }
     }//GEN-LAST:event_salirActionPerformed
@@ -285,16 +285,25 @@ public class menuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked
-  logger.debug("Ingreso a la pantalla de registro de empleados");
+        
+        
+        logger.debug("Ingreso a la pantalla de registro de empleados");
         RegistroClientes registrar2 = new RegistroClientes();
  registrar2.setVisible (true);
 
+    RegistroClientes.usuario.setText(nombre.getText());
+    RegistroClientes.rolC.setText(rol.getText());
+    this.dispose();
  
     }//GEN-LAST:event_registroEmpleadoMouseClicked
 
     private void registroEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadosMouseClicked
- RegistrarEmpleados registrar = new RegistrarEmpleados();
- registrar.setVisible (true);
+ 
+        RegistrarEmpleados registrar = new RegistrarEmpleados();
+        RegistrarEmpleados.user.setText(nombre.getText());
+        RegistrarEmpleados.rol.setText(rol.getText());
+        registrar.setVisible (true);
+        this.dispose();
 
  
     }//GEN-LAST:event_registroEmpleadosMouseClicked
@@ -307,9 +316,14 @@ this.dispose();*/
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        frm_proveedores proveedor = new frm_proveedores();
-        proveedor.setVisible(true);
         
+        frm_proveedores proveedor = new frm_proveedores();
+        frm_proveedores.usuarios.setText(nombre.getText());
+        frm_proveedores.rol.setText(rol.getText());
+        proveedor.setVisible(true);
+        this.dispose();
+        
+        logger.debug("Ingreso a la pantalla de proveedores "+nombre.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -318,7 +332,7 @@ this.dispose();*/
          int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea cerrar sesión?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
-            logger.debug(mod.getNombre_empleado()+" "+mod.getApellido_empleado()+" Cerro Sesion" );
+            logger.debug("Cerro Sesion: "+nombre.getText());
         Pantalla_Inicio_Sesion inicio = new Pantalla_Inicio_Sesion();
         inicio.setVisible(true);
         this.dispose();
@@ -330,6 +344,10 @@ this.dispose();*/
         Producto producto = new Producto();
         producto.setVisible(true);
         
+        Producto.usuario.setText(nombre.getText());
+        Producto.rol.setText(rol.getText());
+        this.dispose();
+        logger.debug("Ingreso a la pantalla de productos: "+nombre.getText());
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -392,11 +410,11 @@ this.dispose();*/
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JLabel nombre;
+    public static javax.swing.JLabel nombre;
     private javax.swing.JButton registrarVenta;
     private javax.swing.JButton registroEmpleado;
     private javax.swing.JButton registroEmpleados;
-    private javax.swing.JLabel rol;
+    public static javax.swing.JLabel rol;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

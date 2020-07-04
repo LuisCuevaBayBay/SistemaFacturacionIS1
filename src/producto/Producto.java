@@ -12,6 +12,7 @@ import Empleados.RegistrarEmpleados;
 
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
+import inicio_sesion.modelo.SqlUsuarios;
 import inicio_sesion.modelo.usuarios;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -113,8 +114,11 @@ public class Producto extends javax.swing.JFrame {
         buscar_txt = new javax.swing.JTextField();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         precio_double = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
+        rol = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -345,6 +349,10 @@ public class Producto extends javax.swing.JFrame {
         });
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
+        jLabel5.setText("Usuario: ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 50, 20));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 50, 80, 20));
+
         precio_double.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         precio_double.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,6 +363,7 @@ public class Producto extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 470));
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 60, 20));
 
         bindingGroup.bind();
 
@@ -495,13 +504,15 @@ public class Producto extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here
+        SqlUsuarios modSql = new SqlUsuarios();
          usuarios mod = new usuarios();
-          menuPrincipal menul = new menuPrincipal();
-         
+          menuPrincipal mp = new menuPrincipal();
+         mp.setVisible(true);
         
-       
+          menuPrincipal.nombre.setText(usuario.getText());
+          menuPrincipal.rol.setText(rol.getText());
         this.dispose();
-        logger.debug("Vuelve al menu principal");
+        logger.debug("Vuelve al menu principal: "+usuario.getText());
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -702,12 +713,15 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nom_producto_txt;
     private javax.swing.JFormattedTextField precio_double;
+    public static javax.swing.JLabel rol;
     private javax.swing.JTable tablaproducto;
+    public static javax.swing.JLabel usuario;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

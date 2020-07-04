@@ -205,8 +205,11 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         tipo = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        user = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         pom = new javax.swing.JTextField();
+        rol = new javax.swing.JLabel();
 
         jTextField1.setText("Registro de Empleados");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -568,6 +571,10 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, -1, -1));
 
+        jLabel10.setText("Usuario: ");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 80, 20));
+
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 630));
 
@@ -578,6 +585,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             }
         });
         getContentPane().add(pom, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, -1, -1));
+
+        rol.setText("jLabel11");
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         bindingGroup.bind();
 
@@ -1076,9 +1086,11 @@ public Icon icono(String path, int width, int height){
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        logger.debug("Ingreso a la pantalla de contacto");
+        logger.debug("Ingreso a la pantalla de contacto: "+user.getText());
         Contacto contacto = new Contacto();
         contacto.setVisible(true);
+        Contacto.usuarios.setText(user.getText());
+        Contacto.rol.setText(rol.getText());
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1088,10 +1100,13 @@ public Icon icono(String path, int width, int height){
         SqlUsuarios modSql = new SqlUsuarios();
         usuarios mod = new usuarios();
          
+        menuPrincipal mp = new menuPrincipal();
+        mp.setVisible(true);
         
-       
+       menuPrincipal.nombre.setText(user.getText());
+       menuPrincipal.rol.setText(rol.getText());
         
-        logger.debug("Volvio al menu principal");
+        logger.debug("Volvio al menu principal: "+user.getText());
         
         this.dispose();
         
@@ -1312,6 +1327,7 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1328,12 +1344,14 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JButton nuevo;
     private javax.swing.JTextField num_id_emplea;
     private javax.swing.JTextField pom;
+    public static javax.swing.JLabel rol;
     private javax.swing.JButton salir_btn;
     private javax.swing.JButton save_empleado;
     private javax.swing.JTable tablaempleados;
     private javax.swing.JComboBox<String> tipo;
     private javax.swing.JPasswordField txt_pass;
     private javax.swing.JTextField txt_usuario;
+    public static javax.swing.JLabel user;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 

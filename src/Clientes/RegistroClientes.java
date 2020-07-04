@@ -11,6 +11,8 @@ import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
 import contactos.contacto_cliente.ContactoC;
+import inicio_sesion.modelo.SqlUsuarios;
+import inicio_sesion.modelo.usuarios;
 import java.awt.Color;
 import java.awt.Toolkit;
 //import FacturaCompra.FacturaCompra;
@@ -138,7 +140,10 @@ public class RegistroClientes extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        rolC = new javax.swing.JLabel();
 
         jMenuItem2.setText("Modificar");
         jMenuItem2.setToolTipText("");
@@ -379,7 +384,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 204));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -389,7 +394,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jButton5.setBackground(new java.awt.Color(0, 0, 204));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
@@ -399,7 +404,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
 
         jButton8.setBackground(new java.awt.Color(0, 0, 204));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
@@ -409,7 +414,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, -1));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, -1, -1));
 
         jButton10.setBackground(new java.awt.Color(0, 0, 204));
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
@@ -419,10 +424,17 @@ public class RegistroClientes extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
+
+        jLabel8.setText("Usuario: ");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 70, 20));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
+
+        rolC.setText("jLabel11");
+        getContentPane().add(rolC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -713,8 +725,15 @@ txt_dir_cli.setText("");
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        SqlUsuarios modSql = new SqlUsuarios();
+        usuarios mod = new usuarios();
         
-        logger.debug("volvio al menu principal");
+        menuPrincipal mp = new menuPrincipal();
+        mp.setVisible(true);
+        
+        menuPrincipal.nombre.setText(usuario.getText());
+        menuPrincipal.rol.setText(rolC.getText());
+        logger.debug("volvio al menu principal: "+usuario.getText());
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -791,7 +810,10 @@ txt_dir_cli.setText("");
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         ContactoC contacto = new ContactoC();
+        ContactoC.usuario.setText(usuario.getText());
+        ContactoC.rol.setText(rolC.getText());
         contacto.setVisible(true);
+        logger.debug("Ingreso a la pantalla de contacto "+usuario.getText());
         this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -960,10 +982,12 @@ txt_dir_cli.setText("");
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JLabel rolC;
     private javax.swing.JTable tablaclientes;
     private javax.swing.JTextField txt_apellido_cli;
     private javax.swing.JTextField txt_cli_id;
@@ -971,5 +995,6 @@ txt_dir_cli.setText("");
     private javax.swing.JTextField txt_nombre_cli;
     private javax.swing.JTextField txt_num_id_cli;
     private javax.swing.JTextField txt_rtn_cliente;
+    public static javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }
