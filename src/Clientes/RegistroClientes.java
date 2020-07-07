@@ -22,6 +22,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -46,6 +47,12 @@ public class RegistroClientes extends javax.swing.JFrame {
         mostrardatos("");
         PropertyConfigurator.configure("log4j.properties");
         
+        
+         Calendar cal= Calendar.getInstance();
+        String fecha;
+        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
+        
+        
      this.setLocationRelativeTo(null);
     }
     
@@ -66,6 +73,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         modelo2.addColumn("Direccion");
         modelo2.addColumn("Numero de indentidad");
         modelo2.addColumn("RTN Cliente");
+        modelo2.addColumn("Fecha Registro");
         
         
         
@@ -73,13 +81,13 @@ public class RegistroClientes extends javax.swing.JFrame {
         String sql = "";
         if (valor.equals(""))
         {
-            sql="SELECT * FROM cliente";
+            sql="SELECT Cli_id, NOmbre_Cliente, Apellido_Cliente, Direccion_Cliente,Num_Identidad_Cliente,rtn_Cliente,fecha_registro FROM cliente";
         }
         else{
             sql= "SELECT * FROM cliente WHERE (Cli_id ='" +valor+ "'OR Nombre_Cliente='" +valor+"'OR Apellido_Cliente='"+valor+"'OR rtn_Cliente='"+valor+"'OR Num_Identidad_cliente='" +valor+"'OR Direccion_Cliente='"+valor+"')";
         }  
         
-        String [] datos = new String[6];
+        String [] datos = new String[7];
         try{
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -90,6 +98,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 datos[3]=rs.getString(4);
                 datos[4]=rs.getString(5);
                 datos[5]=rs.getString(6);
+                datos[6] = rs.getString(7);
                 
                 modelo2.addRow(datos);
             }
@@ -142,8 +151,11 @@ public class RegistroClientes extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
         jLabel6 = new javax.swing.JLabel();
         rolC = new javax.swing.JLabel();
+        idc = new javax.swing.JLabel();
 
         jMenuItem2.setText("Modificar");
         jMenuItem2.setToolTipText("");
@@ -165,7 +177,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, -1));
 
         jLabel3.setText("Nombre Cliente");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         txt_nombre_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,10 +189,10 @@ public class RegistroClientes extends javax.swing.JFrame {
                 txt_nombre_cliKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_nombre_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 160, 30));
+        getContentPane().add(txt_nombre_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 160, 30));
 
         jLabel4.setText("RTN");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
 
         txt_rtn_cliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,10 +204,10 @@ public class RegistroClientes extends javax.swing.JFrame {
                 txt_rtn_clienteKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_rtn_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 160, 30));
+        getContentPane().add(txt_rtn_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 30));
 
         jLabel5.setText("ID Cliente");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, -1));
 
         txt_cli_id.setEditable(false);
         txt_cli_id.setBackground(new java.awt.Color(204, 204, 204));
@@ -214,10 +226,10 @@ public class RegistroClientes extends javax.swing.JFrame {
                 txt_cli_idKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_cli_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 160, 30));
+        getContentPane().add(txt_cli_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 160, 30));
 
         jLabel7.setText("Dirección");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, -1, -1));
 
         btn_guardar.setBackground(new java.awt.Color(0, 0, 204));
         btn_guardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -227,7 +239,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, 80, -1));
+        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 80, -1));
 
         btn_eliminar.setBackground(new java.awt.Color(0, 0, 204));
         btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -237,7 +249,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 80, -1));
+        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 80, -1));
 
         tablaclientes = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -272,10 +284,10 @@ public class RegistroClientes extends javax.swing.JFrame {
                 txt_apellido_cliKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_apellido_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 160, 30));
+        getContentPane().add(txt_apellido_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 160, 30));
 
         jLabel9.setText("Apellido Cliente");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, -1, -1));
 
         btn_nuevo.setBackground(new java.awt.Color(0, 0, 255));
         btn_nuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -285,7 +297,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 btn_nuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 80, -1));
+        getContentPane().add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 80, -1));
 
         btn_editar.setBackground(new java.awt.Color(0, 0, 255));
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,7 +307,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 btn_editarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 80, -1));
+        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 80, -1));
 
         btn_salir.setBackground(new java.awt.Color(0, 153, 204));
         btn_salir.setForeground(new java.awt.Color(255, 255, 255));
@@ -305,10 +317,10 @@ public class RegistroClientes extends javax.swing.JFrame {
                 btn_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 80, -1));
+        getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 80, -1));
 
         jLabel10.setText("Número de Identidad");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
 
         txt_num_id_cli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,14 +332,14 @@ public class RegistroClientes extends javax.swing.JFrame {
                 txt_num_id_cliKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_num_id_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 160, 30));
+        getContentPane().add(txt_num_id_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 160, 30));
 
         txt_dir_cli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_dir_cliKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_dir_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 160, 70));
+        getContentPane().add(txt_dir_cli, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 160, 70));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 204));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -354,7 +366,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 80, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, 80, -1));
 
         jButton9.setBackground(new java.awt.Color(0, 0, 204));
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
@@ -364,7 +376,7 @@ public class RegistroClientes extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 80, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 80, -1));
 
         jButton7.setBackground(new java.awt.Color(0, 0, 204));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -430,11 +442,19 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
         getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 70, 20));
 
+        jLabel11.setText("Fecha Registro: ");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, -1, -1));
+
+        rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
+        rSLabelFecha1.setFormato("yyyy-MM-dd");
+        getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
 
         rolC.setText("jLabel11");
         getContentPane().add(rolC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
+        getContentPane().add(idc, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 60, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -484,13 +504,14 @@ public class RegistroClientes extends javax.swing.JFrame {
                         if(existeId(txt_num_id_cli.getText())==0){
                             if(existeRTN(txt_rtn_cliente.getText())==0){
            
-           PreparedStatement pst = cn.prepareStatement("INSERT INTO `cliente` (`Cli_id`, `Nombre_Cliente`, `Apellido_Cliente`, `Direccion_Cliente`, `Num_Identidad_cliente`, `rtn_Cliente`, `contactoid`) VALUES (NULL, ?, ?, ?, ?, ?, NULL);");
+           PreparedStatement pst = cn.prepareStatement("INSERT INTO `cliente` (`Cli_id`, `Nombre_Cliente`, `Apellido_Cliente`, `Direccion_Cliente`, `Num_Identidad_cliente`, `rtn_Cliente`, `contactoid`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, NULL,?);");
                 
            pst.setString(1, txt_nombre_cli.getText());
            pst.setString(3, txt_dir_cli.getText());
            pst.setString(2, txt_apellido_cli.getText());
            pst.setString(4, txt_num_id_cli.getText());
-                pst.setString(5, txt_rtn_cliente.getText()); 
+           pst.setString(5, txt_rtn_cliente.getText()); 
+           pst.setString(6, rSLabelFecha1.getFecha());
                     
            int a = pst.executeUpdate();
            if(a>0){
@@ -733,6 +754,7 @@ txt_dir_cli.setText("");
         
         menuPrincipal.nombre.setText(usuario.getText());
         menuPrincipal.rol.setText(rolC.getText());
+        menuPrincipal.idv.setText(idc.getText());
         logger.debug("volvio al menu principal: "+usuario.getText());
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -812,6 +834,7 @@ txt_dir_cli.setText("");
         ContactoC contacto = new ContactoC();
         ContactoC.usuario.setText(usuario.getText());
         ContactoC.rol.setText(rolC.getText());
+        ContactoC.idcc.setText(idc.getText());
         contacto.setVisible(true);
         logger.debug("Ingreso a la pantalla de contacto "+usuario.getText());
         this.dispose();
@@ -965,6 +988,7 @@ txt_dir_cli.setText("");
     private javax.swing.JButton btn_nuevo;
     private javax.swing.JButton btn_salir;
     private javax.swing.JTextField buscar_txt;
+    public static javax.swing.JLabel idc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -976,6 +1000,7 @@ txt_dir_cli.setText("");
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -987,6 +1012,7 @@ txt_dir_cli.setText("");
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane2;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
     public static javax.swing.JLabel rolC;
     private javax.swing.JTable tablaclientes;
     private javax.swing.JTextField txt_apellido_cli;

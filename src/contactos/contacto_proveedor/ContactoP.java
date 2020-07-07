@@ -108,14 +108,15 @@ public final class ContactoP extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         idcc = new javax.swing.JTextField();
         extencion = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jButton2 = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         Numero_Telefonico = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         usuarios = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
+        idcp = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -290,16 +291,6 @@ public final class ContactoP extends javax.swing.JFrame {
         });
         getContentPane().add(extencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 105, 30));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 204));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Eliminar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, -1, -1));
-
         jToggleButton1.setBackground(new java.awt.Color(0, 153, 204));
         jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
         jToggleButton1.setText("Atrás");
@@ -314,6 +305,16 @@ public final class ContactoP extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
+
+        jButton2.setBackground(new java.awt.Color(0, 0, 204));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, -1, -1));
 
         jToggleButton2.setBackground(new java.awt.Color(0, 0, 204));
         jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -347,6 +348,7 @@ public final class ContactoP extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        getContentPane().add(idcp, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         bindingGroup.bind();
 
@@ -730,6 +732,8 @@ public final class ContactoP extends javax.swing.JFrame {
         p.setVisible(true);
         frm_proveedores.usuarios.setText(usuarios.getText());
         frm_proveedores.rol.setText(rol.getText());
+        frm_proveedores.idp1.setText(idcp.getText());
+        
          logger.debug("vuelve a la ventana de proveedores: "+usuarios.getText());
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
@@ -873,6 +877,7 @@ public final class ContactoP extends javax.swing.JFrame {
     private javax.swing.JTextField buscar;
     private javax.swing.JTextField extencion;
     private javax.swing.JTextField idcc;
+    public static javax.swing.JLabel idcp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

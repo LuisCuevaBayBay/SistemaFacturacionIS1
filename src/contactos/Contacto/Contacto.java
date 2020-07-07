@@ -114,6 +114,7 @@ public final class Contacto extends javax.swing.JFrame {
         usuarios = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
+        idcv = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -346,6 +347,7 @@ public final class Contacto extends javax.swing.JFrame {
 
         rol.setText("jLabel10");
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        getContentPane().add(idcv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         bindingGroup.bind();
 
@@ -723,6 +725,7 @@ public final class Contacto extends javax.swing.JFrame {
         RegistrarEmpleados rg = new RegistrarEmpleados();
         RegistrarEmpleados.user.setText(usuarios.getText());
         RegistrarEmpleados.rol.setText(rol.getText());
+        RegistrarEmpleados.ide.setText(idcv.getText());
         logger.debug("Vuelve a la pantalla del Registro de Empleados: "+usuarios.getText());
         rg.setVisible(true);
         this.dispose();
@@ -866,6 +869,7 @@ public final class Contacto extends javax.swing.JFrame {
     private javax.swing.JTextField contacto;
     private javax.swing.JTextField correos;
     private javax.swing.JTextField extension;
+    public static javax.swing.JLabel idcv;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

@@ -16,6 +16,33 @@ public class usuarios {
    private String pass;
    private int id_tipo;
    private String nombre_tipo;
+   private int id_acciones;
+   private int id_modificar;
+   private int id_eliminar;
+
+    public int getId_acciones() {
+        return id_acciones;
+    }
+
+    public void setId_acciones(int id_acciones) {
+        this.id_acciones = id_acciones;
+    }
+
+    public int getId_modificar() {
+        return id_modificar;
+    }
+
+    public void setId_modificar(int id_modificar) {
+        this.id_modificar = id_modificar;
+    }
+
+    public int getId_eliminar() {
+        return id_eliminar;
+    }
+
+    public void setId_eliminar(int id_eliminar) {
+        this.id_eliminar = id_eliminar;
+    }
 
     public int getId() {
         return Vendedor_id;

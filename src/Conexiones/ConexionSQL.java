@@ -16,28 +16,35 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import org.apache.log4j.*;
 
-public class ConexionSQL {
+public class ConexionSQL { 
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ConexionSQL.class);
+    
    private static Connection conn;
    private static final String driver = "com.mysql.jdbc.Driver";
    private static final String user = "root";
    private static final String password= "";
    private static final String url ="jdbc:mysql://localhost:3307/conexion_sistema1";
-   
+  
    
    public ConexionSQL(){
+       PropertyConfigurator.configure("log4j.properties");
     conn = null;
     try{
          Class.forName("com.mysql.jdbc.Driver");
          conn = DriverManager.getConnection(url, user, password);
          if(conn != null){
              System.out.println("Conexion Exitosa xdd");
+             
          }
      } catch (ClassNotFoundException | SQLException e){
          System.out.println("error al conectar: " + e);
+         logger.error("Error: "+e.getMessage());
      }
    }
    
+
    public Connection getConnection(){
        return conn;
    }

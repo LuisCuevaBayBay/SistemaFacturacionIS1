@@ -44,6 +44,12 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+        
+        Calendar cal= Calendar.getInstance();
+        String fecha;
+        fecha = cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
+        
+        
     }
 
     void mostrardatos(String valor) {
@@ -124,10 +130,9 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jLabel11 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtvendedor = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        txt_vendedor1 = new javax.swing.JTextField();
         txtisv = new javax.swing.JComboBox();
+        jLabel17 = new javax.swing.JLabel();
+        fechar = new rojeru_san.RSLabelFecha();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -296,27 +301,28 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 119, 30));
 
         txtcli.setEditable(false);
-        jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 12, 178, -1));
+        jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 178, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("PRODUC:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 50, -1, -1));
 
         txtprod.setEditable(false);
-        jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 180, -1));
+        jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 180, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("ISV:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, 20));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 90, -1, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("CLIENTE:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel14.setText("COD:VENDE:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, -1));
 
+        txtvendedor.setEditable(false);
         txtvendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtvendedorActionPerformed(evt);
@@ -332,33 +338,15 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         });
         jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 120, 30));
 
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel17.setText("VENDEDOR");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, -1, -1));
-
-        jButton2.setText("Buscar");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jButton2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jButton2KeyPressed(evt);
-            }
-        });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, 80, -1));
-
-        txt_vendedor1.setEditable(false);
-        jPanel2.add(txt_vendedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 180, -1));
-
         txtisv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "15", "18" }));
-        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, -1));
+        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, -1, -1));
+
+        jLabel17.setText("FECHA:");
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, -1, -1));
+
+        fechar.setForeground(new java.awt.Color(0, 0, 0));
+        fechar.setFormato("yyyy-MM-dd");
+        jPanel2.add(fechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 130, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
 
@@ -425,6 +413,11 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+        jButton3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jButton3KeyTyped(evt);
             }
         });
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
@@ -611,39 +604,6 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         // TODO add your handling code here:
     }//GEN-LAST:event_txtvendedorKeyPressed
 
-    private void jButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyPressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton2KeyPressed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        try {
-            String num_id_empleado = txtvendedor.getText();
-
-            ConexionSQL cc = new ConexionSQL();
-            Connection nn = cc.getConnection();
-
-            PreparedStatement pst = nn.prepareStatement("Select * from vendedor where Vendedor_id =?");
-
-            pst.setString(1, num_id_empleado);
-            ResultSet rs = pst.executeQuery();
-
-            if (rs.next()) {
-                txt_vendedor1.setText(rs.getString("nombre_empleado"));
-                logger.debug("Se busca el vendedor");
-            } else {
-                JOptionPane.showMessageDialog(null, "El Empleado no se encuentra registrado");
-                logger.debug("No se encontro el vendedor");
-            }
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
-
     private void spinCantStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinCantStateChanged
         
         double role = Integer.parseInt(spinCant.getValue().toString());
@@ -677,7 +637,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         
         
 if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
-        txtvendedor.getText().equals("") || txt_vendedor1.getText().equals("")){
+        txtvendedor.getText().equals("") ){
       JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
       logger.debug("Los campos no deben ir vacios");
 }else{
@@ -722,7 +682,7 @@ if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") ||
 void limpiar(){
 txtserie.setText("");
         txtCodCliente.setText("");
-        txtvendedor.setText("");
+        
         txtisv.setSelectedItem("0");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
         subt.setText("");
@@ -730,7 +690,7 @@ txtserie.setText("");
         txtprecio.setText("");
         txtcli.setText("");
         txtprod.setText("");
-        txt_vendedor1.setText("");
+        
         txtisv.setSelectedItem("0");
         txtcli.setText("");
         txtprecio.setText("");
@@ -743,13 +703,14 @@ txtserie.setText("");
 
         try {
 
-            PreparedStatement pst = cn.prepareStatement("INSERT INTO `ventas` (`IdVentas`, `Cliente_IdCliente`, `Vendedor_IdVendedor`, `cai`, `monto`, `isv`) VALUES (NULL, ?, ?, ?, ?, ?)");
+            PreparedStatement pst = cn.prepareStatement("INSERT INTO `ventas` (`IdVentas`, `Cliente_IdCliente`, `Vendedor_IdVendedor`, `cai`, `monto`, `isv`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
             
             pst.setString(1, txtCodCliente.getText());
             pst.setString(2, txtvendedor.getText());
             pst.setString(3, txtcai.getText());
             pst.setString(4, txtotalapagar.getText());
-            pst.setString(5, txtisv.getSelectedItem().toString());           
+            pst.setString(5, txtisv.getSelectedItem().toString());  
+            pst.setString(6, fechar.getFecha());
             
 
             int a = pst.executeUpdate();
@@ -801,6 +762,7 @@ txtserie.setText("");
         this.dispose();
        
         };
+        menuPrincipal.idv.setText(txtvendedor.getText());
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtCodClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodClienteActionPerformed
@@ -879,7 +841,7 @@ txtserie.setText("");
         txtprecio.setText("");
         
         txtcli.setText("");
-        txt_vendedor1.setText("");
+      
         if(i==0){
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
@@ -938,7 +900,7 @@ char c = evt.getKeyChar();
         txtprecio.setText("");
         
         txtcli.setText("");
-        txt_vendedor1.setText("");
+       
         
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
@@ -947,6 +909,11 @@ char c = evt.getKeyChar();
             
             mostrardatos("");// TODO add your handling code here:
           
+            Calendar cal= Calendar.getInstance();
+        String fecha;
+        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE)+" "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
+        
+        
             
         } catch (Exception e) {
         }
@@ -956,6 +923,10 @@ char c = evt.getKeyChar();
         
        limpiar();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3KeyTyped
 
     /**
      * @param args the command line arguments
@@ -996,8 +967,8 @@ char c = evt.getKeyChar();
     private javax.swing.JButton btnBuscarCli;
     private javax.swing.JButton btnBuscarProd;
     private javax.swing.JButton btnventa;
+    private rojeru_san.RSLabelFecha fechar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1034,7 +1005,6 @@ char c = evt.getKeyChar();
     private javax.swing.JTextField txtCodCliente;
     private javax.swing.JTextField txtCodProducto;
     private javax.swing.JTextField txtIdcliente1;
-    private javax.swing.JTextField txt_vendedor1;
     private javax.swing.JTextField txtcai;
     private javax.swing.JTextField txtcli;
     private javax.swing.JComboBox txtisv;
@@ -1042,7 +1012,7 @@ char c = evt.getKeyChar();
     private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprod;
     private javax.swing.JTextField txtserie;
-    private javax.swing.JTextField txtvendedor;
+    public static javax.swing.JTextField txtvendedor;
     // End of variables declaration//GEN-END:variables
 
 }

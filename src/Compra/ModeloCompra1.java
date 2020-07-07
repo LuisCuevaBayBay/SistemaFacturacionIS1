@@ -43,6 +43,12 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+        
+        Calendar cal= Calendar.getInstance();
+        String fecha;
+        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE)+" "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
+        
+        
     }
 
     void mostrardatos(String valor) {
@@ -122,6 +128,8 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtisv = new javax.swing.JComboBox();
+        jLabel14 = new javax.swing.JLabel();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -194,7 +202,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         });
         jPanel1.add(txtcai, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 300, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 740, 180));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 760, 180));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -300,27 +308,34 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtcliActionPerformed(evt);
             }
         });
-        jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 12, 178, -1));
+        jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 178, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("PRODUC:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
 
         txtprod.setEditable(false);
-        jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 180, -1));
+        jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 180, -1));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("ISV:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, 20));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("PROVEEDOR:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
 
         txtisv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "15", "18" }));
-        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
+        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
+        jLabel14.setText("FECHA");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, 20));
+
+        rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
+        rSLabelFecha1.setFormato("yyyy-MM-dd\n");
+        jPanel2.add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 90, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 760, 180));
 
         jTable1 = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -346,10 +361,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(325, Short.MAX_VALUE)
+                .addContainerGap(345, Short.MAX_VALUE)
                 .addComponent(jLabel20)
                 .addGap(306, 306, 306))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,7 +376,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 740, 210));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 760, 210));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -683,12 +698,13 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         
         try {
 
-            PreparedStatement pst = cn.prepareStatement("INSERT INTO `compra` (`Idcompra`, `Proveedor_IdProveedor`, `cai`, `monto`, `isv`) VALUES (NULL, ?, ?, ?, ?)");
+            PreparedStatement pst = cn.prepareStatement("INSERT INTO `compra` (`Idcompra`, `Proveedor_IdProveedor`, `cai`, `monto`, `isv`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?)");
             
             pst.setString(1, txtCodCliente.getText());
             pst.setString(2, txtcai.getText());
             pst.setString(3, txtotalapagar.getText());
             pst.setString(4, txtisv.getSelectedItem().toString());
+            pst.setString(5, rSLabelFecha1.getFecha());
             
             
 
@@ -864,12 +880,13 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
             pst.executeUpdate();
-            
+           
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
          logger.info("limpio todo el espacio de la factura ");
         limpiar();
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -922,6 +939,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
@@ -942,6 +960,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
     private javax.swing.JSpinner spinCant;
     private javax.swing.JTextField subt;
     private javax.swing.JTextField txtCodCliente;

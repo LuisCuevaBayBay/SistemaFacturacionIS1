@@ -20,6 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -41,6 +42,11 @@ public class Producto extends javax.swing.JFrame {
         mostrardatos("");
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
+        
+        Calendar cal= Calendar.getInstance();
+        String fecha;
+        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
+        
     }
     
    
@@ -52,6 +58,7 @@ public class Producto extends javax.swing.JFrame {
         modelo.addColumn("ID Producto");
         modelo.addColumn("Nombre Producto");
         modelo.addColumn("Precio");
+        modelo.addColumn("Fecha Registro");
 
         tablaproducto.setModel(modelo);
         String sql = "";
@@ -63,7 +70,7 @@ public class Producto extends javax.swing.JFrame {
             sql = "SELECT * FROM productos Where(IdProducto='" + valor + "'OR Nombre='" + valor + "'OR Precio='" + valor + "')";
         }
 
-        String[] datos = new String[3];
+        String[] datos = new String[4];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -72,6 +79,7 @@ public class Producto extends javax.swing.JFrame {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
 
                 modelo.addRow(datos);
             }
@@ -117,8 +125,11 @@ public class Producto extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         usuario = new javax.swing.JLabel();
         precio_double = new javax.swing.JFormattedTextField();
+        jLabel6 = new javax.swing.JLabel();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
         jLabel4 = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
+        idp = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,13 +144,13 @@ public class Producto extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("ID Producto");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, -1));
 
         jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
 
         jLabel3.setText("Precio");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
 
         id_producto_txt.setEditable(false);
         id_producto_txt.setBackground(new java.awt.Color(204, 204, 204));
@@ -157,7 +168,7 @@ public class Producto extends javax.swing.JFrame {
                 id_producto_txtKeyTyped(evt);
             }
         });
-        getContentPane().add(id_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 113, 30));
+        getContentPane().add(id_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 140, 30));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, precio_double, org.jdesktop.beansbinding.ObjectProperty.create(), nom_producto_txt, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -172,7 +183,7 @@ public class Producto extends javax.swing.JFrame {
                 nom_producto_txtKeyTyped(evt);
             }
         });
-        getContentPane().add(nom_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 113, 32));
+        getContentPane().add(nom_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 140, 32));
 
         guardar_btn.setBackground(new java.awt.Color(0, 0, 153));
         guardar_btn.setForeground(new java.awt.Color(255, 255, 255));
@@ -359,11 +370,19 @@ public class Producto extends javax.swing.JFrame {
                 precio_doubleActionPerformed(evt);
             }
         });
-        getContentPane().add(precio_double, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 140, 30));
+        getContentPane().add(precio_double, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 140, 30));
+
+        jLabel6.setText("Fecha Registro:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
+
+        rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
+        rSLabelFecha1.setFormato("yyyy-mm-dd");
+        getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 110, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 470));
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 60, 20));
+        getContentPane().add(idp, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
         bindingGroup.bind();
 
@@ -414,10 +433,11 @@ public class Producto extends javax.swing.JFrame {
                 
                 
                 try {
-                    PreparedStatement pst = cn.prepareStatement("INSERT INTO `productos` (`IdProducto`, `Nombre`, `Precio`) VALUES (NULL, ?, ?)");
+                    PreparedStatement pst = cn.prepareStatement("INSERT INTO `productos` (`IdProducto`, `Nombre`, `Precio`,`fecha_registro`) VALUES (NULL, ?, ?, ?)");
                     
                     pst.setString(1, nom_producto_txt.getText());
                     pst.setString(2, precio_double.getText());
+                    pst.setString(3, rSLabelFecha1.getFecha());
 
                     int a = pst.executeUpdate();
 
@@ -511,6 +531,7 @@ public class Producto extends javax.swing.JFrame {
         
           menuPrincipal.nombre.setText(usuario.getText());
           menuPrincipal.rol.setText(rol.getText());
+          menuPrincipal.idv.setText(idp.getText());
         this.dispose();
         logger.debug("Vuelve al menu principal: "+usuario.getText());
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -698,6 +719,7 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JButton edit_btn;
     private javax.swing.JButton guardar_btn;
     private javax.swing.JTextField id_producto_txt;
+    public static javax.swing.JLabel idp;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -714,11 +736,13 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nom_producto_txt;
     private javax.swing.JFormattedTextField precio_double;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
     public static javax.swing.JLabel rol;
     private javax.swing.JTable tablaproducto;
     public static javax.swing.JLabel usuario;

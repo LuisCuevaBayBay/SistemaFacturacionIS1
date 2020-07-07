@@ -116,6 +116,7 @@ public final class ContactoC extends javax.swing.JFrame {
         usuario = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
+        idcc = new javax.swing.JLabel();
 
         jMenuItem1.setText("Modificar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -340,6 +341,7 @@ public final class ContactoC extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 40, 30));
+        getContentPane().add(idcc, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, -1));
 
         bindingGroup.bind();
 
@@ -396,6 +398,7 @@ public final class ContactoC extends javax.swing.JFrame {
                                                 }
 
                                             } catch (Exception e) {
+                                                logger.error("Error: "+e.getMessage());
 
                                             }
                                                     }else{
@@ -721,6 +724,7 @@ public final class ContactoC extends javax.swing.JFrame {
         RegistroClientes rg = new RegistroClientes();
         RegistroClientes.usuario.setText(usuario.getText());
         RegistroClientes.rolC.setText(rol.getText());
+        RegistroClientes.idc.setText(idcc.getText());
         rg.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
@@ -862,6 +866,7 @@ public final class ContactoC extends javax.swing.JFrame {
     private javax.swing.JTextField contacto;
     private javax.swing.JTextField correos;
     private javax.swing.JTextField extension;
+    public static javax.swing.JLabel idcc;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

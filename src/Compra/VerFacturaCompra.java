@@ -44,6 +44,7 @@ void mostrardatos(String valor) {
         modelo.addColumn("Cai");
         modelo.addColumn("monto");        
         modelo.addColumn("ISV");
+        modelo.addColumn("Fecha y Hora");
 
         
         
@@ -56,7 +57,7 @@ void mostrardatos(String valor) {
             sql = "SELECT * FROM compra WHERE (Idcompra='" + valor + "' OR Proveedor_IdProveedor='"+ valor + "' OR isv ='" + valor + "'OR cai='" + valor + "'OR monto='" + valor + "')";
         }
 
-        String[] datos = new String[5];
+        String[] datos = new String[6];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -66,6 +67,7 @@ void mostrardatos(String valor) {
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
                 
                 
 

@@ -45,7 +45,7 @@ public class menuPrincipal extends javax.swing.JFrame {
      
      rol.setText(mod.getNombre_tipo());
      nombre.setText(mod.getNombre_empleado()+" "+mod.getApellido_empleado() );
-     
+     idv.setText(String.valueOf(mod.getId()));
      
      if(mod.getId_tipo() == 1){
      
@@ -94,15 +94,19 @@ public class menuPrincipal extends javax.swing.JFrame {
         rol = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        Fondo = new javax.swing.JLabel();
+        rSLabelHora1 = new rojeru_san.RSLabelHora();
+        jLabel11 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
+        idv = new javax.swing.JLabel();
+        rSLabelHora2 = new rojeru_san.RSLabelHora();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
-        jLabel2.setText("Menú Daenery");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 240, 78));
+        jLabel2.setText("Menú Daenerys");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 240, 78));
 
         registroEmpleado.setBackground(new java.awt.Color(0, 0, 204));
         registroEmpleado.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -245,8 +249,17 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel10.setText("Inicio de sesion como:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 890, 540));
+        rSLabelHora1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(rSLabelHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setText("Hora:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 540));
+        getContentPane().add(idv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 20));
+        getContentPane().add(rSLabelHora2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -281,6 +294,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         logger.debug("Ingreso a la pantalla de ventas");
         ModeloVenta mv = new ModeloVenta();
         mv.setVisible(true);
+        ModeloVenta.txtvendedor.setText(idv.getText());
         
     }//GEN-LAST:event_registrarVentaActionPerformed
 
@@ -293,6 +307,7 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     RegistroClientes.usuario.setText(nombre.getText());
     RegistroClientes.rolC.setText(rol.getText());
+    RegistroClientes.idc.setText(idv.getText());
     this.dispose();
  
     }//GEN-LAST:event_registroEmpleadoMouseClicked
@@ -302,6 +317,8 @@ public class menuPrincipal extends javax.swing.JFrame {
         RegistrarEmpleados registrar = new RegistrarEmpleados();
         RegistrarEmpleados.user.setText(nombre.getText());
         RegistrarEmpleados.rol.setText(rol.getText());
+        RegistrarEmpleados.ide.setText(idv.getText());
+        
         registrar.setVisible (true);
         this.dispose();
 
@@ -320,6 +337,7 @@ this.dispose();*/
         frm_proveedores proveedor = new frm_proveedores();
         frm_proveedores.usuarios.setText(nombre.getText());
         frm_proveedores.rol.setText(rol.getText());
+        frm_proveedores.idp1.setText(idv.getText());
         proveedor.setVisible(true);
         this.dispose();
         
@@ -346,6 +364,7 @@ this.dispose();*/
         
         Producto.usuario.setText(nombre.getText());
         Producto.rol.setText(rol.getText());
+        Producto.idp.setText(idv.getText());
         this.dispose();
         logger.debug("Ingreso a la pantalla de productos: "+nombre.getText());
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -393,15 +412,17 @@ this.dispose();*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Fondo;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JLabel fondo;
+    public static javax.swing.JLabel idv;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -411,6 +432,8 @@ this.dispose();*/
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public static javax.swing.JLabel nombre;
+    private rojeru_san.RSLabelHora rSLabelHora1;
+    private rojeru_san.RSLabelHora rSLabelHora2;
     private javax.swing.JButton registrarVenta;
     private javax.swing.JButton registroEmpleado;
     private javax.swing.JButton registroEmpleados;

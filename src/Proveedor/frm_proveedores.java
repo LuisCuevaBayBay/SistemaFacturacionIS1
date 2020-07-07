@@ -28,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
 import inicio_sesion.Pantalla_Inicio_Sesion;
+import java.util.Calendar;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.*;
 /**
@@ -50,6 +51,10 @@ public class frm_proveedores extends javax.swing.JFrame {
         bloquear();
         limpiar();
         this.setLocationRelativeTo(null);
+        Calendar cal= Calendar.getInstance();
+        String fecha;
+        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
+        
     }
 
     void mostrardatos(String valor) {
@@ -61,6 +66,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         modelo.addColumn("Nombre Empresa");
         modelo.addColumn("Direccion");
         modelo.addColumn("RTN");
+        modelo.addColumn("Fecha Registro");
 
         tabla1.setModel(modelo);
         String sql = "";
@@ -69,7 +75,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         } else {
             sql = "SELECT * FROM proveedor WHERE (Empresa_id='" + valor + "'OR Nombre_Empresa='" + valor + "'OR Direccion_Empresa='" + valor + "'OR rtn_empresa='" + valor + "')";
         }
-        String[] datos = new String[4];
+        String[] datos = new String[5];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -78,6 +84,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
+                datos[4] = rs.getString(6);
 
                 modelo.addRow(datos);
 
@@ -167,8 +174,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         usuarios = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
         jLabel1 = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
+        idp1 = new javax.swing.JLabel();
 
         jMenuItem1.setText("Editar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -185,22 +195,24 @@ public class frm_proveedores extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(980, 573));
         setMinimumSize(new java.awt.Dimension(980, 573));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(980, 573));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Id Proveedor");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, -1, -1));
 
         jLabel3.setText("Nombre Empresa");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, 19));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, -1, 19));
 
         jLabel4.setText("Dirección");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 470, -1, -1));
 
         jLabel5.setText("RTN");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, -1, -1));
 
         Jtf_Id.setEditable(false);
         Jtf_Id.setBackground(new java.awt.Color(204, 204, 204));
@@ -218,7 +230,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jtf_IdKeyTyped(evt);
             }
         });
-        getContentPane().add(Jtf_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 152, 27));
+        getContentPane().add(Jtf_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 152, 27));
 
         Jbt_Guardar.setBackground(new java.awt.Color(0, 0, 153));
         Jbt_Guardar.setForeground(new java.awt.Color(255, 255, 255));
@@ -228,7 +240,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jbt_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(Jbt_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 90, -1));
+        getContentPane().add(Jbt_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 90, -1));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtf_Rtn, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Nombre_Empresa, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -243,7 +255,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jtf_Nombre_EmpresaKeyTyped(evt);
             }
         });
-        getContentPane().add(Jtf_Nombre_Empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 152, 30));
+        getContentPane().add(Jtf_Nombre_Empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 152, 30));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Jbt_Guardar, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Direccion, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -253,7 +265,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jtf_DireccionKeyTyped(evt);
             }
         });
-        getContentPane().add(Jtf_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, 156, 70));
+        getContentPane().add(Jtf_Direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 460, 156, 70));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, Jtf_Direccion, org.jdesktop.beansbinding.ObjectProperty.create(), jtf_Rtn, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -263,7 +275,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jtf_RtnKeyTyped(evt);
             }
         });
-        getContentPane().add(jtf_Rtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 156, 31));
+        getContentPane().add(jtf_Rtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 156, 31));
 
         Jbt_Eliminar.setBackground(new java.awt.Color(0, 0, 153));
         Jbt_Eliminar.setForeground(new java.awt.Color(255, 255, 255));
@@ -273,7 +285,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 Jbt_EliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
+        getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 450, 90, -1));
 
         tabla1 = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -300,7 +312,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabla1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 565, 186));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 670, 186));
 
         jtf_editar.setBackground(new java.awt.Color(0, 0, 153));
         jtf_editar.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,7 +322,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jtf_editarActionPerformed(evt);
             }
         });
-        getContentPane().add(jtf_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 90, -1));
+        getContentPane().add(jtf_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 90, -1));
 
         jtf_nuevo.setBackground(new java.awt.Color(0, 0, 153));
         jtf_nuevo.setForeground(new java.awt.Color(255, 255, 255));
@@ -320,7 +332,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jtf_nuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(jtf_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 90, -1));
+        getContentPane().add(jtf_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 90, -1));
 
         jtf_salir.setBackground(new java.awt.Color(204, 204, 204));
         jtf_salir.setForeground(new java.awt.Color(255, 0, 0));
@@ -390,8 +402,8 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
-        getContentPane().add(buscar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 140, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
+        getContentPane().add(buscar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 140, 30));
 
         jButton2.setBackground(new java.awt.Color(0, 153, 204));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -401,7 +413,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 500, 90, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, -1));
 
         contacto.setBackground(new java.awt.Color(0, 0, 153));
         contacto.setForeground(new java.awt.Color(255, 255, 255));
@@ -411,7 +423,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 contactoActionPerformed(evt);
             }
         });
-        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, -1));
+        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 153));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -431,7 +443,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, -1, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, -1, -1));
 
         jButton10.setBackground(new java.awt.Color(0, 153, 204));
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
@@ -441,7 +453,7 @@ public class frm_proveedores extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, 90, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("REGISTRO DE PROVEEDORES");
@@ -451,12 +463,20 @@ public class frm_proveedores extends javax.swing.JFrame {
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
         getContentPane().add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 70, 20));
 
+        jLabel8.setText("Fecha Registro:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+
+        rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
+        rSLabelFecha1.setFormato("yyyy-MM-dd");
+        getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 100, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(980, 573));
         jLabel1.setMinimumSize(new java.awt.Dimension(980, 573));
         jLabel1.setPreferredSize(new java.awt.Dimension(980, 573));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 40, 20));
+        getContentPane().add(idp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 
         bindingGroup.bind();
 
@@ -513,6 +533,7 @@ public class frm_proveedores extends javax.swing.JFrame {
         contacto.setVisible(true);
          ContactoP.usuarios.setText(usuarios.getText());
         ContactoP.rol.setText(rol.getText());
+        ContactoP.idcp.setText(idp1.getText());
         logger.debug("Ingreso a la pantalla de contacto: "+usuarios.getText());
         this.dispose();
     }//GEN-LAST:event_contactoActionPerformed
@@ -523,6 +544,8 @@ public class frm_proveedores extends javax.swing.JFrame {
         menuPrincipal mp = new menuPrincipal();
         menuPrincipal.nombre.setText(usuarios.getText());
         menuPrincipal.rol.setText(rol.getText());
+        menuPrincipal.idv.setText(idp1.getText());
+        
         mp.setVisible(true);
         logger.debug("volvio al menu principal "+usuarios.getText());
         this.dispose();
@@ -716,11 +739,12 @@ public class frm_proveedores extends javax.swing.JFrame {
                         if (Jtf_Nombre_Empresa.getText().length() >= 3) {
                             if (jtf_Rtn.getText().startsWith("0") || jtf_Rtn.getText().startsWith("1")) {
 
-                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `proveedor` (`Empresa_id`, `Nombre_Empresa`, `Direccion_Empresa`, `rtn_empresa`, `contacto`) VALUES (NULL, ?, ?, ?, NULL)");
+                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `proveedor` (`Empresa_id`, `Nombre_Empresa`, `Direccion_Empresa`, `rtn_empresa`, `contacto`,`fecha_registro`) VALUES (NULL, ?, ?, ?, NULL,?)");
                                 
                                 pst.setString(1, Jtf_Nombre_Empresa.getText());
                                 pst.setString(2, Jtf_Direccion.getText());
                                 pst.setString(3, jtf_Rtn.getText());
+                                pst.setString(4,rSLabelFecha1.getFecha());
 
                                 int a = pst.executeUpdate();
 
@@ -898,6 +922,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JTextField Jtf_Nombre_Empresa;
     private javax.swing.JTextField buscar_txt;
     private javax.swing.JButton contacto;
+    public static javax.swing.JLabel idp1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -915,6 +940,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -925,6 +951,7 @@ public class frm_proveedores extends javax.swing.JFrame {
     private javax.swing.JButton jtf_editar;
     private javax.swing.JButton jtf_nuevo;
     private javax.swing.JButton jtf_salir;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
     public static javax.swing.JLabel rol;
     private javax.swing.JTable tabla1;
     public static javax.swing.JLabel usuarios;

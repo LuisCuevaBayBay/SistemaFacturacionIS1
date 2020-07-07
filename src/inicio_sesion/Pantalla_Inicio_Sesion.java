@@ -21,6 +21,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import menu.menuPrincipal;
+import static menu.menuPrincipal.nombre;
 
 import org.apache.log4j.*;
 
@@ -65,6 +66,8 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         bienvenida = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        rSLabelHora1 = new rojeru_san.RSLabelHora();
+        rSLabelFecha1 = new rojeru_san.RSLabelFecha();
         fondo = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -123,7 +126,13 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 230, 200));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 230, 200));
+
+        rSLabelHora1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(rSLabelHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+
+        rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
@@ -254,10 +263,12 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        int i = JOptionPane.showConfirmDialog(null, "Esta seguro que desea salir?");
+          // TODO add your handling code here:
+        Object[] options = {"SI", "NO"};
+         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
         
         if (i == 0) { 
-            logger.debug("salio del sistema");
+            logger.debug("Salio del sistema: "+nombre.getText());
         System.exit(0);
         }
         
@@ -342,6 +353,8 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private rojeru_san.RSLabelFecha rSLabelFecha1;
+    private rojeru_san.RSLabelHora rSLabelHora1;
     public javax.swing.JPasswordField txt_pass;
     public javax.swing.JTextField txt_usuario;
     private javax.swing.JLabel usuario;

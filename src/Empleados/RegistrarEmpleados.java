@@ -35,6 +35,9 @@ import org.apache.log4j.*;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 import inicio_sesion.modelo.SqlUsuarios;
 import inicio_sesion.modelo.usuarios;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  *
  * @author luisc
@@ -59,6 +62,11 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         limpiar();
         bloquear();
         this.setLocationRelativeTo(null);
+         Calendar cal= Calendar.getInstance();
+        String fecha;
+        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
+        
+    
         
     }
     
@@ -76,8 +84,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         modelo.addColumn("Numero de Identidad Empleado");
         modelo.addColumn("Direccion Empleado");
         modelo.addColumn("Usuario");
-        modelo.addColumn("Contraseña");
+        modelo.addColumn("PASS");
         modelo.addColumn("Tipo Usuario");
+        modelo.addColumn("Fecha de Registro");
         
 
         tablaempleados.setModel(modelo);
@@ -85,9 +94,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         if (valor.equals("")) {
             sql = "SELECT * From vendedor";
         } else {
-            sql = "SELECT * FROM vendedor WHERE (Vendedor_id='" + valor + "' OR nombre_empleado='" + valor + "' OR apellido_empleado='" + valor + "'OR num_identidad_empleado='" + valor + "'OR direccion='" + valor + "'OR tipo_usuario='"+valor+"')";
+            sql = "SELECT Vendedor_id,nombre_empleado,apellido_empleado,num_identidad_empleado, direccion,usuario,id_tipo,fecha_registro FROM vendedor WHERE (Vendedor_id='" + valor + "' OR nombre_empleado='" + valor + "' OR apellido_empleado='" + valor + "'OR num_identidad_empleado='" + valor + "'OR direccion='" + valor + "'OR tipo_usuario='"+valor+"')";
         }
-        String[] datos = new String[8];
+        String[] datos = new String[9];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -100,6 +109,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 datos[5] = rs.getString(6);
                 datos[6] = rs.getString(7);
                 datos[7] = rs.getString(8);
+                datos[8] = rs.getString(9);
 
                 modelo.addRow(datos);
 
@@ -206,10 +216,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         tipo = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        fechar = new rojeru_san.RSLabelFecha();
         user = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         pom = new javax.swing.JTextField();
         rol = new javax.swing.JLabel();
+        ide = new javax.swing.JLabel();
 
         jTextField1.setText("Registro de Empleados");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -573,7 +586,14 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         jLabel10.setText("Usuario: ");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        fechar.setForeground(new java.awt.Color(51, 51, 51));
+        fechar.setFormato("yyyy-MM-dd");
+        getContentPane().add(fechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 110, -1));
         getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 80, 20));
+
+        jLabel11.setText("Fecha de Registro");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 630));
@@ -588,6 +608,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
         rol.setText("jLabel11");
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        getContentPane().add(ide, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         bindingGroup.bind();
 
@@ -631,7 +652,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     }//GEN-LAST:event_num_id_empleaActionPerformed
 
-    
+   
     
     
      void numeros()
@@ -700,6 +721,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
          
      }
      
+         
     private void save_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_empleadoActionPerformed
 
         ConexionSQL cc = new ConexionSQL();
@@ -755,7 +777,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 
                                                  
                                                 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?)");
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?,?)");
                                                 
                                                 
                                                 
@@ -767,6 +789,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 pst.setString(5, txt_usuario.getText());
                                                 pst.setString(6, txt_pass.getText());
                                                 pst.setString(7, pom.getText());
+                                                pst.setString(8, fechar.getFecha());
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
@@ -813,7 +836,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 }
                 
             } catch (Exception e) {
-               logger.debug("Error: ",e);
+               logger.error("Error: "+e.getMessage());
                
             }
                 
@@ -1091,6 +1114,7 @@ public Icon icono(String path, int width, int height){
         contacto.setVisible(true);
         Contacto.usuarios.setText(user.getText());
         Contacto.rol.setText(rol.getText());
+        Contacto.idcv.setText(ide.getText());
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -1105,6 +1129,7 @@ public Icon icono(String path, int width, int height){
         
        menuPrincipal.nombre.setText(user.getText());
        menuPrincipal.rol.setText(rol.getText());
+       menuPrincipal.idv.setText(ide.getText());
         
         logger.debug("Volvio al menu principal: "+user.getText());
         
@@ -1315,8 +1340,10 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JTextField buscar_txt_box;
     private javax.swing.JButton del_empleado;
     private javax.swing.JTextField dir_empleado;
+    private rojeru_san.RSLabelFecha fechar;
     private javax.swing.JLabel idEmpleado;
     private javax.swing.JTextField id_empleado;
+    public static javax.swing.JLabel ide;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1328,6 +1355,7 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
