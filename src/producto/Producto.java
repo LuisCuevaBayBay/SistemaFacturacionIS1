@@ -382,7 +382,7 @@ public class Producto extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 400, -1, -1));
 
         rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
-        rSLabelFecha1.setFormato("yyyy-mm-dd");
+        rSLabelFecha1.setFormato("yyyy-MM-dd");
         getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, 110, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N

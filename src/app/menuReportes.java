@@ -288,8 +288,8 @@ public class menuReportes extends javax.swing.JFrame {
         Connection conn = con.getConnection();
         
         JasperReport reporte = null;
-        String path = "src\\reportes\\ReporteClientes.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+        String path = "/reportes/ReporteClientes.jasper";
+            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
             //Map parametro = new HashMap();
            // parametro.put("id_tipo",label1.getText());
             
@@ -329,8 +329,8 @@ public class menuReportes extends javax.swing.JFrame {
         Connection conn = con.getConnection();
         
         JasperReport reporte = null;
-        String path = "src\\reportes\\ReporteEmpleados.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+        String path = "/reportes/ReporteEmpleados.jasper";
+            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
             //Map parametro = new HashMap();
            // parametro.put("id_tipo",label1.getText());
             
@@ -352,8 +352,8 @@ public class menuReportes extends javax.swing.JFrame {
         Connection conn = con.getConnection();
         
         JasperReport reporte = null;
-        String path = "src\\reportes\\ReporteVentas.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+        String path = "/reportes/ReporteVentas.jasper";
+            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
             //Map parametro = new HashMap();
            // parametro.put("id_tipo",label1.getText());
             
@@ -395,8 +395,8 @@ this.dispose();*/
         Connection conn = con.getConnection();
         
         JasperReport reporte = null;
-        String path = "src\\reportes\\ReporteProveedor.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+        String path = "/reportes/ReporteProveedor.jasper";
+            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
             //Map parametro = new HashMap();
            // parametro.put("id_tipo",label1.getText());
             
@@ -433,8 +433,8 @@ this.dispose();*/
         Connection conn = con.getConnection();
         
         JasperReport reporte = null;
-        String path = "src\\reportes\\productos.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+        String path = "/reportes/productos.jasper";
+            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
             //Map parametro = new HashMap();
            // parametro.put("id_tipo",label1.getText());
             
@@ -457,8 +457,8 @@ this.dispose();*/
         Connection conn = con.getConnection();
         
         JasperReport reporte = null;
-        String path = "src\\reportes\\ReporteCompras.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+       // String path = "src\\reportes\\ReporteCompras.jasper";
+            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteCompras.jasper"));
             //Map parametro = new HashMap();
            // parametro.put("id_tipo",label1.getText());
             
