@@ -12,6 +12,7 @@ import Empleados.RegistrarEmpleados;
 /*import Factura_Venta.Factura_Venta;*/
 import Proveedor.frm_proveedores;
 import Venta.ModeloVenta;
+import app.menuReportes;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 import inicio_sesion.modelo.usuarios;
 import javax.swing.Icon;
@@ -58,6 +59,7 @@ public class menuPrincipal extends javax.swing.JFrame {
          jButton7.setVisible(false);
          registroEmpleado.setVisible(false);
          jButton2.setVisible(false);
+         jButton3.setVisible(false);
          
      
      }
@@ -96,6 +98,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         rSLabelHora1 = new rojeru_san.RSLabelHora();
         jLabel11 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         idv = new javax.swing.JLabel();
         rSLabelHora2 = new rojeru_san.RSLabelHora();
@@ -259,6 +262,16 @@ public class menuPrincipal extends javax.swing.JFrame {
         jLabel11.setText("Hora:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reportes (2).jpg"))); // NOI18N
+        jButton3.setText("Reportes");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 140, -1));
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 540));
         getContentPane().add(idv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 20));
@@ -294,13 +307,7 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     private void registrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVentaActionPerformed
         // TODO add your handling code here:
-        logger.debug("Ingreso a la pantalla de ventas");
-        ModeloVenta mv = new ModeloVenta();
-        mv.setVisible(true);
-        ModeloVenta.txtvendedor.setText(idv.getText());
-         ModeloVenta.usuariosth.setText(nombre.getText());
-          ModeloVenta.rolth.setText(rol.getText());
-        this.dispose();
+        
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked
@@ -385,6 +392,20 @@ this.dispose();*/
           ModeloCompra1.rollh.setText(rol.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        menuReportes mr = new menuReportes();
+        menuReportes.rol.setText(rol.getText());
+        menuReportes.nombre.setText(nombre.getText());
+        menuReportes.idv.setText(idv.getText());
+        
+        logger.debug("Ingreso al menu de reportes: "+nombre.getText());
+        mr.setVisible(true);
+        this.dispose();
+        
+                
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -427,6 +448,7 @@ this.dispose();*/
     public static javax.swing.JLabel idv;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
