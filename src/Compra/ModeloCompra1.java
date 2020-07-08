@@ -11,6 +11,9 @@ import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import java.awt.Toolkit;
 import Clientes.datos;
+import static Venta.ModeloVenta.rolth;
+import static Venta.ModeloVenta.txtvendedor;
+import static Venta.ModeloVenta.usuariosth;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 
 import java.sql.Connection;
@@ -146,6 +149,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         subt = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        usuarioslh = new javax.swing.JLabel();
+        rollh = new javax.swing.JLabel();
+        vendedorlh = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -226,11 +232,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtCodClienteKeyTyped(evt);
             }
         });
-        jPanel2.add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 12, 119, -1));
+        jPanel2.add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 119, 30));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("COD: PRODUCTO:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 45, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         txtCodProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,19 +248,20 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtCodProductoKeyTyped(evt);
             }
         });
-        jPanel2.add(txtCodProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 46, 119, -1));
+        jPanel2.add(txtCodProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 119, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("PRECIO:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         txtprecio.setEditable(false);
-        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 119, -1));
+        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, 119, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setText("CANTIDAD");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        jLabel10.setText("CANTIDAD:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
+        btnBuscarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar (1).jpg"))); // NOI18N
         btnBuscarCli.setText("Buscar");
         btnBuscarCli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -266,8 +273,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 btnBuscarCliActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 11, 80, -1));
+        jPanel2.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 100, -1));
 
+        btnBuscarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar (1).jpg"))); // NOI18N
         btnBuscarProd.setText("Buscar");
         btnBuscarProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -279,15 +287,16 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 btnBuscarProdActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 45, 80, -1));
+        jPanel2.add(btnBuscarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 100, 30));
 
+        btnAddprecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar.jpg"))); // NOI18N
         btnAddprecio.setText("Agregar");
         btnAddprecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddprecioActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 80, -1));
+        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 100, -1));
 
         spinCant.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
         spinCant.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -300,7 +309,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 spinCantPropertyChange(evt);
             }
         });
-        jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 119, 30));
+        jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 119, 30));
 
         txtcli.setEditable(false);
         txtcli.addActionListener(new java.awt.event.ActionListener() {
@@ -308,32 +317,32 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtcliActionPerformed(evt);
             }
         });
-        jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 178, -1));
+        jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 178, 30));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("PRODUC:");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
 
         txtprod.setEditable(false);
-        jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 60, 180, -1));
+        jPanel2.add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 180, 30));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setText("ISV:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 90, -1, 20));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, -1, 20));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("PROVEEDOR:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, -1));
 
         txtisv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "15", "18" }));
-        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, -1, -1));
+        jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
-        jLabel14.setText("FECHA");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, 20));
+        jLabel14.setText("FECHA:");
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, 20));
 
         rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
         rSLabelFecha1.setFormato("yyyy-MM-dd\n");
-        jPanel2.add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 90, -1));
+        jPanel2.add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 90, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 760, 180));
 
@@ -380,45 +389,50 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.jpg"))); // NOI18N
         btnventa.setText("Registrar Compra");
         btnventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnventaActionPerformed(evt);
             }
         });
-        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
+        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 160, 30));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salirfactura.jpg"))); // NOI18N
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 70, -1));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 90, -1));
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atrasfactura.jpg"))); // NOI18N
         jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, -1, -1));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verfacturas.jpg"))); // NOI18N
         jButton4.setText("Ver Facturas");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, -1));
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.jpg"))); // NOI18N
         jButton5.setText("Cancelar Factura");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 160, -1));
 
         txtotalapagar.setEditable(false);
         txtotalapagar.addActionListener(new java.awt.event.ActionListener() {
@@ -426,21 +440,22 @@ public class ModeloCompra1 extends javax.swing.JFrame {
                 txtotalapagarActionPerformed(evt);
             }
         });
-        jPanel4.add(txtotalapagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 120, 35));
+        jPanel4.add(txtotalapagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 120, 35));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Total a Pagar");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+        jLabel3.setText("Total a Pagar:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, -1));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevofactura.jpg"))); // NOI18N
         jButton2.setText("Nuevo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 110, 30));
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 760, 130));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 720));
@@ -456,6 +471,9 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Monto x Producto");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, 20));
+        getContentPane().add(usuarioslh, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 700, 40, 10));
+        getContentPane().add(rollh, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 700, 20, 20));
+        getContentPane().add(vendedorlh, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 700, 20, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -737,9 +755,14 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             
             logger.info("Vuelve al menu principal");
         
+            menuPrincipal mp = new menuPrincipal();
+            mp.setVisible(true);
         this.dispose();
        
         }
+         menuPrincipal.nombre.setText(usuarioslh.getText());
+        menuPrincipal.rol.setText(rollh.getText());        
+        menuPrincipal.idv.setText(vendedorlh.getText());
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -955,12 +978,13 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    public static javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private rojeru_san.RSLabelFecha rSLabelFecha1;
+    public static javax.swing.JLabel rollh;
     private javax.swing.JSpinner spinCant;
     private javax.swing.JTextField subt;
     private javax.swing.JTextField txtCodCliente;
@@ -973,6 +997,8 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprod;
     private javax.swing.JTextField txtserie;
+    public static javax.swing.JLabel usuarioslh;
+    public static javax.swing.JLabel vendedorlh;
     // End of variables declaration//GEN-END:variables
 
 }

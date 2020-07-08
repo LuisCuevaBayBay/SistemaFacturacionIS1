@@ -185,65 +185,71 @@ public class Producto extends javax.swing.JFrame {
         });
         getContentPane().add(nom_producto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 140, 32));
 
-        guardar_btn.setBackground(new java.awt.Color(0, 0, 153));
+        guardar_btn.setBackground(new java.awt.Color(255, 255, 255));
         guardar_btn.setForeground(new java.awt.Color(255, 255, 255));
-        guardar_btn.setText("Guardar");
+        guardar_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.jpg"))); // NOI18N
+        guardar_btn.setBorder(null);
         guardar_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardar_btnActionPerformed(evt);
             }
         });
-        getContentPane().add(guardar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
+        getContentPane().add(guardar_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, 60, 60));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 204));
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Nuevo");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.jpg"))); // NOI18N
+        jButton2.setBorder(null);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 290, 70, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, 70, 60));
 
-        edit_btn.setBackground(new java.awt.Color(0, 0, 153));
+        edit_btn.setBackground(new java.awt.Color(255, 255, 255));
         edit_btn.setForeground(new java.awt.Color(255, 255, 255));
-        edit_btn.setText("Editar");
+        edit_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.jpg"))); // NOI18N
+        edit_btn.setBorder(null);
         edit_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edit_btnActionPerformed(evt);
             }
         });
-        getContentPane().add(edit_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 70, -1));
+        getContentPane().add(edit_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 310, 70, 60));
 
-        jButton6.setBackground(new java.awt.Color(0, 153, 204));
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Atrás");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.jpg"))); // NOI18N
+        jButton6.setBorder(null);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 410, 70, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 70, 50));
 
-        jButton7.setBackground(new java.awt.Color(0, 0, 204));
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Eliminar");
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.jpg"))); // NOI18N
+        jButton7.setBorder(null);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 70, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 70, 60));
 
-        jButton4.setBackground(new java.awt.Color(0, 153, 153));
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Salir");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.jpg"))); // NOI18N
+        jButton4.setBorder(null);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 440, 70, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, 70, 50));
 
         tablaproducto = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){

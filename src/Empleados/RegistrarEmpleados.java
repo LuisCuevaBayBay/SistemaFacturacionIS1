@@ -321,25 +321,29 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         jLabel5.setText("Dirección del Empleado");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
-        save_empleado.setBackground(new java.awt.Color(0, 0, 204));
+        save_empleado.setBackground(new java.awt.Color(255, 255, 255));
         save_empleado.setForeground(new java.awt.Color(255, 255, 255));
-        save_empleado.setText("Guardar");
+        save_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.jpg"))); // NOI18N
+        save_empleado.setBorder(null);
+        save_empleado.setFocusPainted(false);
         save_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 save_empleadoActionPerformed(evt);
             }
         });
-        getContentPane().add(save_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 90, -1));
+        getContentPane().add(save_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, 60, 60));
 
-        del_empleado.setBackground(new java.awt.Color(0, 0, 204));
+        del_empleado.setBackground(new java.awt.Color(255, 255, 255));
         del_empleado.setForeground(new java.awt.Color(255, 255, 255));
-        del_empleado.setText("Eliminar");
+        del_empleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.jpg"))); // NOI18N
+        del_empleado.setBorder(null);
+        del_empleado.setFocusPainted(false);
         del_empleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 del_empleadoActionPerformed(evt);
             }
         });
-        getContentPane().add(del_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 90, -1));
+        getContentPane().add(del_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 340, 60, 60));
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         jLabel1.setText("Registro Empleados");
@@ -428,25 +432,28 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, -1, -1));
 
-        btn_editar.setBackground(new java.awt.Color(0, 0, 204));
+        btn_editar.setBackground(new java.awt.Color(255, 255, 255));
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("Editar");
+        btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.jpg"))); // NOI18N
+        btn_editar.setBorder(null);
         btn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 90, -1));
+        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 60, 60));
 
-        salir_btn.setBackground(new java.awt.Color(0, 153, 204));
+        salir_btn.setBackground(new java.awt.Color(255, 255, 255));
         salir_btn.setForeground(new java.awt.Color(255, 255, 255));
-        salir_btn.setText("Salir");
+        salir_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.jpg"))); // NOI18N
+        salir_btn.setBorder(null);
+        salir_btn.setBorderPainted(false);
         salir_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salir_btnActionPerformed(evt);
             }
         });
-        getContentPane().add(salir_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 570, 100, -1));
+        getContentPane().add(salir_btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, 50, 60));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_usuario, org.jdesktop.beansbinding.ObjectProperty.create(), dir_empleado, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -463,15 +470,17 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(dir_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 130, 87));
 
-        nuevo.setBackground(new java.awt.Color(0, 0, 204));
+        nuevo.setBackground(new java.awt.Color(255, 255, 255));
         nuevo.setForeground(new java.awt.Color(255, 255, 255));
-        nuevo.setText("Nuevo");
+        nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.jpg"))); // NOI18N
+        nuevo.setBorder(null);
+        nuevo.setBorderPainted(false);
         nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 90, 30));
+        getContentPane().add(nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 260, 60, 60));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 204));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -501,9 +510,11 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 160, -1));
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 204));
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Contacto");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contacto.jpg"))); // NOI18N
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -514,7 +525,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 380, 90, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 50, 60));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, txt_pass, org.jdesktop.beansbinding.ObjectProperty.create(), txt_usuario, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -543,15 +554,17 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         getContentPane().add(buscar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, 30));
         getContentPane().add(buscar_txt_box, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, 125, 30));
 
-        jButton5.setBackground(new java.awt.Color(0, 153, 204));
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Atrás");
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.jpg"))); // NOI18N
+        jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 520, 100, -1));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 510, 60, 60));
 
         jButton8.setBackground(new java.awt.Color(0, 0, 204));
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
@@ -596,7 +609,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 630));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 630));
 
         pom.setText("jTextField2");
         pom.addActionListener(new java.awt.event.ActionListener() {

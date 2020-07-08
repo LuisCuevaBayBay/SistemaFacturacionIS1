@@ -11,6 +11,9 @@ import Empleados.RegistrarEmpleados;
 import Proveedor.frm_proveedores;
 import java.awt.Toolkit;
 import Clientes.datos;
+import static Proveedor.frm_proveedores.idp1;
+import static Proveedor.frm_proveedores.rol;
+import static Proveedor.frm_proveedores.usuarios;
 import inicio_sesion.modelo.SqlUsuarios;
 import inicio_sesion.modelo.usuarios;
 
@@ -149,6 +152,8 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jLabel19 = new javax.swing.JLabel();
         subt = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
+        usuariosth = new javax.swing.JLabel();
+        rolth = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -211,7 +216,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("COD: CLIENTE:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 14, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
         txtCodCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +234,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
                 txtCodClienteKeyTyped(evt);
             }
         });
-        jPanel2.add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 12, 119, -1));
+        jPanel2.add(txtCodCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 0, 119, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("COD: PRODUCTO:");
@@ -252,12 +257,13 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
 
         txtprecio.setEditable(false);
-        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 119, -1));
+        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 119, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel10.setText("CANTIDAD");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
+        jLabel10.setText("CANTIDAD:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
+        btnBuscarCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar (1).jpg"))); // NOI18N
         btnBuscarCli.setText("Buscar");
         btnBuscarCli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -269,8 +275,9 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
                 btnBuscarCliActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 11, 80, -1));
+        jPanel2.add(btnBuscarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 110, -1));
 
+        btnBuscarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/buscar (1).jpg"))); // NOI18N
         btnBuscarProd.setText("Buscar");
         btnBuscarProd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -282,15 +289,16 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
                 btnBuscarProdActionPerformed(evt);
             }
         });
-        jPanel2.add(btnBuscarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 45, 80, -1));
+        jPanel2.add(btnBuscarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 110, -1));
 
+        btnAddprecio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/agregar.jpg"))); // NOI18N
         btnAddprecio.setText("Agregar");
         btnAddprecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddprecioActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 80, -1));
+        jPanel2.add(btnAddprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 110, -1));
 
         spinCant.setModel(new javax.swing.SpinnerNumberModel(0, 0, 20, 1));
         spinCant.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -298,7 +306,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
                 spinCantStateChanged(evt);
             }
         });
-        jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 119, 30));
+        jPanel2.add(spinCant, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 119, 30));
 
         txtcli.setEditable(false);
         jPanel2.add(txtcli, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 178, -1));
@@ -346,9 +354,9 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
 
         fechar.setForeground(new java.awt.Color(0, 0, 0));
         fechar.setFormato("yyyy-MM-dd");
-        jPanel2.add(fechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 130, 20));
+        jPanel2.add(fechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 110, 20));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 180));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 740, 190));
 
         jTable2 = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -393,22 +401,25 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.jpg"))); // NOI18N
         btnventa.setText("Generar Venta");
         btnventa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnventaActionPerformed(evt);
             }
         });
-        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+        jPanel4.add(btnventa, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 150, -1));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salirfactura.jpg"))); // NOI18N
         jButton1.setText("Salir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 70, -1));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 110, -1));
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atrasfactura.jpg"))); // NOI18N
         jButton3.setText("Atrás");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,15 +431,16 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
                 jButton3KeyTyped(evt);
             }
         });
-        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
+        jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verfacturas.jpg"))); // NOI18N
         jButton4.setText("Ver Facturas");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, -1));
 
         txtotalapagar.setEditable(false);
         txtotalapagar.addActionListener(new java.awt.event.ActionListener() {
@@ -436,27 +448,29 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
                 txtotalapagarActionPerformed(evt);
             }
         });
-        jPanel4.add(txtotalapagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 120, 35));
+        jPanel4.add(txtotalapagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 120, 35));
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar.jpg"))); // NOI18N
         jButton5.setText("Cancelar Factura");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 150, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Total ");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
+        jLabel3.setText("Total a Pagar:");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevofactura.jpg"))); // NOI18N
         jButton6.setText("Nuevo");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, -1, -1));
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 110, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 740, 130));
 
@@ -469,6 +483,8 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Monto x Producto");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
+        getContentPane().add(usuariosth, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 700, 40, 20));
+        getContentPane().add(rolth, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 700, 30, 10));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -758,10 +774,14 @@ txtserie.setText("");
         
         if (i == 0) { 
             logger.debug("vuelve al menu principal");
-            
+        
+            menuPrincipal mp = new menuPrincipal();
+            mp.setVisible(true);
         this.dispose();
-       
+        
         };
+         menuPrincipal.nombre.setText(usuariosth.getText());
+        menuPrincipal.rol.setText(rolth.getText());        
         menuPrincipal.idv.setText(txtvendedor.getText());
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -1000,6 +1020,7 @@ char c = evt.getKeyChar();
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    public static javax.swing.JLabel rolth;
     private javax.swing.JSpinner spinCant;
     private javax.swing.JTextField subt;
     private javax.swing.JTextField txtCodCliente;
@@ -1013,6 +1034,7 @@ char c = evt.getKeyChar();
     private javax.swing.JTextField txtprod;
     private javax.swing.JTextField txtserie;
     public static javax.swing.JTextField txtvendedor;
+    public static javax.swing.JLabel usuariosth;
     // End of variables declaration//GEN-END:variables
 
 }

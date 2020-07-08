@@ -87,10 +87,12 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, 20));
         getContentPane().add(txt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 174, 30));
 
-        btn_inicio_sesion.setBackground(new java.awt.Color(0, 0, 153));
+        btn_inicio_sesion.setBackground(new java.awt.Color(255, 255, 255));
         btn_inicio_sesion.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        btn_inicio_sesion.setForeground(new java.awt.Color(255, 255, 255));
+        btn_inicio_sesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio sesion (1).jpg"))); // NOI18N
         btn_inicio_sesion.setText("Iniciar Sesión");
+        btn_inicio_sesion.setBorder(null);
+        btn_inicio_sesion.setBorderPainted(false);
         btn_inicio_sesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_inicio_sesionMouseClicked(evt);
@@ -101,12 +103,14 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
                 btn_inicio_sesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_inicio_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 174, -1));
+        getContentPane().add(btn_inicio_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 200, 60));
 
-        jButton3.setBackground(new java.awt.Color(0, 102, 204));
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.jpg"))); // NOI18N
         jButton3.setText("Salir");
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -117,7 +121,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 420, 70, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 140, 60));
 
         bienvenida.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         bienvenida.setText("Bienvenido al Sistema ");
@@ -138,7 +142,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         fondo.setMaximumSize(new java.awt.Dimension(32, 32));
         fondo.setMinimumSize(new java.awt.Dimension(32, 32));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 470));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

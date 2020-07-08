@@ -195,11 +195,11 @@ public class frm_proveedores extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(980, 573));
-        setMinimumSize(new java.awt.Dimension(980, 573));
+        setLocationByPlatform(true);
+        setMaximumSize(new java.awt.Dimension(1000, 700));
+        setMinimumSize(new java.awt.Dimension(1000, 700));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(980, 573));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(1000, 700));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Id Proveedor");
@@ -232,15 +232,17 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(Jtf_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 152, 27));
 
-        Jbt_Guardar.setBackground(new java.awt.Color(0, 0, 153));
+        Jbt_Guardar.setBackground(new java.awt.Color(255, 255, 255));
         Jbt_Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        Jbt_Guardar.setText("GUARDAR");
+        Jbt_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.jpg"))); // NOI18N
+        Jbt_Guardar.setBorder(null);
+        Jbt_Guardar.setBorderPainted(false);
         Jbt_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Jbt_GuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(Jbt_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320, 90, -1));
+        getContentPane().add(Jbt_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 320, 50, 60));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, jtf_Rtn, org.jdesktop.beansbinding.ObjectProperty.create(), Jtf_Nombre_Empresa, org.jdesktop.beansbinding.BeanProperty.create("nextFocusableComponent"));
         bindingGroup.addBinding(binding);
@@ -277,15 +279,15 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(jtf_Rtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 156, 31));
 
-        Jbt_Eliminar.setBackground(new java.awt.Color(0, 0, 153));
+        Jbt_Eliminar.setBackground(new java.awt.Color(255, 255, 255));
         Jbt_Eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        Jbt_Eliminar.setText("ELIMINAR");
+        Jbt_Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.jpg"))); // NOI18N
         Jbt_Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Jbt_EliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 450, 90, -1));
+        getContentPane().add(Jbt_Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 390, 60, 60));
 
         tabla1 = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -314,25 +316,29 @@ public class frm_proveedores extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 670, 186));
 
-        jtf_editar.setBackground(new java.awt.Color(0, 0, 153));
+        jtf_editar.setBackground(new java.awt.Color(255, 255, 255));
         jtf_editar.setForeground(new java.awt.Color(255, 255, 255));
-        jtf_editar.setText("EDITAR");
+        jtf_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.jpg"))); // NOI18N
+        jtf_editar.setBorder(null);
+        jtf_editar.setBorderPainted(false);
         jtf_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtf_editarActionPerformed(evt);
             }
         });
-        getContentPane().add(jtf_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 90, -1));
+        getContentPane().add(jtf_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 390, 60, 60));
 
-        jtf_nuevo.setBackground(new java.awt.Color(0, 0, 153));
+        jtf_nuevo.setBackground(new java.awt.Color(255, 255, 255));
         jtf_nuevo.setForeground(new java.awt.Color(255, 255, 255));
-        jtf_nuevo.setText("NUEVO");
+        jtf_nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.jpg"))); // NOI18N
+        jtf_nuevo.setBorder(null);
+        jtf_nuevo.setBorderPainted(false);
         jtf_nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtf_nuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(jtf_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 360, 90, -1));
+        getContentPane().add(jtf_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 320, 60, 60));
 
         jtf_salir.setBackground(new java.awt.Color(204, 204, 204));
         jtf_salir.setForeground(new java.awt.Color(255, 0, 0));
@@ -405,25 +411,27 @@ public class frm_proveedores extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, -1, -1));
         getContentPane().add(buscar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, 140, 30));
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 204));
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("ATRÁS");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.jpg"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 490, 90, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 563, 70, 60));
 
-        contacto.setBackground(new java.awt.Color(0, 0, 153));
+        contacto.setBackground(new java.awt.Color(255, 255, 255));
         contacto.setForeground(new java.awt.Color(255, 255, 255));
-        contacto.setText("CONTACTO");
+        contacto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contacto.jpg"))); // NOI18N
+        contacto.setBorder(null);
+        contacto.setBorderPainted(false);
         contacto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 contactoActionPerformed(evt);
             }
         });
-        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 420, -1, -1));
+        getContentPane().add(contacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 460, 60, 60));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 153));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -445,15 +453,15 @@ public class frm_proveedores extends javax.swing.JFrame {
         });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, -1, -1));
 
-        jButton10.setBackground(new java.awt.Color(0, 153, 204));
+        jButton10.setBackground(new java.awt.Color(255, 255, 255));
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("SALIR");
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.jpg"))); // NOI18N
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 520, 90, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 563, 70, 60));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("REGISTRO DE PROVEEDORES");
@@ -471,10 +479,10 @@ public class frm_proveedores extends javax.swing.JFrame {
         getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 100, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(980, 573));
-        jLabel1.setMinimumSize(new java.awt.Dimension(980, 573));
-        jLabel1.setPreferredSize(new java.awt.Dimension(980, 573));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 600));
+        jLabel1.setMaximumSize(new java.awt.Dimension(1000, 700));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1000, 700));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1000, 700));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 700));
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 40, 20));
         getContentPane().add(idp1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
 

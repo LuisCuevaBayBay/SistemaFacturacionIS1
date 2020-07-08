@@ -159,18 +159,19 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(registrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 190, 30));
 
-        salir.setBackground(new java.awt.Color(0, 102, 204));
+        salir.setBackground(new java.awt.Color(255, 255, 255));
         salir.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         salir.setForeground(new java.awt.Color(255, 255, 255));
-        salir.setText("Salir");
+        salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.jpg"))); // NOI18N
         salir.setBorder(null);
         salir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        salir.setFocusPainted(false);
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 140, 30));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 420, 60, 60));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 204));
         jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -183,16 +184,18 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 370, 190, 30));
 
-        jButton6.setBackground(new java.awt.Color(0, 102, 204));
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Cerrar Sesión");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar sesion.jpg"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setFocusPainted(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, -1, 30));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 60, 60));
 
         jButton7.setBackground(new java.awt.Color(0, 0, 204));
         jButton7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -295,7 +298,9 @@ public class menuPrincipal extends javax.swing.JFrame {
         ModeloVenta mv = new ModeloVenta();
         mv.setVisible(true);
         ModeloVenta.txtvendedor.setText(idv.getText());
-        
+         ModeloVenta.usuariosth.setText(nombre.getText());
+          ModeloVenta.rolth.setText(rol.getText());
+        this.dispose();
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked
@@ -373,7 +378,11 @@ this.dispose();*/
         // TODO add your handling code here:
         ModeloCompra1 c = new ModeloCompra1();
         c.setVisible(true);
-        
+        this.dispose();
+        logger.debug("Ingreso a la pantalla de compras: "+nombre.getText());
+        ModeloCompra1.vendedorlh.setText(idv.getText());
+         ModeloCompra1.usuarioslh.setText(nombre.getText());
+          ModeloCompra1.rollh.setText(rol.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

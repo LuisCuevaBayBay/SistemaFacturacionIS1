@@ -231,25 +231,27 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel7.setText("Dirección");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, -1, -1));
 
-        btn_guardar.setBackground(new java.awt.Color(0, 0, 204));
+        btn_guardar.setBackground(new java.awt.Color(255, 255, 255));
         btn_guardar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_guardar.setText("Guardar");
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.jpg"))); // NOI18N
+        btn_guardar.setBorder(null);
+        btn_guardar.setFocusPainted(false);
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 80, -1));
+        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 60, 60));
 
-        btn_eliminar.setBackground(new java.awt.Color(0, 0, 204));
+        btn_eliminar.setBackground(new java.awt.Color(255, 255, 255));
         btn_eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_eliminar.setText("Eliminar");
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/eliminar.jpg"))); // NOI18N
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 80, -1));
+        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, 60, -1));
 
         tablaclientes = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
@@ -289,35 +291,39 @@ public class RegistroClientes extends javax.swing.JFrame {
         jLabel9.setText("Apellido Cliente");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, -1, -1));
 
-        btn_nuevo.setBackground(new java.awt.Color(0, 0, 255));
+        btn_nuevo.setBackground(new java.awt.Color(255, 255, 255));
         btn_nuevo.setForeground(new java.awt.Color(255, 255, 255));
-        btn_nuevo.setText("Nuevo");
+        btn_nuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo.jpg"))); // NOI18N
+        btn_nuevo.setBorder(null);
+        btn_nuevo.setFocusPainted(false);
         btn_nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_nuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 80, -1));
+        getContentPane().add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 60, 60));
 
-        btn_editar.setBackground(new java.awt.Color(0, 0, 255));
+        btn_editar.setBackground(new java.awt.Color(255, 255, 255));
         btn_editar.setForeground(new java.awt.Color(255, 255, 255));
-        btn_editar.setText("Editar");
+        btn_editar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.jpg"))); // NOI18N
+        btn_editar.setBorder(null);
+        btn_editar.setFocusPainted(false);
         btn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 80, -1));
+        getContentPane().add(btn_editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, 60, 50));
 
-        btn_salir.setBackground(new java.awt.Color(0, 153, 204));
+        btn_salir.setBackground(new java.awt.Color(255, 255, 255));
         btn_salir.setForeground(new java.awt.Color(255, 255, 255));
-        btn_salir.setText("Salir");
+        btn_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.jpg"))); // NOI18N
         btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, 80, -1));
+        getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 450, 50, 50));
 
         jLabel10.setText("Número de Identidad");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
@@ -358,25 +364,27 @@ public class RegistroClientes extends javax.swing.JFrame {
         });
         getContentPane().add(buscar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, 140, 30));
 
-        jButton6.setBackground(new java.awt.Color(0, 153, 255));
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Atrás");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.jpg"))); // NOI18N
+        jButton6.setBorder(null);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, 80, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 450, 60, 50));
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 204));
+        jButton9.setBackground(new java.awt.Color(255, 255, 255));
         jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Contacto");
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/contacto.jpg"))); // NOI18N
+        jButton9.setBorder(null);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 80, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 360, 60, 60));
 
         jButton7.setBackground(new java.awt.Color(0, 0, 204));
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
@@ -450,7 +458,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 520));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 800, 520));
 
         rolC.setText("jLabel11");
         getContentPane().add(rolC, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
