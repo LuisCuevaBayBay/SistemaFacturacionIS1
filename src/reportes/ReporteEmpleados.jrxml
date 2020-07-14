@@ -6,6 +6,9 @@
 	<parameter name="id_tipo" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      vendedor.`Vendedor_id` AS vendedor_Vendedor_id,
@@ -18,7 +21,7 @@
      tipo_usuario.`nombre` AS tipo_usuario_nombre
 FROM
      `vendedor` vendedor INNER JOIN `tipo_usuario` tipo_usuario ON vendedor.`id_tipo` = tipo_usuario.`id`
-WHERE vendedor.id_tipo = $P!{id_tipo}]]>
+WHERE vendedor.fecha_registro = $P{fecha}]]>
 	</queryString>
 	<field name="vendedor_Vendedor_id" class="java.lang.Integer"/>
 	<field name="vendedor_nombre_empleado" class="java.lang.String"/>

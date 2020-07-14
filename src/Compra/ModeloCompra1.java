@@ -335,6 +335,11 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, -1));
 
         txtisv.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0", "15", "18" }));
+        txtisv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtisvActionPerformed(evt);
+            }
+        });
         jPanel2.add(txtisv, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, -1, -1));
 
         jLabel14.setText("FECHA:");
@@ -912,6 +917,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtisvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtisvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtisvActionPerformed
 
     /**
      * @param args the command line arguments

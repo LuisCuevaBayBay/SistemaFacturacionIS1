@@ -3,6 +3,12 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fechareg" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      ventas.`IdVentas` AS ventas_IdVentas,
@@ -17,7 +23,8 @@
      vendedor.`nombre_empleado` AS vendedor_nombre_empleado
 FROM
      `vendedor` vendedor INNER JOIN `ventas` ventas ON vendedor.`Vendedor_id` = ventas.`Vendedor_IdVendedor`
-     INNER JOIN `cliente` cliente ON ventas.`Cliente_IdCliente` = cliente.`Cli_id`]]>
+     INNER JOIN `cliente` cliente ON ventas.`Cliente_IdCliente`=cliente.`Cli_id`
+WHERE ventas.fecha_registro = $P{fechareg}]]>
 	</queryString>
 	<field name="ventas_IdVentas" class="java.lang.Integer"/>
 	<field name="ventas_cai" class="java.lang.String"/>

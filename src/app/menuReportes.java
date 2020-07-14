@@ -17,6 +17,7 @@ import Venta.ModeloVenta;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 import inicio_sesion.modelo.usuarios;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.Icon;
@@ -30,6 +31,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import producto.Producto;
 import org.apache.log4j.*;
+import static app.menuReportes.nombre;
 /**
  *
  * @author luisc
@@ -101,8 +103,8 @@ public class menuReportes extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -249,10 +251,10 @@ public class menuReportes extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compra.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, 120));
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, -1, -1));
 
         nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 130, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, -1, -1));
 
         rol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 130, 20));
@@ -272,8 +274,8 @@ public class menuReportes extends javax.swing.JFrame {
         jLabel11.setText("Hora:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 540));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Abstract_sky_blue-2016_Vector_Design_HD_Wallpaper_1366x768.jpg"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 900, 540));
         getContentPane().add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 80, -1));
         getContentPane().add(idv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 20));
         getContentPane().add(rSLabelHora2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
@@ -282,26 +284,15 @@ public class menuReportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registroEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadoActionPerformed
-        // TODO add your handling code here:
-         try {
-            ConexionSQL con = new ConexionSQL();
-        Connection conn = con.getConnection();
+       
+       
         
-        JasperReport reporte = null;
-        String path = "/reportes/ReporteClientes.jasper";
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
-            //Map parametro = new HashMap();
-           // parametro.put("id_tipo",label1.getText());
-            
-            JasperPrint jprint = JasperFillManager.fillReport(reporte,null,conn);
-            
-            JasperViewer view = new  JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-            
-        } catch (JRException ex) {
-            java.util.logging.Logger.getLogger(menuReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        FechaClientes emp = new FechaClientes();
+       emp.setVisible(true);
+       FechaClientes.nombre.setText(nombre.getText());
+       FechaClientes.rol.setText(rol.getText());
+       FechaClientes.idv.setText(idv.getText());
+       this.dispose();
     }//GEN-LAST:event_registroEmpleadoActionPerformed
 
     
@@ -322,50 +313,32 @@ public class menuReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void registroEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadosActionPerformed
+         
+             
+           // long d = date.getTime();
+            //java.sql.Date fecha = new java.sql.Date(d);
+          FechaEmpleados em = new FechaEmpleados();
+          em.setVisible(true);
+          FechaEmpleados.nombre.setText(nombre.getText());
+             FechaEmpleados.rol.setText(rol.getText());
+             FechaEmpleados.idv.setText(idv.getText());
+          this.dispose();
+          
+        logger.debug("Entro a la ventana para generar el informe: "+nombre.getText());
         
-        
-        try {
-            ConexionSQL con = new ConexionSQL();
-        Connection conn = con.getConnection();
-        
-        JasperReport reporte = null;
-        String path = "/reportes/ReporteEmpleados.jasper";
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
-            //Map parametro = new HashMap();
-           // parametro.put("id_tipo",label1.getText());
-            
-            JasperPrint jprint = JasperFillManager.fillReport(reporte,null,conn);
-            
-            JasperViewer view = new  JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-            
-        } catch (JRException ex) {
-            java.util.logging.Logger.getLogger(menuReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+       
     }//GEN-LAST:event_registroEmpleadosActionPerformed
 
     private void registrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVentaActionPerformed
         // TODO add your handling code here:
-         try {
-            ConexionSQL con = new ConexionSQL();
-        Connection conn = con.getConnection();
         
-        JasperReport reporte = null;
-        String path = "/reportes/ReporteVentas.jasper";
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
-            //Map parametro = new HashMap();
-           // parametro.put("id_tipo",label1.getText());
-            
-            JasperPrint jprint = JasperFillManager.fillReport(reporte,null,conn);
-            
-            JasperViewer view = new  JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-            
-        } catch (JRException ex) {
-            java.util.logging.Logger.getLogger(menuReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+         FechaVentas em = new FechaVentas();
+         FechaVentas.nombre.setText(nombre.getText());
+        FechaVentas.rol.setText(rol.getText());
+        FechaVentas.idv.setText(idv.getText());
+          em.setVisible(true);
+          this.dispose();
+       
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked
@@ -389,26 +362,17 @@ this.dispose();*/
     }//GEN-LAST:event_registrarVentaMouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-         try {
-            ConexionSQL con = new ConexionSQL();
-        Connection conn = con.getConnection();
+        // TODO add your handling code here
         
-        JasperReport reporte = null;
-        String path = "/reportes/ReporteProveedor.jasper";
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
-            //Map parametro = new HashMap();
-           // parametro.put("id_tipo",label1.getText());
-            
-            JasperPrint jprint = JasperFillManager.fillReport(reporte,null,conn);
-            
-            JasperViewer view = new  JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-            
-        } catch (JRException ex) {
-            java.util.logging.Logger.getLogger(menuReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+           FechaProveedor facv = new FechaProveedor();
+        facv.setVisible(true);
+        FechaProveedor.nombre.setText(nombre.getText());
+        FechaProveedor.rol.setText(rol.getText());
+        FechaProveedor.idv.setText(idv.getText());
+        
+        this.dispose();
+       
+        
         
       
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -428,49 +392,26 @@ this.dispose();*/
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        try {
-            ConexionSQL con = new ConexionSQL();
-        Connection conn = con.getConnection();
         
-        JasperReport reporte = null;
-        String path = "/reportes/productos.jasper";
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource(path));
-            //Map parametro = new HashMap();
-           // parametro.put("id_tipo",label1.getText());
-            
-            JasperPrint jprint = JasperFillManager.fillReport(reporte,null,conn);
-            
-            JasperViewer view = new  JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-            
-        } catch (JRException ex) {
-            java.util.logging.Logger.getLogger(menuReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        FechaProductos facv = new FechaProductos();
+        facv.setVisible(true);
+        FechaProductos.nombre.setText(nombre.getText());
+        FechaProductos.idv.setText(idv.getText());
+        FechaProductos.rol.setText(rol.getText());
+        this.dispose();
+       
         
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       try {
-            ConexionSQL con = new ConexionSQL();
-        Connection conn = con.getConnection();
         
-        JasperReport reporte = null;
-       // String path = "src\\reportes\\ReporteCompras.jasper";
-            reporte = (JasperReport) JRLoader.loadObject(getClass().getResource("/reportes/ReporteCompras.jasper"));
-            //Map parametro = new HashMap();
-           // parametro.put("id_tipo",label1.getText());
-            
-            JasperPrint jprint = JasperFillManager.fillReport(reporte,null,conn);
-            
-            JasperViewer view = new  JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-            
-        } catch (JRException ex) {
-            java.util.logging.Logger.getLogger(menuReportes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+       FechaCompras facv = new FechaCompras();
+        facv.setVisible(true);
+        FechaCompras.nombre.setText(nombre.getText());
+        FechaCompras.rol.setText(rol.getText());
+        FechaCompras.idv.setText(idv.getText());
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -13,6 +13,7 @@ import Venta.ModeloVenta;
 import inicio_sesion.modelo.Hash;
 import inicio_sesion.modelo.SqlUsuarios;
 import inicio_sesion.modelo.usuarios;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -39,7 +40,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         PropertyConfigurator.configure("log4j.properties");
         logger.debug("Inicio el sistema");
-        
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
     
     RegistrarEmpleados metodo = new RegistrarEmpleados();
@@ -68,6 +69,8 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         rSLabelHora1 = new rojeru_san.RSLabelHora();
         rSLabelFecha1 = new rojeru_san.RSLabelFecha();
+        jLabel4 = new javax.swing.JLabel();
+        aqui = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -138,11 +141,33 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         rSLabelFecha1.setForeground(new java.awt.Color(0, 0, 0));
         getContentPane().add(rSLabelFecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Olvidaste tú usuario o contraseña?, has clic");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, -1));
+
+        aqui.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        aqui.setForeground(new java.awt.Color(0, 0, 204));
+        aqui.setText("Aqui");
+        aqui.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                aquiMouseMoved(evt);
+            }
+        });
+        aqui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aquiMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                aquiMouseExited(evt);
+            }
+        });
+        getContentPane().add(aqui, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, -1, -1));
+
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         fondo.setMaximumSize(new java.awt.Dimension(32, 32));
         fondo.setMinimumSize(new java.awt.Dimension(32, 32));
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 540));
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -277,6 +302,22 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void aquiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseMoved
+        // TODO add your handling code here:
+        
+       this.aqui.setForeground(new Color(224, 255, 255));
+    }//GEN-LAST:event_aquiMouseMoved
+
+    private void aquiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseExited
+        // TODO add your handling code here:
+        this.aqui.setForeground(new Color(51, 153, 255));
+    }//GEN-LAST:event_aquiMouseExited
+
+    private void aquiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseClicked
+        // TODO add your handling code here:
+        new Recupera(this, true).setVisible(true);
+    }//GEN-LAST:event_aquiMouseClicked
     
     /*public void validar(){
        RegistrarEmpleados registro = new RegistrarEmpleados();
@@ -350,6 +391,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel aqui;
     private javax.swing.JLabel bienvenida;
     private javax.swing.JButton btn_inicio_sesion;
     private javax.swing.JLabel fondo;
@@ -357,6 +399,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private rojeru_san.RSLabelFecha rSLabelFecha1;
     private rojeru_san.RSLabelHora rSLabelHora1;
     public javax.swing.JPasswordField txt_pass;

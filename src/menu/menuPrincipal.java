@@ -307,7 +307,14 @@ public class menuPrincipal extends javax.swing.JFrame {
 
     private void registrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVentaActionPerformed
         // TODO add your handling code here:
-        
+        logger.debug("Ingreso a la pantalla de registro de ventas");
+       ModeloVenta registrar = new ModeloVenta();
+        registrar.setVisible (true);
+
+    ModeloVenta.usuariosth.setText(nombre.getText());
+    ModeloVenta.rolth.setText(rol.getText());
+    ModeloVenta.txtvendedor.setText(idv.getText());
+    this.dispose();
     }//GEN-LAST:event_registrarVentaActionPerformed
 
     private void registroEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadoMouseClicked

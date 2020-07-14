@@ -1,29 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="55dbd28e-4dd9-4684-9fa8-8ca430a5b005">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     compra.`Idcompra` AS compra_Idcompra,
+     compra.`cai` AS compra_cai,
+     compra.`monto` AS compra_monto,
+     compra.`isv` AS compra_isv,
+     compra.`fecha_registro` AS compra_fecha_registro,
+     proveedor.`Nombre_Empresa` AS proveedor_Nombre_Empresa
+FROM
+     `proveedor` proveedor INNER JOIN `compra` compra ON proveedor.`Empresa_id` = compra.`Proveedor_IdProveedor`
+WHERE compra.fecha_registro = $P{fecha}]]>
+	</queryString>
+	<field name="compra_Idcompra" class="java.lang.Integer"/>
+	<field name="compra_cai" class="java.lang.String"/>
+	<field name="compra_monto" class="java.lang.Double"/>
+	<field name="compra_isv" class="java.lang.Double"/>
+	<field name="compra_fecha_registro" class="java.sql.Date"/>
+	<field name="proveedor_Nombre_Empresa" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="108" splitType="Stretch">
+			<image>
+				<reportElement x="28" y="0" width="183" height="108" uuid="c756e062-e22d-415b-8ed9-d5db5afa657b"/>
+				<imageExpression><![CDATA["C:\\Users\\Luis Cueva\\Documents\\Luis\\UJCV\\Ing Software\\Proyecto_Facturacion\\src\\Imagenes\\320202011614.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="88" width="100" height="20" uuid="ee18f0a9-177f-4a0a-a425-28145d821e81"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="237" y="26" width="229" height="48" uuid="4c318149-4cf1-4aba-9272-10a9ab15051b"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Reporte de Compras]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="3" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="2" width="44" height="20" uuid="5e1f6c44-069b-4cda-9e09-ab09bd81fb31"/>
+				<text><![CDATA[ID Compra]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="2" width="247" height="20" uuid="5fc8cecc-e3cb-4621-845a-e27c44f4dfdc"/>
+				<text><![CDATA[CAI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="2" width="91" height="20" uuid="1c8caa6c-9408-4d40-b396-fd7702e251c9"/>
+				<text><![CDATA[Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="2" width="38" height="20" uuid="9fa8c80c-eab5-4f9d-9066-6affb672bc4c"/>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="466" y="4" width="27" height="20" uuid="a43eb10e-213d-40ac-8a48-ea7bc7f13c56"/>
+				<text><![CDATA[ISV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="505" y="4" width="50" height="20" uuid="8019827a-7dfb-4cb3-bf0d-296ff9b1f6a0"/>
+				<text><![CDATA[Fecha de Compra]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="6" y="9" width="44" height="20" uuid="4aba45b9-2d0d-4458-b816-d53de87a653d"/>
+				<textFieldExpression><![CDATA[$F{compra_Idcompra}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="9" width="247" height="20" uuid="34e274d9-b4eb-4dd4-8543-9fc5202a4097"/>
+				<textFieldExpression><![CDATA[$F{compra_cai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="314" y="9" width="91" height="20" uuid="92e36e5e-cf76-49d4-9048-f0415db78ae9"/>
+				<textFieldExpression><![CDATA[$F{proveedor_Nombre_Empresa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="418" y="9" width="37" height="20" uuid="bbed0a15-ba10-423f-a022-c023c1be1df5"/>
+				<textFieldExpression><![CDATA[$F{compra_monto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="466" y="9" width="27" height="20" uuid="9a59c184-41eb-497b-8d54-baf063d8a241"/>
+				<textFieldExpression><![CDATA[$F{compra_isv}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="9" width="50" height="20" uuid="0765ea49-c2e5-4761-a93b-b8b6f5124a34"/>
+				<textFieldExpression><![CDATA[$F{compra_fecha_registro}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="211" y="6" width="80" height="20" uuid="9f6f0fc0-5773-499e-bef5-a636e13cf121"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="291" y="6" width="40" height="20" uuid="4dd4433d-1223-42bb-9073-845468b80d5d"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
 </jasperReport>

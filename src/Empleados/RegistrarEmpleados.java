@@ -38,6 +38,7 @@ import inicio_sesion.modelo.usuarios;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Random;
 /**
  *
  * @author luisc
@@ -60,7 +61,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
         limpiar();
-        bloquear();
+        
         this.setLocationRelativeTo(null);
          Calendar cal= Calendar.getInstance();
         String fecha;
@@ -129,7 +130,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         dir_empleado.setText("");
         txt_usuario.setText("");
         txt_pass.setText("");
-
+        
     }
 
     void desbloquear() {
@@ -148,22 +149,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     }
 
-    void bloquear() {
-        id_empleado.setEnabled(false);
-        nom_empleado.setEnabled(false);
-        apelld_empleado.setEnabled(false);
-        num_id_emplea.setEnabled(false);
-        dir_empleado.setEnabled(false);
-        txt_usuario.setEnabled(false);
-        txt_pass.setEnabled(false);
-
-        save_empleado.setEnabled(false);
-        nuevo.setEnabled(true);
-        btn_editar.setEnabled(true);
-        del_empleado.setEnabled(true);
-        salir_btn.setEnabled(true);
-
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -217,12 +203,16 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         tipo = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         fechar = new rojeru_san.RSLabelFecha();
+        jLabel12 = new javax.swing.JLabel();
         user = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        recusuper = new javax.swing.JTextField();
+        generarbtn = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         pom = new javax.swing.JTextField();
         rol = new javax.swing.JLabel();
         ide = new javax.swing.JLabel();
+        codigorec = new javax.swing.JTextField();
 
         jTextField1.setText("Registro de Empleados");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -603,10 +593,29 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         fechar.setForeground(new java.awt.Color(51, 51, 51));
         fechar.setFormato("yyyy-MM-dd");
         getContentPane().add(fechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 110, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel12.setText("Clave de Recuperacion");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
         getContentPane().add(user, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 80, 20));
 
         jLabel11.setText("Fecha de Registro");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, -1, -1));
+
+        recusuper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recusuperActionPerformed(evt);
+            }
+        });
+        getContentPane().add(recusuper, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 340, 130, 30));
+
+        generarbtn.setText("Generar Clave");
+        generarbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarbtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(generarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 630));
@@ -622,6 +631,9 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         rol.setText("jLabel11");
         getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
         getContentPane().add(ide, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+
+        codigorec.setText("codigorec");
+        getContentPane().add(codigorec, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
 
         bindingGroup.bind();
 
@@ -740,7 +752,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         
         Connection cn = cc.getConnection();
-        Pantalla_Inicio_Sesion ses = new Pantalla_Inicio_Sesion();
+        
         
         
         
@@ -762,7 +774,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         }else{
         if (nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
                 || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
-                || txt_pass.getText().equals("")) {
+                || txt_pass.getText().equals("") || recusuper.equals("")) {
             JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
             logger.debug("Error, trato de guardar con campos vacios");
 
@@ -790,7 +802,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 
                                                  
                                                 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?,?)");
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`,`fecha_registro`,`recuperacion`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?,?,?)");
                                                 
                                                 
                                                 
@@ -803,13 +815,17 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 pst.setString(6, txt_pass.getText());
                                                 pst.setString(7, pom.getText());
                                                 pst.setString(8, fechar.getFecha());
+                                                
+                                                
+                                                pst.setString(9, "893426E1-6A86-4C14-9B16-812B1"+recusuper.getText().toString());
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
                                                     JOptionPane.showMessageDialog(null, "Registro Guardado con exito");
-                                                        logger.info("Registro Exitoso: "+ses.txt_usuario.getText());
+                                                        logger.info("Registro Exitoso: ");
                                                     mostrardatos("");
                                                     nuevo();
+                                                    
                                                 } else {
                                                     JOptionPane.showMessageDialog(null, "Error al agregar");
                                                     logger.debug("Error al almacenar");
@@ -852,11 +868,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                logger.error("Error: "+e.getMessage());
                
             }
+            
                 
         }
         }
 
         }
+       
     }//GEN-LAST:event_save_empleadoActionPerformed
 
     private int existeUsuario(String usuario) {
@@ -962,6 +980,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         this.dir_empleado.setText("");
         this.txt_usuario.setText("");
         this.txt_pass.setText("");
+        this.recusuper.setText("");
 
         this.id_empleado.grabFocus();
     }
@@ -971,6 +990,27 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         
         desbloquear();
         logger.debug("Limpio los campos");
+        Random rnd = new Random();
+        String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       
+        int m=0,pos=0,num;
+        while(m<1){
+             String cadena = "";
+            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
+            num=(int)(rnd.nextDouble()*9999+1000);
+            cadena = cadena + abecedario.charAt(pos)+num;
+            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
+            cadena=cadena+abecedario.charAt(pos);
+            
+            
+            
+            System.out.println("Cadena: "+(m+1)+" : "+cadena+"\n");
+            
+            m++;
+             recusuper.setText(cadena);
+        }
+       
+         
        
     }//GEN-LAST:event_nuevoActionPerformed
 
@@ -1046,7 +1086,7 @@ public Icon icono(String path, int width, int height){
                 logger.debug("Error al eliminar");
             }
         }
-        bloquear();
+       
         limpiar();
     }//GEN-LAST:event_del_empleadoActionPerformed
     
@@ -1301,6 +1341,35 @@ public Icon icono(String path, int width, int height){
         // TODO add your handling code here:
     }//GEN-LAST:event_pomActionPerformed
 
+    private void recusuperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recusuperActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_recusuperActionPerformed
+
+    private void generarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarbtnActionPerformed
+        // TODO add your handling code here:
+        Random rnd = new Random();
+        String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+       
+        int m=0,pos=0,num;
+        while(m<1){
+             String cadena = "";
+            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
+            num=(int)(rnd.nextDouble()*9999+1000);
+            cadena = cadena + abecedario.charAt(pos)+num;
+            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
+            cadena=cadena+abecedario.charAt(pos);
+            
+            
+            
+            System.out.println("Cadena: "+(m+1)+" : "+cadena+"\n");
+            
+            m++;
+             recusuper.setText(cadena);
+        }
+       
+    }//GEN-LAST:event_generarbtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1351,9 +1420,11 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JButton btn_editar;
     private javax.swing.JButton buscar_txt;
     private javax.swing.JTextField buscar_txt_box;
+    private javax.swing.JTextField codigorec;
     private javax.swing.JButton del_empleado;
     private javax.swing.JTextField dir_empleado;
     private rojeru_san.RSLabelFecha fechar;
+    private javax.swing.JButton generarbtn;
     private javax.swing.JLabel idEmpleado;
     private javax.swing.JTextField id_empleado;
     public static javax.swing.JLabel ide;
@@ -1369,6 +1440,7 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1385,6 +1457,7 @@ public Icon icono(String path, int width, int height){
     private javax.swing.JButton nuevo;
     private javax.swing.JTextField num_id_emplea;
     private javax.swing.JTextField pom;
+    public javax.swing.JTextField recusuper;
     public static javax.swing.JLabel rol;
     private javax.swing.JButton salir_btn;
     private javax.swing.JButton save_empleado;

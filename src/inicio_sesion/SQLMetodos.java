@@ -6,7 +6,7 @@
 package inicio_sesion;
 
 import Conexiones.ConexionSQL;
-
+import menu.menuPrincipal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +27,7 @@ public class SQLMetodos {
     
     
     
-    /*public String buscarUsuario(String usuario, String contraseña){
+    public String buscarUsuario(String usuario, String contraseña){
         String tipo_usuario;
         String busqueda_usuario = null;
     
@@ -53,7 +53,7 @@ public class SQLMetodos {
                          mp.setVisible(true);
                          break;
                      case "Empleado":
-                         me.setVisible(true);
+                         //me.setVisible(true);
                          
                          break;
                          
@@ -105,7 +105,7 @@ public class SQLMetodos {
       
      
         
-    }*/
+    }
     
         
     
