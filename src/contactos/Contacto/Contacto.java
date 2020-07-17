@@ -36,6 +36,7 @@ public final class Contacto extends javax.swing.JFrame {
         initComponents();
          PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
 
     void mostrardatos(String valor) {

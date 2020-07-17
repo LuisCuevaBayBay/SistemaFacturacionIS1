@@ -38,6 +38,7 @@ public final class ContactoP extends javax.swing.JFrame {
         mostrardatos("");
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
 
     void mostrardatos(String valor) {

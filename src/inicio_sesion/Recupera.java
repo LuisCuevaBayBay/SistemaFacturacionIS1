@@ -6,6 +6,7 @@ package inicio_sesion;
  * and open the template in the editor.
  */
 
+import Empleados.decode;
 import inicio_sesion.modelo.Hash;
 import java.awt.MouseInfo;
 import java.awt.Point;
@@ -24,6 +25,8 @@ import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
@@ -44,8 +47,10 @@ public class Recupera extends javax.swing.JDialog {
         new EfectoPanel(capa, new PanelRecupera()).play();
         this.setLocationRelativeTo(null);
         this.progreso.setVisible(false);
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
 
+    decode deco = new decode();
     Recupera() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -384,6 +389,12 @@ public class Recupera extends javax.swing.JDialog {
     static ConexionBD cc = new ConexionBD();
     static Connection cn = cc.conexion();
 
+     public Icon icono(String path, int width, int height){
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
+                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+        return img;
+}
+     
     private void verificaCodigo(String codigo) {
         try {
             String sql = "SELECT * FROM vendedor WHERE recuperacion = '" + codigo + "'";
@@ -397,12 +408,12 @@ public class Recupera extends javax.swing.JDialog {
                 pass = rs.getString(7);
                
               
-
-                String user1 = "USUARIO: " + user, pass1 = "CONTRASEÑA: " + pass;
+                String pedro = deco.deecnode("Proyecto", pass);
+                String user1 = "USUARIO: " + user, pass1 = "CONTRASEÑA: " + pedro;
 
                 if (JOptionPane.showConfirmDialog(this, "SU USUARIO Y CONTRASEÑA SON:\n\n"
-                        + "USUARIO: " + user + "\nCONTRASEÑA: " + pass + "\n\n¿GUARDAR DATOS?", "CÓDIGO DE RECUPERACIÓN", JOptionPane.YES_NO_OPTION, 
-                        JOptionPane.INFORMATION_MESSAGE) == JOptionPane.YES_OPTION) {
+                        + "USUARIO: " + user + "\nCONTRASEÑA: " + pedro + "\n\n¿GUARDAR DATOS?", "CÓDIGO DE RECUPERACIÓN", JOptionPane.YES_NO_OPTION, 
+                        JOptionPane.INFORMATION_MESSAGE, icono("/Imagenes/logo.png", 40, 40)) == JOptionPane.YES_OPTION) {
                     guardarDatos(user1, pass1);
                 } else {
                     this.dispose();

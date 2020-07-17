@@ -51,7 +51,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         Calendar cal= Calendar.getInstance();
         String fecha;
         fecha = cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
-        
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
         
     }
 

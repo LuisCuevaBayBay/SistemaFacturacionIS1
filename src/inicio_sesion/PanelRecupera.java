@@ -38,15 +38,15 @@ public class PanelRecupera extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel7.setText("Para recuperar su usuario y contraseña debe introducir el código");
+        jLabel7.setText("Comuniquese con un administrador del sistema para que provea el ");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel8.setText("de recuperación que se generó al crear el usuario o el que el");
+        jLabel8.setText("codigo de recuperacion. ");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 102, 153));
-        jLabel9.setText("Administrador le proporciono al darlo de alta en el sistema.");
+        jLabel9.setText("Introduzca el codigo de recuperacion.");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

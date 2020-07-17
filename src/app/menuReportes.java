@@ -48,6 +48,7 @@ public class menuReportes extends javax.swing.JFrame {
         initComponents();
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
     
     public menuReportes(usuarios mod){
@@ -120,6 +121,7 @@ public class menuReportes extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Reportes");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 240, 78));
 
@@ -223,20 +225,20 @@ public class menuReportes extends javax.swing.JFrame {
         });
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, 190, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 120, 120));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/venta_reportes (1).jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 130, 120));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empleado.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 120, 120));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/vendedor_reporte.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 120, 120));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cliente.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/clientes_reporte (1).jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 120, 120));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/producto.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 120, 120));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/productos_reporte.jpg"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 120, 120));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedor.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 120, 120));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedores_reporte (1).jpg"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 120, 120));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 204));
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -249,28 +251,33 @@ public class menuReportes extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 190, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compra.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compra_reporte.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, 120));
 
-        nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, 130, 20));
+        nombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 130, 20));
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, -1, -1));
 
-        rol.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 130, 20));
+        rol.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        rol.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(rol, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 130, 20));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Rol:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 30, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 30, 20));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Inicio de sesion como:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        rSLabelHora1.setForeground(new java.awt.Color(0, 0, 0));
+        rSLabelHora1.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(rSLabelHora1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Hora:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 30, -1, -1));
 

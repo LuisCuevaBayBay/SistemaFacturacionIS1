@@ -46,7 +46,7 @@ public class Producto extends javax.swing.JFrame {
         Calendar cal= Calendar.getInstance();
         String fecha;
         fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
-        
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
     
    

@@ -38,6 +38,8 @@ public final class ContactoC extends javax.swing.JFrame {
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
+        
     }
 
     void mostrardatos(String valor) {

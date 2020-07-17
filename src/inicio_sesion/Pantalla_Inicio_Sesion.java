@@ -8,6 +8,7 @@ package inicio_sesion;
 
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
+import Empleados.decode;
 
 import Venta.ModeloVenta;
 import inicio_sesion.modelo.Hash;
@@ -40,7 +41,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         PropertyConfigurator.configure("log4j.properties");
         logger.debug("Inicio el sistema");
-        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
+        //this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
     
     RegistrarEmpleados metodo = new RegistrarEmpleados();
@@ -161,7 +162,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
                 aquiMouseExited(evt);
             }
         });
-        getContentPane().add(aqui, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, -1, -1));
+        getContentPane().add(aqui, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, -1, -1));
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
@@ -210,7 +211,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     
     }*/
     
-    
+    decode deco = new decode();
     private void btn_inicio_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicio_sesionActionPerformed
         // TODO add your handling code here:
         
@@ -224,7 +225,7 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         
         if(!txt_usuario.getText().equals("") && !pass.equals("")){
             
-            String nuevoPass = Hash.md5(pass);
+            String nuevoPass = deco.ecnode("Proyecto", pass);
             
             mod.setUsuario(txt_usuario.getText());
             mod.setPassword(nuevoPass);

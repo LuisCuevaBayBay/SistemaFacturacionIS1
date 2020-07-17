@@ -1643,3 +1643,457 @@ The last packet sent successfully to the server was 0 milliseconds ago. The driv
 13 jul 2020 18:34:09,540 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:779) - Error, trato de guardar con campos vacios
 13 jul 2020 18:34:11,247 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1187) - Volvio al menu principal: Melvin Alvarez
 13 jul 2020 18:34:21,141 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:299) - Salio del sistema: Melvin Alvarez
+13 jul 2020 18:35:18,028 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1095) - Salio del sistema
+13 jul 2020 18:37:05,047 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:42) - Inicio el sistema
+13 jul 2020 18:37:18,757 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:233) - Se logueo exitosamente: Esther Estrada
+13 jul 2020 18:37:29,419 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:779) - Error, trato de guardar con campos vacios
+13 jul 2020 18:37:29,983 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1187) - Volvio al menu principal: Esther Estrada
+13 jul 2020 18:37:32,675 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:372) - Cerro Sesion: Esther Estrada
+13 jul 2020 18:37:33,398 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:42) - Inicio el sistema
+13 jul 2020 18:39:37,458 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:42) - Inicio el sistema
+13 jul 2020 18:39:42,818 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:233) - Se logueo exitosamente: Luis Cueva
+13 jul 2020 18:39:46,627 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:299) - Salio del sistema: Luis Cueva
+13 jul 2020 18:39:48,603 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:300) - Salio del sistema: 
+13 jul 2020 18:43:16,761 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:42) - Inicio el sistema
+13 jul 2020 18:43:22,452 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:233) - Se logueo exitosamente: Luis Cueva
+13 jul 2020 18:43:29,858 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1187) - Volvio al menu principal: Luis Cueva
+13 jul 2020 18:43:32,131 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:311) - Ingreso a la pantalla de registro de ventas
+13 jul 2020 18:43:34,506 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:776) - vuelve al menu principal
+13 jul 2020 18:43:37,636 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1165) - Ingreso a la pantalla de contacto: Luis Cueva
+13 jul 2020 18:43:40,250 DEBUG [AWT-EventQueue-0] (Contacto.java:735) - Vuelve a la pantalla del Registro de Empleados: Luis Cueva
+13 jul 2020 18:43:41,418 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1187) - Volvio al menu principal: Luis Cueva
+13 jul 2020 18:43:42,923 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:324) - Ingreso a la pantalla de registro de empleados
+13 jul 2020 18:43:45,274 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:847) - Ingreso a la pantalla de contacto Luis Cueva
+13 jul 2020 18:43:47,277 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:766) - volvio al menu principal: Luis Cueva
+13 jul 2020 18:43:48,413 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:389) - Ingreso a la pantalla de productos: Luis Cueva
+13 jul 2020 18:43:49,466 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: Luis Cueva
+13 jul 2020 18:43:50,335 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:397) - Ingreso a la pantalla de compras: Luis Cueva
+13 jul 2020 18:43:52,475  INFO [AWT-EventQueue-0] (ModeloCompra1.java:761) - Vuelve al menu principal
+13 jul 2020 18:43:53,506 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:364) - Ingreso a la pantalla de proveedores Luis Cueva
+13 jul 2020 18:43:54,843 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:552) - Volvio al menu Principal
+13 jul 2020 18:43:54,873 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:559) - volvio al menu principal Luis Cueva
+13 jul 2020 18:43:55,523 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Ingreso al menu de reportes: Luis Cueva
+13 jul 2020 18:43:58,595 DEBUG [AWT-EventQueue-0] (menuReportes.java:327) - Entro a la ventana para generar el informe: Luis Cueva
+13 jul 2020 18:44:02,398 DEBUG [AWT-EventQueue-0] (menuReportes.java:310) - Salio del sistema: Luis Cueva
+13 jul 2020 18:45:49,829 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:42) - Inicio el sistema
+13 jul 2020 18:45:56,902 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:245) - Salio del sistema
+13 jul 2020 18:46:01,130 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:245) - Salio del sistema
+13 jul 2020 18:46:04,403 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:233) - Se logueo exitosamente: Luis Cueva
+13 jul 2020 18:46:06,864 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Ingreso al menu de reportes: Luis Cueva
+13 jul 2020 18:46:09,827 DEBUG [AWT-EventQueue-0] (menuReportes.java:328) - Entro a la ventana para generar el informe: Luis Cueva
+13 jul 2020 18:46:23,212 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:311) - Ingreso a la pantalla de registro de ventas
+13 jul 2020 18:46:26,677 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:776) - vuelve al menu principal
+13 jul 2020 18:46:28,300 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:300) - Salio del sistema: Luis Cueva
+13 jul 2020 19:08:39,418 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:42) - Inicio el sistema
+13 jul 2020 19:08:54,179 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:233) - Se logueo exitosamente: Luis Cueva
+13 jul 2020 19:09:00,401 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1187) - Volvio al menu principal: Luis Cueva
+13 jul 2020 19:09:01,901 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:311) - Ingreso a la pantalla de registro de ventas
+13 jul 2020 19:09:04,329 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:776) - vuelve al menu principal
+13 jul 2020 19:09:05,514 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:389) - Ingreso a la pantalla de productos: Luis Cueva
+13 jul 2020 19:09:06,713 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: Luis Cueva
+13 jul 2020 19:09:09,036 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:397) - Ingreso a la pantalla de compras: Luis Cueva
+13 jul 2020 19:09:11,349  INFO [AWT-EventQueue-0] (ModeloCompra1.java:761) - Vuelve al menu principal
+13 jul 2020 19:09:12,933 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:364) - Ingreso a la pantalla de proveedores Luis Cueva
+13 jul 2020 19:09:14,061 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:552) - Volvio al menu Principal
+13 jul 2020 19:09:14,100 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:559) - volvio al menu principal Luis Cueva
+13 jul 2020 19:09:14,773 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:324) - Ingreso a la pantalla de registro de empleados
+13 jul 2020 19:09:16,360 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:766) - volvio al menu principal: Luis Cueva
+13 jul 2020 19:09:20,663 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:373) - Cerro Sesion: Luis Cueva
+13 jul 2020 19:09:21,179 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:42) - Inicio el sistema
+13 jul 2020 19:09:26,053 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:300) - Salio del sistema: 
+14 jul 2020 14:48:04,227  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:827) - Registro Exitoso: 
+14 jul 2020 14:48:30,239 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1097) - Salio del sistema
+14 jul 2020 14:51:00,652 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 14:51:09,748 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Carlos Ordonez
+14 jul 2020 14:51:32,752 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:300) - Salio del sistema: Carlos Ordonez
+14 jul 2020 14:54:08,143 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:994) - Limpio los campos
+14 jul 2020 15:00:02,078 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1097) - Salio del sistema
+14 jul 2020 15:00:29,027  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:827) - Registro Exitoso: 
+14 jul 2020 15:01:19,572 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1189) - Volvio al menu principal: 
+14 jul 2020 15:01:23,600 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:373) - Cerro Sesion: 
+14 jul 2020 15:01:24,818 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 15:02:48,409 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:301) - Salio del sistema: 
+14 jul 2020 15:17:41,449 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1053) - Error: 
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'pass='lMlitvIUZC4='WHERE Vendedor_id='1'' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:944)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3933)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3869)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2524)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2675)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1912)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2133)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2067)
+	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5175)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2052)
+	at Empleados.RegistrarEmpleados.btn_editarActionPerformed(RegistrarEmpleados.java:1038)
+	at Empleados.RegistrarEmpleados.access$1900(RegistrarEmpleados.java:46)
+	at Empleados.RegistrarEmpleados$21.actionPerformed(RegistrarEmpleados.java:431)
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022)
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348)
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402)
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259)
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252)
+	at java.awt.Component.processMouseEvent(Component.java:6533)
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324)
+	at java.awt.Component.processEvent(Component.java:6298)
+	at java.awt.Container.processEvent(Container.java:2236)
+	at java.awt.Component.dispatchEventImpl(Component.java:4889)
+	at java.awt.Container.dispatchEventImpl(Container.java:2294)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4888)
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4525)
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4466)
+	at java.awt.Container.dispatchEventImpl(Container.java:2280)
+	at java.awt.Window.dispatchEventImpl(Window.java:2746)
+	at java.awt.Component.dispatchEvent(Component.java:4711)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.awt.EventQueue$4.run(EventQueue.java:731)
+	at java.awt.EventQueue$4.run(EventQueue.java:729)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:76)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+14 jul 2020 15:17:43,980 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1028) - Error, guardo con campos vacios
+14 jul 2020 15:17:52,805 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1190) - Volvio al menu principal: 
+14 jul 2020 15:17:54,776 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:373) - Cerro Sesion: 
+14 jul 2020 15:17:56,060 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 15:18:45,554 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:301) - Salio del sistema: 
+14 jul 2020 15:19:29,692 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1041) - Edicion exitosa
+14 jul 2020 15:19:54,934 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1190) - Volvio al menu principal: 
+14 jul 2020 15:19:57,153 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:373) - Cerro Sesion: 
+14 jul 2020 15:19:58,259 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 15:22:00,951 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:301) - Salio del sistema: 
+14 jul 2020 18:13:47,521 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:13:55,309 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:246) - Salio del sistema
+14 jul 2020 18:13:59,669 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:14:14,923 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+14 jul 2020 18:14:41,523 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:14:47,677 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:15:01,037 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+14 jul 2020 18:15:47,124 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:15:53,856 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:16:21,251 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+14 jul 2020 18:17:02,939 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:17:09,772 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:17:20,802 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+14 jul 2020 18:20:24,168 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:20:34,207 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:21:21,539 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:21:27,517 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:21:41,622 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:436) - Ingreso al menu de reportes: Luis Cueva
+14 jul 2020 18:21:44,072 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:337) - Ingreso a la pantalla de registro de ventas
+14 jul 2020 18:21:46,761 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:776) - vuelve al menu principal
+14 jul 2020 18:24:11,794 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:24:18,977 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:24:21,018 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:436) - Ingreso al menu de reportes: Luis Cueva
+14 jul 2020 18:24:38,915 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+14 jul 2020 18:37:42,616 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:37:49,607 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:37:52,380 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:436) - Ingreso al menu de reportes: Luis Cueva
+14 jul 2020 18:38:13,471 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:399) - Cerro Sesion: Luis Cueva
+14 jul 2020 18:38:14,654 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:38:17,162 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:301) - Salio del sistema: 
+14 jul 2020 18:38:29,545 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:38:40,077 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+14 jul 2020 18:39:19,189 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:399) - Cerro Sesion: Luis Cueva
+14 jul 2020 18:39:20,251 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+14 jul 2020 18:39:21,841 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:301) - Salio del sistema: 
+16 jul 2020 21:03:58,184 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 21:04:07,911 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+16 jul 2020 21:04:11,620 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:436) - Ingreso al menu de reportes: Luis Cueva
+16 jul 2020 21:04:14,037 DEBUG [AWT-EventQueue-0] (menuReportes.java:334) - Entro a la ventana para generar el informe: Luis Cueva
+16 jul 2020 21:04:18,255 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:146) - Fill 1: created for ReporteEmpleados
+16 jul 2020 21:04:19,355 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:185) - created delayed actions 1 for filler 1
+16 jul 2020 21:04:19,373 DEBUG [AWT-EventQueue-0] (ExtensionsEnvironment.java:78) - Instantiating extensions registry class net.sf.jasperreports.extensions.DefaultExtensionsRegistry
+16 jul 2020 21:04:19,376 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:130) - Loading registries for cache key sun.misc.Launcher$AppClassLoader@7440e464
+16 jul 2020 21:04:19,377 DEBUG [AWT-EventQueue-0] (JRLoader.java:724) - Found resource jasperreports_extension.properties at jar:file:/C:/Users/Luis%20Cueva/Documents/Luis/UJCV/Ing%20Software/Librerias/JasperReport/jasperreports-6.0.0.jar!/jasperreports_extension.properties in classloader sun.misc.Launcher$AppClassLoader@7440e464
+16 jul 2020 21:04:19,380 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:158) - Loading JasperReports extension properties resource jar:file:/C:/Users/Luis%20Cueva/Documents/Luis/UJCV/Ing%20Software/Librerias/JasperReport/jasperreports-6.0.0.jar!/jasperreports_extension.properties
+16 jul 2020 21:04:19,384 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.components.headertoolbar.HeaderToolbarParameterContributorExtensionFactory for property net.sf.jasperreports.extension.registry.factory.header.toolbar.parameter.contributor
+16 jul 2020 21:04:19,384 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for header.toolbar.parameter.contributor using factory class net.sf.jasperreports.components.headertoolbar.HeaderToolbarParameterContributorExtensionFactory
+16 jul 2020 21:04:19,405 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.types.date.DateRangeQueryClauseExtensions for property net.sf.jasperreports.extension.registry.factory.date.range.clause.functions
+16 jul 2020 21:04:19,406 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for date.range.clause.functions using factory class net.sf.jasperreports.types.date.DateRangeQueryClauseExtensions
+16 jul 2020 21:04:19,485 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.repo.DefaultRepositoryExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.repository
+16 jul 2020 21:04:19,486 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for repository using factory class net.sf.jasperreports.repo.DefaultRepositoryExtensionsRegistryFactory
+16 jul 2020 21:04:19,489 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.parts.PartComponentsExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.parts
+16 jul 2020 21:04:19,489 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for parts using factory class net.sf.jasperreports.parts.PartComponentsExtensionsRegistryFactory
+16 jul 2020 21:04:19,497 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.ContentTypeMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.content.type.mapping
+16 jul 2020 21:04:19,498 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for content.type.mapping using factory class net.sf.jasperreports.web.util.ContentTypeMappingExtensionsRegistryFactory
+16 jul 2020 21:04:19,500 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.fonts.SimpleFontExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.simple.font.families
+16 jul 2020 21:04:19,501 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for simple.font.families using factory class net.sf.jasperreports.engine.fonts.SimpleFontExtensionsRegistryFactory
+16 jul 2020 21:04:19,502 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.data.DefaultDataAdapterServiceExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.data.adapter.services
+16 jul 2020 21:04:19,503 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for data.adapter.services using factory class net.sf.jasperreports.data.DefaultDataAdapterServiceExtensionsRegistryFactory
+16 jul 2020 21:04:19,520 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.WebResourceHandlersExtensionRegistryFactory for property net.sf.jasperreports.extension.registry.factory.jive.web.resource.handlers
+16 jul 2020 21:04:19,520 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for jive.web.resource.handlers using factory class net.sf.jasperreports.web.util.WebResourceHandlersExtensionRegistryFactory
+16 jul 2020 21:04:19,530 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.util.CastorMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.castor.mapping
+16 jul 2020 21:04:19,531 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for castor.mapping using factory class net.sf.jasperreports.util.CastorMappingExtensionsRegistryFactory
+16 jul 2020 21:04:19,532 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.export.MatcherExportFilterMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.matcher.exporter.filter.mapping
+16 jul 2020 21:04:19,533 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for matcher.exporter.filter.mapping using factory class net.sf.jasperreports.engine.export.MatcherExportFilterMappingExtensionsRegistryFactory
+16 jul 2020 21:04:19,544 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.governors.GovernorExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.governor
+16 jul 2020 21:04:19,544 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for governor using factory class net.sf.jasperreports.governors.GovernorExtensionsRegistryFactory
+16 jul 2020 21:04:19,547 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.RequirejsModuleMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.requirejs.module.mapping
+16 jul 2020 21:04:19,547 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for requirejs.module.mapping using factory class net.sf.jasperreports.web.util.RequirejsModuleMappingExtensionsRegistryFactory
+16 jul 2020 21:04:19,549 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.query.SQLQueryClauseFunctionsExtensions for property net.sf.jasperreports.extension.registry.factory.sql.clause.functions
+16 jul 2020 21:04:19,550 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for sql.clause.functions using factory class net.sf.jasperreports.engine.query.SQLQueryClauseFunctionsExtensions
+16 jul 2020 21:04:19,558 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.style.PropertyStyleProviderExtensionFactory for property net.sf.jasperreports.extension.registry.factory.property.style.provider
+16 jul 2020 21:04:19,559 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for property.style.provider using factory class net.sf.jasperreports.engine.style.PropertyStyleProviderExtensionFactory
+16 jul 2020 21:04:19,561 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.JacksonMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.jackson.mapping
+16 jul 2020 21:04:19,561 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for jackson.mapping using factory class net.sf.jasperreports.web.util.JacksonMappingExtensionsRegistryFactory
+16 jul 2020 21:04:19,563 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.extensions.DefaultExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.default
+16 jul 2020 21:04:19,564 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for default using factory class net.sf.jasperreports.extensions.DefaultExtensionsRegistryFactory
+16 jul 2020 21:04:19,574 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.components.ComponentsExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.components
+16 jul 2020 21:04:19,575 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for components using factory class net.sf.jasperreports.components.ComponentsExtensionsRegistryFactory
+16 jul 2020 21:04:19,674 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.components.headertoolbar.HeaderToolbarConditionalStyleProviderExtensionFactory for property net.sf.jasperreports.extension.registry.factory.header.toolbar.style.provider
+16 jul 2020 21:04:19,674 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for header.toolbar.style.provider using factory class net.sf.jasperreports.components.headertoolbar.HeaderToolbarConditionalStyleProviderExtensionFactory
+16 jul 2020 21:04:19,819 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: BACKGROUND} for band 938094073
+16 jul 2020 21:04:19,855 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: TITLE} for band 2098480703
+16 jul 2020 21:04:19,856 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: PAGE_HEADER} for band 63281805
+16 jul 2020 21:04:19,857 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: COLUMN_HEADER} for band 102772994
+16 jul 2020 21:04:19,858 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: DETAIL} for band 307255503
+16 jul 2020 21:04:19,859 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: COLUMN_FOOTER} for band 1921813793
+16 jul 2020 21:04:19,859 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: PAGE_FOOTER} for band 276770674
+16 jul 2020 21:04:19,860 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: SUMMARY} for band 1417359670
+16 jul 2020 21:04:20,057 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:108) - Filler 1 - pageHeight: 792, columnFooterOffsetY: 735, lastPageColumnFooterOffsetY: 769
+16 jul 2020 21:04:20,058 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:488) - Fill 1: filling report
+16 jul 2020 21:04:20,082 DEBUG [AWT-EventQueue-0] (JRFillDataset.java:1112) - Fill 1: Creating sql query executer
+16 jul 2020 21:04:20,129 DEBUG [AWT-EventQueue-0] (JRJdbcQueryExecuter.java:254) - SQL query string: SELECT
+     vendedor.`Vendedor_id` AS vendedor_Vendedor_id,
+     vendedor.`nombre_empleado` AS vendedor_nombre_empleado,
+     vendedor.`apellido_empleado` AS vendedor_apellido_empleado,
+     vendedor.`num_identidad_empleado` AS vendedor_num_identidad_empleado,
+     vendedor.`direccion` AS vendedor_direccion,
+     vendedor.`fecha_registro` AS vendedor_fecha_registro,
+     vendedor.`usuario` AS vendedor_usuario,
+     tipo_usuario.`nombre` AS tipo_usuario_nombre
+FROM
+     `vendedor` vendedor INNER JOIN `tipo_usuario` tipo_usuario ON vendedor.`id_tipo` = tipo_usuario.`id`
+WHERE vendedor.fecha_registro = ?
+16 jul 2020 21:04:20,132 DEBUG [AWT-EventQueue-0] (JRJdbcQueryExecuter.java:396) - Parameter #1 (fecha of type java.lang.String): 2020-07-01
+16 jul 2020 21:04:20,187 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:137) - Fill 1: no data
+16 jul 2020 21:04:20,188 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:213) - Fill 1: no pages
+16 jul 2020 21:04:20,189 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:550) - Fill 1: ended
+16 jul 2020 21:04:20,189 DEBUG [AWT-EventQueue-0] (JRFillDataset.java:1193) - Fill 1: closing query executer
+16 jul 2020 21:04:39,885 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:146) - Fill 1: created for ReporteEmpleados
+16 jul 2020 21:04:39,886 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:185) - created delayed actions 1 for filler 1
+16 jul 2020 21:04:39,886 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: BACKGROUND} for band 1639772922
+16 jul 2020 21:04:39,889 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: TITLE} for band 688928125
+16 jul 2020 21:04:39,890 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: PAGE_HEADER} for band 1814989547
+16 jul 2020 21:04:39,891 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: COLUMN_HEADER} for band 5396082
+16 jul 2020 21:04:39,892 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: DETAIL} for band 1366671011
+16 jul 2020 21:04:39,892 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: COLUMN_FOOTER} for band 732520262
+16 jul 2020 21:04:39,893 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: PAGE_FOOTER} for band 1944759467
+16 jul 2020 21:04:39,893 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: SUMMARY} for band 1856601187
+16 jul 2020 21:04:39,894 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:108) - Filler 1 - pageHeight: 792, columnFooterOffsetY: 735, lastPageColumnFooterOffsetY: 769
+16 jul 2020 21:04:39,894 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:488) - Fill 1: filling report
+16 jul 2020 21:04:39,895 DEBUG [AWT-EventQueue-0] (JRFillDataset.java:1112) - Fill 1: Creating sql query executer
+16 jul 2020 21:04:39,896 DEBUG [AWT-EventQueue-0] (JRJdbcQueryExecuter.java:254) - SQL query string: SELECT
+     vendedor.`Vendedor_id` AS vendedor_Vendedor_id,
+     vendedor.`nombre_empleado` AS vendedor_nombre_empleado,
+     vendedor.`apellido_empleado` AS vendedor_apellido_empleado,
+     vendedor.`num_identidad_empleado` AS vendedor_num_identidad_empleado,
+     vendedor.`direccion` AS vendedor_direccion,
+     vendedor.`fecha_registro` AS vendedor_fecha_registro,
+     vendedor.`usuario` AS vendedor_usuario,
+     tipo_usuario.`nombre` AS tipo_usuario_nombre
+FROM
+     `vendedor` vendedor INNER JOIN `tipo_usuario` tipo_usuario ON vendedor.`id_tipo` = tipo_usuario.`id`
+WHERE vendedor.fecha_registro = ?
+16 jul 2020 21:04:39,896 DEBUG [AWT-EventQueue-0] (JRJdbcQueryExecuter.java:396) - Parameter #1 (fecha of type java.lang.String): 2020-07-14
+16 jul 2020 21:04:39,943 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:1138) - Fill 1: adding page 1
+16 jul 2020 21:04:39,946 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:306) - Fill 1: title at 20
+16 jul 2020 21:04:39,983 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateImage@687e17fc
+16 jul 2020 21:04:40,040 DEBUG [AWT-EventQueue-0] (SimpleTextLineWrapper.java:303) - creating element font infos cache of size 2000
+16 jul 2020 21:04:40,121 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@7e9782c8
+16 jul 2020 21:04:40,123 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@554c0daa
+16 jul 2020 21:04:40,124 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@554c0daa for (null, {java.util.Date, dd/MM/yyyy,null,null,null})
+16 jul 2020 21:04:40,124 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 688928125}
+16 jul 2020 21:04:40,128 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:382) - Fill 1: page header at 140
+16 jul 2020 21:04:40,129 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1814989547}
+16 jul 2020 21:04:40,130 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:461) - Fill 1: column header at 143
+16 jul 2020 21:04:40,153 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@1acba111
+16 jul 2020 21:04:40,154 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@1acba111 for object net.sf.jasperreports.engine.fill.JRTemplateText@2f5fdebf
+16 jul 2020 21:04:40,154 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@1acba111 for object net.sf.jasperreports.engine.fill.JRTemplateText@1e359d35
+16 jul 2020 21:04:40,155 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@1acba111 for object net.sf.jasperreports.engine.fill.JRTemplateText@124046e3
+16 jul 2020 21:04:40,155 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@1acba111 for object net.sf.jasperreports.engine.fill.JRTemplateText@55c4ae93
+16 jul 2020 21:04:40,156 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@1acba111 for object net.sf.jasperreports.engine.fill.JRTemplateText@43f28b2
+16 jul 2020 21:04:40,156 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@1acba111 for object net.sf.jasperreports.engine.fill.JRTemplateText@36d1c135
+16 jul 2020 21:04:40,158 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 5396082}
+16 jul 2020 21:04:40,158 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:707) - Fill 1: detail at 166
+16 jul 2020 21:04:40,168 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@5aca2acc
+16 jul 2020 21:04:40,168 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@5aca2acc for (null, {java.lang.Integer, null,null,null,null})
+16 jul 2020 21:04:40,169 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c
+16 jul 2020 21:04:40,169 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for (null, null)
+16 jul 2020 21:04:40,170 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for object net.sf.jasperreports.engine.fill.JRTemplateText@2c565fae
+16 jul 2020 21:04:40,170 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for (null, null)
+16 jul 2020 21:04:40,171 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@598d31fa
+16 jul 2020 21:04:40,171 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@598d31fa for (null, {java.sql.Date, MM-dd-yy hh:mm a,null,null,null})
+16 jul 2020 21:04:40,172 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for object net.sf.jasperreports.engine.fill.JRTemplateText@529afc4d
+16 jul 2020 21:04:40,172 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for (null, null)
+16 jul 2020 21:04:40,173 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for object net.sf.jasperreports.engine.fill.JRTemplateText@45eb31c3
+16 jul 2020 21:04:40,174 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for (null, null)
+16 jul 2020 21:04:40,174 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for object net.sf.jasperreports.engine.fill.JRTemplateText@5b5ebdff
+16 jul 2020 21:04:40,174 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@7d6d417c for (null, null)
+16 jul 2020 21:04:40,178 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1366671011}
+16 jul 2020 21:04:40,178 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:1018) - Fill 1: summary at 226
+16 jul 2020 21:04:40,179 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:946) - Fill 1: column footer at 239
+16 jul 2020 21:04:40,179 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 732520262}
+16 jul 2020 21:04:40,181 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:992) - Fill 1: page footer at 738
+16 jul 2020 21:04:40,212 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@7b23bc02
+16 jul 2020 21:04:40,213 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@7b23bc02 for (null, null)
+16 jul 2020 21:04:40,214 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@69abb8c2
+16 jul 2020 21:04:40,215 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@69abb8c2 for (null, null)
+16 jul 2020 21:04:40,223 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:752) - Adding evaluation of net.sf.jasperreports.engine.fill.JRTemplatePrintText@3b782d14 by net.sf.jasperreports.engine.fill.JRFillTextField@fa1ff11 for evaluation {type: REPORT, group: null, band: 0}
+16 jul 2020 21:04:40,224 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:185) - 1 adding delayed action delayed evaluation {element: net.sf.jasperreports.engine.fill.JRFillTextField@fa1ff11, printElement: net.sf.jasperreports.engine.fill.JRTemplatePrintText@3b782d14} at {type: REPORT, group: null, band: 0}, key page net.sf.jasperreports.engine.base.JRBasePrintPage@38e632e4, index 0
+16 jul 2020 21:04:40,227 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1944759467}
+16 jul 2020 21:04:40,228 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1856601187}
+16 jul 2020 21:04:40,228 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: COLUMN, group: null, band: 0}
+16 jul 2020 21:04:40,229 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: PAGE, group: null, band: 0}
+16 jul 2020 21:04:40,230 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: REPORT, group: null, band: 0}
+16 jul 2020 21:04:40,230 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:254) - 1 running actions for page net.sf.jasperreports.engine.base.JRBasePrintPage@38e632e4 at 0
+16 jul 2020 21:04:40,231 DEBUG [AWT-EventQueue-0] (ElementEvaluationAction.java:57) - resolving element net.sf.jasperreports.engine.fill.JRTemplatePrintText@3b782d14 by net.sf.jasperreports.engine.fill.JRFillTextField@fa1ff11 on {type: REPORT, group: null, band: 0}
+16 jul 2020 21:04:40,232 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: MASTER, group: null, band: 0}
+16 jul 2020 21:04:40,233 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:550) - Fill 1: ended
+16 jul 2020 21:04:40,233 DEBUG [AWT-EventQueue-0] (JRFillDataset.java:1193) - Fill 1: closing query executer
+16 jul 2020 21:04:52,843 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+16 jul 2020 21:06:01,756 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 21:06:07,766 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+16 jul 2020 21:06:10,174 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:436) - Ingreso al menu de reportes: Luis Cueva
+16 jul 2020 21:06:11,424 DEBUG [AWT-EventQueue-0] (menuReportes.java:334) - Entro a la ventana para generar el informe: Luis Cueva
+16 jul 2020 21:06:17,018 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:146) - Fill 1: created for ReporteEmpleados
+16 jul 2020 21:06:17,358 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:185) - created delayed actions 1 for filler 1
+16 jul 2020 21:06:17,363 DEBUG [AWT-EventQueue-0] (ExtensionsEnvironment.java:78) - Instantiating extensions registry class net.sf.jasperreports.extensions.DefaultExtensionsRegistry
+16 jul 2020 21:06:17,366 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:130) - Loading registries for cache key sun.misc.Launcher$AppClassLoader@7440e464
+16 jul 2020 21:06:17,367 DEBUG [AWT-EventQueue-0] (JRLoader.java:724) - Found resource jasperreports_extension.properties at jar:file:/C:/Users/Luis%20Cueva/Documents/Luis/UJCV/Ing%20Software/Librerias/JasperReport/jasperreports-6.0.0.jar!/jasperreports_extension.properties in classloader sun.misc.Launcher$AppClassLoader@7440e464
+16 jul 2020 21:06:17,369 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:158) - Loading JasperReports extension properties resource jar:file:/C:/Users/Luis%20Cueva/Documents/Luis/UJCV/Ing%20Software/Librerias/JasperReport/jasperreports-6.0.0.jar!/jasperreports_extension.properties
+16 jul 2020 21:06:17,372 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.components.headertoolbar.HeaderToolbarParameterContributorExtensionFactory for property net.sf.jasperreports.extension.registry.factory.header.toolbar.parameter.contributor
+16 jul 2020 21:06:17,372 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for header.toolbar.parameter.contributor using factory class net.sf.jasperreports.components.headertoolbar.HeaderToolbarParameterContributorExtensionFactory
+16 jul 2020 21:06:17,376 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.types.date.DateRangeQueryClauseExtensions for property net.sf.jasperreports.extension.registry.factory.date.range.clause.functions
+16 jul 2020 21:06:17,377 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for date.range.clause.functions using factory class net.sf.jasperreports.types.date.DateRangeQueryClauseExtensions
+16 jul 2020 21:06:17,384 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.repo.DefaultRepositoryExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.repository
+16 jul 2020 21:06:17,384 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for repository using factory class net.sf.jasperreports.repo.DefaultRepositoryExtensionsRegistryFactory
+16 jul 2020 21:06:17,387 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.parts.PartComponentsExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.parts
+16 jul 2020 21:06:17,388 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for parts using factory class net.sf.jasperreports.parts.PartComponentsExtensionsRegistryFactory
+16 jul 2020 21:06:17,414 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.ContentTypeMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.content.type.mapping
+16 jul 2020 21:06:17,414 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for content.type.mapping using factory class net.sf.jasperreports.web.util.ContentTypeMappingExtensionsRegistryFactory
+16 jul 2020 21:06:17,416 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.fonts.SimpleFontExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.simple.font.families
+16 jul 2020 21:06:17,417 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for simple.font.families using factory class net.sf.jasperreports.engine.fonts.SimpleFontExtensionsRegistryFactory
+16 jul 2020 21:06:17,420 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.data.DefaultDataAdapterServiceExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.data.adapter.services
+16 jul 2020 21:06:17,420 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for data.adapter.services using factory class net.sf.jasperreports.data.DefaultDataAdapterServiceExtensionsRegistryFactory
+16 jul 2020 21:06:17,423 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.WebResourceHandlersExtensionRegistryFactory for property net.sf.jasperreports.extension.registry.factory.jive.web.resource.handlers
+16 jul 2020 21:06:17,423 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for jive.web.resource.handlers using factory class net.sf.jasperreports.web.util.WebResourceHandlersExtensionRegistryFactory
+16 jul 2020 21:06:17,425 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.util.CastorMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.castor.mapping
+16 jul 2020 21:06:17,426 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for castor.mapping using factory class net.sf.jasperreports.util.CastorMappingExtensionsRegistryFactory
+16 jul 2020 21:06:17,428 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.export.MatcherExportFilterMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.matcher.exporter.filter.mapping
+16 jul 2020 21:06:17,429 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for matcher.exporter.filter.mapping using factory class net.sf.jasperreports.engine.export.MatcherExportFilterMappingExtensionsRegistryFactory
+16 jul 2020 21:06:17,431 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.governors.GovernorExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.governor
+16 jul 2020 21:06:17,431 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for governor using factory class net.sf.jasperreports.governors.GovernorExtensionsRegistryFactory
+16 jul 2020 21:06:17,433 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.RequirejsModuleMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.requirejs.module.mapping
+16 jul 2020 21:06:17,434 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for requirejs.module.mapping using factory class net.sf.jasperreports.web.util.RequirejsModuleMappingExtensionsRegistryFactory
+16 jul 2020 21:06:17,435 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.query.SQLQueryClauseFunctionsExtensions for property net.sf.jasperreports.extension.registry.factory.sql.clause.functions
+16 jul 2020 21:06:17,436 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for sql.clause.functions using factory class net.sf.jasperreports.engine.query.SQLQueryClauseFunctionsExtensions
+16 jul 2020 21:06:17,444 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.engine.style.PropertyStyleProviderExtensionFactory for property net.sf.jasperreports.extension.registry.factory.property.style.provider
+16 jul 2020 21:06:17,444 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for property.style.provider using factory class net.sf.jasperreports.engine.style.PropertyStyleProviderExtensionFactory
+16 jul 2020 21:06:17,446 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.web.util.JacksonMappingExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.jackson.mapping
+16 jul 2020 21:06:17,447 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for jackson.mapping using factory class net.sf.jasperreports.web.util.JacksonMappingExtensionsRegistryFactory
+16 jul 2020 21:06:17,448 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.extensions.DefaultExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.default
+16 jul 2020 21:06:17,449 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for default using factory class net.sf.jasperreports.extensions.DefaultExtensionsRegistryFactory
+16 jul 2020 21:06:17,452 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.components.ComponentsExtensionsRegistryFactory for property net.sf.jasperreports.extension.registry.factory.components
+16 jul 2020 21:06:17,452 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for components using factory class net.sf.jasperreports.components.ComponentsExtensionsRegistryFactory
+16 jul 2020 21:06:17,483 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:208) - Instantiating registry of type net.sf.jasperreports.components.headertoolbar.HeaderToolbarConditionalStyleProviderExtensionFactory for property net.sf.jasperreports.extension.registry.factory.header.toolbar.style.provider
+16 jul 2020 21:06:17,516 DEBUG [AWT-EventQueue-0] (DefaultExtensionsRegistry.java:233) - Instantiating extensions registry for header.toolbar.style.provider using factory class net.sf.jasperreports.components.headertoolbar.HeaderToolbarConditionalStyleProviderExtensionFactory
+16 jul 2020 21:06:17,607 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: BACKGROUND} for band 590276439
+16 jul 2020 21:06:17,643 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: TITLE} for band 271520477
+16 jul 2020 21:06:17,644 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: PAGE_HEADER} for band 1510760181
+16 jul 2020 21:06:17,645 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: COLUMN_HEADER} for band 2140297160
+16 jul 2020 21:06:17,658 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: DETAIL} for band 1697009751
+16 jul 2020 21:06:17,665 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: COLUMN_FOOTER} for band 104707684
+16 jul 2020 21:06:17,670 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: PAGE_FOOTER} for band 1937291218
+16 jul 2020 21:06:17,671 DEBUG [AWT-EventQueue-0] (JRFillBand.java:154) - Origin {reportName: null, groupName: null,bandType: SUMMARY} for band 1836124010
+16 jul 2020 21:06:17,830 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:108) - Filler 1 - pageHeight: 792, columnFooterOffsetY: 735, lastPageColumnFooterOffsetY: 769
+16 jul 2020 21:06:17,831 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:488) - Fill 1: filling report
+16 jul 2020 21:06:17,842 DEBUG [AWT-EventQueue-0] (JRFillDataset.java:1112) - Fill 1: Creating sql query executer
+16 jul 2020 21:06:17,853 DEBUG [AWT-EventQueue-0] (JRJdbcQueryExecuter.java:254) - SQL query string: SELECT
+     vendedor.`Vendedor_id` AS vendedor_Vendedor_id,
+     vendedor.`nombre_empleado` AS vendedor_nombre_empleado,
+     vendedor.`apellido_empleado` AS vendedor_apellido_empleado,
+     vendedor.`num_identidad_empleado` AS vendedor_num_identidad_empleado,
+     vendedor.`direccion` AS vendedor_direccion,
+     vendedor.`fecha_registro` AS vendedor_fecha_registro,
+     vendedor.`usuario` AS vendedor_usuario,
+     tipo_usuario.`nombre` AS tipo_usuario_nombre
+FROM
+     `vendedor` vendedor INNER JOIN `tipo_usuario` tipo_usuario ON vendedor.`id_tipo` = tipo_usuario.`id`
+WHERE vendedor.fecha_registro = ?
+16 jul 2020 21:06:17,855 DEBUG [AWT-EventQueue-0] (JRJdbcQueryExecuter.java:396) - Parameter #1 (fecha of type java.lang.String): 2020-07-14
+16 jul 2020 21:06:17,902 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:1138) - Fill 1: adding page 1
+16 jul 2020 21:06:17,904 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:306) - Fill 1: title at 20
+16 jul 2020 21:06:17,934 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateImage@4aec2f48
+16 jul 2020 21:06:17,972 DEBUG [AWT-EventQueue-0] (SimpleTextLineWrapper.java:303) - creating element font infos cache of size 2000
+16 jul 2020 21:06:18,030 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@53696b84
+16 jul 2020 21:06:18,035 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@5410c5af
+16 jul 2020 21:06:18,036 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@5410c5af for (null, {java.util.Date, dd/MM/yyyy,null,null,null})
+16 jul 2020 21:06:18,036 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 271520477}
+16 jul 2020 21:06:18,037 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:382) - Fill 1: page header at 140
+16 jul 2020 21:06:18,038 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1510760181}
+16 jul 2020 21:06:18,377 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:461) - Fill 1: column header at 143
+16 jul 2020 21:06:18,386 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@25776cfe
+16 jul 2020 21:06:18,387 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@25776cfe for object net.sf.jasperreports.engine.fill.JRTemplateText@7798e842
+16 jul 2020 21:06:18,387 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@25776cfe for object net.sf.jasperreports.engine.fill.JRTemplateText@71a55680
+16 jul 2020 21:06:18,388 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@25776cfe for object net.sf.jasperreports.engine.fill.JRTemplateText@5b7a7375
+16 jul 2020 21:06:18,388 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@25776cfe for object net.sf.jasperreports.engine.fill.JRTemplateText@45f4e478
+16 jul 2020 21:06:18,389 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@25776cfe for object net.sf.jasperreports.engine.fill.JRTemplateText@751ece7c
+16 jul 2020 21:06:18,389 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@25776cfe for object net.sf.jasperreports.engine.fill.JRTemplateText@2e548709
+16 jul 2020 21:06:18,390 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 2140297160}
+16 jul 2020 21:06:18,391 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:707) - Fill 1: detail at 166
+16 jul 2020 21:06:18,401 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@3f44ca7a
+16 jul 2020 21:06:18,402 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@3f44ca7a for (null, {java.lang.Integer, null,null,null,null})
+16 jul 2020 21:06:18,403 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@119fa088
+16 jul 2020 21:06:18,403 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for (null, null)
+16 jul 2020 21:06:18,403 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for object net.sf.jasperreports.engine.fill.JRTemplateText@357d9c8e
+16 jul 2020 21:06:18,404 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for (null, null)
+16 jul 2020 21:06:18,404 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@61873f66
+16 jul 2020 21:06:18,405 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@61873f66 for (null, {java.sql.Date, MM-dd-yy hh:mm a,null,null,null})
+16 jul 2020 21:06:18,405 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for object net.sf.jasperreports.engine.fill.JRTemplateText@78893e36
+16 jul 2020 21:06:18,405 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for (null, null)
+16 jul 2020 21:06:18,406 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for object net.sf.jasperreports.engine.fill.JRTemplateText@147e4a4f
+16 jul 2020 21:06:18,406 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for (null, null)
+16 jul 2020 21:06:18,432 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:92) - Found existing instance net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for object net.sf.jasperreports.engine.fill.JRTemplateText@4d3e3da2
+16 jul 2020 21:06:18,432 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@119fa088 for (null, null)
+16 jul 2020 21:06:18,434 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1697009751}
+16 jul 2020 21:06:18,434 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:1018) - Fill 1: summary at 226
+16 jul 2020 21:06:18,434 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:946) - Fill 1: column footer at 239
+16 jul 2020 21:06:18,435 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 104707684}
+16 jul 2020 21:06:18,435 DEBUG [AWT-EventQueue-0] (JRVerticalFiller.java:992) - Fill 1: page footer at 738
+16 jul 2020 21:06:18,453 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@c7e9a83
+16 jul 2020 21:06:18,454 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@c7e9a83 for (null, null)
+16 jul 2020 21:06:18,454 DEBUG [AWT-EventQueue-0] (DeduplicableRegistry.java:85) - Added object net.sf.jasperreports.engine.fill.JRTemplateText@7769f06f
+16 jul 2020 21:06:18,455 DEBUG [AWT-EventQueue-0] (JRFillTextField.java:507) - created net.sf.jasperreports.engine.fill.JRTemplateText@7769f06f for (null, null)
+16 jul 2020 21:06:18,456 DEBUG [AWT-EventQueue-0] (BaseReportFiller.java:752) - Adding evaluation of net.sf.jasperreports.engine.fill.JRTemplatePrintText@789b6cd4 by net.sf.jasperreports.engine.fill.JRFillTextField@40c91120 for evaluation {type: REPORT, group: null, band: 0}
+16 jul 2020 21:06:18,457 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:185) - 1 adding delayed action delayed evaluation {element: net.sf.jasperreports.engine.fill.JRFillTextField@40c91120, printElement: net.sf.jasperreports.engine.fill.JRTemplatePrintText@789b6cd4} at {type: REPORT, group: null, band: 0}, key page net.sf.jasperreports.engine.base.JRBasePrintPage@ac3ce9d, index 0
+16 jul 2020 21:06:18,460 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1937291218}
+16 jul 2020 21:06:18,460 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: BAND, group: null, band: 1836124010}
+16 jul 2020 21:06:18,461 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: COLUMN, group: null, band: 0}
+16 jul 2020 21:06:18,461 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: PAGE, group: null, band: 0}
+16 jul 2020 21:06:18,462 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: REPORT, group: null, band: 0}
+16 jul 2020 21:06:18,462 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:254) - 1 running actions for page net.sf.jasperreports.engine.base.JRBasePrintPage@ac3ce9d at 0
+16 jul 2020 21:06:18,463 DEBUG [AWT-EventQueue-0] (ElementEvaluationAction.java:57) - resolving element net.sf.jasperreports.engine.fill.JRTemplatePrintText@789b6cd4 by net.sf.jasperreports.engine.fill.JRFillTextField@40c91120 on {type: REPORT, group: null, band: 0}
+16 jul 2020 21:06:18,464 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: MASTER, group: null, band: 0}
+16 jul 2020 21:06:18,465 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:550) - Fill 1: ended
+16 jul 2020 21:06:18,465 DEBUG [AWT-EventQueue-0] (JRFillDataset.java:1193) - Fill 1: closing query executer

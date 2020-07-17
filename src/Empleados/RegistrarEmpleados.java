@@ -66,7 +66,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
          Calendar cal= Calendar.getInstance();
         String fecha;
         fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
-        
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     
         
     }
@@ -618,7 +618,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         getContentPane().add(generarbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 390, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 630));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 650));
 
         pom.setText("jTextField2");
         pom.addActionListener(new java.awt.event.ActionListener() {
@@ -802,22 +802,24 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
                                                 
                                                  
                                                 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`,`fecha_registro`,`recuperacion`) VALUES (NULL, ?, ?, ?, ?, ?, MD5(?),?,?,?)");
+                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`,`fecha_registro`,`recuperacion`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                                                 
                                                 
-                                                
-         
+                                               decode hola = new decode();
+                                               
                                                 pst.setString(1, nom_empleado.getText());
                                                 pst.setString(2, apelld_empleado.getText());
                                                 pst.setString(3, num_id_emplea.getText());
                                                 pst.setString(4, dir_empleado.getText());
                                                 pst.setString(5, txt_usuario.getText());
-                                                pst.setString(6, txt_pass.getText());
+                                                
+                                                String deco = hola.ecnode("Proyecto", txt_pass.getText());
+                                                pst.setString(6, deco);
                                                 pst.setString(7, pom.getText());
                                                 pst.setString(8, fechar.getFecha());
                                                 
                                                 
-                                                pst.setString(9, "893426E1-6A86-4C14-9B16-812B1"+recusuper.getText().toString());
+                                                pst.setString(9, "893426E1-6A86-4C14-9B16-812B1A"+recusuper.getText().toString());
 
                                                 int a = pst.executeUpdate();
                                                 if (a > 0) {
@@ -1017,7 +1019,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     String id = "";
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         desbloquear();
-
+    decode hola = new decode();
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         if (id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
@@ -1026,11 +1028,12 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
             logger.debug("Error, guardo con campos vacios");
 
         } else {
+            
             try {
-
+                String deco = hola.ecnode("Proyecto", txt_pass.getText());
                 if (num_id_emplea.getText().length() >= 13) {
                     if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
-                    PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET Vendedor_id='" + id_empleado.getText() + "',nombre_empleado='" + nom_empleado.getText() + "',apellido_empleado='" + apelld_empleado.getText() + "',num_identidad_empleado='" + num_id_emplea.getText() + "',direccion='" + dir_empleado.getText() + "'WHERE Vendedor_id='" + id + "'");
+                    PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET Vendedor_id='" + id_empleado.getText() + "',nombre_empleado='" + nom_empleado.getText() + "',apellido_empleado='" + apelld_empleado.getText() + "',num_identidad_empleado='" + num_id_emplea.getText() + "',direccion='" + dir_empleado.getText()+"',pass='"+deco+ "'WHERE Vendedor_id='" + id + "'");
                     id = id_empleado.getText();
                     pst.executeUpdate();
                     mostrardatos("");

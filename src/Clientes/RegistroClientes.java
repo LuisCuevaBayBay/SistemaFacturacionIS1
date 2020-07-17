@@ -52,7 +52,7 @@ public class RegistroClientes extends javax.swing.JFrame {
         String fecha;
         fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
         
-        
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
      this.setLocationRelativeTo(null);
     }
     

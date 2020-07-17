@@ -8,6 +8,7 @@ package menu;
 import Clientes.RegistroClientes;
 import Compra.ModeloCompra1;
 import Empleados.RegistrarEmpleados;
+import Empleados.recuCod;
 /*import FacturaCompra.FacturaCompra;
 /*import Factura_Venta.Factura_Venta;*/
 import Proveedor.frm_proveedores;
@@ -15,6 +16,7 @@ import Venta.ModeloVenta;
 import app.menuReportes;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 import inicio_sesion.modelo.usuarios;
+import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -36,6 +38,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         initComponents();
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
     
     public menuPrincipal(usuarios mod){
@@ -99,6 +102,8 @@ public class menuPrincipal extends javax.swing.JFrame {
         rSLabelHora1 = new rojeru_san.RSLabelHora();
         jLabel11 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        aqui = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         idv = new javax.swing.JLabel();
         rSLabelHora2 = new rojeru_san.RSLabelHora();
@@ -272,6 +277,28 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 140, -1));
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("Para ver la clave de recuperacion del empleado haz clic");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, -1, -1));
+
+        aqui.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        aqui.setForeground(new java.awt.Color(0, 0, 204));
+        aqui.setText("Aqui");
+        aqui.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                aquiMouseMoved(evt);
+            }
+        });
+        aqui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aquiMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                aquiMouseExited(evt);
+            }
+        });
+        getContentPane().add(aqui, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, -1, -1));
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 540));
         getContentPane().add(idv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 20));
@@ -413,6 +440,22 @@ this.dispose();*/
                 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void aquiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseClicked
+        // TODO add your handling code here:
+        recuCod rc = new recuCod();
+        rc.setVisible(true);
+    }//GEN-LAST:event_aquiMouseClicked
+
+    private void aquiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseMoved
+        // TODO add your handling code here:
+        this.aqui.setForeground(new Color(224, 255, 255));
+    }//GEN-LAST:event_aquiMouseMoved
+
+    private void aquiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseExited
+        // TODO add your handling code here:
+        this.aqui.setForeground(new Color(51, 153, 255));
+    }//GEN-LAST:event_aquiMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -449,6 +492,7 @@ this.dispose();*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel aqui;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel fondo;
@@ -461,6 +505,7 @@ this.dispose();*/
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

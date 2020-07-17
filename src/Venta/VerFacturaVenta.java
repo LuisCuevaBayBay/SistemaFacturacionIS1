@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.*;
@@ -32,6 +33,7 @@ public class VerFacturaVenta extends javax.swing.JFrame {
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
 void mostrardatos(String valor) {
         ConexionSQL cc = new ConexionSQL();

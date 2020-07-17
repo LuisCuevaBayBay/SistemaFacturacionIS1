@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -30,6 +31,7 @@ public class FechaClientes extends javax.swing.JFrame {
     public FechaClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
 
     /**
