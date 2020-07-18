@@ -32,6 +32,7 @@ import net.sf.jasperreports.view.JasperViewer;
 import producto.Producto;
 import org.apache.log4j.*;
 import static app.menuReportes.nombre;
+import java.sql.Statement;
 /**
  *
  * @author luisc
@@ -188,7 +189,7 @@ public class menuReportes extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 420, 60, 60));
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 410, 60, 60));
 
         jButton2.setBackground(new java.awt.Color(0, 0, 204));
         jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -212,7 +213,7 @@ public class menuReportes extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 420, 60, 60));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 410, 60, 60));
 
         jButton7.setBackground(new java.awt.Color(0, 0, 204));
         jButton7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -384,6 +385,199 @@ this.dispose();*/
       
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    
+    
+    void validacionVenta(String usuario){
+    String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.registrarVenta.setVisible(false);
+                    menuPrincipal.jLabel3.setVisible(false);
+                }else{
+                    menuPrincipal.registrarVenta.setVisible(true);
+                    menuPrincipal.jLabel3.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+    
+        
+    }
+    
+    
+    void validacionProductos(String usuario){
+    
+        String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.jButton7.setVisible(false);
+                    menuPrincipal.jLabel7.setVisible(false);
+                }else{
+                    menuPrincipal.jButton7.setVisible(true);
+                    menuPrincipal.jLabel7.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+    }
+    
+    void validacionCompra(String usuario){
+         String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.jButton1.setVisible(false);
+                    menuPrincipal.jLabel1.setVisible(false);
+                }else{
+                    menuPrincipal.jButton1.setVisible(true);
+                    menuPrincipal.jLabel1.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+    }
+    
+    void validacionProveedor(String usuario){
+        String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.jButton2.setVisible(false);
+                    menuPrincipal.jLabel8.setVisible(false);
+                }else{
+                    menuPrincipal.jButton2.setVisible(true);
+                    menuPrincipal.jLabel8.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+        
+        
+    }
+    
+    void validacionCliente(String usuario){
+    
+    String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.registroEmpleado.setVisible(false);
+                    menuPrincipal.jLabel5.setVisible(false);
+                }else{
+                    menuPrincipal.registroEmpleado.setVisible(true);
+                    menuPrincipal.jLabel5.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+        
+    }
+    void validacion(String usuario){
+        String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.registroEmpleados1.setVisible(false);
+                    menuPrincipal.jLabel4.setVisible(false);
+                }else{
+                    menuPrincipal.registroEmpleados1.setVisible(true);
+                    menuPrincipal.jLabel4.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+        
+        
+        
+    
+    }
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         menuPrincipal mp = new menuPrincipal();
@@ -392,7 +586,13 @@ this.dispose();*/
        menuPrincipal.idv.setText(idv.getText());
             
             mp.setVisible(true);
-        
+         	validacion(nombre.getText());
+        validacionCliente(nombre.getText());
+        validacionProveedor(nombre.getText());
+        validacionCompra(nombre.getText());
+        validacionProductos(nombre.getText());
+        validacionVenta(nombre.getText());
+
         this.dispose();
         
     }//GEN-LAST:event_jButton6ActionPerformed

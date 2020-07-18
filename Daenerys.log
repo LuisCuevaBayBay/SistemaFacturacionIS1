@@ -2097,3 +2097,556 @@ WHERE vendedor.fecha_registro = ?
 16 jul 2020 21:06:18,464 DEBUG [AWT-EventQueue-0] (DelayedFillActions.java:227) - 1 running delayed actions on {type: MASTER, group: null, band: 0}
 16 jul 2020 21:06:18,465 DEBUG [AWT-EventQueue-0] (JRBaseFiller.java:550) - Fill 1: ended
 16 jul 2020 21:06:18,465 DEBUG [AWT-EventQueue-0] (JRFillDataset.java:1193) - Fill 1: closing query executer
+16 jul 2020 21:35:51,007 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 21:35:57,843 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:234) - Se logueo exitosamente: Luis Cueva
+16 jul 2020 21:36:28,150  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:827) - Registro Exitoso: 
+16 jul 2020 21:36:30,572 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1190) - Volvio al menu principal: Luis Cueva
+16 jul 2020 21:36:34,017 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+16 jul 2020 22:45:51,967 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:45:54,894 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:330) - Salio del sistema: 
+16 jul 2020 22:47:27,195 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:47:36,847 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:263) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 22:47:41,304 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1190) - Volvio al menu principal: Melvin Alvarez
+16 jul 2020 22:47:44,493 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:399) - Cerro Sesion: Melvin Alvarez
+16 jul 2020 22:47:45,239 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:47:46,973 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:331) - Salio del sistema: 
+16 jul 2020 22:50:56,055 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:51:03,203 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:263) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 22:51:09,520 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1190) - Volvio al menu principal: Melvin Alvarez
+16 jul 2020 22:51:11,784 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:399) - Cerro Sesion: Melvin Alvarez
+16 jul 2020 22:51:12,596 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:51:16,082 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:331) - Salio del sistema: 
+16 jul 2020 22:56:21,818 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:56:29,101 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:263) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 22:56:37,395 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Melvin Alvarez
+16 jul 2020 22:58:12,537 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:58:19,435 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:264) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 22:58:27,148 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:399) - Cerro Sesion: Melvin Alvarez
+16 jul 2020 22:58:28,026 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:58:29,651 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:332) - Salio del sistema: 
+16 jul 2020 22:59:46,446 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 22:59:56,831 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:264) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 23:00:03,156 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Melvin Alvarez
+16 jul 2020 23:00:31,801 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:00:41,827 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:264) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 23:00:53,796 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Melvin Alvarez
+16 jul 2020 23:01:32,828 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:01:41,010 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:264) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 23:01:51,469 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:399) - Cerro Sesion: Melvin Alvarez
+16 jul 2020 23:01:52,294 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:01:59,153 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:277) - Salio del sistema
+16 jul 2020 23:02:02,306 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:264) - Se logueo exitosamente: Luis Cueva
+16 jul 2020 23:02:07,907 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+16 jul 2020 23:02:29,110 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:02:35,692 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:264) - Se logueo exitosamente: Luis Cueva
+16 jul 2020 23:02:39,252 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:399) - Cerro Sesion: Luis Cueva
+16 jul 2020 23:02:40,119 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:02:47,548 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:264) - Se logueo exitosamente: Melvin Alvarez
+16 jul 2020 23:02:58,031 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Melvin Alvarez
+16 jul 2020 23:49:54,736 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:50:03,397 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:266) - Se logueo exitosamente: Luis Cueva
+16 jul 2020 23:50:32,169  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:827) - Registro Exitoso: 
+16 jul 2020 23:50:33,467 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1190) - Volvio al menu principal: Luis Cueva
+16 jul 2020 23:50:36,260 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:326) - Salio del sistema: Luis Cueva
+16 jul 2020 23:52:43,842 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:52:45,919 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:334) - Salio del sistema: 
+16 jul 2020 23:53:50,150 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+16 jul 2020 23:53:56,917 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:266) - Se logueo exitosamente: Luis Cueva
+16 jul 2020 23:54:10,828 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: Luis Cueva
+17 jul 2020 00:21:03,150 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:21:09,955 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:21:16,894 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:347) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 00:21:19,362 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:776) - vuelve al menu principal
+17 jul 2020 00:21:26,961 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:433) - Ingreso a la pantalla de compras: Allan Torres
+17 jul 2020 00:21:33,239  INFO [AWT-EventQueue-0] (ModeloCompra1.java:761) - Vuelve al menu principal
+17 jul 2020 00:21:33,950 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:347) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 00:21:36,127 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:776) - vuelve al menu principal
+17 jul 2020 00:21:43,482 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:409) - Cerro Sesion: Allan Torres
+17 jul 2020 00:21:44,757 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:24:40,171 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:24:48,965 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:24:57,071 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: Allan Torres
+17 jul 2020 00:25:00,862 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: Allan Torres
+17 jul 2020 00:25:10,032 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: Allan Torres
+17 jul 2020 00:25:26,994 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:492) - Salio del sistema: 
+17 jul 2020 00:29:57,757 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:30:03,863 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:497) - Salio del sistema: 
+17 jul 2020 00:30:17,727 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1098) - Salio del sistema
+17 jul 2020 00:30:24,018 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:30:33,471 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Melvin Alvarez
+17 jul 2020 00:30:46,466 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:409) - Cerro Sesion: Melvin Alvarez
+17 jul 2020 00:30:47,477 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:30:53,097 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:30:57,692 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: Allan Torres
+17 jul 2020 00:32:17,688 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:32:26,759 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:32:29,485 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: Allan Torres
+17 jul 2020 00:32:30,871 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: Allan Torres
+17 jul 2020 00:32:35,560 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: Allan Torres
+17 jul 2020 00:34:36,664 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:34:43,546 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:34:46,037 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 00:34:47,572 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: allan.torres
+17 jul 2020 00:34:55,022 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 00:34:56,636 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: allan.torres
+17 jul 2020 00:35:00,915 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:409) - Cerro Sesion: allan.torres
+17 jul 2020 00:35:01,765 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:35:10,463 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:35:18,331 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 00:35:21,958 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: allan.torres
+17 jul 2020 00:35:26,170 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 00:36:21,652 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:36:31,163 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:36:33,791 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 00:36:35,400 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: allan.torres
+17 jul 2020 00:36:43,092 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 00:37:46,843 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:37:54,402 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:37:56,403 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 00:37:58,231 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: allan.torres
+17 jul 2020 00:38:06,881 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 00:39:25,403 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:39:34,659 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:39:37,154 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 00:39:39,314 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: allan.torres
+17 jul 2020 00:39:48,161 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 00:40:06,539 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:40:12,488 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:40:14,784 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 00:40:16,129 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:967) - volvio al menu principal: allan.torres
+17 jul 2020 00:40:33,511 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 00:40:39,422 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:967) - volvio al menu principal: allan.torres
+17 jul 2020 00:40:49,457 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 00:41:25,345 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:41:32,346 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:41:35,568 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 00:41:38,351 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:973) - volvio al menu principal: allan.torres
+17 jul 2020 00:41:47,034 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 00:53:12,098 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:53:20,066 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:53:23,264 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 00:53:59,865  INFO [AWT-EventQueue-0] (RegistroClientes.java:554) - Se registro exitosamente al cliente: Sabrina Morningstar
+17 jul 2020 00:56:10,736 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:773) - Salio del sistema
+17 jul 2020 00:56:20,756 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 00:56:32,748 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 00:56:34,936 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 00:57:04,590  INFO [AWT-EventQueue-0] (RegistroClientes.java:554) - Se registro exitosamente al cliente: Carles Perez
+17 jul 2020 00:57:18,712 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:775) - Salio del sistema
+17 jul 2020 01:00:52,142 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:00:59,033 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 01:01:01,137 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 01:01:31,054  INFO [AWT-EventQueue-0] (RegistroClientes.java:555) - Se registro exitosamente al cliente: Carlos Rodriguez
+17 jul 2020 01:01:56,233 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:776) - Salio del sistema
+17 jul 2020 01:08:51,885 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:08:59,856 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 01:09:01,841 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 01:09:35,779  INFO [AWT-EventQueue-0] (RegistroClientes.java:548) - Se registro exitosamente al cliente: Gustavo Gaviria
+17 jul 2020 01:09:53,530 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:769) - Salio del sistema
+17 jul 2020 01:11:15,754 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:11:23,137 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 01:11:25,522 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 01:11:57,676  INFO [AWT-EventQueue-0] (RegistroClientes.java:548) - Se registro exitosamente al cliente: Vinicius Selecion
+17 jul 2020 01:12:09,209 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:769) - Salio del sistema
+17 jul 2020 01:15:00,131 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1115) - Salio del sistema
+17 jul 2020 01:15:05,812 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:15:12,060 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 01:15:49,342  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:844) - Registro Exitoso: 
+17 jul 2020 01:16:01,786 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1115) - Salio del sistema
+17 jul 2020 01:17:37,182 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:17:44,367 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 01:18:19,956  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:845) - Registro Exitoso: 
+17 jul 2020 01:18:42,721 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1116) - Salio del sistema
+17 jul 2020 01:20:26,622 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:20:48,876 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 01:21:28,244  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:845) - Registro Exitoso: 
+17 jul 2020 01:21:55,234 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1116) - Salio del sistema
+17 jul 2020 01:29:38,066 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:30:02,551 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 01:31:10,182 ERROR [AWT-EventQueue-0] (RegistrarEmpleados.java:889) - Error: Data truncation: Incorrect integer value: 'jTextField2' for column `conexion_sistema1`.`vendedor`.`id_tipo` at row 1
+17 jul 2020 01:31:14,302 ERROR [AWT-EventQueue-0] (RegistrarEmpleados.java:889) - Error: Data truncation: Incorrect integer value: 'jTextField2' for column `conexion_sistema1`.`vendedor`.`id_tipo` at row 1
+17 jul 2020 01:31:36,467  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:846) - Registro Exitoso: 
+17 jul 2020 01:36:56,745 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1117) - Salio del sistema
+17 jul 2020 01:37:20,529 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:37:43,169 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 01:39:15,611  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:848) - Registro Exitoso: 
+17 jul 2020 01:45:05,857 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1119) - Salio del sistema
+17 jul 2020 01:45:23,608 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 01:45:39,318 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 01:46:49,873  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:848) - Registro Exitoso: 
+17 jul 2020 01:50:38,484 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1119) - Salio del sistema
+17 jul 2020 11:29:37,619 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 11:29:56,932 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:442) - Salio del sistema
+17 jul 2020 11:30:04,700 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 11:31:20,232  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:867) - Registro Exitoso: 
+17 jul 2020 11:32:02,030 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1138) - Salio del sistema
+17 jul 2020 11:41:55,585 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 11:42:03,453 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 11:42:34,809  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:942) - Registro Exitoso: 
+17 jul 2020 11:59:03,987 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 11:59:10,817 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 12:00:02,570 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1213) - Salio del sistema
+17 jul 2020 12:00:10,955 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:00:18,284 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 12:00:27,267 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: sabrina.spellman
+17 jul 2020 12:01:13,204 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:01:20,711 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 12:01:54,471 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:409) - Cerro Sesion: luis.cueva
+17 jul 2020 12:01:55,629 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:02:08,156 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 12:02:24,599 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: sabrina.spellman
+17 jul 2020 12:05:51,399 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:06:07,335 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:442) - Salio del sistema
+17 jul 2020 12:06:13,597 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:442) - Salio del sistema
+17 jul 2020 12:06:52,093 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 12:07:12,986 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: 
+17 jul 2020 12:07:43,892 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:07:52,557 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 12:08:07,219 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:360) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 12:08:08,596 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:991) - volvio al menu principal: allan.torres
+17 jul 2020 12:08:10,469 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:425) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 12:08:11,185 DEBUG [AWT-EventQueue-0] (Producto.java:542) - Vuelve al menu principal: allan.torres
+17 jul 2020 12:08:14,528 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 12:46:37,645 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:46:43,540 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:497) - Salio del sistema: 
+17 jul 2020 12:47:32,667 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: 
+17 jul 2020 12:47:38,864 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:47:45,668 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 12:47:56,071 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:336) - Salio del sistema: allan.torres
+17 jul 2020 12:48:42,917 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:48:51,058 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Allan Torres
+17 jul 2020 12:48:57,992 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: allan.torres
+17 jul 2020 12:48:58,851 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:49:04,408 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 12:49:14,085 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:338) - Salio del sistema: luis.cueva
+17 jul 2020 12:49:44,918 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:49:50,385 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 12:50:22,284 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1503) - Volvio al menu principal: luis.cueva
+17 jul 2020 12:50:25,886 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: luis.cueva
+17 jul 2020 12:50:26,732 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:50:33,205 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:424) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 12:50:36,175 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:402) - Ingreso a la pantalla de proveedores sabrina.spellman
+17 jul 2020 12:50:37,301 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:745) - Volvio al menu Principal
+17 jul 2020 12:50:37,339 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:752) - volvio al menu principal sabrina.spellman
+17 jul 2020 12:50:44,273 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: sabrina.spellman
+17 jul 2020 12:50:44,937 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 12:50:47,953 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:497) - Salio del sistema: 
+17 jul 2020 13:00:44,951 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:00:56,439 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:445) - Salio del sistema
+17 jul 2020 13:01:01,453 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 13:01:36,880 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: luis.cueva
+17 jul 2020 13:01:37,793 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:02:24,932 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+17 jul 2020 13:02:31,074 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:02:39,046 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 13:03:22,336  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:942) - Registro Exitoso: 
+17 jul 2020 13:03:24,403 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1213) - Salio del sistema
+17 jul 2020 13:04:15,390 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:04:25,108 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 13:04:52,630 ERROR [AWT-EventQueue-0] (RegistrarEmpleados.java:985) - Error: Data truncation: Incorrect integer value: 'jTextField2' for column `conexion_sistema1`.`vendedor`.`id_tipo` at row 1
+17 jul 2020 13:05:06,414  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:942) - Registro Exitoso: 
+17 jul 2020 13:07:25,462 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1503) - Volvio al menu principal: sabrina.spellman
+17 jul 2020 13:08:38,723 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:338) - Salio del sistema: sabrina.spellman
+17 jul 2020 13:08:45,849 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:08:53,373 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 13:08:55,567 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:362) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 13:09:00,688 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:984) - volvio al menu principal: sabrina.spellman
+17 jul 2020 13:09:14,326 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:362) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 13:09:58,958 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:776) - Salio del sistema
+17 jul 2020 13:10:15,879 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:10:48,405 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 13:11:03,317 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:362) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 13:11:44,400  INFO [AWT-EventQueue-0] (RegistroClientes.java:551) - Se registro exitosamente al cliente: Raul Seleccion
+17 jul 2020 13:11:51,069 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:984) - volvio al menu principal: sabrina.spellman
+17 jul 2020 13:11:53,924 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: sabrina.spellman
+17 jul 2020 13:11:54,768 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:11:59,958 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+17 jul 2020 13:46:17,141 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:46:25,679 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 13:47:10,718 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: luis.cueva
+17 jul 2020 13:47:11,671 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:47:19,382 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 13:47:25,778 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:402) - Ingreso a la pantalla de proveedores sabrina.spellman
+17 jul 2020 13:47:29,317 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:745) - Volvio al menu Principal
+17 jul 2020 13:47:29,360 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:752) - volvio al menu principal sabrina.spellman
+17 jul 2020 13:47:30,954 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:402) - Ingreso a la pantalla de proveedores sabrina.spellman
+17 jul 2020 13:47:32,333 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:745) - Volvio al menu Principal
+17 jul 2020 13:47:32,368 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:752) - volvio al menu principal sabrina.spellman
+17 jul 2020 13:47:35,950 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: sabrina.spellman
+17 jul 2020 13:47:36,613 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 13:47:40,799 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+17 jul 2020 14:58:22,317 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 14:58:29,964 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 14:59:29,820 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1503) - Volvio al menu principal: luis.cueva
+17 jul 2020 15:00:52,339 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1503) - Volvio al menu principal: luis.cueva
+17 jul 2020 15:01:19,610 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:338) - Salio del sistema: luis.cueva
+17 jul 2020 15:01:28,723 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:01:35,002 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:01:37,962 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:448) - Ingreso al menu de reportes: luis.cueva
+17 jul 2020 15:01:53,179 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: luis.cueva
+17 jul 2020 15:01:54,323 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:02:04,546 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:02:10,614 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:362) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 15:02:21,182 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:1029) - volvio al menu principal: sabrina.spellman
+17 jul 2020 15:02:44,023 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:338) - Salio del sistema: sabrina.spellman
+17 jul 2020 15:02:53,687 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:03:00,833 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:03:25,231 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:03:27,042 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:03:33,398 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:03:36,587 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:448) - Ingreso al menu de reportes: luis.cueva
+17 jul 2020 15:04:02,026 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: luis.cueva
+17 jul 2020 15:04:02,809 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:04:09,110 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:04:11,350 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:362) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 15:04:25,870  INFO [AWT-EventQueue-0] (RegistroClientes.java:691) - Limpio los campos
+17 jul 2020 15:04:35,835 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:1029) - volvio al menu principal: sabrina.spellman
+17 jul 2020 15:04:44,289 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:04:44,988 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:04:52,028 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:04:55,660 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:448) - Ingreso al menu de reportes: luis.cueva
+17 jul 2020 15:05:50,120 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: luis.cueva
+17 jul 2020 15:05:50,817 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:05:57,507 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:06:02,863 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:402) - Ingreso a la pantalla de proveedores sabrina.spellman
+17 jul 2020 15:06:04,046 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:771) - Limpio los campos
+17 jul 2020 15:06:20,926 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:771) - Limpio los campos
+17 jul 2020 15:06:28,478 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:733) - Volvio al menu Principal
+17 jul 2020 15:06:28,514 DEBUG [AWT-EventQueue-0] (frm_proveedores.java:740) - volvio al menu principal sabrina.spellman
+17 jul 2020 15:06:49,386 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:411) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:06:49,967 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:06:53,391 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+17 jul 2020 15:08:48,478 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:08:57,066 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:09:05,077 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:418) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:09:06,322 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:09:14,800 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:09:21,764 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:418) - Cerro Sesion: luis.cueva
+17 jul 2020 15:09:22,778 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:09:24,631 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+17 jul 2020 15:12:05,904 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:12:25,651 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:12:30,139 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:419) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:12:31,355 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:12:37,072 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:14:53,734 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:346) - Salio del sistema: luis.cueva
+17 jul 2020 15:15:40,477 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:15:49,906 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:17:00,730 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:346) - Salio del sistema: luis.cueva
+17 jul 2020 15:17:17,785 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:17:27,345 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:17:42,803 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:419) - Cerro Sesion: luis.cueva
+17 jul 2020 15:17:43,702 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:17:52,760 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:445) - Salio del sistema
+17 jul 2020 15:17:56,258 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:17:58,786 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:443) - Ingreso a la pantalla de compras: sabrina.spellman
+17 jul 2020 15:18:06,515  INFO [AWT-EventQueue-0] (ModeloCompra1.java:979) - Vuelve al menu principal
+17 jul 2020 15:18:09,753 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:346) - Salio del sistema: sabrina.spellman
+17 jul 2020 15:18:19,227 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:18:26,484 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:18:49,777 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:419) - Cerro Sesion: luis.cueva
+17 jul 2020 15:18:50,756 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:18:57,184 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:19:15,647 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:435) - Ingreso a la pantalla de productos: sabrina.spellman
+17 jul 2020 15:19:24,558 DEBUG [AWT-EventQueue-0] (Producto.java:872) - se limpian los campos
+17 jul 2020 15:19:27,728 DEBUG [AWT-EventQueue-0] (Producto.java:799) - Vuelve al menu principal: sabrina.spellman
+17 jul 2020 15:19:32,407 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:19:37,306 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:19:40,266 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:346) - Salio del sistema: sabrina.spellman
+17 jul 2020 15:19:53,418 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:20:07,510 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:20:12,018 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:20:15,518 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:20:31,999 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:346) - Salio del sistema: sabrina.spellman
+17 jul 2020 15:21:20,850 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:21:34,509 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:21:38,667 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:21:42,929 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:21:46,810 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:25:37,653 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:25:52,379 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:25:55,535 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:25:59,351 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:27:17,125 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:27:27,980 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:27:32,967 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:27:36,430 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:28:32,213 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:28:45,662 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:28:48,606 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:28:51,073 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:33:12,032 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:33:39,647 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:33:45,263 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:33:50,420 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:35:09,735 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:35:24,600 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:35:27,849 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:357) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:35:31,013 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:38:04,409 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:38:20,369 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:41:03,568 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:354) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:41:06,292 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:41:07,710 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:453) - Ingreso al menu de reportes: sabrina.spellman
+17 jul 2020 15:41:10,162 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:416) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:41:11,186 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:41:21,902 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Allan Torres
+17 jul 2020 15:41:31,729 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:416) - Cerro Sesion: allan.torres
+17 jul 2020 15:41:32,791 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:43:46,133 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+17 jul 2020 15:44:12,851 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:509) - Salio del sistema
+17 jul 2020 15:44:15,370 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:509) - Salio del sistema
+17 jul 2020 15:46:51,110 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:46:57,900 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:47:13,920 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1503) - Volvio al menu principal: luis.cueva
+17 jul 2020 15:47:30,607 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1503) - Volvio al menu principal: luis.cueva
+17 jul 2020 15:47:32,691 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:343) - Salio del sistema: luis.cueva
+17 jul 2020 15:47:47,670 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:47:58,501 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:48:07,961 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1226) - Salio del sistema
+17 jul 2020 15:48:40,989 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:48:47,771 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:49:43,238 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:49:49,502 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:50:01,220 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:343) - Salio del sistema: luis.cueva
+17 jul 2020 15:50:07,395 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:50:18,470 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:50:31,597 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:343) - Salio del sistema: sabrina.spellman
+17 jul 2020 15:51:19,765 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:51:25,236 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:51:38,372 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1138) - Edicion exitosa
+17 jul 2020 15:51:42,801 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1226) - Salio del sistema
+17 jul 2020 15:53:45,077 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:54:01,011 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:445) - Salio del sistema
+17 jul 2020 15:54:06,426 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 15:54:10,564 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:354) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 15:54:14,030 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 15:54:22,155 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:416) - Cerro Sesion: luis.cueva
+17 jul 2020 15:54:23,108 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:54:37,343 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:55:55,648 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:56:08,271 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:56:15,115 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:418) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:56:16,086 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:57:02,123 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: 
+17 jul 2020 15:57:04,571 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:57:13,097 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Allan Torres
+17 jul 2020 15:58:16,046 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: allan.torres
+17 jul 2020 15:58:16,957 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:58:38,733 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 15:58:48,352 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: sabrina.spellman
+17 jul 2020 15:58:49,196 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 15:58:58,545 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Allan Torres
+17 jul 2020 15:59:03,120 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:366) - Ingreso a la pantalla de registro de empleados
+17 jul 2020 15:59:05,160 DEBUG [AWT-EventQueue-0] (RegistroClientes.java:1029) - volvio al menu principal: allan.torres
+17 jul 2020 16:15:56,566 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:16:09,769 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 16:16:23,318 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: sabrina.spellman
+17 jul 2020 16:16:24,710 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:16:34,963 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 16:16:37,546 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:353) - Ingreso a la pantalla de registro de ventas
+17 jul 2020 16:16:39,719 DEBUG [AWT-EventQueue-0] (ModeloVenta.java:981) - vuelve al menu principal
+17 jul 2020 16:16:49,144 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: sabrina.spellman
+17 jul 2020 16:16:50,646 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:16:58,591 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 16:18:10,311 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:342) - Salio del sistema: luis.cueva
+17 jul 2020 16:18:30,307 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:18:39,829 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 16:18:51,693 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: luis.cueva
+17 jul 2020 16:18:53,076 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:19:00,922 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 16:19:27,059 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: sabrina.spellman
+17 jul 2020 16:19:28,455 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:19:36,619 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Allan Torres
+17 jul 2020 16:19:47,277 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:415) - Cerro Sesion: allan.torres
+17 jul 2020 16:19:48,057 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:20:01,387 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+17 jul 2020 16:20:42,279 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:20:56,070 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Allan Torres
+17 jul 2020 16:21:03,851 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: allan.torres
+17 jul 2020 16:21:05,396 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:21:11,925 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 16:21:49,081 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:21:56,115 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Luis Cueva
+17 jul 2020 16:22:15,454 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: luis.cueva
+17 jul 2020 16:22:16,976 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:22:25,969 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Allan Torres
+17 jul 2020 16:22:30,980 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:426) - Ingreso a la pantalla de productos: allan.torres
+17 jul 2020 16:22:33,037 DEBUG [AWT-EventQueue-0] (Producto.java:800) - Vuelve al menu principal: allan.torres
+17 jul 2020 16:22:35,079 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:337) - Salio del sistema: allan.torres
+17 jul 2020 16:27:20,596 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:27:27,682 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Allan Torres
+17 jul 2020 16:27:43,741 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: allan.torres
+17 jul 2020 16:27:45,027 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:27:52,231 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:427) - Se logueo exitosamente: Sabrina Spellman
+17 jul 2020 16:27:58,315 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:448) - Ingreso al menu de reportes: sabrina.spellman
+17 jul 2020 16:28:14,433 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: sabrina.spellman
+17 jul 2020 16:28:15,749 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+17 jul 2020 16:28:17,650 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:500) - Salio del sistema: 
+18 jul 2020 10:59:25,496 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 10:59:42,708 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 10:59:45,564 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 10:59:47,299 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 10:59:54,027 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:03:37,962 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:03:44,267 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:429) - Se logueo exitosamente: Luis Cueva
+18 jul 2020 11:04:15,275  INFO [AWT-EventQueue-0] (RegistrarEmpleados.java:904) - Registro Exitoso: 
+18 jul 2020 11:04:34,721 DEBUG [AWT-EventQueue-0] (RegistrarEmpleados.java:1226) - Salio del sistema
+18 jul 2020 11:14:57,103 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:15:13,455 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:15:15,124 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:15:16,394 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:15:20,053 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:15:30,047 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:15:57,656 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:513) - Salio del sistema: 
+18 jul 2020 11:19:11,428 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:19:25,916 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:513) - Salio del sistema: 
+18 jul 2020 11:19:51,610 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:19:58,725 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:429) - Se logueo exitosamente: Luis Cueva
+18 jul 2020 11:23:59,125 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:24:17,348 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:24:19,779 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:24:22,340 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:24:32,534 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:24:42,765 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:25:27,315 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:429) - Se logueo exitosamente: Luis Cueva
+18 jul 2020 11:25:44,476 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: luis.cueva
+18 jul 2020 11:25:45,320 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:25:55,515 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:25:58,659 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:429) - Se logueo exitosamente: Sabrina Spellman
+18 jul 2020 11:26:37,848 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: sabrina.spellman
+18 jul 2020 11:26:38,628 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:26:45,749 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:429) - Se logueo exitosamente: Allan Torres
+18 jul 2020 11:27:05,794 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: allan.torres
+18 jul 2020 11:27:06,458 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:27:15,481 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:447) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:27:25,430 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:429) - Se logueo exitosamente: Luis Cueva
+18 jul 2020 11:28:02,232 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: luis.cueva
+18 jul 2020 11:28:03,043 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:28:11,749 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:429) - Se logueo exitosamente: Allan Torres
+18 jul 2020 11:28:16,139 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:434) - Ingreso a la pantalla de compras: allan.torres
+18 jul 2020 11:28:19,043  INFO [AWT-EventQueue-0] (ModeloCompra1.java:979) - Vuelve al menu principal
+18 jul 2020 11:28:29,549 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: allan.torres
+18 jul 2020 11:28:30,157 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:31:22,320 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:31:25,931 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:513) - Salio del sistema: 
+18 jul 2020 11:31:30,279 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:476) - Ingreso campos vacios
+18 jul 2020 11:31:31,663 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:515) - Salio del sistema: 
+18 jul 2020 11:31:40,501 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:31:51,197 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:430) - Se logueo exitosamente: Luis Cueva
+18 jul 2020 11:31:58,059 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: luis.cueva
+18 jul 2020 11:31:59,652 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:32:08,316 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:448) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:32:10,125 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:448) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:32:11,762 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:448) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:32:16,107 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:448) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:32:28,537 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:33:11,809 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:448) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:33:14,121 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:448) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:33:16,250 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:448) - Ingreso mal el usuario o la contraseña
+18 jul 2020 11:33:22,508 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:430) - Se logueo exitosamente: Allan Torres
+18 jul 2020 11:33:33,174 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: allan.torres
+18 jul 2020 11:33:34,134 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:33:41,485 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:430) - Se logueo exitosamente: Allan Torres
+18 jul 2020 11:33:48,613 DEBUG [AWT-EventQueue-0] (menuPrincipal.java:410) - Cerro Sesion: allan.torres
+18 jul 2020 11:33:49,788 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:43) - Inicio el sistema
+18 jul 2020 11:33:57,598 DEBUG [AWT-EventQueue-0] (Pantalla_Inicio_Sesion.java:515) - Salio del sistema: 

@@ -22,7 +22,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import menu.menuPrincipal;
 import org.apache.log4j.*;
+
 /**
  *
  * @author LENOVO
@@ -32,14 +34,15 @@ public final class ContactoC extends javax.swing.JFrame {
     /**
      *
      */
-     final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContactoC.class);
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ContactoC.class);
+
     public ContactoC() {
         initComponents();
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
-        
+
     }
 
     void mostrardatos(String valor) {
@@ -115,7 +118,7 @@ public final class ContactoC extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         num_telefonico = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        usuario = new javax.swing.JLabel();
+        usuarios = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         rol = new javax.swing.JLabel();
         idcc = new javax.swing.JLabel();
@@ -343,7 +346,7 @@ public final class ContactoC extends javax.swing.JFrame {
 
         jLabel8.setText("Usuario: ");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 70, 20));
+        getContentPane().add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 70, 20));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
@@ -364,103 +367,123 @@ public final class ContactoC extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-        if (extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
-            logger.debug("los campos no pueden ir vacios");
-        } else {
+        String sql;
+        String cap1 = "";
 
-            if (esEmail(correos.getText())) {
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
 
-                if (existeUsuario(contacto.getText()) == 0) {
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
 
-                    if (existeCorreo(correos.getText()) == 0) {
+            }
+            if (cap1.equals("activo")) {
 
-                        if (existeTel(num_telefonico.getText()) == 0) {
+                if (extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
+                    logger.debug("los campos no pueden ir vacios");
+                } else {
 
-                            if (existeNum(num_celular.getText()) == 0) {
-                                if (num_celular.getText().length() >= 8) {
-                                    if (num_telefonico.getText().length() >= 8) {
-                                        if (extension.getText().length() >= 3) {
-                                            if (num_telefonico.getText().startsWith("2")) {
-                                                    if(num_celular.getText().startsWith("3") || num_celular.getText().startsWith("8") ||num_celular.getText().startsWith("9")){
+                    if (esEmail(correos.getText())) {
 
-                                            try {
+                        if (existeUsuario(contacto.getText()) == 0) {
 
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `contacto_cliente` (`ID_Contacto_Proveedor`, `extension`, `num_Telefonica`, `Celular`, `correo`) VALUES (NULL, ?, ?, ?, ?)");
-                                                
-                                                pst.setString(1, extension.getText());
-                                                pst.setString(2, num_telefonico.getText());
-                                                pst.setString(3, num_celular.getText());
-                                                pst.setString(4, correos.getText());
-                                                
+                            if (existeCorreo(correos.getText()) == 0) {
 
-                                                int a = pst.executeUpdate();
-                                                if (a > 0) {
-                                                    JOptionPane.showMessageDialog(null, "Registro exitoso");
-                                                    logger.debug("Registro guardado exitosamente");
-                                                    mostrardatos("");
+                                if (existeTel(num_telefonico.getText()) == 0) {
+
+                                    if (existeNum(num_celular.getText()) == 0) {
+                                        if (num_celular.getText().length() >= 8) {
+                                            if (num_telefonico.getText().length() >= 8) {
+                                                if (extension.getText().length() >= 3) {
+                                                    if (num_telefonico.getText().startsWith("2")) {
+                                                        if (num_celular.getText().startsWith("3") || num_celular.getText().startsWith("8") || num_celular.getText().startsWith("9")) {
+
+                                                            try {
+
+                                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `contacto_cliente` (`ID_Contacto_Proveedor`, `extension`, `num_Telefonica`, `Celular`, `correo`) VALUES (NULL, ?, ?, ?, ?)");
+
+                                                                pst.setString(1, extension.getText());
+                                                                pst.setString(2, num_telefonico.getText());
+                                                                pst.setString(3, num_celular.getText());
+                                                                pst.setString(4, correos.getText());
+
+                                                                int a = pst.executeUpdate();
+                                                                if (a > 0) {
+                                                                    JOptionPane.showMessageDialog(null, "Registro exitoso");
+                                                                    logger.debug("Registro guardado exitosamente");
+                                                                    mostrardatos("");
+                                                                } else {
+                                                                    JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                                    logger.debug("Error, no se guardo el contacto");
+                                                                }
+
+                                                            } catch (Exception e) {
+                                                                logger.error("Error: " + e.getMessage());
+
+                                                            }
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(null, "Numero celular debe empezar 3, 8 o 9");
+                                                            logger.debug("Error, inserto un numero de celular que no empieza con 3, 8 o 9");
+                                                        }
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(null, "Numero telefonico debe empezar con 2");
+                                                        logger.debug("Error, inserto un numero de telefono que no empieza con 2");
+                                                    }
+
                                                 } else {
-                                                    JOptionPane.showMessageDialog(null, "Error al agregar");
-                                                    logger.debug("Error, no se guardo el contacto");
+
+                                                    JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                                                    logger.debug("Error, inserto una extension con menos de 3 catacteres");
                                                 }
 
-                                            } catch (Exception e) {
-                                                logger.error("Error: "+e.getMessage());
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
+                                                logger.debug("Error, inserto un numero de telefono con menos de 8 caracteres");
+                                            }
 
-                                            }
-                                                    }else{
-                                                        JOptionPane.showMessageDialog(null, "Numero celular debe empezar 3, 8 o 9");
-                                                        logger.debug("Error, inserto un numero de celular que no empieza con 3, 8 o 9");
-                                                    }
                                         } else {
-                                            JOptionPane.showMessageDialog(null, "Numero telefonico debe empezar con 2");
-                                            logger.debug("Error, inserto un numero de telefono que no empieza con 2");
+                                            JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
+                                            logger.debug("Error, inserto un numero de celular con menos de 8 caracteres");
+
                                         }
-                                                    
-                                            }else{
-                                                
-                                                JOptionPane.showMessageDialog(null,"La casilla de extencion es de 3 caracteres");
-                                                logger.debug("Error, inserto una extension con menos de 3 catacteres");
-                                            }
-                                        
-                                                        
+
                                     } else {
-                                        JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
-                                        logger.debug("Error, inserto un numero de telefono con menos de 8 caracteres");
+                                        JOptionPane.showMessageDialog(null, "El Numero de Celular ya existe");
+                                        logger.debug("Error, inserto un numero de celular que ya existia");
                                     }
 
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
-                                    logger.debug("Error, inserto un numero de celular con menos de 8 caracteres");
-
+                                    JOptionPane.showMessageDialog(null, "El Numero de Telefono ya existe");
+                                    logger.debug("Error, inserto un numero de telefono ya existente");
                                 }
 
                             } else {
-                                JOptionPane.showMessageDialog(null, "El Numero de Celular ya existe");
-                                logger.debug("Error, inserto un numero de celular que ya existia");
+                                JOptionPane.showMessageDialog(null, "El correo ya existe");
+                                logger.debug("Error, inserto un correo ya existente");
                             }
 
                         } else {
-                            JOptionPane.showMessageDialog(null, "El Numero de Telefono ya existe");
-                            logger.debug("Error, inserto un numero de telefono ya existente");
-                        }
+                            JOptionPane.showMessageDialog(null, "El usuario ya existe");
+                            logger.debug("Error, inserto un id ya existente");
 
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(null, "El correo ya existe");
-                        logger.debug("Error, inserto un correo ya existente");
+                        JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
+                        logger.debug("Error, inserto un correo invalido");
                     }
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "El usuario ya existe");
-                    logger.debug("Error, inserto un id ya existente");
-
                 }
+
             } else {
-                JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
-                logger.debug("Error, inserto un correo invalido");
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
             }
 
-        } 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+        }
         contacto.setText("");
         extension.setText("");
         num_telefonico.setText("");
@@ -629,41 +652,62 @@ public final class ContactoC extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-        if (contacto.getText().equals("") || extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
-        } else {
+        String sql;
+        String cap1 = "";
 
-            if (esEmail(correos.getText())) {
-                if (num_celular.getText().length() >= 8) {
-                    if (num_telefonico.getText().length() >= 8) {
-                        if (extension.getText().length() >= 3) {
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
 
-                            try {
-                                PreparedStatement pst = cn.prepareStatement("UPDATE contacto_cliente  SET  ID_Contacto_Proveedor='" + contacto.getText() + "'  ,extension='" + extension.getText() + "', num_Telefonica='" + num_telefonico.getText() + "',Celular='" + num_celular.getText() + "',correo='" + correos.getText() + "' WHERE ID_Contacto_Proveedor='" + id + "' ");
-                                id = contacto.getText();
-                                pst.executeUpdate();
-                                JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+            while (rs.next()) {
+                cap1 = rs.getString("modificar");
 
-                                mostrardatos("");
-                            } catch (Exception e) {
-                                System.out.print(e.getMessage());
+            }
+            if (cap1.equals("activo")) {
+
+                if (contacto.getText().equals("") || extension.getText().equals("") || num_telefonico.getText().equals("") || correos.getText().equals("") || num_celular.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Hay campos  vacios, debe llenar todos los campos");
+                } else {
+
+                    if (esEmail(correos.getText())) {
+                        if (num_celular.getText().length() >= 8) {
+                            if (num_telefonico.getText().length() >= 8) {
+                                if (extension.getText().length() >= 3) {
+
+                                    try {
+                                        PreparedStatement pst = cn.prepareStatement("UPDATE contacto_cliente  SET  ID_Contacto_Proveedor='" + contacto.getText() + "'  ,extension='" + extension.getText() + "', num_Telefonica='" + num_telefonico.getText() + "',Celular='" + num_celular.getText() + "',correo='" + correos.getText() + "' WHERE ID_Contacto_Proveedor='" + id + "' ");
+                                        id = contacto.getText();
+                                        pst.executeUpdate();
+                                        JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+
+                                        mostrardatos("");
+                                    } catch (Exception e) {
+                                        System.out.print(e.getMessage());
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                                }
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
                             }
+
                         } else {
-                            JOptionPane.showMessageDialog(null, "La casilla de extencion es de 3 caracteres");
+                            JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
+
                         }
 
                     } else {
-                        JOptionPane.showMessageDialog(null, "La casilla de numero telefonico es de 8 caracteres");
+                        JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
                     }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "La casilla de numero celular es de 8 caracteres");
-
                 }
-
             } else {
-                JOptionPane.showMessageDialog(null, "El correo es invalido. Ejemplo: nombre.apellido@gmail.com");
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
             }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
         }
         nuevo();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -700,41 +744,248 @@ public final class ContactoC extends javax.swing.JFrame {
     private void jTextField02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField02ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField02ActionPerformed
-    
-    
-    public Icon icono(String path, int width, int height){
+
+    public Icon icono(String path, int width, int height) {
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
-                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+                getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
         return img;
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tabla1.getSelectedRow();
         String cod = "";
         cod = tabla1.getValueAt(fila, 0).toString();
-        if (i == 0) { 
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
         try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM contacto_cliente  WHERE ID_Contacto_Proveedor='" + cod + "'");
-            pst.executeUpdate();
-            mostrardatos("");
-            JOptionPane.showMessageDialog(null, "Se a eliminado con exito");// TODO add your handling code here:
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("eliminar");
+
+            }
+            if (cap1.equals("activo")) {
+                if (i == 0) {
+                    try {
+                        PreparedStatement pst = cn.prepareStatement("DELETE FROM contacto_cliente  WHERE ID_Contacto_Proveedor='" + cod + "'");
+                        pst.executeUpdate();
+                        mostrardatos("");
+                        JOptionPane.showMessageDialog(null, "Se a eliminado con exito");// TODO add your handling code here:
+                    } catch (Exception e) {
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+            }
+
         } catch (Exception e) {
-        }
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
         RegistroClientes rg = new RegistroClientes();
-        RegistroClientes.usuario.setText(usuario.getText());
+        RegistroClientes.usuario.setText(usuarios.getText());
         RegistroClientes.rolC.setText(rol.getText());
         RegistroClientes.idc.setText(idcc.getText());
         rg.setVisible(true);
+
+        validacion(usuarios.getText());
+        validacionCliente(usuarios.getText());
+        validacionProveedor(usuarios.getText());
+        validacionCompra(usuarios.getText());
+        validacionProductos(usuarios.getText());
+        validacionVenta(usuarios.getText());
         this.dispose();
     }//GEN-LAST:event_jToggleButton1MouseClicked
+
+    void validacionVenta(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registrarVenta.setVisible(false);
+                menuPrincipal.jLabel3.setVisible(false);
+            } else {
+                menuPrincipal.registrarVenta.setVisible(true);
+                menuPrincipal.jLabel3.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionProductos(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton7.setVisible(false);
+                menuPrincipal.jLabel7.setVisible(false);
+            } else {
+                menuPrincipal.jButton7.setVisible(true);
+                menuPrincipal.jLabel7.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionCompra(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton1.setVisible(false);
+                menuPrincipal.jLabel1.setVisible(false);
+            } else {
+                menuPrincipal.jButton1.setVisible(true);
+                menuPrincipal.jLabel1.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionProveedor(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton2.setVisible(false);
+                menuPrincipal.jLabel8.setVisible(false);
+            } else {
+                menuPrincipal.jButton2.setVisible(true);
+                menuPrincipal.jLabel8.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionCliente(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleado.setVisible(false);
+                menuPrincipal.jLabel5.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleado.setVisible(true);
+                menuPrincipal.jLabel5.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacion(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleados1.setVisible(false);
+                menuPrincipal.jLabel4.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleados1.setVisible(true);
+                menuPrincipal.jLabel4.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
@@ -898,7 +1149,7 @@ public final class ContactoC extends javax.swing.JFrame {
     private javax.swing.JTextField num_telefonico;
     public static javax.swing.JLabel rol;
     private javax.swing.JTable tabla1;
-    public static javax.swing.JLabel usuario;
+    public static javax.swing.JLabel usuarios;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 

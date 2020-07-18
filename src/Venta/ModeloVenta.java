@@ -35,24 +35,27 @@ import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
 import org.apache.log4j.*;
+
 /**
  *
  * @author Hector
  */
 public class ModeloVenta extends javax.swing.JFrame {
-final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ModeloVenta.class);
+
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ModeloVenta.class);
+
     public ModeloVenta() {
         initComponents();
         this.setLocationRelativeTo(null);
         PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
-        
-        Calendar cal= Calendar.getInstance();
+
+        Calendar cal = Calendar.getInstance();
         String fecha;
-        fecha = cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
+        fecha = cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND);
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
-        
+
     }
 
     void mostrardatos(String valor) {
@@ -71,7 +74,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         if (valor.equals("")) {
             sql = "SELECT * FROM detalleventa";
         } else {
-            sql = "SELECT * FROM detalleventa WHERE (IdDetalleVenta='" + valor + "'OR producto_id ='"+ valor + "'OR cantidad ='" + valor + "'OR precio='" + valor + "')";
+            sql = "SELECT * FROM detalleventa WHERE (IdDetalleVenta='" + valor + "'OR producto_id ='" + valor + "'OR cantidad ='" + valor + "'OR precio='" + valor + "')";
         }
 
         String[] datos = new String[4];
@@ -83,7 +86,6 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-               
 
                 modelo.addRow(datos);
             }
@@ -152,7 +154,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jLabel19 = new javax.swing.JLabel();
         subt = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        usuariosth = new javax.swing.JLabel();
+        usuarios = new javax.swing.JLabel();
         rolth = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
@@ -483,7 +485,7 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Monto x Producto");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
-        getContentPane().add(usuariosth, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 700, 40, 20));
+        getContentPane().add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 700, 40, 20));
         getContentPane().add(rolth, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 700, 30, 10));
 
         pack();
@@ -500,12 +502,12 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       Object[] options = {"SI", "NO"};
-         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-        
-        if (i == 0) { 
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?", "Seleccione una opción", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
+
+        if (i == 0) {
             logger.debug("Salio del sistema");
-        System.exit(0);
+            System.exit(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -534,60 +536,52 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
 
     private void btnBuscarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCliMouseClicked
         // TODO add your handling code here:
-         if(txtCodCliente.getText().length() == 1 || txtCodCliente.getText().length() == 2 || txtCodCliente.getText().length() == 3){
-        
-        try {
-            String num_id_cliente = txtCodCliente.getText();
+        if (txtCodCliente.getText().length() == 1 || txtCodCliente.getText().length() == 2 || txtCodCliente.getText().length() == 3) {
 
-            ConexionSQL cc = new ConexionSQL();
-            Connection nn = cc.getConnection();
-           
-                    
+            try {
+                String num_id_cliente = txtCodCliente.getText();
 
-            PreparedStatement pst = nn.prepareStatement("SELECT * FROM cliente where (Cli_id =?)");
-            
-            
-            
-            pst.setString(1, num_id_cliente);
-            ResultSet rs = pst.executeQuery();
+                ConexionSQL cc = new ConexionSQL();
+                Connection nn = cc.getConnection();
 
-            if (rs.next()) {
-                txtcli.setText(rs.getString("Nombre_Cliente"));
-                logger.debug("Se busca al cliente");
-            } else {
-                JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
-                logger.debug("No se encontro al cliente");
+                PreparedStatement pst = nn.prepareStatement("SELECT * FROM cliente where (Cli_id =?)");
+
+                pst.setString(1, num_id_cliente);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    txtcli.setText(rs.getString("Nombre_Cliente"));
+                    logger.debug("Se busca al cliente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
+                    logger.debug("No se encontro al cliente");
+                }
+            } catch (Exception e) {
             }
-        } catch (Exception e) {
-        }
-         
-         }else if(txtCodCliente.getText().length() == 13){
-              try {
-            String num_id_cliente = txtCodCliente.getText();
 
-            ConexionSQL cc = new ConexionSQL();
-            Connection nn = cc.getConnection();
-           
-                    
+        } else if (txtCodCliente.getText().length() == 13) {
+            try {
+                String num_id_cliente = txtCodCliente.getText();
 
-            PreparedStatement pst = nn.prepareStatement("SELECT * FROM cliente where (Num_Identidad_cliente =?)");
-            
-            
-            
-            pst.setString(1, num_id_cliente);
-            ResultSet rs = pst.executeQuery();
+                ConexionSQL cc = new ConexionSQL();
+                Connection nn = cc.getConnection();
 
-            if (rs.next()) {
-                txtcli.setText(rs.getString("Nombre_Cliente"));
-                logger.debug("Se busca al cliente");
-            } else {
-                JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
-                logger.debug("No se encontro al cliente");
+                PreparedStatement pst = nn.prepareStatement("SELECT * FROM cliente where (Num_Identidad_cliente =?)");
+
+                pst.setString(1, num_id_cliente);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    txtcli.setText(rs.getString("Nombre_Cliente"));
+                    logger.debug("Se busca al cliente");
+                } else {
+                    JOptionPane.showMessageDialog(null, "El Cliente no se encuentra registrado");
+                    logger.debug("No se encontro al cliente");
+                }
+            } catch (Exception e) {
             }
-        } catch (Exception e) {
+
         }
-         
-         }
     }//GEN-LAST:event_btnBuscarCliMouseClicked
 
     private void btnBuscarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdMouseClicked
@@ -621,84 +615,99 @@ final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(
     }//GEN-LAST:event_txtvendedorKeyPressed
 
     private void spinCantStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spinCantStateChanged
-        
+
         double role = Integer.parseInt(spinCant.getValue().toString());
         double prec = Integer.parseInt(txtprecio.getText());
-        
-        
-        
-        
+
         double pre = Integer.parseInt(txtprecio.getText().toString());
         double princi = Integer.parseInt(txtisv.getSelectedItem().toString());
-        
-        
-        double secon = princi *0.01;
-            double terc = secon * pre;
-            double to = terc  + pre;
-           
 
-      
-
-        
+        double secon = princi * 0.01;
+        double terc = secon * pre;
+        double to = terc + pre;
 
         double tot = role * to;
 
         subt.setText(String.valueOf(Math.round(tot)));
-        
-        
+
+
     }//GEN-LAST:event_spinCantStateChanged
 
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
         // TODO add your handling code here:
-        
-        
-if (txtCodProducto.getText().equals("")|| txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")||
-        txtvendedor.getText().equals("") ){
-      JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
-      logger.debug("Los campos no deben ir vacios");
-}else{
-    if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
-                    || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
-                    || spinCant.getValue().toString().startsWith("9")){
-        DefaultTableModel model = new DefaultTableModel();
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        String cap1 = "";
 
-        model = (DefaultTableModel) jTable2.getModel();
+        sql = "SELECT * FROM `venta_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
 
-        model.addRow(new Object[]{
-            txtserie.getText(),
-            txtCodProducto.getText(),
-            spinCant.getValue().toString(),
-            txtprecio.getText(),
-            subt.getText()
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
 
-        });
-
-        txtCodProducto.setText("");
-
-        txtprod.setText("");
-        logger.debug("agrega el producto a la factura");
-        }else{
-            JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
-            logger.debug("la cantidad a llevar no puede ser 0");
             }
-}
- double sum = 0;
+            if (cap1.equals("activo")) {
 
-        for (int i = 0; i < jTable2.getRowCount(); i++) {
+                if (txtCodProducto.getText().equals("") || txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")
+                        || txtvendedor.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
+                    logger.debug("Los campos no deben ir vacios");
+                } else {
+                    if (spinCant.getValue().toString().startsWith("1") || spinCant.getValue().toString().startsWith("2") || spinCant.getValue().toString().startsWith("3") || spinCant.getValue().toString().startsWith("4")
+                            || spinCant.getValue().toString().startsWith("5") || spinCant.getValue().toString().startsWith("6") || spinCant.getValue().toString().startsWith("7") || spinCant.getValue().toString().startsWith("8")
+                            || spinCant.getValue().toString().startsWith("9")) {
+                        DefaultTableModel model = new DefaultTableModel();
 
-            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 4).toString());
+                        model = (DefaultTableModel) jTable2.getModel();
 
+                        model.addRow(new Object[]{
+                            txtserie.getText(),
+                            txtCodProducto.getText(),
+                            spinCant.getValue().toString(),
+                            txtprecio.getText(),
+                            subt.getText()
+
+                        });
+
+                        txtCodProducto.setText("");
+
+                        txtprod.setText("");
+                        logger.debug("agrega el producto a la factura");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+                        logger.debug("la cantidad a llevar no puede ser 0");
+                    }
+                }
+                double sum = 0;
+
+                for (int i = 0; i < jTable2.getRowCount(); i++) {
+
+                    sum = sum + Integer.parseInt(jTable2.getValueAt(i, 4).toString());
+
+                }
+                Math.round(sum);
+
+                txtotalapagar.setText(String.valueOf(sum));
+
+                spinCant.setValue(0);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
         }
-        Math.round(sum);
-        
-        txtotalapagar.setText(String.valueOf(sum));
-        
-        spinCant.setValue(0);
+
+
     }//GEN-LAST:event_btnAddprecioActionPerformed
-void limpiar(){
-txtserie.setText("");
+    void limpiar() {
+        txtserie.setText("");
         txtCodCliente.setText("");
-        
+
         txtisv.setSelectedItem("0");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
         subt.setText("");
@@ -706,82 +715,287 @@ txtserie.setText("");
         txtprecio.setText("");
         txtcli.setText("");
         txtprod.setText("");
-        
+
         txtisv.setSelectedItem("0");
         txtcli.setText("");
         txtprecio.setText("");
         txtotalapagar.setText("");
-}
+    }
     private void btnventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnventaActionPerformed
 
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `venta_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
         try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
 
-            PreparedStatement pst = cn.prepareStatement("INSERT INTO `ventas` (`IdVentas`, `Cliente_IdCliente`, `Vendedor_IdVendedor`, `cai`, `monto`, `isv`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
-            
-            pst.setString(1, txtCodCliente.getText());
-            pst.setString(2, txtvendedor.getText());
-            pst.setString(3, txtcai.getText());
-            pst.setString(4, txtotalapagar.getText());
-            pst.setString(5, txtisv.getSelectedItem().toString());  
-            pst.setString(6, fechar.getFecha());
-            
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
 
-            int a = pst.executeUpdate();
-            if (a > 0) {
-                JOptionPane.showMessageDialog(null, "Registro exitoso");
-                logger.debug("Realizo una venta exitosa");
-                limpiar();
-                mostrardatos("");
+            }
+            if (cap1.equals("activo")) {
+
+                try {
+
+                    PreparedStatement pst = cn.prepareStatement("INSERT INTO `ventas` (`IdVentas`, `Cliente_IdCliente`, `Vendedor_IdVendedor`, `cai`, `monto`, `isv`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+
+                    pst.setString(1, txtCodCliente.getText());
+                    pst.setString(2, txtvendedor.getText());
+                    pst.setString(3, txtcai.getText());
+                    pst.setString(4, txtotalapagar.getText());
+                    pst.setString(5, txtisv.getSelectedItem().toString());
+                    pst.setString(6, fechar.getFecha());
+
+                    int a = pst.executeUpdate();
+                    if (a > 0) {
+                        JOptionPane.showMessageDialog(null, "Registro exitoso");
+                        logger.debug("Realizo una venta exitosa");
+                        limpiar();
+                        mostrardatos("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al agregar");
+                        logger.debug("Error al momento de registrar la venta");
+                    }
+
+                } catch (Exception e) {
+
+                }
+
+                txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+                double sum = 0;
+
+                for (int i = 0; i < jTable2.getRowCount(); i++) {
+
+                    sum = sum + Integer.parseInt(jTable2.getValueAt(i, 5).toString());
+
+                }
+                Math.round(sum);
+                txtotalapagar.setText(Integer.toString((int) sum));
+
             } else {
-                JOptionPane.showMessageDialog(null, "Error al agregar");
-                logger.debug("Error al momento de registrar la venta");
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+        }
+
+
+    }//GEN-LAST:event_btnventaActionPerformed
+
+    void validacionVenta(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registrarVenta.setVisible(false);
+                menuPrincipal.jLabel3.setVisible(false);
+            } else {
+                menuPrincipal.registrarVenta.setVisible(true);
+                menuPrincipal.jLabel3.setVisible(true);
             }
 
         } catch (Exception e) {
 
         }
-        
-        
-       
-        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
-        double sum = 0;
-        
 
-        for (int i = 0; i < jTable2.getRowCount(); i++) {
-            
-         
+    }
 
-            sum = sum + Integer.parseInt(jTable2.getValueAt(i, 5).toString()) ;
+    void validacionProductos(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton7.setVisible(false);
+                menuPrincipal.jLabel7.setVisible(false);
+            } else {
+                menuPrincipal.jButton7.setVisible(true);
+                menuPrincipal.jLabel7.setVisible(true);
+            }
+
+        } catch (Exception e) {
 
         }
-        Math.round(sum);
-        txtotalapagar.setText(Integer.toString((int) sum));
-        
-        
-         
-    }//GEN-LAST:event_btnventaActionPerformed
+    }
+
+    void validacionCompra(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton1.setVisible(false);
+                menuPrincipal.jLabel1.setVisible(false);
+            } else {
+                menuPrincipal.jButton1.setVisible(true);
+                menuPrincipal.jLabel1.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionProveedor(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton2.setVisible(false);
+                menuPrincipal.jLabel8.setVisible(false);
+            } else {
+                menuPrincipal.jButton2.setVisible(true);
+                menuPrincipal.jLabel8.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionCliente(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleado.setVisible(false);
+                menuPrincipal.jLabel5.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleado.setVisible(true);
+                menuPrincipal.jLabel5.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacion(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleados1.setVisible(false);
+                menuPrincipal.jLabel4.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleados1.setVisible(true);
+                menuPrincipal.jLabel4.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         SqlUsuarios modSql = new SqlUsuarios();
         usuarios mod = new usuarios();
-         
+
         Object[] options = {"SI", "NO"};
-         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-        
-        if (i == 0) { 
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?", "Seleccione una opción", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
+
+        if (i == 0) {
             logger.debug("vuelve al menu principal");
-        
-            menuPrincipal mp = new menuPrincipal();
+            
+            mod.setId_tipo(1);
+
+            menuPrincipal mp = new menuPrincipal(mod);
             mp.setVisible(true);
-        this.dispose();
-        
+
+            validacion(usuarios.getText());
+            validacionCliente(usuarios.getText());
+            validacionProveedor(usuarios.getText());
+            validacionCompra(usuarios.getText());
+            validacionProductos(usuarios.getText());
+            validacionVenta(usuarios.getText());
+            this.dispose();
+
         };
-         menuPrincipal.nombre.setText(usuariosth.getText());
-        menuPrincipal.rol.setText(rolth.getText());        
+        menuPrincipal.nombre.setText(usuarios.getText());
+        menuPrincipal.rol.setText(rolth.getText());
         menuPrincipal.idv.setText(txtvendedor.getText());
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -842,41 +1056,41 @@ txtserie.setText("");
         VerFacturaVenta ver = new VerFacturaVenta();
         ver.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
-  public Icon icono(String path, int width, int height){
+    public Icon icono(String path, int width, int height) {
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
-                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+                getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
         return img;
     }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = jTable2.getSelectedRow();
         String cod = "";
         cod = jTable2.getValueAt(fila, 1).toString();
-         
+
         txtotalapagar.setText("");
         txtprecio.setText("");
-        
+
         txtcli.setText("");
-      
-        if(i==0){
-        try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
-            pst.executeUpdate();
-            logger.debug("Factura cancelada con exito");
-            mostrardatos("");// TODO add your handling code here:
-            JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
-            
-        } catch (Exception e) {
+
+        if (i == 0) {
+            try {
+                PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
+                pst.executeUpdate();
+                logger.debug("Factura cancelada con exito");
+                mostrardatos("");// TODO add your handling code here:
+                JOptionPane.showMessageDialog(null, "Se a eliminado con exito");
+
+            } catch (Exception e) {
+            }
+
+            txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+
         }
-        
-        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
-        
-        }
-       limpiar();
+        limpiar();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void txtCodProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProductoActionPerformed
@@ -901,7 +1115,7 @@ txtserie.setText("");
     }//GEN-LAST:event_txtserieKeyTyped
 
     private void txtcaiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtcaiKeyTyped
-char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
 
         if (c < '0' || c > '9') {
             evt.consume();
@@ -910,38 +1124,34 @@ char c = evt.getKeyChar();
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-          ConexionSQL cc = new ConexionSQL();
+        ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = jTable2.getSelectedRow();
         String cod = "";
         cod = jTable2.getValueAt(fila, 1).toString();
-         
+
         txtotalapagar.setText("");
         txtprecio.setText("");
-        
+
         txtcli.setText("");
-       
-        
+
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detalleventa WHERE IdDetalleventa= '" + cod + "'");
             logger.debug("Limpia los campos");
             pst.executeUpdate();
-            
+
             mostrardatos("");// TODO add your handling code here:
-          
-            Calendar cal= Calendar.getInstance();
-        String fecha;
-        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE)+" "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
-        
-        
-            
+
+            Calendar cal = Calendar.getInstance();
+            String fecha;
+            fecha = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.DATE) + " " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND);
+
         } catch (Exception e) {
         }
-        
+
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
-        
-        
-       limpiar();
+
+        limpiar();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton3KeyTyped
@@ -1034,7 +1244,7 @@ char c = evt.getKeyChar();
     private javax.swing.JTextField txtprod;
     private javax.swing.JTextField txtserie;
     public static javax.swing.JTextField txtvendedor;
-    public static javax.swing.JLabel usuariosth;
+    public static javax.swing.JLabel usuarios;
     // End of variables declaration//GEN-END:variables
 
 }

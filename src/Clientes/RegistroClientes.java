@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import org.apache.log4j.*;
+
 /**
  *
  * @author luisc
@@ -40,33 +41,29 @@ public class RegistroClientes extends javax.swing.JFrame {
     /**
      * Creates new form RegistroClientes
      */
-    
     final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistroClientes.class);
+
     public RegistroClientes() {
         initComponents();
         mostrardatos("");
         PropertyConfigurator.configure("log4j.properties");
-        
-        
-         Calendar cal= Calendar.getInstance();
+
+        Calendar cal = Calendar.getInstance();
         String fecha;
-        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
-        
+        fecha = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.DATE);
+
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
-     this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
     }
-    
+
     ConexionSQL cc = new ConexionSQL();
     Connection cn = cc.getConnection();
-    
-    
-    
-    
-    void mostrardatos(String valor){
+
+    void mostrardatos(String valor) {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         DefaultTableModel modelo2 = new DefaultTableModel();
-        
+
         modelo2.addColumn("ID Cliente");
         modelo2.addColumn("Nombre Cliente");
         modelo2.addColumn("Apellido Cliente");
@@ -74,39 +71,36 @@ public class RegistroClientes extends javax.swing.JFrame {
         modelo2.addColumn("Numero de indentidad");
         modelo2.addColumn("RTN Cliente");
         modelo2.addColumn("Fecha Registro");
-        
-        
-        
+
         tablaclientes.setModel(modelo2);
         String sql = "";
-        if (valor.equals(""))
-        {
-            sql="SELECT Cli_id, NOmbre_Cliente, Apellido_Cliente, Direccion_Cliente,Num_Identidad_Cliente,rtn_Cliente,fecha_registro FROM cliente";
+        if (valor.equals("")) {
+            sql = "SELECT Cli_id, NOmbre_Cliente, Apellido_Cliente, Direccion_Cliente,Num_Identidad_Cliente,rtn_Cliente,fecha_registro FROM cliente";
+        } else {
+            sql = "SELECT * FROM cliente WHERE (Cli_id ='" + valor + "'OR Nombre_Cliente='" + valor + "'OR Apellido_Cliente='" + valor + "'OR rtn_Cliente='" + valor + "'OR Num_Identidad_cliente='" + valor + "'OR Direccion_Cliente='" + valor + "')";
         }
-        else{
-            sql= "SELECT * FROM cliente WHERE (Cli_id ='" +valor+ "'OR Nombre_Cliente='" +valor+"'OR Apellido_Cliente='"+valor+"'OR rtn_Cliente='"+valor+"'OR Num_Identidad_cliente='" +valor+"'OR Direccion_Cliente='"+valor+"')";
-        }  
-        
-        String [] datos = new String[7];
-        try{
+
+        String[] datos = new String[7];
+        try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 datos[0] = rs.getString(1);
-                datos[1]=rs.getString(2);
-                datos[2]=rs.getString(3);
-                datos[3]=rs.getString(4);
-                datos[4]=rs.getString(5);
-                datos[5]=rs.getString(6);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
                 datos[6] = rs.getString(7);
-                
+
                 modelo2.addRow(datos);
             }
             tablaclientes.setModel(modelo2);
-        }catch (SQLException ex){
-           Logger.getLogger(datos.class.getName()).log(Level.SEVERE, null, ex); 
+        } catch (SQLException ex) {
+            Logger.getLogger(datos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -368,6 +362,11 @@ public class RegistroClientes extends javax.swing.JFrame {
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/atras.jpg"))); // NOI18N
         jButton6.setBorder(null);
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -467,124 +466,156 @@ public class RegistroClientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
-    
+    void permisoGuardar() {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        try {
+            String sql = "INSERT INTO `cliente_estado` (`id`, `modificar`, `eliminar`, `guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', 'inactivo', 'inactivo', '" + usuario.getText() + "'))";
+            PreparedStatement ps7 = cc.prepareStatement(sql);
+            ps7.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         // TODO add your handling code here:
-       ConexionSQL cc = new ConexionSQL();
-       Connection cn = cc.getConnection();
-       if(txt_dir_cli.getText().contains("!") || txt_dir_cli.getText().contains("~")|| txt_dir_cli.getText().contains("`")||
-                   txt_dir_cli.getText().contains("@") || txt_dir_cli.getText().contains("$") || txt_dir_cli.getText().contains("%")||
-                    txt_dir_cli.getText().contains("^")||txt_dir_cli.getText().contains("&")||txt_dir_cli.getText().contains("*")||
-                    txt_dir_cli.getText().contains("(")||txt_dir_cli.getText().contains(")")||txt_dir_cli.getText().contains("-")||
-                    txt_dir_cli.getText().contains("_")||txt_dir_cli.getText().contains("+")||txt_dir_cli.getText().contains("=")){
-                    
-                    
-            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
-            logger.debug("Error, inserto caracteres especiales");
-            
-            }else{
-        if(txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~")|| txt_dir_cli.getText().equals("`")||
-                   txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")||
-                    txt_dir_cli.getText().equals("^")||txt_dir_cli.getText().equals("&")||txt_dir_cli.getText().equals("*")||
-                    txt_dir_cli.getText().equals("(")||txt_dir_cli.getText().equals(")")||txt_dir_cli.getText().equals("-")||
-                    txt_dir_cli.getText().equals("_")||txt_dir_cli.getText().equals("+")||txt_dir_cli.getText().equals("=")){
-                    
-                    
-            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
-            logger.debug("Error, inserto caracteres especiales");
-            }else{
-        if(txt_rtn_cliente.getText().equals("") || txt_nombre_cli.getText().equals("")
-            || txt_apellido_cli.getText().equals("") || txt_num_id_cli.getText().equals("")
-            || txt_dir_cli.getText().equals("")){
-        
-        JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos"); 
-        logger.debug("Error, trato de insertar con campos vacios");
-    
-    }else{
-       
-       try{
-           if(existeUsuario(txt_cli_id.getText())==0){
-            if(txt_num_id_cli.getText().length() >= 13){
-                if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
-                    if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
-                    if(txt_rtn_cliente.getText().length() >=14){
-                        if(existeId(txt_num_id_cli.getText())==0){
-                            if(existeRTN(txt_rtn_cliente.getText())==0){
-           
-           PreparedStatement pst = cn.prepareStatement("INSERT INTO `cliente` (`Cli_id`, `Nombre_Cliente`, `Apellido_Cliente`, `Direccion_Cliente`, `Num_Identidad_cliente`, `rtn_Cliente`, `contactoid`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, NULL,?);");
-                
-           pst.setString(1, txt_nombre_cli.getText());
-           pst.setString(3, txt_dir_cli.getText());
-           pst.setString(2, txt_apellido_cli.getText());
-           pst.setString(4, txt_num_id_cli.getText());
-           pst.setString(5, txt_rtn_cliente.getText()); 
-           pst.setString(6, rSLabelFecha1.getFecha());
-                    
-           int a = pst.executeUpdate();
-           if(a>0){
-               JOptionPane.showMessageDialog(null, "Registro Exitoso");
-               logger.info("Se registro exitosamente al cliente: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
-               nuevo();
-               mostrardatos("");
-           }else{
-               JOptionPane.showMessageDialog(null, "Error al agregar");
-                logger.info("Error no se agrego al cliente");
-           }
-                            }else{
-                                JOptionPane.showMessageDialog(null, "El RTN ya existe ingrese otro");
-                                logger.debug("Error, inserto un RTN que ya existia");
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
+
+            }
+            if (cap1.equals("activo")) {
+
+                if (txt_dir_cli.getText().contains("!") || txt_dir_cli.getText().contains("~") || txt_dir_cli.getText().contains("`")
+                        || txt_dir_cli.getText().contains("@") || txt_dir_cli.getText().contains("$") || txt_dir_cli.getText().contains("%")
+                        || txt_dir_cli.getText().contains("^") || txt_dir_cli.getText().contains("&") || txt_dir_cli.getText().contains("*")
+                        || txt_dir_cli.getText().contains("(") || txt_dir_cli.getText().contains(")") || txt_dir_cli.getText().contains("-")
+                        || txt_dir_cli.getText().contains("_") || txt_dir_cli.getText().contains("+") || txt_dir_cli.getText().contains("=")) {
+
+                    JOptionPane.showMessageDialog(null, "No se permiten caracteres especiales a parte del # y el .");
+                    logger.debug("Error, inserto caracteres especiales");
+
+                } else {
+                    if (txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~") || txt_dir_cli.getText().equals("`")
+                            || txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")
+                            || txt_dir_cli.getText().equals("^") || txt_dir_cli.getText().equals("&") || txt_dir_cli.getText().equals("*")
+                            || txt_dir_cli.getText().equals("(") || txt_dir_cli.getText().equals(")") || txt_dir_cli.getText().equals("-")
+                            || txt_dir_cli.getText().equals("_") || txt_dir_cli.getText().equals("+") || txt_dir_cli.getText().equals("=")) {
+
+                        JOptionPane.showMessageDialog(null, "No se permiten caracteres especiales a parte del # y el .");
+                        logger.debug("Error, inserto caracteres especiales");
+                    } else {
+                        if (txt_rtn_cliente.getText().equals("") || txt_nombre_cli.getText().equals("")
+                                || txt_apellido_cli.getText().equals("") || txt_num_id_cli.getText().equals("")
+                                || txt_dir_cli.getText().equals("")) {
+
+                            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+                            logger.debug("Error, trato de insertar con campos vacios");
+
+                        } else {
+
+                            try {
+                                if (existeUsuario(txt_cli_id.getText()) == 0) {
+                                    if (txt_num_id_cli.getText().length() >= 13) {
+                                        if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
+                                            if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
+                                                if (txt_rtn_cliente.getText().length() >= 14) {
+                                                    if (existeId(txt_num_id_cli.getText()) == 0) {
+                                                        if (existeRTN(txt_rtn_cliente.getText()) == 0) {
+
+                                                            PreparedStatement pst = cn.prepareStatement("INSERT INTO `cliente` (`Cli_id`, `Nombre_Cliente`, `Apellido_Cliente`, `Direccion_Cliente`, `Num_Identidad_cliente`, `rtn_Cliente`, `contactoid`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?, NULL,?);");
+
+                                                            pst.setString(1, txt_nombre_cli.getText());
+                                                            pst.setString(3, txt_dir_cli.getText());
+                                                            pst.setString(2, txt_apellido_cli.getText());
+                                                            pst.setString(4, txt_num_id_cli.getText());
+                                                            pst.setString(5, txt_rtn_cliente.getText());
+                                                            pst.setString(6, rSLabelFecha1.getFecha());
+
+                                                            int a = pst.executeUpdate();
+                                                            permisoGuardar();
+                                                            if (a > 0) {
+                                                                JOptionPane.showMessageDialog(null, "Registro Exitoso");
+
+                                                                logger.info("Se registro exitosamente al cliente: " + txt_nombre_cli.getText() + " " + txt_apellido_cli.getText());
+
+                                                                nuevo();
+                                                                mostrardatos("");
+                                                            } else {
+                                                                JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                                logger.info("Error no se agrego al cliente");
+                                                            }
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(null, "El RTN ya existe ingrese otro");
+                                                            logger.debug("Error, inserto un RTN que ya existia");
+                                                        }
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(null, "El numero de Identidad ya existe, ingrese otro");
+                                                        logger.debug("Error, inserto un Numero de Identidad ya Existente");
+                                                    }
+                                                } else {
+                                                    JOptionPane.showMessageDialog(null, "Error al agregar, el RTN debe ser de 14");
+                                                    logger.debug("Error, inserto un RTN con menos de 13 caracteres");
+                                                }
+                                            } else {
+                                                JOptionPane.showMessageDialog(null, "El numero de RTN solo puede empezar con 0 o con 1");
+                                                logger.debug("Error, inserto un RTN que no empezaba con 0 o 1");
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(null, "El numero de identidad solo puede empezar con 0 o con 1");
+                                            logger.debug("Error, inserto un numero de identidad que no empezaba con 0 o 1");
+                                        }
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "Error al agregar, el Num Identidad debe ser de 13");
+                                        logger.debug("Error, inserto un num de identidad menor a 13 caracteres");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Ingreso un Id que ya existia");
+                                    logger.debug("Error, ingreso un id que ya existia");
+                                }
+                            } catch (Exception e) {
+                                JOptionPane.showMessageDialog(null, "Error al Agregar" + e);
                             }
-                        }else{
-                            JOptionPane.showMessageDialog(null, "El numero de Identidad ya existe, ingrese otro");
-                            logger.debug("Error, inserto un Numero de Identidad ya Existente");
                         }
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Error al agregar, el RTN debe ser de 14");
-                        logger.debug("Error, inserto un RTN con menos de 13 caracteres");
                     }
-                    }else{
-                        JOptionPane.showMessageDialog(null,"El numero de RTN solo puede empezar con 0 o con 1");
-                        logger.debug("Error, inserto un RTN que no empezaba con 0 o 1");
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(null, "El numero de identidad solo puede empezar con 0 o con 1");
-                    logger.debug("Error, inserto un numero de identidad que no empezaba con 0 o 1");
                 }
-           }else{
-               JOptionPane.showMessageDialog(null, "Error al agregar, el Num Identidad debe ser de 13");
-               logger.debug("Error, inserto un num de identidad menor a 13 caracteres");
-           }
-           }else{
-               JOptionPane.showMessageDialog(null, "Ingreso un Id que ya existia");
-               logger.debug("Error, ingreso un id que ya existia");
-           }
-       }catch (Exception e){
-           JOptionPane.showMessageDialog(null, "Error al Agregar"+e);
-       }
-    }
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
         }
-       }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
-    
-    private int existeUsuario(String usuario) {                                              
-      
+    private int existeUsuario(String usuario) {
+
         ConexionSQL cc = new ConexionSQL();
-        
+
         Connection cn = cc.getConnection();
-        
+
         ResultSet rs = null;
         PreparedStatement ps = null;
-        
+
         String sql = "SELECT count(Cli_id) FROM cliente WHERE Cli_id = ?";
-    
+
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
@@ -592,24 +623,24 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
         return 1;
     }
-    
-     private int existeId(String usuario) {                                              
-      
+
+    private int existeId(String usuario) {
+
         ConexionSQL cc = new ConexionSQL();
-        
+
         Connection cn = cc.getConnection();
-        
+
         ResultSet rs = null;
         PreparedStatement ps = null;
-        
+
         String sql = "SELECT count(Cli_id) FROM cliente WHERE Num_Identidad_cliente = ?";
-    
+
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
@@ -617,24 +648,24 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
         return 1;
     }
-     
-      private int existeRTN(String usuario) {                                              
-      
+
+    private int existeRTN(String usuario) {
+
         ConexionSQL cc = new ConexionSQL();
-        
+
         Connection cn = cc.getConnection();
-        
+
         ResultSet rs = null;
         PreparedStatement ps = null;
-        
+
         String sql = "SELECT count(Cli_id) FROM cliente WHERE rtn_cliente = ?";
-    
+
         try {
             ps = cn.prepareStatement(sql);
             ps.setString(1, usuario);
             rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (Exception e) {
@@ -642,103 +673,147 @@ public class RegistroClientes extends javax.swing.JFrame {
         }
         return 1;
     }
-    
+
     private void txt_nombre_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombre_cliActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombre_cliActionPerformed
-void nuevo(){
-txt_cli_id.setText("");
-txt_nombre_cli.setText("");
-txt_apellido_cli.setText("");
-txt_rtn_cliente.setText("");
-txt_num_id_cli.setText("");
-txt_dir_cli.setText("");
-}
+    void nuevo() {
+        txt_cli_id.setText("");
+        txt_nombre_cli.setText("");
+        txt_apellido_cli.setText("");
+        txt_rtn_cliente.setText("");
+        txt_num_id_cli.setText("");
+        txt_dir_cli.setText("");
+    }
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
         nuevo();
-         logger.info("Limpio los campos");
+        logger.info("Limpio los campos");
     }//GEN-LAST:event_btn_nuevoActionPerformed
-    String id ="";
+    String id = "";
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         // TODO add your handling code here:
-       ConexionSQL cc = new ConexionSQL();
-       Connection cn = cc.getConnection();
-       
-       if(txt_cli_id.getText().equals("") || txt_nombre_cli.getText().equals("") || txt_apellido_cli.getText().equals("") || txt_dir_cli.getText().equals("") || 
-               txt_num_id_cli.getText().equals("") || txt_rtn_cliente.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios, debe llenarlos");
-             logger.debug("Error, trato de editar con campos vacios");
-       }else{
-            try{
-                if(txt_rtn_cliente.getText().length()>=14){
-                if(txt_num_id_cli.getText().length()>= 13){
-                    if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
-                    if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
-                PreparedStatement pst = cn.prepareStatement("UPDATE cliente SET Cli_id='"+txt_cli_id.getText()+"',Nombre_Cliente='"+txt_nombre_cli.getText()+"',Apellido_Cliente='"+txt_apellido_cli.getText()+"',Direccion_Cliente='"+txt_dir_cli.getText()+"',Num_Identidad_Cliente='"+txt_num_id_cli.getText()+"',rtn_Cliente='"+txt_rtn_cliente.getText()+"'WHERE Cli_id='"+id+"'");
-                     pst.executeUpdate();
-                        JOptionPane.showMessageDialog(null,"Se a modificado con exito");
-                        mostrardatos("");
-                         logger.info("Se modifico exitosamente al usuario: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
-                    }else{
-                        JOptionPane.showMessageDialog(null, "El numero de RTN debe empezar con 0 o con 1");
-                         logger.debug("Error, inserto un RTN que no empezaba con 0 o con 1");
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("modificar");
+
+            }
+            if (cap1.equals("activo")) {
+
+                if (txt_cli_id.getText().equals("") || txt_nombre_cli.getText().equals("") || txt_apellido_cli.getText().equals("") || txt_dir_cli.getText().equals("")
+                        || txt_num_id_cli.getText().equals("") || txt_rtn_cliente.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios, debe llenarlos");
+                    logger.debug("Error, trato de editar con campos vacios");
+                } else {
+                    try {
+                        if (txt_rtn_cliente.getText().length() >= 14) {
+                            if (txt_num_id_cli.getText().length() >= 13) {
+                                if (txt_num_id_cli.getText().startsWith("0") || txt_num_id_cli.getText().startsWith("1")) {
+                                    if (txt_rtn_cliente.getText().startsWith("0") || txt_rtn_cliente.getText().startsWith("1")) {
+                                        PreparedStatement pst = cn.prepareStatement("UPDATE cliente SET Cli_id='" + txt_cli_id.getText() + "',Nombre_Cliente='" + txt_nombre_cli.getText() + "',Apellido_Cliente='" + txt_apellido_cli.getText() + "',Direccion_Cliente='" + txt_dir_cli.getText() + "',Num_Identidad_Cliente='" + txt_num_id_cli.getText() + "',rtn_Cliente='" + txt_rtn_cliente.getText() + "'WHERE Cli_id='" + id + "'");
+                                        pst.executeUpdate();
+                                        JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                                        mostrardatos("");
+                                        logger.info("Se modifico exitosamente al usuario: " + txt_nombre_cli.getText() + " " + txt_apellido_cli.getText());
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "El numero de RTN debe empezar con 0 o con 1");
+                                        logger.debug("Error, inserto un RTN que no empezaba con 0 o con 1");
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 numeros");
+                                    logger.debug("Error, inserto un RTN con menos de 14 caracteres");
+                                }
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o con 1");
+                                logger.debug("Error, inserto un numero de identidad que no empezaba con 0 o con 1");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser de 13 numeros");
+                            logger.debug("Error, trato de guardar un numero de identidad con menos de 13 caracteres");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        logger.debug("Error, al momento de editar el cliente: " + txt_nombre_cli.getText() + " " + txt_apellido_cli.getText());
                     }
-                }else{
-                    JOptionPane.showMessageDialog(null, "El RTN debe ser de 14 numeros");
-                     logger.debug("Error, inserto un RTN con menos de 14 caracteres");
                 }
-                    }else{
-                        
-                        JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o con 1");
-                         logger.debug("Error, inserto un numero de identidad que no empezaba con 0 o con 1");
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser de 13 numeros");
-                     logger.debug("Error, trato de guardar un numero de identidad con menos de 13 caracteres");
-                }
-                }catch(Exception e){
-                    System.out.println(e.getMessage());
-                    logger.debug("Error, al momento de editar el cliente: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
-            } 
-       }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
+        }
     }//GEN-LAST:event_btn_editarActionPerformed
 
-    
-    public Icon icono(String path, int width, int height){
+    public Icon icono(String path, int width, int height) {
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
-                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+                getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
         return img;
     }
-    
+
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-       ConexionSQL cc = new ConexionSQL();
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
+        ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = tablaclientes.getSelectedRow();
         String cod = "";
         cod = tablaclientes.getValueAt(fila, 0).toString();
-        if (i == 0){
-        try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM cliente WHERE Cli_id='" + cod + "'");
-            int a = pst.executeUpdate();
-            
-            mostrardatos("");
 
-            if (a > 0) {
-                JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
-                logger.debug("se elimino exitosamente al cliente: "+txt_nombre_cli.getText()+" "+txt_apellido_cli.getText());
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
-                logger.debug("no se elimino exitosamente al cliente");
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("eliminar");
+
             }
+            if (cap1.equals("activo")) {
+
+                if (i == 0) {
+                    try {
+                        PreparedStatement pst = cn.prepareStatement("DELETE FROM cliente WHERE Cli_id='" + cod + "'");
+                        int a = pst.executeUpdate();
+
+                        mostrardatos("");
+
+                        if (a > 0) {
+                            JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                            logger.debug("se elimino exitosamente al cliente: " + txt_nombre_cli.getText() + " " + txt_apellido_cli.getText());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                            logger.debug("no se elimino exitosamente al cliente");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
+            }
+
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
         }
-        }
-       nuevo();
+        nuevo();
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
@@ -752,28 +827,221 @@ txt_dir_cli.setText("");
         mostrardatos(buscar_txt.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    void validacionVenta(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registrarVenta.setVisible(false);
+                menuPrincipal.jLabel3.setVisible(false);
+            } else {
+                menuPrincipal.registrarVenta.setVisible(true);
+                menuPrincipal.jLabel3.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionProductos(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton7.setVisible(false);
+                menuPrincipal.jLabel7.setVisible(false);
+            } else {
+                menuPrincipal.jButton7.setVisible(true);
+                menuPrincipal.jLabel7.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionCompra(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton1.setVisible(false);
+                menuPrincipal.jLabel1.setVisible(false);
+            } else {
+                menuPrincipal.jButton1.setVisible(true);
+                menuPrincipal.jLabel1.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionProveedor(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton2.setVisible(false);
+                menuPrincipal.jLabel8.setVisible(false);
+            } else {
+                menuPrincipal.jButton2.setVisible(true);
+                menuPrincipal.jLabel8.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionCliente(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleado.setVisible(false);
+                menuPrincipal.jLabel5.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleado.setVisible(true);
+                menuPrincipal.jLabel5.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacion(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleados1.setVisible(false);
+                menuPrincipal.jLabel4.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleados1.setVisible(true);
+                menuPrincipal.jLabel4.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         SqlUsuarios modSql = new SqlUsuarios();
         usuarios mod = new usuarios();
-        
-        menuPrincipal mp = new menuPrincipal();
+
+        menuPrincipal mp = new menuPrincipal(mod);
         mp.setVisible(true);
-        
+
+        validacion(usuario.getText());
+        validacionCliente(usuario.getText());
+        validacionProveedor(usuario.getText());
+        validacionCompra(usuario.getText());
+        validacionProductos(usuario.getText());
+        validacionVenta(usuario.getText());
+
         menuPrincipal.nombre.setText(usuario.getText());
         menuPrincipal.rol.setText(rolC.getText());
         menuPrincipal.idv.setText(idc.getText());
-        logger.debug("volvio al menu principal: "+usuario.getText());
+        logger.debug("volvio al menu principal: " + usuario.getText());
+
         this.dispose();
+
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void txt_rtn_clienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rtn_clienteKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        
-        if(c<'0' || c>'9') evt.consume();
-        
-        if(txt_rtn_cliente.getText().length() >= 14){
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+
+        if (txt_rtn_cliente.getText().length() >= 14) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -781,13 +1049,14 @@ txt_dir_cli.setText("");
 
     private void txt_nombre_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombre_cliKeyTyped
         // TODO add your handling code here:
-        
+
         char c = evt.getKeyChar();
-        
-        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
-        
-        
-        if(txt_nombre_cli.getText().length() >= 40){
+
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+
+        if (txt_nombre_cli.getText().length() >= 40) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -795,11 +1064,13 @@ txt_dir_cli.setText("");
 
     private void txt_apellido_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellido_cliKeyTyped
         // TODO add your handling code here:
-         char c = evt.getKeyChar();
-        
-        if((c<'a' || c>'z')&& (c<'A' || c>'Z')) evt.consume();
-        
-        if(txt_apellido_cli.getText().length() >= 40){
+        char c = evt.getKeyChar();
+
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
+            evt.consume();
+        }
+
+        if (txt_apellido_cli.getText().length() >= 40) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -808,11 +1079,12 @@ txt_dir_cli.setText("");
     private void txt_num_id_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_num_id_cliKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        
-        if(c<'0' || c>'9') evt.consume();
-        
-        
-        if(txt_num_id_cli.getText().length() >= 13){
+
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
+
+        if (txt_num_id_cli.getText().length() >= 13) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -820,62 +1092,62 @@ txt_dir_cli.setText("");
 
     private void txt_dir_cliKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_dir_cliKeyTyped
         // TODO add your handling code here:
-        if(txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~")|| txt_dir_cli.getText().equals("`")||
-                   txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")||
-                    txt_dir_cli.getText().equals("^")||txt_dir_cli.getText().equals("&")||txt_dir_cli.getText().equals("*")||
-                    txt_dir_cli.getText().equals("(")||txt_dir_cli.getText().equals(")")||txt_dir_cli.getText().equals("-")||
-                    txt_dir_cli.getText().equals("_")||txt_dir_cli.getText().equals("+")||txt_dir_cli.getText().equals("=")){
-                    
-                     evt.consume();
+        if (txt_dir_cli.getText().equals("!") || txt_dir_cli.getText().equals("~") || txt_dir_cli.getText().equals("`")
+                || txt_dir_cli.getText().equals("@") || txt_dir_cli.getText().equals("$") || txt_dir_cli.getText().equals("%")
+                || txt_dir_cli.getText().equals("^") || txt_dir_cli.getText().equals("&") || txt_dir_cli.getText().equals("*")
+                || txt_dir_cli.getText().equals("(") || txt_dir_cli.getText().equals(")") || txt_dir_cli.getText().equals("-")
+                || txt_dir_cli.getText().equals("_") || txt_dir_cli.getText().equals("+") || txt_dir_cli.getText().equals("=")) {
+
+            evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
+            JOptionPane.showMessageDialog(null, "No se permiten caracteres especiales a parte del # y el .");
         }
-        
-        if(txt_dir_cli.getText().length() >= 70){
+
+        if (txt_dir_cli.getText().length() >= 70) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_txt_dir_cliKeyTyped
-  
+
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         ContactoC contacto = new ContactoC();
-        ContactoC.usuario.setText(usuario.getText());
+        ContactoC.usuarios.setText(usuario.getText());
         ContactoC.rol.setText(rolC.getText());
         ContactoC.idcc.setText(idc.getText());
         contacto.setVisible(true);
-        logger.debug("Ingreso a la pantalla de contacto "+usuario.getText());
+        logger.debug("Ingreso a la pantalla de contacto " + usuario.getText());
         this.dispose();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-         int fila = tablaclientes.getSelectedRow();
-        if(fila >= 0){
+        int fila = tablaclientes.getSelectedRow();
+        if (fila >= 0) {
             txt_cli_id.setText(tablaclientes.getValueAt(fila, 0).toString());
-            txt_rtn_cliente.setText(tablaclientes.getValueAt(fila,1).toString());
+            txt_rtn_cliente.setText(tablaclientes.getValueAt(fila, 1).toString());
             txt_nombre_cli.setText(tablaclientes.getValueAt(fila, 2).toString());
             txt_apellido_cli.setText(tablaclientes.getValueAt(fila, 3).toString());
             txt_num_id_cli.setText(tablaclientes.getValueAt(fila, 4).toString());
             txt_dir_cli.setText(tablaclientes.getValueAt(fila, 5).toString());
-            id = tablaclientes.getValueAt(fila,0).toString();
-        }else{
+            id = tablaclientes.getValueAt(fila, 0).toString();
+        } else {
             JOptionPane.showMessageDialog(null, "No se encontro fila ");
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void tablaclientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaclientesMouseClicked
         // TODO add your handling code here:
-         int fila = tablaclientes.getSelectedRow();
-        if(fila >= 0){
+        int fila = tablaclientes.getSelectedRow();
+        if (fila >= 0) {
             txt_cli_id.setText(tablaclientes.getValueAt(fila, 0).toString());
-            txt_nombre_cli.setText(tablaclientes.getValueAt(fila,1).toString());
+            txt_nombre_cli.setText(tablaclientes.getValueAt(fila, 1).toString());
             txt_apellido_cli.setText(tablaclientes.getValueAt(fila, 2).toString());
             txt_dir_cli.setText(tablaclientes.getValueAt(fila, 3).toString());
             txt_num_id_cli.setText(tablaclientes.getValueAt(fila, 4).toString());
             txt_rtn_cliente.setText(tablaclientes.getValueAt(fila, 5).toString());
-            id = tablaclientes.getValueAt(fila,0).toString();
-        }else{
+            id = tablaclientes.getValueAt(fila, 0).toString();
+        } else {
             JOptionPane.showMessageDialog(null, "No se encontro fila ");
         }
     }//GEN-LAST:event_tablaclientesMouseClicked
@@ -937,9 +1209,11 @@ txt_dir_cli.setText("");
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if(c<'0' || c>'9') evt.consume();
+        if (c < '0' || c > '9') {
+            evt.consume();
+        }
 
-        if(txt_cli_id.getText().length() >= 5){
+        if (txt_cli_id.getText().length() >= 5) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
         }
@@ -953,6 +1227,11 @@ txt_dir_cli.setText("");
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "Felicidades por descubrir un easter egg del sistema de facturacion!");
     }//GEN-LAST:event_txt_cli_idMouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments

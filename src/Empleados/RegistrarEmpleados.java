@@ -15,8 +15,6 @@ import contactos.Contacto.Contacto;
 import contactos.contacto_proveedor.ContactoP;
 import java.awt.Toolkit;
 
-
-
 /*import Factura_Venta.Factura_Venta;*/
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -39,6 +37,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
+
 /**
  *
  * @author luisc
@@ -49,32 +48,25 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
      * Creates new form RegistrarEmpleados
      */
     Connection conectar = null;
-    String SQL="select max(Vendedor_id) from vendedor";
-     usuarios mod;
-    
-     
-    
-    
+    String SQL = "select max(Vendedor_id) from vendedor";
+    usuarios mod;
+
     final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistrarEmpleados.class);
+
     public RegistrarEmpleados() {
         initComponents();
         PropertyConfigurator.configure("log4j.properties");
         mostrardatos("");
         limpiar();
-        
+
         this.setLocationRelativeTo(null);
-         Calendar cal= Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         String fecha;
-        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
+        fecha = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.DATE);
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
-    
-        
+
     }
-    
-   
-   
-    
-    
+
     void mostrardatos(String valor) {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
@@ -88,14 +80,13 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         modelo.addColumn("PASS");
         modelo.addColumn("Tipo Usuario");
         modelo.addColumn("Fecha de Registro");
-        
 
         tablaempleados.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
             sql = "SELECT * From vendedor";
         } else {
-            sql = "SELECT Vendedor_id,nombre_empleado,apellido_empleado,num_identidad_empleado, direccion,usuario,id_tipo,fecha_registro FROM vendedor WHERE (Vendedor_id='" + valor + "' OR nombre_empleado='" + valor + "' OR apellido_empleado='" + valor + "'OR num_identidad_empleado='" + valor + "'OR direccion='" + valor + "'OR tipo_usuario='"+valor+"')";
+            sql = "SELECT Vendedor_id,nombre_empleado,apellido_empleado,num_identidad_empleado, direccion,usuario,id_tipo,fecha_registro FROM vendedor WHERE (Vendedor_id='" + valor + "' OR nombre_empleado='" + valor + "' OR apellido_empleado='" + valor + "'OR num_identidad_empleado='" + valor + "'OR direccion='" + valor + "'OR tipo_usuario='" + valor + "')";
         }
         String[] datos = new String[9];
         try {
@@ -119,7 +110,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         } catch (SQLException ex) {
 
         }
-        
+
     }
 
     void limpiar() {
@@ -130,7 +121,7 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         dir_empleado.setText("");
         txt_usuario.setText("");
         txt_pass.setText("");
-        
+
     }
 
     void desbloquear() {
@@ -148,8 +139,6 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
         salir_btn.setEnabled(true);
 
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -677,206 +666,302 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
 
     }//GEN-LAST:event_num_id_empleaActionPerformed
 
-   
-    
-    
-     void numeros()
-     {
-      
-         ConexionSQL cc = new ConexionSQL();
+    void numeros() {
+
+        ConexionSQL cc = new ConexionSQL();
 
         Connection cn = cc.getConnection();
-         int j;
-        int cont=1;
-        String num="";
-        String c="";
-        
-       // String SQL="select count(*) from factura";
+        int j;
+        int cont = 1;
+        String num = "";
+        String c = "";
+
+        // String SQL="select count(*) from factura";
         //String SQL="SELECT MAX(cod_emp) AS cod_emp FROM empleado";
         //String SQL="SELECT @@identity AS ID";
         try {
             Statement st = cn.createStatement();
-            ResultSet rs=st.executeQuery(SQL);
-            if(rs.next())
-            {              
-                 c=rs.getString(1);
+            ResultSet rs = st.executeQuery(SQL);
+            if (rs.next()) {
+                c = rs.getString(1);
             }
-            
-           
-            if(c==null){
-                id_empleado.setText(SQL +1);
-            }
-            else{
-                 j=Integer.parseInt(c);
-                 GenerarNumero gen= new GenerarNumero();
-                 gen.generar(j);
-                 id_empleado.setText(gen.serie());
-                
-            
-            }
-       
-          
-                  
-           
-           
-         
-        } catch (SQLException ex) {
-           
-        }
-     }
 
-   /* public boolean esDireccion(String direccion){
+            if (c == null) {
+                id_empleado.setText(SQL + 1);
+            } else {
+                j = Integer.parseInt(c);
+                GenerarNumero gen = new GenerarNumero();
+                gen.generar(j);
+                id_empleado.setText(gen.serie());
+
+            }
+
+        } catch (SQLException ex) {
+
+        }
+    }
+
+    /* public boolean esDireccion(String direccion){
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-#-\\+]+(\\[_A-Za-z0-9-#]+)"
                 + "[A-Za-z0-9-#]+(\\[A-Za-z0-9-#]+)*(\\[A-Za-z-#]{2,})$");
 
         Matcher matcher = pattern.matcher(direccion);
         return matcher.find();
     }
-    */
-     
-     
-    
-     
-     void empleadodir(){
-     
-                    
-                    
-            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
-            
-         
-     }
-     
-         
+     */
+    void empleadodir() {
+
+        JOptionPane.showMessageDialog(null, "No se permiten caracteres especiales a parte del # y el .");
+
+    }
+
+    public void permisoCliente(String us) {
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        String sql = "INSERT INTO `cliente_estado` (`id`, `modificar`, `eliminar`, `guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', 'inactivo', 'inactivo', '" + us + "')";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void permisoProveedor(String us) {
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        String sql = "INSERT INTO `proveedor_estado` (`id`, `modificar`, `eliminar`, `guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', 'inactivo', 'inactivo', '" + us + "')";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void permisoProducto(String us) {
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        String sql = "INSERT INTO `producto_estado` (`id`, `modificar`, `eliminar`, `guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', 'inactivo', 'inactivo', '" + us + "')";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void permisoVendedor(String us) {
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        String sql = "INSERT INTO `vendedor_estado` (`id`, `modificar`, `eliminar`, `guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', 'inactivo', 'inactivo', '" + us + "')";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void permisoVenta(String us) {
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        String sql = "INSERT INTO `venta_estado` (`id`,`guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', '" + us + "')";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void permisoCompra(String us) {
+
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+
+        String sql = "INSERT INTO `compra_estado` (`id`,`guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', '" + us + "')";
+
+        try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
     private void save_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_empleadoActionPerformed
 
         ConexionSQL cc = new ConexionSQL();
-        
+
         Connection cn = cc.getConnection();
-        
-        
-        
-        
-        if(dir_empleado.getText().contains("!") || dir_empleado.getText().contains("~")|| dir_empleado.getText().contains("`")||
-                   dir_empleado.getText().contains("@") || dir_empleado.getText().contains("$") || dir_empleado.getText().contains("%")||
-                    dir_empleado.getText().contains("^")||dir_empleado.getText().contains("&")||dir_empleado.getText().contains("*")||
-                    dir_empleado.getText().contains("(")||dir_empleado.getText().contains(")")||dir_empleado.getText().contains("-")||
-                    dir_empleado.getText().contains("_")||dir_empleado.getText().contains("+")||dir_empleado.getText().contains("=")){
-              JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
-              logger.debug("Error, inserto caracteres especiales");
-        }else{
-        if(dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~")|| dir_empleado.getText().equals("`")||
-                   dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")||
-                    dir_empleado.getText().equals("^")||dir_empleado.getText().equals("&")||dir_empleado.getText().equals("*")||
-                    dir_empleado.getText().equals("(")||dir_empleado.getText().equals(")")||dir_empleado.getText().equals("-")||
-                    dir_empleado.getText().equals("_")||dir_empleado.getText().equals("+")||dir_empleado.getText().equals("=")){
-              JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
-              logger.debug("Error trato de guardar con un caracter especial");
-        }else{
-        if (nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
-                || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
-                || txt_pass.getText().equals("") || recusuper.equals("")) {
-            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
-            logger.debug("Error, trato de guardar con campos vacios");
 
-        } else{ 
-            
-            
-            try {
-                
-                if (existeUsuario(txt_usuario.getText()) == 0) {
-                   
-                    if (esUsuario(txt_usuario.getText())) {
-                        
-                        if (num_id_emplea.getText().length() >= 13) {
-                            
-                            if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
-                                
-                                if (nom_empleado.getText().length() >= 3) {
-                                    
-                                    if (apelld_empleado.getText().length() >= 3) {
-                                        
-                                        if (existeId(id_empleado.getText()) == 0) {
-                                            
-                                            if (existeidentidad(num_id_emplea.getText()) == 0) {
-                                                
-                                                
-                                                 
-                                                
-                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`,`fecha_registro`,`recuperacion`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                                
-                                                
-                                               decode hola = new decode();
-                                               
-                                                pst.setString(1, nom_empleado.getText());
-                                                pst.setString(2, apelld_empleado.getText());
-                                                pst.setString(3, num_id_emplea.getText());
-                                                pst.setString(4, dir_empleado.getText());
-                                                pst.setString(5, txt_usuario.getText());
-                                                
-                                                String deco = hola.ecnode("Proyecto", txt_pass.getText());
-                                                pst.setString(6, deco);
-                                                pst.setString(7, pom.getText());
-                                                pst.setString(8, fechar.getFecha());
-                                                
-                                                
-                                                pst.setString(9, "893426E1-6A86-4C14-9B16-812B1A"+recusuper.getText().toString());
+        String sql;
+        String cap1 = "";
 
-                                                int a = pst.executeUpdate();
-                                                if (a > 0) {
-                                                    JOptionPane.showMessageDialog(null, "Registro Guardado con exito");
-                                                        logger.info("Registro Exitoso: ");
-                                                    mostrardatos("");
-                                                    nuevo();
-                                                    
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + user.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
+
+            }
+            if (cap1.equals("activo")) {
+
+                if (dir_empleado.getText().contains("!") || dir_empleado.getText().contains("~") || dir_empleado.getText().contains("`")
+                        || dir_empleado.getText().contains("@") || dir_empleado.getText().contains("$") || dir_empleado.getText().contains("%")
+                        || dir_empleado.getText().contains("^") || dir_empleado.getText().contains("&") || dir_empleado.getText().contains("*")
+                        || dir_empleado.getText().contains("(") || dir_empleado.getText().contains(")") || dir_empleado.getText().contains("-")
+                        || dir_empleado.getText().contains("_") || dir_empleado.getText().contains("+") || dir_empleado.getText().contains("=")) {
+                    JOptionPane.showMessageDialog(null, "No se permiten caracteres especiales a parte del # y el .");
+                    logger.debug("Error, inserto caracteres especiales");
+                } else {
+                    if (dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~") || dir_empleado.getText().equals("`")
+                            || dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")
+                            || dir_empleado.getText().equals("^") || dir_empleado.getText().equals("&") || dir_empleado.getText().equals("*")
+                            || dir_empleado.getText().equals("(") || dir_empleado.getText().equals(")") || dir_empleado.getText().equals("-")
+                            || dir_empleado.getText().equals("_") || dir_empleado.getText().equals("+") || dir_empleado.getText().equals("=")) {
+                        JOptionPane.showMessageDialog(null, "No se permiten caracteres especiales a parte del # y el .");
+                        logger.debug("Error trato de guardar con un caracter especial");
+                    } else {
+                        if (nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
+                                || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("") || txt_usuario.getText().equals("")
+                                || txt_pass.getText().equals("") || recusuper.equals("")) {
+                            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+                            logger.debug("Error, trato de guardar con campos vacios");
+
+                        } else {
+
+                            try {
+
+                                if (existeUsuario(txt_usuario.getText()) == 0) {
+
+                                    if (esUsuario(txt_usuario.getText())) {
+
+                                        if (num_id_emplea.getText().length() >= 13) {
+
+                                            if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
+
+                                                if (nom_empleado.getText().length() >= 3) {
+
+                                                    if (apelld_empleado.getText().length() >= 3) {
+
+                                                        if (existeId(id_empleado.getText()) == 0) {
+
+                                                            if (existeidentidad(num_id_emplea.getText()) == 0) {
+
+                                                                PreparedStatement pst = cn.prepareStatement("INSERT INTO `vendedor` (`Vendedor_id`, `nombre_empleado`, `apellido_empleado`, `num_identidad_empleado`, `direccion`, `usuario`, `pass`,`id_tipo`,`fecha_registro`,`recuperacion`,`bloqueo`) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'activo')");
+                                                                //PreparedStatement ps1 = cn.prepareStatement("INSERT INTO `vendedor_estado` (`id`, `modificar`, `eliminar`, `guardar`, `mirar`, `nom_usuario`) VALUES (NULL, 'inactivo', 'inactivo', 'inactivo', 'inactivo', '"+txt_usuario.getText()+"')");
+
+                                                                decode hola = new decode();
+
+                                                                pst.setString(1, nom_empleado.getText());
+                                                                pst.setString(2, apelld_empleado.getText());
+                                                                pst.setString(3, num_id_emplea.getText());
+                                                                pst.setString(4, dir_empleado.getText());
+                                                                permisoVendedor(txt_usuario.getText());
+                                                                permisoCliente(txt_usuario.getText());
+                                                                permisoVenta(txt_usuario.getText());
+                                                                permisoCompra(txt_usuario.getText());
+                                                                permisoProveedor(txt_usuario.getText());
+                                                                permisoProducto(txt_usuario.getText());
+                                                                pst.setString(5, txt_usuario.getText());
+
+                                                                String deco = hola.ecnode("Proyecto", txt_pass.getText());
+                                                                pst.setString(6, deco);
+                                                                pst.setString(7, pom.getText());
+                                                                pst.setString(8, fechar.getFecha());
+
+                                                                pst.setString(9, "893426E1-6A86-4C14-9B16-812B1A" + recusuper.getText().toString());
+
+                                                                int a = pst.executeUpdate();
+
+                                                                if (a > 0) {
+                                                                    JOptionPane.showMessageDialog(null, "Registro Guardado con exito");
+                                                                    logger.info("Registro Exitoso: ");
+                                                                    mostrardatos("");
+                                                                    nuevo();
+
+                                                                } else {
+                                                                    JOptionPane.showMessageDialog(null, "Error al agregar");
+                                                                    logger.debug("Error al almacenar");
+                                                                }
+                                                            } else {
+                                                                JOptionPane.showMessageDialog(null, "Error al agregar, este numero de identidad ya existe, inserte otro");
+                                                                logger.debug("Error, guardo un numero de identidad que ya existia");
+                                                            }
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(null, "Error al agregar, este ID ya existe, inserte otro");
+                                                            logger.debug("Error, guardo un ID repetido");
+                                                        }
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(null, "Error al agregar, el apellido debe tener al menos 3 caracteres");
+                                                        logger.debug("Error, guardo un apellido con menos de 3 caracteres");
+                                                    }
                                                 } else {
-                                                    JOptionPane.showMessageDialog(null, "Error al agregar");
-                                                    logger.debug("Error al almacenar");
+                                                    JOptionPane.showMessageDialog(null, "Error al agregar, el Nombre debe tener al menos 3 caracteres");
+                                                    logger.debug("Error, guardo un nombre con menos de 3 caracteres");
                                                 }
                                             } else {
-                                                JOptionPane.showMessageDialog(null, "Error al agregar, este numero de identidad ya existe, inserte otro");
-                                                logger.debug("Error, guardo un numero de identidad que ya existia");
+                                                JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o 1");
+                                                logger.debug("Error, ingreso un numero de identidad que no empezaba con 0 o con 1");
                                             }
                                         } else {
-                                            JOptionPane.showMessageDialog(null, "Error al agregar, este ID ya existe, inserte otro");
-                                            logger.debug("Error, guardo un ID repetido");
+                                            JOptionPane.showMessageDialog(null, "Error al agregar, el num Identidad debe ser de 13 caracteres");
+                                            logger.debug("Error, ingreso un numero de identidad de menos de 13 caracteres");
                                         }
                                     } else {
-                                        JOptionPane.showMessageDialog(null, "Error al agregar, el apellido debe tener al menos 3 caracteres");
-                                        logger.debug("Error, guardo un apellido con menos de 3 caracteres");
+                                        JOptionPane.showMessageDialog(null, "El usuario es incorrecto");
+                                        logger.debug("Error, guardo un usuario de forma invalida");
                                     }
+
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Error al agregar, el Nombre debe tener al menos 3 caracteres");
-                                    logger.debug("Error, guardo un nombre con menos de 3 caracteres");
+                                    JOptionPane.showMessageDialog(null, "El usuario ya esta ingresado, intente con otro");
+                                    logger.debug("Error, guardo un usuario que ya existe");
                                 }
-                            } else {
-                                JOptionPane.showMessageDialog(null, "El numero de identidad debe empezar con 0 o 1");
-                                logger.debug("Error, ingreso un numero de identidad que no empezaba con 0 o con 1");
+
+                            } catch (Exception e) {
+                                logger.error("Error: " + e.getMessage());
+
                             }
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Error al agregar, el num Identidad debe ser de 13 caracteres");
-                            logger.debug("Error, ingreso un numero de identidad de menos de 13 caracteres");
+
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "El usuario es incorrecto");
-                        logger.debug("Error, guardo un usuario de forma invalida");
                     }
 
-                } else {
-                    JOptionPane.showMessageDialog(null, "El usuario ya esta ingresado, intente con otro");
-                     logger.debug("Error, guardo un usuario que ya existe");
                 }
-                
-            } catch (Exception e) {
-               logger.error("Error: "+e.getMessage());
-               
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
             }
-            
-                
-        }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
         }
 
-        }
-       
+
     }//GEN-LAST:event_save_empleadoActionPerformed
 
     private int existeUsuario(String usuario) {
@@ -989,115 +1074,158 @@ public class RegistrarEmpleados extends javax.swing.JFrame {
     private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
         // TODO add your handling code here:
         nuevo();
-        
+
         desbloquear();
         logger.debug("Limpio los campos");
         Random rnd = new Random();
         String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-       
-        int m=0,pos=0,num;
-        while(m<1){
-             String cadena = "";
-            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
-            num=(int)(rnd.nextDouble()*9999+1000);
-            cadena = cadena + abecedario.charAt(pos)+num;
-            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
-            cadena=cadena+abecedario.charAt(pos);
-            
-            
-            
-            System.out.println("Cadena: "+(m+1)+" : "+cadena+"\n");
-            
+
+        int m = 0, pos = 0, num;
+        while (m < 1) {
+            String cadena = "";
+            pos = (int) (rnd.nextDouble() * abecedario.length() - 1 + 0);
+            num = (int) (rnd.nextDouble() * 9999 + 1000);
+            cadena = cadena + abecedario.charAt(pos) + num;
+            pos = (int) (rnd.nextDouble() * abecedario.length() - 1 + 0);
+            cadena = cadena + abecedario.charAt(pos);
+
+            System.out.println("Cadena: " + (m + 1) + " : " + cadena + "\n");
+
             m++;
-             recusuper.setText(cadena);
+            recusuper.setText(cadena);
         }
-       
-         
-       
+
+
     }//GEN-LAST:event_nuevoActionPerformed
 
     String id = "";
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editarActionPerformed
         desbloquear();
-    decode hola = new decode();
+        decode hola = new decode();
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        if (id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
-                || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
-            logger.debug("Error, guardo con campos vacios");
 
-        } else {
-            
-            try {
-                String deco = hola.ecnode("Proyecto", txt_pass.getText());
-                if (num_id_emplea.getText().length() >= 13) {
-                    if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
-                    PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET Vendedor_id='" + id_empleado.getText() + "',nombre_empleado='" + nom_empleado.getText() + "',apellido_empleado='" + apelld_empleado.getText() + "',num_identidad_empleado='" + num_id_emplea.getText() + "',direccion='" + dir_empleado.getText()+"',pass='"+deco+ "'WHERE Vendedor_id='" + id + "'");
-                    id = id_empleado.getText();
-                    pst.executeUpdate();
-                    mostrardatos("");
-                    JOptionPane.showMessageDialog(null, "Se a modificado con exito");
-                    logger.debug("Edicion exitosa");
-                    }else{
-                        JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser con 0 o con 1");
-                        logger.debug("Error, guardo un numero de identidad que no empezaba con 0 o con 1");
-                    }
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + user.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("modificar");
+
+            }
+            if (cap1.equals("activo")) {
+
+                if (id_empleado.getText().equals("") || nom_empleado.getText().equals("") || apelld_empleado.getText().equals("")
+                        || num_id_emplea.getText().equals("") || dir_empleado.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+                    logger.debug("Error, guardo con campos vacios");
+
                 } else {
-                    JOptionPane.showMessageDialog(null, "El num identidad debe ser de 13 numeros");
-                    logger.debug("Error, guardo un numero de identidad con menos de 13 caracteres");
+
+                    try {
+                        String deco = hola.ecnode("Proyecto", txt_pass.getText());
+                        if (num_id_emplea.getText().length() >= 13) {
+                            if (num_id_emplea.getText().startsWith("0") || num_id_emplea.getText().startsWith("1")) {
+                                PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET Vendedor_id='" + id_empleado.getText() + "',nombre_empleado='" + nom_empleado.getText() + "',apellido_empleado='" + apelld_empleado.getText() + "',num_identidad_empleado='" + num_id_emplea.getText() + "',direccion='" + dir_empleado.getText() + "',pass='" + deco + "'WHERE Vendedor_id='" + id + "'");
+                                id = id_empleado.getText();
+                                pst.executeUpdate();
+                                mostrardatos("");
+                                JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                                logger.debug("Edicion exitosa");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "El numero de Identidad debe ser con 0 o con 1");
+                                logger.debug("Error, guardo un numero de identidad que no empezaba con 0 o con 1");
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El num identidad debe ser de 13 numeros");
+                            logger.debug("Error, guardo un numero de identidad con menos de 13 caracteres");
+                        }
+
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        logger.debug("Error: ", e);
+                    }
                 }
 
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                logger.debug("Error: ",e);
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
             }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
         }
+
         limpiar();
     }//GEN-LAST:event_btn_editarActionPerformed
-public Icon icono(String path, int width, int height){
+    public Icon icono(String path, int width, int height) {
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
-                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+                getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
         return img;
     }
     private void del_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_empleadoActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?", "Seleccione una opción", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
         ConexionSQL cc = new ConexionSQL();
-       
-        Connection cn = cc.getConnection();
-        int fila = tablaempleados.getSelectedRow();
-        String cod = "";
-        cod = tablaempleados.getValueAt(fila, 0).toString();
-        if (i == 0) {
-            try {
-                PreparedStatement pst = cn.prepareStatement("DELETE FROM vendedor WHERE Vendedor_id='" + cod + "'");
-                int a = pst.executeUpdate();
-                mostrardatos("");
 
-                if (a > 0) {
-                    JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
-                    logger.debug("Eliminacion exitosa");
-                } else {
-                    JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
-                    logger.debug("Error, no se elimino con exito");
-                }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
-                logger.debug("Error al eliminar");
+        Connection cn = cc.getConnection();
+
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + user.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("eliminar");
+
             }
+            if (cap1.equals("activo")) {
+
+                int fila = tablaempleados.getSelectedRow();
+                String cod = "";
+                cod = tablaempleados.getValueAt(fila, 0).toString();
+                if (i == 0) {
+                    try {
+                        PreparedStatement pst = cn.prepareStatement("DELETE FROM vendedor WHERE Vendedor_id='" + cod + "'");
+                        int a = pst.executeUpdate();
+                        mostrardatos("");
+
+                        if (a > 0) {
+                            JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                            logger.debug("Eliminacion exitosa");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                            logger.debug("Error, no se elimino con exito");
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                        JOptionPane.showMessageDialog(null, "No se pudo eliminar, el cliente tiene facturas registradas");
+                        logger.debug("Error al eliminar");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
         }
-       
+
         limpiar();
     }//GEN-LAST:event_del_empleadoActionPerformed
-    
+
     private void salir_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir_btnActionPerformed
         // TODO add your handling code here:
         logger.debug("Salio del sistema");
         System.exit(0);
-        
+
     }//GEN-LAST:event_salir_btnActionPerformed
 
     private void tablaempleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaempleadosMouseClicked
@@ -1165,7 +1293,7 @@ public Icon icono(String path, int width, int height){
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        logger.debug("Ingreso a la pantalla de contacto: "+user.getText());
+        logger.debug("Ingreso a la pantalla de contacto: " + user.getText());
         Contacto contacto = new Contacto();
         contacto.setVisible(true);
         Contacto.usuarios.setText(user.getText());
@@ -1173,24 +1301,209 @@ public Icon icono(String path, int width, int height){
         Contacto.idcv.setText(ide.getText());
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+    void validacionVenta(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
 
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registrarVenta.setVisible(false);
+                menuPrincipal.jLabel3.setVisible(false);
+            } else {
+                menuPrincipal.registrarVenta.setVisible(true);
+                menuPrincipal.jLabel3.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionProductos(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton7.setVisible(false);
+                menuPrincipal.jLabel7.setVisible(false);
+            } else {
+                menuPrincipal.jButton7.setVisible(true);
+                menuPrincipal.jLabel7.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionCompra(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton1.setVisible(false);
+                menuPrincipal.jLabel1.setVisible(false);
+            } else {
+                menuPrincipal.jButton1.setVisible(true);
+                menuPrincipal.jLabel1.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionProveedor(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton2.setVisible(false);
+                menuPrincipal.jLabel8.setVisible(false);
+            } else {
+                menuPrincipal.jButton2.setVisible(true);
+                menuPrincipal.jLabel8.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionCliente(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleado.setVisible(false);
+                menuPrincipal.jLabel5.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleado.setVisible(true);
+                menuPrincipal.jLabel5.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacion(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleados1.setVisible(false);
+                menuPrincipal.jLabel4.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleados1.setVisible(true);
+                menuPrincipal.jLabel4.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-          
+
         SqlUsuarios modSql = new SqlUsuarios();
         usuarios mod = new usuarios();
-         
+
         menuPrincipal mp = new menuPrincipal();
         mp.setVisible(true);
-        
-       menuPrincipal.nombre.setText(user.getText());
-       menuPrincipal.rol.setText(rol.getText());
-       menuPrincipal.idv.setText(ide.getText());
-        
-        logger.debug("Volvio al menu principal: "+user.getText());
-        
+
+        validacion(user.getText());
+        validacionCliente(user.getText());
+        validacionProveedor(user.getText());
+        validacionCompra(user.getText());
+        validacionProductos(user.getText());
+        validacionVenta(user.getText());
+
+        menuPrincipal.nombre.setText(user.getText());
+        menuPrincipal.rol.setText(rol.getText());
+        menuPrincipal.idv.setText(ide.getText());
+
+        logger.debug("Volvio al menu principal: " + user.getText());
+
         this.dispose();
-        
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -1256,15 +1569,15 @@ public Icon icono(String path, int width, int height){
 
     private void dir_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dir_empleadoKeyTyped
         // TODO add your handling code here:
-        if(dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~")|| dir_empleado.getText().equals("`")||
-                   dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")||
-                    dir_empleado.getText().equals("^")||dir_empleado.getText().equals("&")||dir_empleado.getText().equals("*")||
-                    dir_empleado.getText().equals("(")||dir_empleado.getText().equals(")")||dir_empleado.getText().equals("-")||
-                    dir_empleado.getText().equals("_")||dir_empleado.getText().equals("+")||dir_empleado.getText().equals("=")){
-                    evt.consume();
-                    Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null,"No se permiten caracteres especiales a parte del # y el .");
-            }
+        if (dir_empleado.getText().equals("!") || dir_empleado.getText().equals("~") || dir_empleado.getText().equals("`")
+                || dir_empleado.getText().equals("@") || dir_empleado.getText().equals("$") || dir_empleado.getText().equals("%")
+                || dir_empleado.getText().equals("^") || dir_empleado.getText().equals("&") || dir_empleado.getText().equals("*")
+                || dir_empleado.getText().equals("(") || dir_empleado.getText().equals(")") || dir_empleado.getText().equals("-")
+                || dir_empleado.getText().equals("_") || dir_empleado.getText().equals("+") || dir_empleado.getText().equals("=")) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "No se permiten caracteres especiales a parte del # y el .");
+        }
         if (dir_empleado.getText().length() >= 60) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -1304,7 +1617,7 @@ public Icon icono(String path, int width, int height){
 
     private void dir_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dir_empleadoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_dir_empleadoActionPerformed
 
     private void id_empleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_id_empleadoKeyTyped
@@ -1335,7 +1648,7 @@ public Icon icono(String path, int width, int height){
         } else if (tipo.getSelectedItem().toString().equals("Empleado")) {
             pom.setText("2");
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No es admin ni empleado");
         }
     }//GEN-LAST:event_tipoActionPerformed
@@ -1346,31 +1659,29 @@ public Icon icono(String path, int width, int height){
 
     private void recusuperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recusuperActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_recusuperActionPerformed
 
     private void generarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarbtnActionPerformed
         // TODO add your handling code here:
         Random rnd = new Random();
         String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-       
-        int m=0,pos=0,num;
-        while(m<1){
-             String cadena = "";
-            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
-            num=(int)(rnd.nextDouble()*9999+1000);
-            cadena = cadena + abecedario.charAt(pos)+num;
-            pos=(int)(rnd.nextDouble()*abecedario.length()-1+0);
-            cadena=cadena+abecedario.charAt(pos);
-            
-            
-            
-            System.out.println("Cadena: "+(m+1)+" : "+cadena+"\n");
-            
+
+        int m = 0, pos = 0, num;
+        while (m < 1) {
+            String cadena = "";
+            pos = (int) (rnd.nextDouble() * abecedario.length() - 1 + 0);
+            num = (int) (rnd.nextDouble() * 9999 + 1000);
+            cadena = cadena + abecedario.charAt(pos) + num;
+            pos = (int) (rnd.nextDouble() * abecedario.length() - 1 + 0);
+            cadena = cadena + abecedario.charAt(pos);
+
+            System.out.println("Cadena: " + (m + 1) + " : " + cadena + "\n");
+
             m++;
-             recusuper.setText(cadena);
+            recusuper.setText(cadena);
         }
-       
+
     }//GEN-LAST:event_generarbtnActionPerformed
 
     /**
@@ -1382,14 +1693,7 @@ public Icon icono(String path, int width, int height){
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-       
-        
-        
-      
-        
-     
-        
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -1407,7 +1711,7 @@ public Icon icono(String path, int width, int height){
             java.util.logging.Logger.getLogger(RegistrarEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override

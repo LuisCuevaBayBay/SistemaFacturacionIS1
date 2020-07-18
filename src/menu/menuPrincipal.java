@@ -48,21 +48,22 @@ public class menuPrincipal extends javax.swing.JFrame {
      this.mod = mod;
      
      rol.setText(mod.getNombre_tipo());
-     nombre.setText(mod.getNombre_empleado()+" "+mod.getApellido_empleado() );
+     nombre.setText(mod.getUsuario() );
      idv.setText(String.valueOf(mod.getId()));
      
      if(mod.getId_tipo() == 1){
-     
-     }else if(mod.getId_tipo() == 2){
-         jLabel5.setVisible(false);
+         /*jLabel5.setVisible(false);
          jLabel8.setVisible(false);
          jLabel4.setVisible(false);
          jLabel7.setVisible(false);
          registroEmpleados.setVisible(false);
          jButton7.setVisible(false);
          registroEmpleado.setVisible(false);
-         jButton2.setVisible(false);
-         jButton3.setVisible(false);
+         jButton2.setVisible(false);*/
+        
+     
+     }else if(mod.getId_tipo() == 2)
+     {
          
      
      }
@@ -81,7 +82,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         registroEmpleado = new javax.swing.JButton();
-        registroEmpleados = new javax.swing.JButton();
+        registroEmpleados1 = new javax.swing.JButton();
         registrarVenta = new javax.swing.JButton();
         salir = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -104,6 +105,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         aqui = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
         idv = new javax.swing.JLabel();
         rSLabelHora2 = new rojeru_san.RSLabelHora();
@@ -135,21 +137,21 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(registroEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, 190, 30));
 
-        registroEmpleados.setBackground(new java.awt.Color(0, 0, 204));
-        registroEmpleados.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        registroEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        registroEmpleados.setText("Registrar Empleado");
-        registroEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+        registroEmpleados1.setBackground(new java.awt.Color(0, 0, 204));
+        registroEmpleados1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        registroEmpleados1.setForeground(new java.awt.Color(255, 255, 255));
+        registroEmpleados1.setText("Registrar Empleado");
+        registroEmpleados1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registroEmpleadosMouseClicked(evt);
+                registroEmpleados1MouseClicked(evt);
             }
         });
-        registroEmpleados.addActionListener(new java.awt.event.ActionListener() {
+        registroEmpleados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registroEmpleadosActionPerformed(evt);
+                registroEmpleados1ActionPerformed(evt);
             }
         });
-        getContentPane().add(registroEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 190, 30));
+        getContentPane().add(registroEmpleados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 190, 30));
 
         registrarVenta.setBackground(new java.awt.Color(0, 0, 204));
         registrarVenta.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -299,6 +301,15 @@ public class menuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(aqui, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, -1, -1));
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevofactura.jpg"))); // NOI18N
+        jButton4.setText("Administrar Permisos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 499, 180, 30));
+
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verde3.jpg"))); // NOI18N
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 540));
         getContentPane().add(idv, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 50, 20));
@@ -328,9 +339,9 @@ public class menuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_salirActionPerformed
 
-    private void registroEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleadosActionPerformed
+    private void registroEmpleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroEmpleados1ActionPerformed
         
-    }//GEN-LAST:event_registroEmpleadosActionPerformed
+    }//GEN-LAST:event_registroEmpleados1ActionPerformed
 
     private void registrarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarVentaActionPerformed
         // TODO add your handling code here:
@@ -338,7 +349,7 @@ public class menuPrincipal extends javax.swing.JFrame {
        ModeloVenta registrar = new ModeloVenta();
         registrar.setVisible (true);
 
-    ModeloVenta.usuariosth.setText(nombre.getText());
+    ModeloVenta.usuarios.setText(nombre.getText());
     ModeloVenta.rolth.setText(rol.getText());
     ModeloVenta.txtvendedor.setText(idv.getText());
     this.dispose();
@@ -358,7 +369,7 @@ public class menuPrincipal extends javax.swing.JFrame {
  
     }//GEN-LAST:event_registroEmpleadoMouseClicked
 
-    private void registroEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleadosMouseClicked
+    private void registroEmpleados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroEmpleados1MouseClicked
  
         RegistrarEmpleados registrar = new RegistrarEmpleados();
         RegistrarEmpleados.user.setText(nombre.getText());
@@ -369,7 +380,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         this.dispose();
 
  
-    }//GEN-LAST:event_registroEmpleadosMouseClicked
+    }//GEN-LAST:event_registroEmpleados1MouseClicked
 
     private void registrarVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarVentaMouseClicked
 /*Factura_Venta facv = new Factura_Venta();
@@ -408,7 +419,7 @@ this.dispose();*/
         Producto producto = new Producto();
         producto.setVisible(true);
         
-        Producto.usuario.setText(nombre.getText());
+        Producto.usuarios.setText(nombre.getText());
         Producto.rol.setText(rol.getText());
         Producto.idp.setText(idv.getText());
         this.dispose();
@@ -422,12 +433,13 @@ this.dispose();*/
         this.dispose();
         logger.debug("Ingreso a la pantalla de compras: "+nombre.getText());
         ModeloCompra1.vendedorlh.setText(idv.getText());
-         ModeloCompra1.usuarioslh.setText(nombre.getText());
+         ModeloCompra1.usuario.setText(nombre.getText());
           ModeloCompra1.rollh.setText(rol.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(rol.getText().equals("Administrador")){
         menuReportes mr = new menuReportes();
         menuReportes.rol.setText(rol.getText());
         menuReportes.nombre.setText(nombre.getText());
@@ -436,14 +448,22 @@ this.dispose();*/
         logger.debug("Ingreso al menu de reportes: "+nombre.getText());
         mr.setVisible(true);
         this.dispose();
+        }else{
+        JOptionPane.showMessageDialog(null, "No tiene permisos");
+        }
         
                 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void aquiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseClicked
         // TODO add your handling code here:
+        
+        if(rol.getText().equals("Administrador")){
         recuCod rc = new recuCod();
         rc.setVisible(true);
+        }else{
+        JOptionPane.showMessageDialog(null, "No tiene permisos");
+        }
     }//GEN-LAST:event_aquiMouseClicked
 
     private void aquiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseMoved
@@ -455,6 +475,17 @@ this.dispose();*/
         // TODO add your handling code here:
         this.aqui.setForeground(new Color(51, 153, 255));
     }//GEN-LAST:event_aquiMouseExited
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        if(nombre.getText().equals("luis.cueva")){
+        permisos pe = new permisos();
+        pe.setVisible(true);
+        }else {
+        JOptionPane.showMessageDialog(null,"No tiene permisos");
+        }
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,29 +528,30 @@ this.dispose();*/
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel fondo;
     public static javax.swing.JLabel idv;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public static javax.swing.JButton jButton1;
+    public static javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JButton jButton7;
+    public static javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    public static javax.swing.JLabel jLabel3;
+    public static javax.swing.JLabel jLabel4;
+    public static javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    public static javax.swing.JLabel jLabel7;
+    public static javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public static javax.swing.JLabel nombre;
     private rojeru_san.RSLabelHora rSLabelHora1;
     private rojeru_san.RSLabelHora rSLabelHora2;
-    private javax.swing.JButton registrarVenta;
-    private javax.swing.JButton registroEmpleado;
-    private javax.swing.JButton registroEmpleados;
+    public static javax.swing.JButton registrarVenta;
+    public static javax.swing.JButton registroEmpleado;
+    public static javax.swing.JButton registroEmpleados1;
     public static javax.swing.JLabel rol;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables

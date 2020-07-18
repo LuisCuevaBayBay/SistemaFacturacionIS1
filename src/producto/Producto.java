@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import org.apache.log4j.*;
+
 /**
  *
  * @author luisc
@@ -37,19 +38,19 @@ public class Producto extends javax.swing.JFrame {
      * Creates new form Producto
      */
     final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(Producto.class);
+
     public Producto() {
         initComponents();
         mostrardatos("");
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
-        
-        Calendar cal= Calendar.getInstance();
+
+        Calendar cal = Calendar.getInstance();
         String fecha;
-        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE);
+        fecha = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.DATE);
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
-    
-   
+
     void mostrardatos(String valor) {
 
         ConexionSQL cc = new ConexionSQL();
@@ -123,7 +124,7 @@ public class Producto extends javax.swing.JFrame {
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        usuario = new javax.swing.JLabel();
+        usuarios = new javax.swing.JLabel();
         precio_double = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         rSLabelFecha1 = new rojeru_san.RSLabelFecha();
@@ -368,7 +369,7 @@ public class Producto extends javax.swing.JFrame {
 
         jLabel5.setText("Usuario: ");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 50, 20));
-        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 50, 80, 20));
+        getContentPane().add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 50, 80, 20));
 
         precio_double.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
         precio_double.addActionListener(new java.awt.event.ActionListener() {
@@ -429,42 +430,63 @@ public class Producto extends javax.swing.JFrame {
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
-        if (nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
-            logger.debug("los campos no pueden ir vacios");
-        } else {
-            if (precio_double.getText().startsWith("1") || precio_double.getText().startsWith("2") || precio_double.getText().startsWith("3") || precio_double.getText().startsWith("4")
-                    || precio_double.getText().startsWith("5") || precio_double.getText().startsWith("6") || precio_double.getText().startsWith("7") || precio_double.getText().startsWith("8")
-                    || precio_double.getText().startsWith("9")) {
-                
-                
-                try {
-                    PreparedStatement pst = cn.prepareStatement("INSERT INTO `productos` (`IdProducto`, `Nombre`, `Precio`,`fecha_registro`) VALUES (NULL, ?, ?, ?)");
-                    
-                    pst.setString(1, nom_producto_txt.getText());
-                    pst.setString(2, precio_double.getText());
-                    pst.setString(3, rSLabelFecha1.getFecha());
+        String sql;
+        String cap1 = "";
 
-                    int a = pst.executeUpdate();
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
 
-                    if (a > 0) {
-                        JOptionPane.showMessageDialog(null, "Registro Exitoso");
-                        logger.debug("El registro se guardo exitosamente");
-                        limpiar();
-                        mostrardatos("");
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
+
+            }
+            if (cap1.equals("activo")) {
+
+                if (nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+                    logger.debug("los campos no pueden ir vacios");
+                } else {
+                    if (precio_double.getText().startsWith("1") || precio_double.getText().startsWith("2") || precio_double.getText().startsWith("3") || precio_double.getText().startsWith("4")
+                            || precio_double.getText().startsWith("5") || precio_double.getText().startsWith("6") || precio_double.getText().startsWith("7") || precio_double.getText().startsWith("8")
+                            || precio_double.getText().startsWith("9")) {
+
+                        try {
+                            PreparedStatement pst = cn.prepareStatement("INSERT INTO `productos` (`IdProducto`, `Nombre`, `Precio`,`fecha_registro`) VALUES (NULL, ?, ?, ?)");
+
+                            pst.setString(1, nom_producto_txt.getText());
+                            pst.setString(2, precio_double.getText());
+                            pst.setString(3, rSLabelFecha1.getFecha());
+
+                            int a = pst.executeUpdate();
+
+                            if (a > 0) {
+                                JOptionPane.showMessageDialog(null, "Registro Exitoso");
+                                logger.debug("El registro se guardo exitosamente");
+                                limpiar();
+                                mostrardatos("");
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Error al Agregar");
+                                logger.debug("Error al agregar");
+                            }
+                        } catch (Exception e) {
+                        }
 
                     } else {
-                        JOptionPane.showMessageDialog(null, "Error al Agregar");
-                        logger.debug("Error al agregar");
+                        JOptionPane.showMessageDialog(null, "El precio no debe de ser 0");
+                        logger.debug("El precio no puede ser 0");
                     }
-                } catch (Exception e) {
                 }
-                
-        }else{
-                JOptionPane.showMessageDialog(null, "El precio no debe de ser 0");
-                logger.debug("El precio no puede ser 0");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
             }
-                }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+        }
         limpiar();
 
     }//GEN-LAST:event_guardar_btnActionPerformed
@@ -473,73 +495,309 @@ public class Producto extends javax.swing.JFrame {
         // TODO add your handling code here:
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        if (id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
-            logger.debug("los campos no pueden ir vacios");
-        } else {
 
-            try {
-                PreparedStatement pst = cn.prepareStatement("UPDATE productos SET IdProducto='" + id_producto_txt.getText() + "',Nombre='" + nom_producto_txt.getText() + "',Precio='" + precio_double.getText() + "'WHERE IdProducto='" + id + "'");
-                id = id_producto_txt.getText();
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Se a modificado con exito");
-                logger.debug("Se edito el campo con exito");
-                limpiar();
-                mostrardatos("");
+        String sql;
+        String cap1 = "";
 
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("modificar");
+
             }
+            if (cap1.equals("activo")) {
+
+                if (id_producto_txt.getText().equals("") || nom_producto_txt.getText().equals("") || precio_double.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Hay Campos que estan vacios debe llenar todos los campos");
+                    logger.debug("los campos no pueden ir vacios");
+                } else {
+
+                    try {
+                        PreparedStatement pst = cn.prepareStatement("UPDATE productos SET IdProducto='" + id_producto_txt.getText() + "',Nombre='" + nom_producto_txt.getText() + "',Precio='" + precio_double.getText() + "'WHERE IdProducto='" + id + "'");
+                        id = id_producto_txt.getText();
+                        pst.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Se a modificado con exito");
+                        logger.debug("Se edito el campo con exito");
+                        limpiar();
+                        mostrardatos("");
+
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
         }
-        
+
+
     }//GEN-LAST:event_edit_btnActionPerformed
-    public Icon icono(String path, int width, int height){
+    public Icon icono(String path, int width, int height) {
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
-                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+                getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
         return img;
     }
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
 
         int fila = tablaproducto.getSelectedRow();
         String cod = "";
         cod = tablaproducto.getValueAt(fila, 0).toString();
-        if (i == 0) {
-            try {
-                PreparedStatement pst = cn.prepareStatement("DELETE FROM productos WHERE IdProducto='" + cod + "'");
-                pst.executeUpdate();
-                mostrardatos("");
-                int a = pst.executeUpdate();
-                if (a > 0) {
-                    JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
-                    logger.debug("Error al eliminar el campo");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
-                    logger.debug("Eliminacion Exitosa");
-                }
-            } catch (Exception e) {
+
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuarios.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("eliminar");
 
             }
+            if (cap1.equals("activo")) {
+
+                if (i == 0) {
+                    try {
+                        PreparedStatement pst = cn.prepareStatement("DELETE FROM productos WHERE IdProducto='" + cod + "'");
+                        pst.executeUpdate();
+                        mostrardatos("");
+                        int a = pst.executeUpdate();
+                        if (a > 0) {
+                            JOptionPane.showMessageDialog(null, "No se pudo Eliminar");
+                            logger.debug("Error al eliminar el campo");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Eliminacion Exitosa");
+                            logger.debug("Eliminacion Exitosa");
+                        }
+                    } catch (Exception e) {
+
+                    }
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso para ejecutar esta operacion");
         }
-            limpiar();
+        limpiar();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    void validacionVenta(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registrarVenta.setVisible(false);
+                menuPrincipal.jLabel3.setVisible(false);
+            } else {
+                menuPrincipal.registrarVenta.setVisible(true);
+                menuPrincipal.jLabel3.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionProductos(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton7.setVisible(false);
+                menuPrincipal.jLabel7.setVisible(false);
+            } else {
+                menuPrincipal.jButton7.setVisible(true);
+                menuPrincipal.jLabel7.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionCompra(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton1.setVisible(false);
+                menuPrincipal.jLabel1.setVisible(false);
+            } else {
+                menuPrincipal.jButton1.setVisible(true);
+                menuPrincipal.jLabel1.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionProveedor(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton2.setVisible(false);
+                menuPrincipal.jLabel8.setVisible(false);
+            } else {
+                menuPrincipal.jButton2.setVisible(true);
+                menuPrincipal.jLabel8.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionCliente(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleado.setVisible(false);
+                menuPrincipal.jLabel5.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleado.setVisible(true);
+                menuPrincipal.jLabel5.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacion(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleados1.setVisible(false);
+                menuPrincipal.jLabel4.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleados1.setVisible(true);
+                menuPrincipal.jLabel4.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here
         SqlUsuarios modSql = new SqlUsuarios();
-         usuarios mod = new usuarios();
-          menuPrincipal mp = new menuPrincipal();
-         mp.setVisible(true);
+        usuarios mod = new usuarios();
         
-          menuPrincipal.nombre.setText(usuario.getText());
-          menuPrincipal.rol.setText(rol.getText());
-          menuPrincipal.idv.setText(idp.getText());
+        menuPrincipal mp = new menuPrincipal();
+        mp.setVisible(true);
+
+        menuPrincipal.nombre.setText(usuarios.getText());
+        menuPrincipal.rol.setText(rol.getText());
+        menuPrincipal.idv.setText(idp.getText());
+
+        validacion(usuarios.getText());
+        validacionCliente(usuarios.getText());
+        validacionProveedor(usuarios.getText());
+        validacionCompra(usuarios.getText());
+        validacionProductos(usuarios.getText());
+        validacionVenta(usuarios.getText());
         this.dispose();
-        logger.debug("Vuelve al menu principal: "+usuario.getText());
+        logger.debug("Vuelve al menu principal: " + usuarios.getText());
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -666,9 +924,6 @@ public class Producto extends javax.swing.JFrame {
 
     private void nom_producto_txtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nom_producto_txtKeyTyped
         // TODO add your handling code here:
-       
-
-        
 
         if (nom_producto_txt.getText().length() >= 25) {
             evt.consume();
@@ -751,7 +1006,7 @@ public class Producto extends javax.swing.JFrame {
     private rojeru_san.RSLabelFecha rSLabelFecha1;
     public static javax.swing.JLabel rol;
     private javax.swing.JTable tablaproducto;
-    public static javax.swing.JLabel usuario;
+    public static javax.swing.JLabel usuarios;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

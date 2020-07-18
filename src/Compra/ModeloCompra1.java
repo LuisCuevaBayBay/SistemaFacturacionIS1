@@ -13,7 +13,6 @@ import java.awt.Toolkit;
 import Clientes.datos;
 import static Venta.ModeloVenta.rolth;
 import static Venta.ModeloVenta.txtvendedor;
-import static Venta.ModeloVenta.usuariosth;
 import inicio_sesion.Pantalla_Inicio_Sesion;
 
 import java.sql.Connection;
@@ -34,23 +33,27 @@ import javax.swing.table.DefaultTableModel;
 import menu.menuPrincipal;
 import producto.Producto;
 import org.apache.log4j.*;
+import static Venta.ModeloVenta.usuarios;
+
 /**
  *
  * @author Hector
  */
 public class ModeloCompra1 extends javax.swing.JFrame {
- final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ModeloCompra1.class);
+
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ModeloCompra1.class);
+
     public ModeloCompra1() {
         initComponents();
         PropertyConfigurator.configure("log4j.properties");
         this.setLocationRelativeTo(null);
         mostrardatos("");
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
-        
-        Calendar cal= Calendar.getInstance();
+
+        Calendar cal = Calendar.getInstance();
         String fecha;
-        fecha = cal.get(Calendar.YEAR)+"-"+cal.get(Calendar.MONTH)+"-"+cal.get(Calendar.DATE)+" "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND);
-        
+        fecha = cal.get(Calendar.YEAR) + "-" + cal.get(Calendar.MONTH) + "-" + cal.get(Calendar.DATE) + " " + cal.get(Calendar.HOUR_OF_DAY) + ":" + cal.get(Calendar.MINUTE) + ":" + cal.get(Calendar.SECOND);
+
         this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
 
@@ -149,7 +152,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         subt = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        usuarioslh = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         rollh = new javax.swing.JLabel();
         vendedorlh = new javax.swing.JLabel();
 
@@ -476,7 +479,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("Monto x Producto");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, 20));
-        getContentPane().add(usuarioslh, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 700, 40, 10));
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 700, 40, 10));
         getContentPane().add(rollh, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 700, 20, 20));
         getContentPane().add(vendedorlh, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 700, 20, 10));
 
@@ -489,17 +492,17 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void btnBuscarCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarCliActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnBuscarCliActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       Object[] options = {"SI", "NO"};
-         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-        
-        if (i == 0) { 
+        Object[] options = {"SI", "NO"};
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?", "Seleccione una opción", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
+
+        if (i == 0) {
             logger.info("salio del sistema");
-        System.exit(0);
+            System.exit(0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -528,58 +531,50 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void btnBuscarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarCliMouseClicked
         // TODO add your handling code here:
-        if(txtCodCliente.getText().length() == 1 || txtCodCliente.getText().length() == 2 || txtCodCliente.getText().length() == 3){
-        
-        try {
-            String num_id_cliente = txtCodCliente.getText();
+        if (txtCodCliente.getText().length() == 1 || txtCodCliente.getText().length() == 2 || txtCodCliente.getText().length() == 3) {
 
-            ConexionSQL cc = new ConexionSQL();
-            Connection nn = cc.getConnection();
-           
-                    
+            try {
+                String num_id_cliente = txtCodCliente.getText();
 
-            PreparedStatement pst = nn.prepareStatement("SELECT * FROM proveedor where (Empresa_id=?)");
-            
-            
-            
-            pst.setString(1, num_id_cliente);
-            ResultSet rs = pst.executeQuery();
+                ConexionSQL cc = new ConexionSQL();
+                Connection nn = cc.getConnection();
 
-            if (rs.next()) {
-                txtcli.setText(rs.getString("Nombre_Empresa"));
-                 logger.info("busca uno de los proveedores");
-            } else {
-                JOptionPane.showMessageDialog(null, "La empresa no esta registrada no se encuentra registrada");
-                 logger.debug("no se encontro al proveedor deseado");
+                PreparedStatement pst = nn.prepareStatement("SELECT * FROM proveedor where (Empresa_id=?)");
+
+                pst.setString(1, num_id_cliente);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    txtcli.setText(rs.getString("Nombre_Empresa"));
+                    logger.info("busca uno de los proveedores");
+                } else {
+                    JOptionPane.showMessageDialog(null, "La empresa no esta registrada no se encuentra registrada");
+                    logger.debug("no se encontro al proveedor deseado");
+                }
+            } catch (Exception e) {
             }
-        } catch (Exception e) {
-        }
-         
-         }else if(txtCodCliente.getText().length() == 14){
-              try {
-            String num_id_cliente = txtCodCliente.getText();
 
-            ConexionSQL cc = new ConexionSQL();
-            Connection nn = cc.getConnection();
-           
-                    
+        } else if (txtCodCliente.getText().length() == 14) {
+            try {
+                String num_id_cliente = txtCodCliente.getText();
 
-            PreparedStatement pst = nn.prepareStatement("SELECT * FROM proveedor where (rtn_empresa =?)");
-            
-            
-            
-            pst.setString(1, num_id_cliente);
-            ResultSet rs = pst.executeQuery();
+                ConexionSQL cc = new ConexionSQL();
+                Connection nn = cc.getConnection();
 
-            if (rs.next()) {
-                txtcli.setText(rs.getString("Nombre_Empresa"));
-            } else {
-                JOptionPane.showMessageDialog(null, "La Empresa no se encuentra registrada");
+                PreparedStatement pst = nn.prepareStatement("SELECT * FROM proveedor where (rtn_empresa =?)");
+
+                pst.setString(1, num_id_cliente);
+                ResultSet rs = pst.executeQuery();
+
+                if (rs.next()) {
+                    txtcli.setText(rs.getString("Nombre_Empresa"));
+                } else {
+                    JOptionPane.showMessageDialog(null, "La Empresa no se encuentra registrada");
+                }
+            } catch (Exception e) {
             }
-        } catch (Exception e) {
+
         }
-         
-         }
     }//GEN-LAST:event_btnBuscarCliMouseClicked
 
     private void btnBuscarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarProdMouseClicked
@@ -599,10 +594,10 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
                 txtprod.setText(rs.getString("Nombre"));
                 txtprecio.setText(rs.getString("Precio"));
-                 logger.info("busca un producto");
+                logger.info("busca un producto");
             } else {
                 JOptionPane.showMessageDialog(null, "El Producto no se encuentra registrado");
-                 logger.info("no se encontro el producto deseado");
+                logger.info("no se encontro el producto deseado");
             }
         } catch (Exception e) {
         }
@@ -627,53 +622,79 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     }//GEN-LAST:event_spinCantStateChanged
 
     private void btnAddprecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddprecioActionPerformed
-        if (txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
-             logger.info("Error, los campos van vacios");
-        } else {
-            if (spinCant.getValue().toString().startsWith("1")|| spinCant.getValue().toString().startsWith("2")|| spinCant.getValue().toString().startsWith("3")|| spinCant.getValue().toString().startsWith("4") 
-                    || spinCant.getValue().toString().startsWith("5")||spinCant.getValue().toString().startsWith("6")|| spinCant.getValue().toString().startsWith("7")|| spinCant.getValue().toString().startsWith("8") 
-                    || spinCant.getValue().toString().startsWith("9")){
-                 
-            DefaultTableModel model = new DefaultTableModel();
+           
+         ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        
+        String sql;
+        String cap1 = "";
 
-            model = (DefaultTableModel) jTable1.getModel();
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario.getText() + "'";
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
 
-            model.addRow(new Object[]{
-                txtserie.getText(),
-                txtCodProducto.getText(),
-                spinCant.getValue().toString(),
-                txtprecio.getText(),
-                subt.getText()
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
 
-            });
-
-            txtCodProducto.setText("");
-
-            txtprod.setText("");
-            
-            }else{
-            JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
-            logger.info("el campo de cantidad no puede ir en 0");
             }
+            if (cap1.equals("activo")) {
+
+                if (txtCodProducto.getText().equals("") || txtprecio.getText().equals("") || subt.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Todos los campos tienen que ir llenos");
+                    logger.info("Error, los campos van vacios");
+                } else {
+                    if (spinCant.getValue().toString().startsWith("1") || spinCant.getValue().toString().startsWith("2") || spinCant.getValue().toString().startsWith("3") || spinCant.getValue().toString().startsWith("4")
+                            || spinCant.getValue().toString().startsWith("5") || spinCant.getValue().toString().startsWith("6") || spinCant.getValue().toString().startsWith("7") || spinCant.getValue().toString().startsWith("8")
+                            || spinCant.getValue().toString().startsWith("9")) {
+
+                        DefaultTableModel model = new DefaultTableModel();
+
+                        model = (DefaultTableModel) jTable1.getModel();
+
+                        model.addRow(new Object[]{
+                            txtserie.getText(),
+                            txtCodProducto.getText(),
+                            spinCant.getValue().toString(),
+                            txtprecio.getText(),
+                            subt.getText()
+
+                        });
+
+                        txtCodProducto.setText("");
+
+                        txtprod.setText("");
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cantidad a llevar no puede ser 0");
+                        logger.info("el campo de cantidad no puede ir en 0");
+                    }
+                }
+
+                double sum = 0;
+
+                for (int i = 0; i < jTable1.getRowCount(); i++) {
+
+                    sum = sum + Integer.parseInt(jTable1.getValueAt(i, 4).toString());
+
+                }
+                Math.round(sum);
+
+                txtotalapagar.setText(String.valueOf(sum));
+
+                spinCant.setValue(0);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
         }
 
-        double sum = 0;
 
-        for (int i = 0; i < jTable1.getRowCount(); i++) {
-
-            sum = sum + Integer.parseInt(jTable1.getValueAt(i, 4).toString());
-
-        }
-        Math.round(sum);
-
-        txtotalapagar.setText(String.valueOf(sum));
-        
-        spinCant.setValue(0);
-
-        
     }//GEN-LAST:event_btnAddprecioActionPerformed
-   /* void detallefactura(){
+    /* void detallefactura(){
         for(int j = 0;j<jTable1.getRowCount();j++){
             ConexionSQL cc = new ConexionSQL();
             Connection cn = cc.getConnection();
@@ -686,14 +707,13 @@ public class ModeloCompra1 extends javax.swing.JFrame {
             }
         }
     }*/
-    
-    
+
     void limpiar() {
         txtserie.setText("");
         txtCodCliente.setText("");
 
         txtisv.setSelectedItem("0");
-       
+
         subt.setText("");
         spinCant.setValue("");
         txtprecio.setText(null);
@@ -718,57 +738,263 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
-        
+
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario.getText() + "'";
         try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
 
-            PreparedStatement pst = cn.prepareStatement("INSERT INTO `compra` (`Idcompra`, `Proveedor_IdProveedor`, `cai`, `monto`, `isv`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?)");
-            
-            pst.setString(1, txtCodCliente.getText());
-            pst.setString(2, txtcai.getText());
-            pst.setString(3, txtotalapagar.getText());
-            pst.setString(4, txtisv.getSelectedItem().toString());
-            pst.setString(5, rSLabelFecha1.getFecha());
-            
-            
+            while (rs.next()) {
+                cap1 = rs.getString("guardar");
 
-            int a = pst.executeUpdate();
-            if (a > 0) {
-                JOptionPane.showMessageDialog(null, "Registro exitoso");
-                logger.info("se registra exitosamente la factura");
-                sumar();
-                limpiar();
-                mostrardatos("");
-                
+            }
+            if (cap1.equals("activo")) {
+
+                try {
+
+                    PreparedStatement pst = cn.prepareStatement("INSERT INTO `compra` (`Idcompra`, `Proveedor_IdProveedor`, `cai`, `monto`, `isv`,`fecha_registro`) VALUES (NULL, ?, ?, ?, ?, ?)");
+
+                    pst.setString(1, txtCodCliente.getText());
+                    pst.setString(2, txtcai.getText());
+                    pst.setString(3, txtotalapagar.getText());
+                    pst.setString(4, txtisv.getSelectedItem().toString());
+                    pst.setString(5, rSLabelFecha1.getFecha());
+
+                    int a = pst.executeUpdate();
+                    if (a > 0) {
+                        JOptionPane.showMessageDialog(null, "Registro exitoso");
+                        logger.info("se registra exitosamente la factura");
+                        sumar();
+                        limpiar();
+                        mostrardatos("");
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error al agregar");
+                        logger.info("hubo error al agregar la factura");
+                    }
+
+                } catch (Exception e) {
+                    //JOptionPane.showMessageDialog(null, e);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Error al agregar");
-                logger.info("hubo error al agregar la factura");
+                JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
             }
 
         } catch (Exception e) {
-            //JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "No tiene permiso par aejecutar esta operacion");
         }
-    txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
+
+        txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
 
     }//GEN-LAST:event_btnventaActionPerformed
+    void validacionVenta(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
 
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registrarVenta.setVisible(false);
+                menuPrincipal.jLabel3.setVisible(false);
+            } else {
+                menuPrincipal.registrarVenta.setVisible(true);
+                menuPrincipal.jLabel3.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionProductos(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton7.setVisible(false);
+                menuPrincipal.jLabel7.setVisible(false);
+            } else {
+                menuPrincipal.jButton7.setVisible(true);
+                menuPrincipal.jLabel7.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionCompra(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton1.setVisible(false);
+                menuPrincipal.jLabel1.setVisible(false);
+            } else {
+                menuPrincipal.jButton1.setVisible(true);
+                menuPrincipal.jLabel1.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionProveedor(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton2.setVisible(false);
+                menuPrincipal.jLabel8.setVisible(false);
+            } else {
+                menuPrincipal.jButton2.setVisible(true);
+                menuPrincipal.jLabel8.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionCliente(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleado.setVisible(false);
+                menuPrincipal.jLabel5.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleado.setVisible(true);
+                menuPrincipal.jLabel5.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacion(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleados1.setVisible(false);
+                menuPrincipal.jLabel4.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleados1.setVisible(true);
+                menuPrincipal.jLabel4.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-        
-        if (i == 0) { 
-            
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea volver al menu principal?", "Seleccione una opción", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
+
+        if (i == 0) {
+
             logger.info("Vuelve al menu principal");
-        
+
             menuPrincipal mp = new menuPrincipal();
             mp.setVisible(true);
-        this.dispose();
-       
+
+            validacion(usuario.getText());
+            validacionCliente(usuario.getText());
+            validacionProveedor(usuario.getText());
+            validacionCompra(usuario.getText());
+            validacionProductos(usuario.getText());
+            validacionVenta(usuario.getText());
+            this.dispose();
+
         }
-         menuPrincipal.nombre.setText(usuarioslh.getText());
-        menuPrincipal.rol.setText(rollh.getText());        
+
+        menuPrincipal.nombre.setText(usuario.getText());
+        menuPrincipal.rol.setText(rollh.getText());
         menuPrincipal.idv.setText(vendedorlh.getText());
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void txtCodClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodClienteActionPerformed
@@ -815,41 +1041,40 @@ public class ModeloCompra1 extends javax.swing.JFrame {
         ver.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    public Icon icono(String path, int width, int height){
+    public Icon icono(String path, int width, int height) {
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
-                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+                getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
         return img;
     }
-    
-    
+
     //bro me fui a dejar unas mascarillas xdd pero ya lo termine 
-    
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?","Seleccione una opcion",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea eliminar el registro?", "Seleccione una opcion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = jTable1.getSelectedRow();
-        
+
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
         txtprecio.setText("");
         txtcli.setText("");
         txtotalapagar.setText("");
-                
+
         String cod = "";
-        if(i==0){
-        cod = jTable1.getValueAt(fila, 1).toString();
-        try {
-            PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se cancela la factura con exito");
-            logger.info("Se cancelo la factura con exito");
-            mostrardatos("");// TODO add your handling code here:
-        } catch (Exception e) {
-        }
-         
-        limpiar();
+        if (i == 0) {
+            cod = jTable1.getValueAt(fila, 1).toString();
+            try {
+                PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se cancela la factura con exito");
+                logger.info("Se cancelo la factura con exito");
+                mostrardatos("");// TODO add your handling code here:
+            } catch (Exception e) {
+            }
+
+            limpiar();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -892,30 +1117,30 @@ public class ModeloCompra1 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-       
+
         ConexionSQL cc = new ConexionSQL();
         Connection cn = cc.getConnection();
         int fila = jTable1.getSelectedRow();
-        
+
         txtcai.setText("317976-7A6111-0B419A-638143-5FA2D6-98");
         txtprecio.setText("");
         txtcli.setText("");
         txtotalapagar.setText("");
-                
+
         String cod = "";
-        
+
         cod = jTable1.getValueAt(fila, 1).toString();
         try {
             PreparedStatement pst = cn.prepareStatement("DELETE FROM detallecompra WHERE producto_id= '" + cod + "'");
             pst.executeUpdate();
-           
+
             mostrardatos("");// TODO add your handling code here:
         } catch (Exception e) {
         }
-         logger.info("limpio todo el espacio de la factura ");
+        logger.info("limpio todo el espacio de la factura ");
         limpiar();
-        
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtisvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtisvActionPerformed
@@ -1006,7 +1231,7 @@ public class ModeloCompra1 extends javax.swing.JFrame {
     private javax.swing.JTextField txtprecio;
     private javax.swing.JTextField txtprod;
     private javax.swing.JTextField txtserie;
-    public static javax.swing.JLabel usuarioslh;
+    public static javax.swing.JLabel usuario;
     public static javax.swing.JLabel vendedorlh;
     // End of variables declaration//GEN-END:variables
 

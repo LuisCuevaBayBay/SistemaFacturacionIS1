@@ -5,7 +5,6 @@
  */
 package inicio_sesion;
 
-
 import Conexiones.ConexionSQL;
 import Empleados.RegistrarEmpleados;
 import Empleados.decode;
@@ -32,10 +31,11 @@ import org.apache.log4j.*;
  * @author luisc
  */
 public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
-  
+
     usuarios mod;
-    
-   final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistrarEmpleados.class);
+
+    final static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(RegistrarEmpleados.class);
+
     public Pantalla_Inicio_Sesion() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -43,13 +43,15 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         logger.debug("Inicio el sistema");
         //this.setIconImage(new ImageIcon(getClass().getResource("/imagenes/logo.png")).getImage());
     }
-    
+
+    int cont = 0;
+
     RegistrarEmpleados metodo = new RegistrarEmpleados();
     SQLMetodos metodos = new SQLMetodos();
     menuPrincipal ventana = new menuPrincipal();
-     
-     ModeloVenta venta = new ModeloVenta();
-       
+
+    ModeloVenta venta = new ModeloVenta();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,6 +86,12 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         usuario.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         usuario.setText("Nombre de Usuario");
         getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 150, 40));
+
+        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_usuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 174, 30));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -174,25 +182,20 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_inicio_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_inicio_sesionMouseClicked
-      
+
     }//GEN-LAST:event_btn_inicio_sesionMouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton3MouseClicked
-    
-    
-    
-    
-    public Icon icono(String path, int width, int height){
+
+    public Icon icono(String path, int width, int height) {
         Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().
-                getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH));
+                getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
         return img;
-}
-    
-    
-    
+    }
+
     /*public void nombreUsuario(){
         
          //String busqueda_usuario = metodos.buscarUsuario(txt_usuario.getText(), txt_pass.getText());
@@ -210,55 +213,269 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         }
     
     }*/
-    
+    void validacionVenta(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registrarVenta.setVisible(false);
+                menuPrincipal.jLabel3.setVisible(false);
+            } else {
+                menuPrincipal.registrarVenta.setVisible(true);
+                menuPrincipal.jLabel3.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionProductos(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton7.setVisible(false);
+                menuPrincipal.jLabel7.setVisible(false);
+            } else {
+                menuPrincipal.jButton7.setVisible(true);
+                menuPrincipal.jLabel7.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionCompra(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton1.setVisible(false);
+                menuPrincipal.jLabel1.setVisible(false);
+            } else {
+                menuPrincipal.jButton1.setVisible(true);
+                menuPrincipal.jLabel1.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    void validacionProveedor(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.jButton2.setVisible(false);
+                menuPrincipal.jLabel8.setVisible(false);
+            } else {
+                menuPrincipal.jButton2.setVisible(true);
+                menuPrincipal.jLabel8.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacionCliente(String usuario) {
+
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleado.setVisible(false);
+                menuPrincipal.jLabel5.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleado.setVisible(true);
+                menuPrincipal.jLabel5.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    void validacion(String usuario) {
+        String cap1 = "";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '" + usuario + "'";
+
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("mirar");
+
+            }
+            if (cap1.equals("inactivo")) {
+                menuPrincipal.registroEmpleados1.setVisible(false);
+                menuPrincipal.jLabel4.setVisible(false);
+            } else {
+                menuPrincipal.registroEmpleados1.setVisible(true);
+                menuPrincipal.jLabel4.setVisible(true);
+            }
+
+        } catch (Exception e) {
+
+        }
+
+    }
     decode deco = new decode();
     private void btn_inicio_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_inicio_sesionActionPerformed
         // TODO add your handling code here:
-        
-        
+
         SqlUsuarios modSql = new SqlUsuarios();
         usuarios mod = new usuarios();
-        
-        
-        
+         ConexionSQL cc = new ConexionSQL();
+
+        Connection cn = cc.getConnection();
+
         String pass = new String(txt_pass.getPassword());
-        
-        if(!txt_usuario.getText().equals("") && !pass.equals("")){
-            
-            String nuevoPass = deco.ecnode("Proyecto", pass);
-            
-            mod.setUsuario(txt_usuario.getText());
-            mod.setPassword(nuevoPass);
-            
-            if(modSql.login(mod)){
-                logger.debug("Se logueo exitosamente: "+mod.getNombre_empleado()+" "+mod.getApellido_empleado());
-                this.dispose();
-                menuPrincipal frmHome = new menuPrincipal(mod);
-                
-                Object[] options = {"HOLA"};
-                int i = JOptionPane.showOptionDialog(null, "Bienvenido (a) \n "+mod.getNombre_empleado()+" "+mod.getApellido_empleado(),"DAENERYS",JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-                frmHome.setVisible(true);
-                
-                
-            
-            }else{
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
-                logger.debug("Salio del sistema");
+
+        String sql;
+        String cap1 = "";
+
+        sql = "SELECT * FROM `vendedor` WHERE `usuario` = '" + txt_usuario.getText() + "'";
+        if (!txt_usuario.getText().equals("") && !pass.equals("")) {
+        try {
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+
+            while (rs.next()) {
+                cap1 = rs.getString("bloqueo");
+
             }
-            
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "Debe ingrear sus datos");
-            logger.debug("Ingreso campos vacios");
+            if (cap1.equals("activo")) {
+
+                
+
+                    String nuevoPass = deco.ecnode("Proyecto", pass);
+
+                    mod.setUsuario(txt_usuario.getText());
+                    mod.setPassword(nuevoPass);
+
+                    if (modSql.login(mod)) {
+                        logger.debug("Se logueo exitosamente: " + mod.getNombre_empleado() + " " + mod.getApellido_empleado());
+                        this.dispose();
+
+                        menuPrincipal frmHome = new menuPrincipal(mod);
+
+                        Object[] options = {"HOLA"};
+                        int i = JOptionPane.showOptionDialog(null, "Bienvenido (a) \n " + mod.getNombre_empleado() + " " + mod.getApellido_empleado(), "DAENERYS", JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
+                        frmHome.setVisible(true);
+
+                        validacion(txt_usuario.getText());
+                        validacionCliente(txt_usuario.getText());
+                        validacionProveedor(txt_usuario.getText());
+                        validacionCompra(txt_usuario.getText());
+                        validacionProductos(txt_usuario.getText());
+                        validacionVenta(txt_usuario.getText());
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta");
+                        logger.debug("Ingreso mal el usuario o la contraseña");
+                        cont++;
+                    }
+
+                
+                if (cont == 3) {
+
+                    JOptionPane.showMessageDialog(null, "Trate de comunicarse con un administrador para obtener su codigo de recuperacion, numero de intenetos restantes = 1");
+
+                }
+                if (cont == 4) {
+                    JOptionPane.showMessageDialog(null, "Intentelo mas tarde");
+                    PreparedStatement pst = cn.prepareStatement("UPDATE vendedor SET bloqueo='inactivo' WHERE usuario='" + txt_usuario.getText() + "'");
+                    pst.executeUpdate();
+                    System.exit(0);
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Ups! El usuario esta bloqueado (Comuniquese con un administrador del sistema)");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "404 not found");
         }
-        
-        
-        
-        
-        
-        
-        
-        
+
+        } else {
+                    JOptionPane.showMessageDialog(null, "Debe ingrear sus datos");
+                    logger.debug("Ingreso campos vacios");
+                }
+
         /*
         
         
@@ -285,29 +502,26 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         
         
         //validar();*/
-        
-        
-        
-        
+
     }//GEN-LAST:event_btn_inicio_sesionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-          // TODO add your handling code here:
+        // TODO add your handling code here:
         Object[] options = {"SI", "NO"};
-         int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?","Seleccione una opción",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40),  options, options[0]);
-        
-        if (i == 0) { 
-            logger.debug("Salio del sistema: "+nombre.getText());
-        System.exit(0);
+        int i = JOptionPane.showOptionDialog(null, "Esta seguro que desea salir del sistema?", "Seleccione una opción", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono("/Imagenes/logo.png", 40, 40), options, options[0]);
+
+        if (i == 0) {
+            logger.debug("Salio del sistema: " + nombre.getText());
+            System.exit(0);
         }
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void aquiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseMoved
         // TODO add your handling code here:
-        
-       this.aqui.setForeground(new Color(224, 255, 255));
+
+        this.aqui.setForeground(new Color(224, 255, 255));
     }//GEN-LAST:event_aquiMouseMoved
 
     private void aquiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aquiMouseExited
@@ -319,7 +533,11 @@ public class Pantalla_Inicio_Sesion extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Recupera(this, true).setVisible(true);
     }//GEN-LAST:event_aquiMouseClicked
-    
+
+    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usuarioActionPerformed
+
     /*public void validar(){
        RegistrarEmpleados registro = new RegistrarEmpleados();
         

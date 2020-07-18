@@ -7,11 +7,13 @@ package app;
 
 import Conexiones.ConexionSQL;
 import java.sql.Connection;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.ImageIcon;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import menu.menuPrincipal;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -126,6 +128,201 @@ public class FechaClientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
+    
+ void validacionVenta(String usuario){
+    String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.registrarVenta.setVisible(false);
+                    menuPrincipal.jLabel3.setVisible(false);
+                }else{
+                    menuPrincipal.registrarVenta.setVisible(true);
+                    menuPrincipal.jLabel3.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+    
+        
+    }
+    
+    
+    void validacionProductos(String usuario){
+    
+        String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `producto_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.jButton7.setVisible(false);
+                    menuPrincipal.jLabel7.setVisible(false);
+                }else{
+                    menuPrincipal.jButton7.setVisible(true);
+                    menuPrincipal.jLabel7.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+    }
+    
+    void validacionCompra(String usuario){
+         String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `compra_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.jButton1.setVisible(false);
+                    menuPrincipal.jLabel1.setVisible(false);
+                }else{
+                    menuPrincipal.jButton1.setVisible(true);
+                    menuPrincipal.jLabel1.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+    }
+    
+    void validacionProveedor(String usuario){
+        String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `proveedor_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.jButton2.setVisible(false);
+                    menuPrincipal.jLabel8.setVisible(false);
+                }else{
+                    menuPrincipal.jButton2.setVisible(true);
+                    menuPrincipal.jLabel8.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+        
+        
+    }
+    
+    void validacionCliente(String usuario){
+    
+    String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `cliente_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.registroEmpleado.setVisible(false);
+                    menuPrincipal.jLabel5.setVisible(false);
+                }else{
+                    menuPrincipal.registroEmpleado.setVisible(true);
+                    menuPrincipal.jLabel5.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+        
+    }
+    void validacion(String usuario){
+        String cap1="";
+        ConexionSQL cc = new ConexionSQL();
+        Connection cn = cc.getConnection();
+        String sql;
+        
+        sql = "SELECT * FROM `vendedor_estado` WHERE `nom_usuario` = '"+usuario+"'";
+        
+        try{
+            Statement st = cn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                cap1 = rs.getString("mirar");
+                
+                
+            }
+            if(cap1.equals("inactivo")){
+                    menuPrincipal.registroEmpleados1.setVisible(false);
+                    menuPrincipal.jLabel4.setVisible(false);
+                }else{
+                    menuPrincipal.registroEmpleados1.setVisible(true);
+                    menuPrincipal.jLabel4.setVisible(true);
+                }
+        
+        }catch(Exception e){
+            
+        }
+        
+        
+        
+    
+    }
+    
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
@@ -134,6 +331,12 @@ public class FechaClientes extends javax.swing.JFrame {
         menuReportes.nombre.setText(nombre.getText());
         menuReportes.rol.setText(rol.getText());
         menuReportes.idv.setText(idv.getText());
+        validacion(nombre.getText());
+        validacionCliente(nombre.getText());
+        validacionProveedor(nombre.getText());
+        validacionCompra(nombre.getText());
+        validacionProductos(nombre.getText());
+        validacionVenta(nombre.getText());
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
